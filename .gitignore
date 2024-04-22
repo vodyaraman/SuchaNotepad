@@ -1,6 +1,8 @@
 #dependencies
 /NotePad/node_modules/
 /NotePad/package-lock.json
+/Backend/node_modules/
+/Backend/package-lock.json
 
 # Expo
 /NotePad/.expo/
