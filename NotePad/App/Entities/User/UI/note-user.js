@@ -13,6 +13,6 @@ export default NoteUser;
 const styles = StyleSheet.create({
     noteUser: {
         height: "100%",
-        width: "100%"
+        width: "50%",
     },
 })

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NotePlate } from './App/Pull/Note/index.js';
+import { CustomText, NotePlate } from './App/Pull/Note/index.js';
 import { NoteUser } from './App/Entities/User';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -37,9 +37,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <NotePlate leftColor="#70ff63" rightColor="#5cf54e" height={40}>
-        <NoteUser />
-      </NotePlate>
+      <NotePlate 
+      leftColor="#70ff63" 
+      rightColor="#5cf54e" 
+      height={40} 
+      bottomSlot={<NoteUser />}
+      rightSlot={<NoteUser />}
+      leftSlot={<CustomText text="Заголовок статьи"  textColor="#fae900"/>}
+      />
     </View>
   );
 }
