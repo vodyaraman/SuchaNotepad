@@ -41,9 +41,8 @@ export default function App() {
       leftColor="#70ff63" 
       rightColor="#5cf54e" 
       height={40} 
-      bottomSlot={<NoteUser />}
-      rightSlot={<NoteUser />}
-      leftSlot={<CustomText text="Заголовок статьи"  textColor="#fae900"/>}
+      leftSlot={<NoteUser />}
+      rightSlot={<CustomText text="Заголовок статьи"  textColor="#fae900"/>}
       />
     </View>
   );
