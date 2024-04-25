@@ -12,7 +12,7 @@ const NotePlate = ({ leftColor, rightColor, children, height }) => {
                 end={{ x: 1, y: 0 }} // Градиент влево-вправо
             />
             <LinearGradient
-                colors={[leftColor, rightColor]} // Градиент между двумя цветами
+                colors={[`${leftColor}99`, `${rightColor}99`]} // Градиент между двумя цветами
                 style={styles.MiddleNotePlate}
                 start={{ x: 0, y: 0 }} // Начало градиента слева
                 end={{ x: 1, y: 0 }} // Градиент влево-вправо
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     MiddleNotePlate: {
         width: '80%',
         height: "100%",
-        opacity: 0.6,
+        flexDirection: "row",
     },
 });
 

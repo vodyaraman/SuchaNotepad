@@ -1,14 +1,44 @@
-import { StyleSheet, Text, View } from 'react-native';
-import NotePlate from './App/Pull/Note/index.js';
-import  {User}  from './App/Pull/User/index.js';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { NotePlate } from './App/Pull/Note/index.js';
+import { NoteUser } from './App/Entities/User';
+import * as Font from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
+const loadFonts = async () => {
+  await Font.loadAsync({
+    'Montserrata-bold': require('./assets/fonts/MontserratAlternates-Bold.ttf'),
+    'Montserrata-medium': require('./assets/fonts/MontserratAlternates-Medium.ttf'),
+  });
+};
 
 export default function App() {
-  // В данный момент тестируем в корневом App все элементы, потом, когда доберёмся до первой страницы, это будем делать там, а в App будут только обозначены процессы
-  // Используем хэш- код цвета rgb для NotePlate
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadResources = async () => {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await loadFonts();
+        setFontsLoaded(true);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        await SplashScreen.hideAsync();
+      }
+    };
+
+    loadResources();
+  }, []);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <NotePlate leftColor="#70ff63" rightColor="#5cf54e" height={40}>
-        <User userColor="#ff1500" userName="Anton Saevskii"/>
+        <NoteUser />
       </NotePlate>
     </View>
   );
@@ -21,6 +51,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: "black",
-  }
+    color: 'black',
+  },
 });
