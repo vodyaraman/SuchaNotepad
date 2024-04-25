@@ -1,2 +1,5 @@
 import NotePlate from "./UI/note-plate";
-export default NotePlate;
+import CustomText from "../Note/UI/custom-text";
+export {NotePlate, CustomText};
+
+/* Pull/Note определяет визуальное оформление для заметок */
