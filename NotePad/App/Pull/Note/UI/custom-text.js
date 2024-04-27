@@ -11,7 +11,10 @@ const CustomText = ({ textColor, text, flex }) => {
       style={[styles.text, {
         color: textColor,
         justifyContent: `flex-${flex}`
-        }]}>
+        }]}
+        numberOfLines={1} // Ограничиваем одной строкой
+        ellipsizeMode="tail" // Сокращаем текст в конце, если не вмещается
+        >
       {text}
     </Text>
   );
@@ -25,9 +28,9 @@ const styles = StyleSheet.create({
     height: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-start",
     alignItems: "center",
     fontWeight: "bold",
-    fontFamily: "Montserrata-bold"
+    fontFamily: "Montserrata-bold",
+    fontSize: 12,
   },
 });

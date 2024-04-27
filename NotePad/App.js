@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { CustomText, NotePlate } from './App/Pull/Note/index.js';
+import { StyleSheet, View, Text } from 'react-native';
+import { CustomText, NotePlate, SmallUnderplate } from './App/Pull/Note/index.js';
 import { NoteUser } from './App/Entities/User';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -42,8 +42,12 @@ export default function App() {
       rightColor="#5cf54e" 
       height={40} 
       leftSlot={<NoteUser />}
-      rightSlot={<CustomText text="Заголовок статьи"  textColor="#fae900"/>}
-      />
+      rightSlot={<CustomText text="Длинный заголовок статьи"  textColor="#121010"/>}
+      bottomSlot={
+      <SmallUnderplate>
+        <Text style={styles.Text}>15:45</Text>
+      </SmallUnderplate>
+      }/>
     </View>
   );
 }
@@ -51,10 +55,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'strech',
     justifyContent: 'center',
   },
-  text: {
+  Text: {
+    fontFamily: "Montserrata-medium",
+    fontWeight: 500,
+    fontSize: "9pt",
     color: 'black',
+    justifyContent: 'center',
   },
 });

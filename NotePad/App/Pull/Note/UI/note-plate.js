@@ -18,12 +18,13 @@ const NotePlate = ({ leftColor, rightColor, leftSlot, rightSlot, bottomSlot, hei
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
             >
-                {/* Aligning left and right slots at opposite ends */}
-                <View style={styles.flexibleSlot}>{leftSlot}</View>
-                <View style={styles.flexibleSlot}>{rightSlot}</View>
-
-                {/* Bottom slot positioned absolutely within the middle gradient */}
-                <View style={styles.bottomSlot}>
+                <View style={styles.TextSlotLeft}>
+                    {leftSlot}
+                </View>
+                <View style={styles.TextSlotRight}>
+                    {rightSlot}
+                </View>
+                <View style={styles.BottomSlot}>
                     {bottomSlot}
                 </View>
             </LinearGradient>
@@ -40,6 +41,7 @@ const NotePlate = ({ leftColor, rightColor, leftSlot, rightSlot, bottomSlot, hei
 
 const styles = StyleSheet.create({
     NotePlate: {
+        position: 'relative',
         width: '100%',
         height: 40,
         flexDirection: 'row',
@@ -53,17 +55,22 @@ const styles = StyleSheet.create({
         width: '80%',
         height: '100%',
         flexDirection: 'row',
-        position: 'relative', // Allow absolute positioning within
-        justifyContent: 'space-between', // Distribute left and right slots
+        position: 'relative',
+        justifyContent: 'space-between',
     },
-    flexibleSlot: {
+    TextSlotLeft: {
         flex: 1,
-        justifyContent: 'center', // Optional: to center vertically
+        alignItems: "flex-start",
     },
-    bottomSlot: {
-        position: 'absolute', // Absolute within middle gradient
-        bottom: '40%',
-        right: '10%', // Positioned to the bottom-right
+    TextSlotRight: {
+        flex: 1,
+        opacity: 0.79,
+        alignItems: "flex-end",
+    },
+    BottomSlot: {
+        position: 'absolute',
+        bottom: '-40%',
+        right: '10%',
     },
 });
 
