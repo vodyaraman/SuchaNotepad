@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         height: 40,
         flexDirection: 'row',
         justifyContent: 'center',
+        cursor: "pointer",
     },
     SideNotePlate: {
         width: '10%',

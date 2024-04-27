@@ -12,8 +12,8 @@ const CustomText = ({ textColor, text, flex }) => {
         color: textColor,
         justifyContent: `flex-${flex}`
         }]}
-        numberOfLines={1} // Ограничиваем одной строкой
-        ellipsizeMode="tail" // Сокращаем текст в конце, если не вмещается
+        numberOfLines={1}
+        ellipsizeMode="tail"
         >
       {text}
     </Text>
