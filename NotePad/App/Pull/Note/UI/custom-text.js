@@ -5,7 +5,7 @@ import { StyleSheet, Text } from "react-native";
 // Text-color в формате хэша цвета (#ffff), текст - строка, flex - justify-content.
 
 
-const CustomText = ({ textColor, text, flex }) => {
+const CustomText = ({ textColor, text, flex = "start" }) => {
   return (
     <Text
       style={[styles.text, {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     fontWeight: "bold",
-    fontFamily: "Montserrata-bold",
-    fontSize: 12,
+    fontFamily: "Montserrata-medium",
+    fontSize: 14,
   },
 });

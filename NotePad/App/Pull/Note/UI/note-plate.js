@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     NotePlate: {
         position: 'relative',
         width: '100%',
+        marginTop: "6%",
         height: 40,
         flexDirection: 'row',
         justifyContent: 'center',
@@ -65,12 +66,12 @@ const styles = StyleSheet.create({
     },
     TextSlotRight: {
         flex: 1,
-        opacity: 0.79,
-        alignItems: "flex-end",
+        opacity: 0.6,
+        alignItems: "flex-start",
     },
     BottomSlot: {
         position: 'absolute',
-        bottom: '-40%',
+        bottom: '-18%',
         right: '10%',
     },
 });

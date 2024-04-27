@@ -1,18 +1,21 @@
+import React from "react";
 import { StyleSheet, View } from "react-native";
 
-const MainWidgetPlate = ({children}) => {
-    <View style = { styles.MainWidgetPlateStyle}>
+const MainWidgetPlate = ({children, style}) => {
+    return (
+    <View style = { [styles.MainWidgetPlateStyle, style]}>
         {children}
     </View>
-};
+)};
 
 export default MainWidgetPlate;
 
 const styles = StyleSheet.create({
     MainWidgetPlateStyle: {
-        height: "70vh",
+        zIndex: 1,
+        height: "80vh",
         width: "100%",
-        borderRadius: 15,
-        backgroundColor: "grey"
+        borderRadius: 25,
+        backgroundColor: "white",
     }
 });

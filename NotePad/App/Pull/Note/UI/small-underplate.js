@@ -11,8 +11,8 @@ export default SmallUnderplate;
 
 const styles = StyleSheet.create({
     Underplate: {
-        paddingTop: 5,
-        paddingBottom: 5,
+        paddingTop: 4,
+        paddingBottom: 4,
         paddingLeft: 16,
         paddingRight: 16,
         borderRadius: 15,
