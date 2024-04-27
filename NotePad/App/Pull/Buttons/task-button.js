@@ -5,7 +5,7 @@ export function TaskButton(){
     
     return (
         <TouchableOpacity style={styles.taskButton} activeOpacity={0.7}>
-            <Image source={require('./assets/plusTaskButton.png')} />
+            <Image source={require('../../../assets/plusTaskButton.png')} />
         </TouchableOpacity>
     );
 }

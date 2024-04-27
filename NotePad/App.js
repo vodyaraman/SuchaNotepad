@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { CustomText, NotePlate, SmallUnderplate } from './App/Pull/Note/index.js';
+import { TaskButton, SwipeButton } from './App/Pull/Buttons/index.js';
 import { NoteUser } from './App/Entities/User';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -48,6 +49,9 @@ export default function App() {
         <Text style={styles.Text}>15:45</Text>
       </SmallUnderplate>
       }/>
+      <SwipeButton side='left' img={require('./assets/swipeGroupButton.png')} />
+      <SwipeButton side='right' img={require('./assets/swipeSettingsButton.png')} />
+      <TaskButton  />
     </View>
   );
 }
