@@ -1,18 +1,17 @@
-import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Pressable, Image } from 'react-native';
 import React from 'react';
 
 export function SwipeButton({side, img}) {
 
   return (
-    <TouchableOpacity
-    onPress={() => alert('hello world!')}
-     side={side} //Пропс, задающий направление отображения кнопки: 'left' или 'right'
-     activeOpacity={0.7} 
-     style={side === 'left' ? //В зависимости от пропса side, здесь меняются стили для кнопки
+    <Pressable
+     side={side} //Пропс, задающий направление отображения кнопки: 'left' или 'right' 
+     style={({pressed}) => [side === 'left' ? //В зависимости от пропса side, здесь меняются стили для кнопки
      [styles.swipeButton, styles.leftSideOfButton] : 
-     [styles.swipeButton, styles.rightSideOfButton]}>
+     [styles.swipeButton, styles.rightSideOfButton],
+     {opacity: pressed ? 0.7 : 1}]}>
       <Image source={img} />
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

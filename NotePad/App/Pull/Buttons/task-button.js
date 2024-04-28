@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Pressable, Image } from 'react-native';
 
 export function TaskButton(){
     
     return (
-        <TouchableOpacity style={styles.taskButton} activeOpacity={0.7}>
+        <Pressable style={({pressed})=>[styles.taskButton, {opacity: pressed ? 0.7 : 1}]} >
             <Image source={require('../../../assets/plusTaskButton.png')} />
-        </TouchableOpacity>
+        </Pressable>
     );
 }
 
