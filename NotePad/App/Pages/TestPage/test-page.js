@@ -14,6 +14,7 @@ export default TestPage;
 const styles = StyleSheet.create({
     TestPageStyle: {
         zIndex: 0,
+        width: 350,
         backgroundColor: "#94D4EF",
         flexDirection: "column",
     }
