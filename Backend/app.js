@@ -8,11 +8,10 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 // Routes imports
-import user from './models/user';
+import userRoutes from './routes/userRoutes.js';
 
-// Defining main classes
+// Defining express.js app
 const app = express();
-const router = new express.Router();
 
 // Middleware
 app.use(logger('dev'));
@@ -37,7 +36,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-router.use('/', user);
+app.use('/', userRoutes);
 
 export default app;
 

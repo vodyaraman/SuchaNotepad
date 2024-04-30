@@ -1,8 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose from '../mongoDB.js';
 import bcrypt from 'bcrypt';
-
-// Создание экземпляра класса bcrypt
-const bcrypt = bcrypt;
 
 // Определение схемы пользователя
 const userSchema = new mongoose.Schema({

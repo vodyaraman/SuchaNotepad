@@ -6,7 +6,6 @@ dotenv.config();
 
 // Строка подключения к MongoDB хранится в .env
 const mongoURI = process.env.MONGO_URI;
-console.log(mongoURI);
 
 // Подключение к MongoDB с обработкой событий
 mongoose
