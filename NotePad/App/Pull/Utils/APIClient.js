@@ -1,6 +1,6 @@
-import HttpClient from './HttpClient'; // Импорт вашего класса HttpClient
+import HttpClient from './HTTPClientAxios';
 
 // Создаем экземпляр HttpClient с базовым URL вашего сервера
-const apiClient = new HttpClient('http://localhost/');
+const apiClient = new HttpClient(`http://${process.env.HOST}:${process.env.PORT}`);
 
 export default apiClient;

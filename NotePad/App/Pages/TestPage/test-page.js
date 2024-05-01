@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Notepad } from "../../Widgets";
 
+
 const TestPage = () => {
     return (
     <View style = { styles.TestPageStyle}>

@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Pressable, Image } from 'react-native';
 
-export function TaskButton(){
+export function TaskButton({ onPress }){
     
     return (
-        <Pressable style={({pressed})=>[styles.taskButton, {opacity: pressed ? 0.7 : 1}]} >
+        <Pressable style={({pressed})=>[styles.taskButton, {opacity: pressed ? 0.7 : 1}]} 
+        onPress={onPress}>
             <Image source={require('../../../assets/plusTaskButton.png')} />
         </Pressable>
     );

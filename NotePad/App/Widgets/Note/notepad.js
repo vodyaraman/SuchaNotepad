@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet } from 'react-native';
 import { MainWidgetPlate } from '../../Pull/Note/index';
 import { NoteOverlook } from "../../Features/Note";
+import { Register } from "../../Features/User/index"
 
 /*  <SwipeButton side='left' img={require('../../assets/swipeGroupButton.png')} />
       <SwipeButton side='right' img={require('./assets/swipeSettingsButton.png')} />
@@ -11,6 +12,7 @@ const Notepad = () => {
     return (
     <MainWidgetPlate style = {styles.NotepadStyle}>
         <NoteOverlook/>
+        <Register/>
     </MainWidgetPlate>
 )};
 
