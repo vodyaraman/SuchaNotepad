@@ -20,9 +20,9 @@ const authSlice = createSlice({
 export const { setAuth } = authSlice.actions;
 
 // Авторизация зарегистрированного пользователя
-export const loginUser = (email, password) => async (dispatch) => {
+export const loginUser = (email, password, name) => async (dispatch) => {
   try {
-    const { data } = await apiClient.post('/users/login', { email, password });
+    const { data } = await apiClient.post('/users/login', { email, password, name });
     const { token } = data;
 
     dispatch(setAuth({ isAuthenticated: true, token }));
