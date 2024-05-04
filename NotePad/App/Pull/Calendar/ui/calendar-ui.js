@@ -1,6 +1,6 @@
-import { Calendar } from "react-native-calendars";
+import {Calendar} from 'react-native-calendars';
 import React, { useContext } from 'react';
-import { SelectedContext } from "../Entities/Hooks/context-of-selected";
+import { SelectedContext } from '../../../Entities/Calendar/Hooks/context-of-selected';
 
 export function CalendarUI({setSelected}){
     let selected = useContext(SelectedContext)

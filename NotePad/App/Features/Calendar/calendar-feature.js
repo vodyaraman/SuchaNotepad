@@ -1,10 +1,10 @@
 import { SafeAreaView, StyleSheet, View} from 'react-native';
-import { CurrentDateEntitie } from "./Entities/current-date-entity";
-import { CalendarEntitie } from "./Entities/calendar-entity";
-import { SelectedContext } from './Entities/Hooks/context-of-selected';
+import { CurrentDateEntitie } from '../../Entities/Calendar/current-date-entity';
+import { CalendarEntitie } from '../../Entities/Calendar/calendar-entity';
+import { SelectedContext } from '../../Entities/Calendar/Hooks/context-of-selected';
 
-import { convertToString } from './Entities/Helpers/convertToString';
-import { getCurrentDay } from './Entities/Helpers/getCurrentDay';
+import { convertToString } from '../../Entities/Calendar/Helpers/convertToString';
+import { getCurrentDay } from '../../Entities/Calendar/Helpers/getCurrentDay';
 
 import React, { useState} from 'react';
 
@@ -21,7 +21,9 @@ export function CalendarFeature(){
         <SelectedContext.Provider value={selected}>
             <SafeAreaView style={styles.mainContainer} >
                 <CurrentDateEntitie showCalendar={showCalendar} />
-                <CalendarEntitie setSelected={setSelected} isVisible={isVisible} /> 
+                <View style={styles.calendarContainer}>
+                    <CalendarEntitie setSelected={setSelected} isVisible={isVisible} /> 
+                </View>
             </SafeAreaView>
         </SelectedContext.Provider>       
     )
@@ -32,5 +34,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         display: 'flex',
         justifyContent: 'space-between',
+
+        position: 'relative',
+        zIndex: 100,
+    },
+    calendarContainer: {
+        width: '100%',
+        position: 'absolute',
+        top: '100%',
     }
 })

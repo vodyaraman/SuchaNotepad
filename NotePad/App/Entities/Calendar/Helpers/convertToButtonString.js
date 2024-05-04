@@ -1,4 +1,4 @@
-import { addZero } from './addZero'
+import { addZero } from './addZero';
 
 const daysOfWeek = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября']
 

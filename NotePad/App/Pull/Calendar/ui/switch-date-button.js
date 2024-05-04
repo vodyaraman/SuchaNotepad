@@ -4,7 +4,7 @@ export function SwitchDateButton({side}){
     
     return (
         <Pressable side={side} style={ ({pressed}) => [{opacity: pressed ? 0.8 : 1}, styles.switchButton ]}>
-            <Image side={side} style={[side === 'left' ? styles.leftSide : styles.rightSide, styles.img]} source={require('../assets/switchButtonPoligon.png')} />
+            <Image side={side} style={[side === 'left' ? styles.leftSide : styles.rightSide, styles.img]} source={require('../../../../assets/switchButtonPoligon.png')} />
         </Pressable>
     );
 }
