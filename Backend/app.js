@@ -1,6 +1,7 @@
 // Main structure imports
 import express from 'express';
 import passport from 'passport';
+import cors from 'cors';
 
 // Support imports
 import createError from 'http-errors';
@@ -14,11 +15,21 @@ import userRoutes from './routes/userRoutes.js';
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
+
+// Логгирование запросов
+app.use((req, res, next) => {
+  console.log(`${req.method} request to ${req.path}`);
+  next();
+});
+
+// Маршруты
+app.use('/users', userRoutes);
 
 // Обработка ошибок 404
 app.use((req, res, next) => {
@@ -35,8 +46,6 @@ app.use((err, req, res, next) => {
     },
   });
 });
-
-app.use('/users', userRoutes);
 
 export default app;
 

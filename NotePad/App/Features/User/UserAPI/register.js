@@ -7,7 +7,7 @@ const Register = (props) => { // props позволяет передавать �
   const dispatch = useDispatch();
 
   const userData = {
-    login: "Anton Saevskii",
+    name: "Anton Saevskii",
     email: "vodyaraman@gmail.com",
     password: "cVj5bD8x",
     ...props.userData, // это удалить в задницу
