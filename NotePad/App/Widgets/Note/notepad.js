@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { MainWidgetPlate } from '../../Pull/Note/index';
 import { NoteOverlook } from "../../Features/Note";
 import { Register } from "../../Features/User/index"
+import { CalendarFeature } from '../../Features/Calendar/index';
 
 /*  <SwipeButton side='left' img={require('../../assets/swipeGroupButton.png')} />
       <SwipeButton side='right' img={require('./assets/swipeSettingsButton.png')} />
@@ -10,10 +11,13 @@ import { Register } from "../../Features/User/index"
 
 const Notepad = () => {
     return (
-    <MainWidgetPlate style = {styles.NotepadStyle}>
-        <NoteOverlook/>
-        <Register/>
-    </MainWidgetPlate>
+        <>
+            <CalendarFeature />
+            <MainWidgetPlate style = {styles.NotepadStyle}>
+                <NoteOverlook/>
+                <Register/>
+            </MainWidgetPlate>
+        </>
 )};
 
 export default Notepad;
@@ -23,5 +27,5 @@ const styles = StyleSheet.create({
         zIndex: 1,
         top: "10%",
         paddingTop: "10%",
-    },
+    }
 });

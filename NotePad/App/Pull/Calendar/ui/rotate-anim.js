@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Animated} from 'react-native';
+import {Animated, StyleSheet} from 'react-native';
 
 export function RotateAnim({isVisible, children}){
   const [transformRotate] = useState(new Animated.Value(0)); // Initial value for Transform: rotateX: 90

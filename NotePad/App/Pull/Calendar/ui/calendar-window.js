@@ -1,5 +1,5 @@
 import {StyleSheet, Pressable} from 'react-native';
-import { CalendarUI } from './Pull/calendar-ui';
+import { CalendarUI } from '../../Calendar/ui/calendar-ui';
 
 export function CalendarWindow({setSelected, isVisible}){
     return (       

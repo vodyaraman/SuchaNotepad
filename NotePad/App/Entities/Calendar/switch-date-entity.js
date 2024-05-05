@@ -1,4 +1,4 @@
-import { SwitchDateButton } from '../Pull/switch-date-button';
+import { SwitchDateButton } from "../../Pull/Calendar/index"
 
 export function SwitchDateEntitie({side}){
 
