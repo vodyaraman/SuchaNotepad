@@ -33,18 +33,25 @@ export const loginUser = (email, password, name) => async (dispatch) => {
   }
 };
 
-// Регистрация нового пользователя
-export const registerUser = (userData) => async (dispatch) => {
-  try {
-    const { data } = await apiClient.post('/users/register', userData);
-    const { token } = data;
+  // Регистрация нового пользователя
+  export const registerUser = (userData) => async (dispatch) => {
+    try {
+      const data = await apiClient.post('/users/register', userData);
 
-    dispatch(setAuth({ isAuthenticated: true, token }));
-    await SecureStore.setItemAsync('authToken', token); // Безопасное хранение
-  } catch (error) {
-    console.error('Registration error:', error);
-    // Дополнительно: обработка ошибки
-  }
-};
+      console.log('Received data:', data.token);
+
+      const token = data.token;
+
+      if (token) {
+        dispatch(setAuth({ isAuthenticated: true, token }));
+        await SecureStore.setItemAsync('authToken', token); // Безопасное хранение
+      } else {
+        console.log('No token received');
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      // Дополнительно: обработка ошибки
+    }
+  };
 
 export default authSlice.reducer;
