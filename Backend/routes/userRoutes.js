@@ -39,4 +39,8 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
   res.status(200).json({ message: 'Login successful', user: req.user });
 });
 
+router.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
+
 export default router;

@@ -1,20 +1,42 @@
-// Main structure imports
+// Основные образующие импорты
 import express from 'express';
 import passport from 'passport';
 import cors from 'cors';
 
-// Support imports
+// Вспомогательные импорты
 import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-// Routes imports
+// Импорты Sentry
+import * as Sentry from '@sentry/node';
+import { nodeProfilingIntegration } from '@sentry/profiling-node';
+
+// Импорты маршрутов
 import userRoutes from './routes/userRoutes.js';
 
-// Defining express.js app
+// Инициализация приложения express
 const app = express();
 
-// Middleware
+// Инициализация Sentry
+Sentry.init({
+  dsn: "https://65332efa9675266be2d8db713c2d5347@o4507217079304192.ingest.sentry.io/4507225970507856",
+  integrations: [
+    new Sentry.Integrations.Http({ tracing: true }),
+    new Sentry.Integrations.Express({ app }),
+    nodeProfilingIntegration(),
+  ],
+  tracesSampleRate: 1.0,
+  profilesSampleRate: 1.0,
+});
+
+// Обработчик запросов Sentry
+app.use(Sentry.Handlers.requestHandler());
+
+// TracingHandler creates a trace for every incoming request
+app.use(Sentry.Handlers.tracingHandler());
+
+// Промежуточное обеспечение
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
@@ -30,6 +52,9 @@ app.use((req, res, next) => {
 
 // Маршруты
 app.use('/users', userRoutes);
+
+// Обработчик ошибок Sentry
+app.use(Sentry.Handlers.errorHandler());
 
 // Обработка ошибок 404
 app.use((req, res, next) => {
@@ -48,4 +73,5 @@ app.use((err, req, res, next) => {
 });
 
 export default app;
+
 

@@ -43,8 +43,8 @@ export const loginUser = (email, password, name) => async (dispatch) => {
       const token = data.token;
 
       if (token) {
-        dispatch(setAuth({ isAuthenticated: true, token }));
-        await SecureStore.setItemAsync('authToken', token); // Безопасное хранение
+        await dispatch(setAuth({ isAuthenticated: true, token }));
+        await SecureStore.setItemAsync('authToken', token);
       } else {
         console.log('No token received');
       }
