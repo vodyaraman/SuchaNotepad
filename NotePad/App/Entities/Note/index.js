@@ -1,5 +1,6 @@
 import NoteUser from "./UI/user";
 import NoteTitle from "./UI/title";
 import NoteManipulate from "./UI/manipulate";
+import Note from "./UI/note";
 
-export {NoteUser, NoteTitle, NoteManipulate};
+export { Note, NoteUser, NoteTitle, NoteManipulate };

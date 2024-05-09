@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from 'react-native';
 import { MainWidgetPlate } from '../../Pull/Note/index';
-import { NoteOverlook } from "../../Features/Note";
+import { NoteOverlook, NoteCheck } from "../../Features/Note";
 import { Register } from "../../Features/User/index"
 import { CalendarFeature } from '../../Features/Calendar/index';
 
@@ -13,6 +13,9 @@ const Notepad = () => {
     return (
         <>
             <CalendarFeature />
+            <MainWidgetPlate style = {styles.NotepadStyle}>
+                <NoteCheck/>
+            </MainWidgetPlate>
             <MainWidgetPlate style = {styles.NotepadStyle}>
                 <NoteOverlook/>
                 <Register/>

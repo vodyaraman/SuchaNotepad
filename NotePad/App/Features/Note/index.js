@@ -1,2 +1,3 @@
 import NoteOverlook from "./UI/overlook";
-export { NoteOverlook };
+import NoteCheck from "./UI/check";
+export { NoteOverlook, NoteCheck };
