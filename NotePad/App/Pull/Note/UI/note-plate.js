@@ -6,14 +6,14 @@ const NotePlate = ({ leftColor, rightColor, leftSlot, rightSlot, bottomSlot, hei
     return (
         <View style={[styles.NotePlate, { height: height }]}>
             <LinearGradient
-                colors={[`${leftColor}1A`, `${leftColor}99`]} // Gradient for left edge
+                colors={[`${leftColor}1A`, `${leftColor}99`]}
                 style={styles.SideNotePlate}
                 start={{ x: 0, y: 0 }} 
                 end={{ x: 1, y: 0 }}
             />
 
             <LinearGradient
-                colors={[`${leftColor}99`, `${rightColor}99`]} // Main middle gradient
+                colors={[`${leftColor}99`, `${rightColor}99`]}
                 style={styles.MiddleNotePlate}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
@@ -30,7 +30,7 @@ const NotePlate = ({ leftColor, rightColor, leftSlot, rightSlot, bottomSlot, hei
             </LinearGradient>
 
             <LinearGradient
-                colors={[`${rightColor}99`, `${rightColor}1A`]} // Gradient for right edge
+                colors={[`${rightColor}99`, `${rightColor}1A`]}
                 style={styles.SideNotePlate}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}

@@ -5,7 +5,7 @@ export function MainCalendarButton({showCalendar, dayName}){
     return(
         <Pressable
         onPress={showCalendar} 
-        style={({pressed}) => [styles.calendarButton,  {opacity: pressed ? 0.8 : 1}]}>
+        style={({pressed}) => [styles.calendarButton,  {opacity: pressed ? 1 : 1}]}>
             <Text style={styles.text}>{dayName}</Text>
         </Pressable>
     );

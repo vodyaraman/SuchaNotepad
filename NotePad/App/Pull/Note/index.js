@@ -6,8 +6,12 @@ import FullScaledNotePlate from "./UI/fully-scaled-note-plate";
 
 import CustomText from "./UI/custom-text";
 import CustomSmallText from "./UI/custom-small-text";
+import InputText from "./UI/input-text";
 // CustomText - заготовки для текстового компонента под единым стилем
 
-export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate};
+import getNoteType from "./Helpers/note-type-helper";
+// Helper для определения стилей и функций для каждого типа заметок
+
+export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText};
 
 /* Pull/Note определяет визуальное оформление для заметок */

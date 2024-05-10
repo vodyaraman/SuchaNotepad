@@ -1,18 +1,27 @@
 import React from "react";
 import { NoteUser, NoteTitle, Note } from "../../../Entities/Note";
-import { FullScaledNotePlate } from "../../../Pull/Note";
+import { FullScaledNotePlate, getNoteType } from "../../../Pull/Note";
 
-const NoteCheck = () => {
+const NoteCheck = ({ note = { type: 'important', content: 'Контент' } }) => {
+    const noteProps = getNoteType(note);
+
     return (
         <FullScaledNotePlate
-            backgroundColor="#A2EFE6"
-            height={60} 
-            Andromeda={NoteUser}
-            Scorpius={NoteTitle}
-            Orion={() => <Note note={{type: 'important', content: 'Контент'}}/>}
+            backgroundColor={noteProps.backgroundColor}
+            height="100%"
+            Orion={() => <NoteUser 
+                fontWeight={"bold"}
+            />}
+            Scorpius={() => <NoteTitle 
+                flex={"center"}
+                fontWeight={"bold"}
+                fontSize={18}
+            />}
+            Andromeda={() => <Note 
+                note={note}
+            />}
         />
     );
 };
-
 
 export default NoteCheck;

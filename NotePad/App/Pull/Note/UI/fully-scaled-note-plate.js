@@ -1,9 +1,15 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import GradientBackground from './linear-gradient';
 
 const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, backgroundColor, height }) => {
   return (
-    <View style={[styles.container, { backgroundColor, height }]}>
+    <GradientBackground 
+      backgroundColor={backgroundColor} 
+      height={height} 
+      width={'100%'}
+      borderRadius={0}
+      >
       <View style={styles.orionStyle}>
         <Orion />
       </View>
@@ -13,34 +19,38 @@ const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, backgroundColor, heig
       <View style={styles.andromedaStyle}>
         <Andromeda />
       </View>
-      <TextInput style={styles.input} placeholder="Введите заметку" />
-    </View>
+    </GradientBackground>
   );
 };
 
 export default FullScaledNotePlate;
 
 const styles = StyleSheet.create({
-  container: {
-    width: '100%', // Ширина статичная
-  },
   orionStyle: {
-    flex: 1,
-    backgroundColor: 'red', // Пример стиля для Orion
-    padding: 10,
+    padding: '4%',
+    width: '100%',
   },
   scorpiusStyle: {
-    flex: 2,
-    backgroundColor: 'green', // Пример стиля для Scorpius
-    padding: 10,
+    padding: 5,
+    width: '100%',
+    justifyContent: 'center',
+
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
   },
   andromedaStyle: {
-    flex: 1,
-    backgroundColor: 'blue', // Пример стиля для Andromeda
-    padding: 10,
-  },
-  input: {
-    marginTop: 10,
-    padding: 10,
+    width: '100%',
+    justifyContent: 'space-around',
+
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
   },
 });
+
+

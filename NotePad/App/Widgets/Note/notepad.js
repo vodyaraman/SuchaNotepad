@@ -28,7 +28,12 @@ export default Notepad;
 const styles = StyleSheet.create({
     NotepadStyle: {
         zIndex: 1,
-        top: "10%",
-        paddingTop: "10%",
+        top: "2%",
+        paddingTop: "15%",
+        paddingBottom: "15%",
+
+        position: 'relative',
+        flexDirection: 'row',
+        justifyContent: 'center',
     }
 });

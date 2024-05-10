@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { CustomText } from "../../../Pull/Note";
+import { InputText } from "../../../Pull/Note";
 
-const NoteTitle = ({flex = 'flex-start', fontWeight = "normal", fontSize=16}) => {
+const NoteEditTitle = () => {
     const [text, setText] = useState("Заголовок заметки");
     const [textColor, setTextColor] = useState("#0d0c0c");
     return (
     <>
-        <CustomText 
+        <InputText
             textColor={textColor} 
             text={text} 
             flex={flex} 
@@ -16,4 +16,4 @@ const NoteTitle = ({flex = 'flex-start', fontWeight = "normal", fontSize=16}) =>
     </>
 )};
 
-export default NoteTitle;
+export default NoteEditTitle;
