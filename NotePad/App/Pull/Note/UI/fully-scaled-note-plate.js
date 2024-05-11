@@ -33,24 +33,18 @@ const styles = StyleSheet.create({
   scorpiusStyle: {
     padding: 5,
     width: '100%',
-    justifyContent: 'center',
-
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4,
+    flex: 1,
   },
   andromedaStyle: {
     width: '100%',
-    justifyContent: 'space-around',
-
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4,
+    padding: 5,
+    flex: 8,
   },
 });
 
+/*    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4, */
 

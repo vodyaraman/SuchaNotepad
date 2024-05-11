@@ -7,7 +7,7 @@ const Note = ({
   text = 'Текст по умолчанию достаточно большой, возомжно, он занимает больше одной строки и ему требуется какое-то дополнительное форматирование по типу выравнивания по ширине' 
 }) => {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView>
         <CustomText
           textColor={textColor}
           text={text}
@@ -17,13 +17,6 @@ const Note = ({
       </ScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10
-  }
-});
 
 export default Note;
 

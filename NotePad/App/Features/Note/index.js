@@ -1,3 +1,5 @@
 import NoteOverlook from "./UI/overlook";
 import NoteCheck from "./UI/check";
-export { NoteOverlook, NoteCheck };
+import NoteWrite from "./UI/write";
+
+export { NoteOverlook, NoteCheck, NoteWrite };

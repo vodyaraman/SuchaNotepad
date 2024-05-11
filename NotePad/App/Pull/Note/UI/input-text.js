@@ -1,44 +1,49 @@
 import React from 'react';
-import { TextInput, StyleSheet, View } from 'react-native';
+import { TextInput, StyleSheet } from 'react-native';
 
 const InputText = ({
   onChangeText,
-  value,
+  text,
   fontSize = 16,
   fontFamily = 'Montserrata-medium',
   fontWeight = 'normal',
   color = '#000',
   textAlign = 'left',
-  flex = 'flex-start',
+  placeholder="Enter note",
+  height= "auto",
 }) => {
   return (
-    <View style={[styles.container, { justifyContent: flex }]}>
-      <TextInput
-        style={[styles.input, { fontSize, fontFamily, fontWeight, color, textAlign }]}
-        onChangeText={onChangeText}
-        value={value}
-        placeholder="Enter note"
-        keyboardType="default"
-      />
-    </View>
+    <TextInput
+      style={[
+        styles.input, 
+        {
+          fontSize: fontSize, 
+          fontFamily: fontFamily, 
+          fontWeight: fontWeight, 
+          color: color, 
+          textAlign: textAlign,
+          height: height,
+        }
+      ]}
+      onChangeText={onChangeText}
+      value={text}
+      placeholder={placeholder}
+      keyboardType="default"
+      multiline={true}
+      numberOfLines={4}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   input: {
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
+    width: '100%',
+    padding: '2%',
   },
 });
 
 export default InputText;
+
+
 
 
