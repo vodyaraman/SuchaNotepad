@@ -8,12 +8,14 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
+
 // Импорты Sentry
 import * as Sentry from '@sentry/node';
 import { nodeProfilingIntegration } from '@sentry/profiling-node';
 
 // Импорты маршрутов
 import userRoutes from './routes/userRoutes.js';
+import noteRoutes from './routes/noteRoutes.js';
 
 // Инициализация приложения express
 const app = express();
@@ -52,6 +54,7 @@ app.use((req, res, next) => {
 
 // Маршруты
 app.use('/users', userRoutes);
+app.use('/notes', noteRoutes);
 
 // Обработчик ошибок Sentry
 app.use(Sentry.Handlers.errorHandler());
