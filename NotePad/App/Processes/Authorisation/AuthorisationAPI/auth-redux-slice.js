@@ -1,6 +1,6 @@
-import { apiClient } from '../../../Pull/Utils/index';
+import apiClient from '../../../Pull/Utils/APIClient';
 import { createSlice } from '@reduxjs/toolkit';
-import SecureStore from 'expo-secure-store'; // Безопасное хранение для React Native
+import {SecureStore} from 'expo-secure-store'; // Безопасное хранение для React Native
 
 // Создание слайса для аутентификации
 const authSlice = createSlice({
