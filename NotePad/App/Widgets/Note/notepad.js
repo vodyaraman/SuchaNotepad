@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from 'react-native';
-import { MainWidgetPlate } from '../../Pull/Note/index';
+import { MainWidgetPlate} from '../../Pull/Note/index';
 import { NoteOverlook, NoteCheck, NoteWrite } from "../../Features/Note";
 import { Register } from "../../Features/User/index"
 import { CalendarFeature } from '../../Features/Calendar/index';

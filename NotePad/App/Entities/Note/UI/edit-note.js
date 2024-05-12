@@ -13,6 +13,7 @@ const EditNote = ({
           numberOfLines={null}
           multiline={true}
           height={"100%"}
+          fontSize={13}
         />
 
     );

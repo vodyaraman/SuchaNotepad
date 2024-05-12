@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated, PanResponder } from 'react-native';
+import { CustomSmallText } from '../Note';
 
 const Switcher = ({
   initialActive = 0,
   width = 300,
   height = 40,
   totalStates = 3,
-  stateLabels = ['State 1', 'State 2', 'State 3'],
+  stateLabels = ['Заметка 📒', 'Список📋', 'На время⌚️'],
 }) => {
   const [activeIndex, setActiveIndex] = useState(initialActive);
   const animation = useRef(new Animated.Value(activeIndex)).current;
@@ -46,7 +47,7 @@ const Switcher = ({
       <Animated.View {...panResponder.panHandlers} style={[styles.switcher, { left: switcherPosition, width: `${100 / totalStates}%`, height: height - 4 }]} />
       {stateLabels.map((label, index) => (
         <TouchableOpacity key={index} style={[styles.labelContainer, { width: `${100 / totalStates}%` }]} onPress={() => handlePress(index)}>
-          <Text style={styles.labelText}>{label}</Text>
+          <CustomSmallText text={label}/>
         </TouchableOpacity>
       ))}
     </View>
@@ -59,9 +60,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#cccccc',
     borderRadius: 20,
     overflow: 'hidden',
+
+    margin: '3%',
   },
   switcher: {
     position: 'absolute',

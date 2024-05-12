@@ -1,6 +1,7 @@
 import React from "react";
 import { NoteUser, EditNote, EditNoteTitle } from "../../../Entities/Note";
 import { FullScaledNotePlate, getNoteType } from "../../../Pull/Note";
+import { Switcher } from "../../../Pull/Buttons";
 
 const NoteWrite = ({ note = { type: 'important', content: 'Контент' } }) => {
     const noteProps = getNoteType(note);
@@ -14,13 +15,17 @@ const NoteWrite = ({ note = { type: 'important', content: 'Контент' } }) 
             />}
             Scorpius={() => <EditNoteTitle 
                 fontWeight={"bold"}
-                fontSize={18}
+                fontSize={14}
             />}
-            Andromeda={() => <EditNote 
-                note={note}
-                numberOfLines={null}
-            />}
-        />
+            Andromeda={() => {return (
+                <>
+                    <EditNote 
+                        note={note}
+                        numberOfLines={null}
+                    />
+                    <Switcher/>
+                </>
+        )}}/>  
     );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { InputText } from "../../../Pull/Note";
 
-const EditNoteTitle = ({flex = 'center', fontWeight = "normal", fontSize=16}) => {
+const EditNoteTitle = ({flex = 'center', fontWeight = "normal", fontSize=14 }) => {
     const [text, setText] = useState("Заголовок заметки");
     const [textColor, setTextColor] = useState("#0d0c0c");
     return (
@@ -12,6 +12,8 @@ const EditNoteTitle = ({flex = 'center', fontWeight = "normal", fontSize=16}) =>
             textAlign={flex} 
             fontWeight={fontWeight}
             fontSize={fontSize}
+            placeholder="Enter title"
+            multiline={false}
         />
     </>
 )};

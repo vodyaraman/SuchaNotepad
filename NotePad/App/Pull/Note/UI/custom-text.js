@@ -9,7 +9,7 @@ const CustomText = ({
   fontWeight = "normal",
   textAlign = "left",
   fontFamily = "Montserrata-medium",
-  fontSize = 16,
+  fontSize = 12,
 }) => {
   return (
     <Text
