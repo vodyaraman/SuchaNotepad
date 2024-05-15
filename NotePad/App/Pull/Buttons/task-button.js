@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Pressable, Image } from 'react-native';
 
-export function TaskButton({ onPress }){
+const TaskButton = ({ onPress }) => {
     
     return (
         <Pressable style={({pressed})=>[styles.taskButton, {opacity: pressed ? 0.7 : 1}]} 
@@ -9,13 +9,15 @@ export function TaskButton({ onPress }){
             <Image source={require('../../../assets/plusTaskButton.png')} />
         </Pressable>
     );
-}
+};
+
+export default TaskButton;
 
 const styles = StyleSheet.create({
     taskButton: {
         backgroundColor: '#FFF4C4',
-        height: 90,
-        width: 90,
+        height: '12vh',
+        width: '24vw',
 
         borderRadius: 50,
         

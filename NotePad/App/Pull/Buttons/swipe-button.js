@@ -1,7 +1,7 @@
 import { StyleSheet, Pressable, Image } from 'react-native';
 import React from 'react';
 
-export function SwipeButton({side, img}) {
+const SwipeButton = ({side, img}) => {
 
   return (
     <Pressable
@@ -10,19 +10,23 @@ export function SwipeButton({side, img}) {
      [styles.swipeButton, styles.leftSideOfButton] : 
      [styles.swipeButton, styles.rightSideOfButton],
      {opacity: pressed ? 0.7 : 1}]}>
-      <Image source={img} />
+      <Image source={img} style={styles.ImageInButton}/>
     </Pressable>
   );
-}
+};
+
+export default SwipeButton;
 
 const styles = StyleSheet.create({
   swipeButton: {
-    height: 80,
-    width: 100,
+    height: '11.5vh',
+    width: '25vw',
     backgroundColor: '#FFF4C4',
 
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center', 
+
+    zIndex: 5,
   },
 
   leftSideOfButton: {
@@ -33,5 +37,14 @@ const styles = StyleSheet.create({
   rightSideOfButton: {
     borderBottomLeftRadius: 35,
     borderTopLeftRadius: 35,
-  }
+  },
+
+  ImageInButton: {
+    width: 45,
+    height: 45,
+
+    objectFit: 'fill',
+
+    zIndex: 5,
+  },
 });
