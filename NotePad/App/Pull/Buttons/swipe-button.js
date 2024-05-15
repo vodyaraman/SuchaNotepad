@@ -19,14 +19,15 @@ export default SwipeButton;
 
 const styles = StyleSheet.create({
   swipeButton: {
-    height: '11.5vh',
-    width: '25vw',
+    minHeight: '9vh',
+    maxHeight: '10vh',
+    height: '100%',
+    
+    width: '23vw',
     backgroundColor: '#FFF4C4',
 
     alignItems: 'center',
     justifyContent: 'center', 
-
-    zIndex: 5,
   },
 
   leftSideOfButton: {
@@ -40,11 +41,8 @@ const styles = StyleSheet.create({
   },
 
   ImageInButton: {
-    width: 45,
-    height: 45,
-
+    height: 40,
+    width: 40,
     objectFit: 'fill',
-
-    zIndex: 5,
   },
 });

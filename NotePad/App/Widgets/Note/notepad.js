@@ -1,14 +1,15 @@
 import React from "react";
 import { StyleSheet } from 'react-native';
-import { MainWidgetPlate, NavigationPlate} from '../../Pull/Note/index';
+import { MainWidgetPlate} from '../../Pull/Note/index';
 import { NoteOverlook, NoteCheck, NoteWrite } from "../../Features/Note";
 import { Register } from "../../Features/User/index"
 import { CalendarFeature } from '../../Features/Calendar/index';
+import { NavigationPlate } from "../../Entities/Navigation";
 
-import { TaskButton, SwipeButton } from "../../Pull/Buttons";
+// import { TaskButton, SwipeButton } from "../../Pull/Buttons";
 
-import GroupImage from "../../../assets/swipeGroupButton.png"
-import SettingsImage from "../../../assets/swipeSettingsButton.png"
+// import GroupImage from "../../../assets/swipeGroupButton.png"
+// import SettingsImage from "../../../assets/swipeSettingsButton.png"
 
 /*
       
@@ -28,11 +29,13 @@ const Notepad = () => {
             <MainWidgetPlate style = {styles.NotepadStyle}>
                 <NoteWrite/>
             </MainWidgetPlate>
-            <NavigationPlate
+            {/* <NavigationPlate
                 Caesar={<SwipeButton side='left' img={GroupImage} />}
                 Bismark={<TaskButton  />}
                 Napoleon={<SwipeButton side='right' img={SettingsImage} />}
-            />  
+            />   */}
+            <NavigationPlate />
+
         </>
 )};
 

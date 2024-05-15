@@ -2,7 +2,6 @@ import NotePlate from "./UI/note-plate";
 import SmallUnderplate from "./UI/small-underplate";
 import MainWidgetPlate from "./UI/main-widget-plate";
 import FullScaledNotePlate from "./UI/fully-scaled-note-plate";
-import NavigationPlate from "./UI/navigation-plate";
 // Plate - плитки, на которых выстраивается оформление (син. "блок")
 
 import CustomText from "./UI/custom-text";
@@ -13,6 +12,6 @@ import InputText from "./UI/input-text";
 import getNoteType from "./Helpers/note-type-helper";
 // Helper для определения стилей и функций для каждого типа заметок
 
-export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText, NavigationPlate};
+export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText};
 
 /* Pull/Note определяет визуальное оформление для заметок */
