@@ -1,5 +1,5 @@
 import React from "react";
-import { NoteUser, EditNote, EditNoteTitle } from "../../../Entities/Note";
+import { NoteUser, EditNote, EditNoteTitle, NoteAddEdit } from "../../../Entities/Note";
 import { FullScaledNotePlate, getNoteType } from "../../../Pull/Note";
 import { Switcher } from "../../../Pull/Buttons";
 import { NoteManagerProvider } from "../Helpers/note-manager";
@@ -17,6 +17,7 @@ const NoteWrite = ({ note = { type: 'important', content: 'Контент' } }) 
                 Andromeda={() => (
                     <>
                         <EditNote/>
+                        <NoteAddEdit/>
                         <Switcher/>
                     </>
                 )}
