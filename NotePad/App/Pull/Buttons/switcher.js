@@ -4,7 +4,7 @@ import { CustomSmallText } from '../Note';
 
 const Switcher = ({
   initialActive = 0,
-  width = 300,
+  width = '94%',
   height = 40,
   totalStates = 3,
   stateLabels = ['Заметка 📒', 'Список📋', 'На время⌚️'],

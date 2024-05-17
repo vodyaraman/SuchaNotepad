@@ -1,8 +1,8 @@
 import React from "react";
 import { InputText } from "../../../Pull/Note";
-import { useText } from '../../../Features/Note/index';
+import { useText } from '../Helpers/note-manager';
 
-const EditNote = ({ textColor = '#000', fontSize = 13 }) => {
+const EditNote = ({ textColor = '#000', fontSize = 18 }) => {
     const { noteText, setNoteText } = useText();
     return (
         <InputText

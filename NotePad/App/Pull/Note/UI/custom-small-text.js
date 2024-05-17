@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   text: {
         fontFamily: "Montserrata-bold",
         fontWeight: 500,
-        fontSize: 11,
+        fontSize: 16,
 
         color: 'black',
         

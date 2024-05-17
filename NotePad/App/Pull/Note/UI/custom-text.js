@@ -34,7 +34,7 @@ export default CustomText;
 const styles = StyleSheet.create({
   text: {
     color: "black",
-    opacity: 0.8,
+    opacity: 0.9,
 
     height: "100%",
     display: "flex",

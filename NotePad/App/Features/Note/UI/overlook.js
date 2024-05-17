@@ -1,6 +1,4 @@
-import {NoteUser} from "../../../Entities/Note";
-import {NoteTitle} from "../../../Entities/Note";
-import {NoteManipulate} from "../../../Entities/Note";
+import {NoteTitle, NoteManipulate, NoteUser} from "../../../Entities/Note";
 import { NotePlate } from "../../../Pull/Note";
 import React, { useState } from "react";
 

@@ -1,9 +1,7 @@
 // Компоненты UI
 import NoteOverlook from "./UI/overlook";
-import NoteCheck from "./UI/check";
-import NoteWrite from "./UI/write";
+import NoteCheck from "./UI/check-edit";
+import NoteWrite from "./UI/create";
 
-// Управление
-import { useText } from "./Helpers/note-manager";
 
-export { NoteOverlook, NoteCheck, NoteWrite, useText };
+export { NoteOverlook, NoteCheck, NoteWrite };

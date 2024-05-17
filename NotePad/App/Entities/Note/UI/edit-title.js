@@ -1,8 +1,8 @@
 import React from "react";
 import { InputText } from "../../../Pull/Note";
-import { useText } from '../../../Features/Note/index';
+import { useText } from '../Helpers/note-manager';
 
-const EditNoteTitle = ({ flex = 'center', fontWeight = "normal", fontSize = 14 }) => {
+const EditNoteTitle = ({ flex = 'center', fontWeight = "bold", fontSize = 20 }) => {
     const { noteTitle, setNoteTitle } = useText();
     return (
         <InputText
