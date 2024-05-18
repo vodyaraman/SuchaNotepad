@@ -10,7 +10,7 @@ export const NoteManagerProvider = ({ children }) => {
     const [userName, setUserName] = useState("Anton Saevsky");
     const [notePriority, setNoteAdd] = useState(true);
     const [timestamp, setTimestamp] = useState({"isTemporary": false, "dateStart": new Date(), "dateEnd": new Date()});
-    const [noteType, setNoteType] = useState("default");
+    const [noteType, setNoteType] = useState(2);
 
     return (
         <TextContext.Provider value={{
@@ -33,7 +33,6 @@ export const useNoteData = () => {
     const { noteTitle, noteText, notePriority, timestamp, noteType } = useContext(TextContext);
 
     return {
-        _id: "ObjectId",
         title: noteTitle,
         content: noteText,
         priority: notePriority,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Animated, PanResponder } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Animated, PanResponder } from 'react-native';
 import { CustomSmallText } from '../Note';
 
 const Switcher = ({
@@ -8,6 +8,7 @@ const Switcher = ({
   height = 40,
   totalStates = 3,
   stateLabels = ['Заметка 📒', 'Список📋', 'На время⌚️'],
+  onChange, // Add this line
 }) => {
   const [activeIndex, setActiveIndex] = useState(initialActive);
   const animation = useRef(new Animated.Value(activeIndex)).current;
@@ -19,6 +20,7 @@ const Switcher = ({
       duration: 300,
       useNativeDriver: false
     }).start();
+    if (onChange) onChange(activeIndex); // Call onChange when activeIndex changes
   }, [activeIndex]);
 
   const panResponder = PanResponder.create({
@@ -62,7 +64,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
     overflow: 'hidden',
-
     margin: '3%',
   },
   switcher: {
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
 });
 
 export default Switcher;
+
 
 
 

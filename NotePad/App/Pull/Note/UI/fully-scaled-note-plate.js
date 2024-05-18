@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import GradientBackground from './linear-gradient';
 
-const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, backgroundColor, height }) => {
+const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, Prometheus, backgroundColor, height }) => {
   return (
     <GradientBackground 
       backgroundColor={backgroundColor} 
@@ -18,6 +18,9 @@ const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, backgroundColor, heig
       </View>
       <View style={styles.andromedaStyle}>
         <Andromeda />
+        <View style={styles.prometheusStyle}>
+          <Prometheus/>
+        </View>
       </View>
     </GradientBackground>
   );
@@ -29,11 +32,6 @@ const styles = StyleSheet.create({
   orionStyle: {
     padding: '4%',
     width: '100%',
-
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 4,
   },
   scorpiusStyle: {
     width: '100%',
@@ -46,6 +44,12 @@ const styles = StyleSheet.create({
     flex: 10,
 
     alignItems: 'center',
+  },
+  prometheusStyle: {
+    alignItems: 'flex-start',
+
+    width: '100%',
+    padding: 5,
   },
 });
 

@@ -1,7 +1,6 @@
 import React from "react";
-import { NoteUser, EditNote, EditNoteTitle, NoteAddEdit, NoteManagerProvider } from "../../../Entities/Note";
+import { NoteUser, EditNote, EditNoteTitle, NoteAddEdit, NoteChangeType, NoteManagerProvider } from "../../../Entities/Note";
 import { FullScaledNotePlate, getNoteType } from "../../../Pull/Note";
-import { Switcher } from "../../../Pull/Buttons";
 
 const NoteWrite = ({ note = { type: 'important', content: 'Контент' } }) => {
     const noteProps = getNoteType(note);
@@ -11,12 +10,25 @@ const NoteWrite = ({ note = { type: 'important', content: 'Контент' } }) 
             <FullScaledNotePlate
                 backgroundColor={noteProps.backgroundColor}
                 height="100%"
-                Orion={NoteUser}
-                Scorpius={EditNoteTitle}
+                Orion={() => (
+                    <>
+                        <NoteUser/>
+                    </>    
+                )}
+                Scorpius={() => (
+                    <>
+                        <EditNoteTitle/>
+                    </>    
+                )}
                 Andromeda={() => (
                     <>
                         <EditNote/>
-                        <Switcher/>
+                    </>
+                )}
+                Prometheus={() => (
+                    <>
+                        <NoteAddEdit/>
+                        <NoteChangeType/>
                     </>
                 )}
             />
