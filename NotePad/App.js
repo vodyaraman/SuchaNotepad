@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { TestPage } from './App/Pages';
 import { Provider } from 'react-redux';
-import store from './store';
+import {store} from './App/Processes/Store';
 
 const loadFonts = async () => {
   await Font.loadAsync({

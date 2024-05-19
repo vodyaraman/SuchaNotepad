@@ -4,7 +4,8 @@ import { MainWidgetPlate} from '../../Pull/Note/index';
 import { NoteOverlook, NoteCheck, NoteWrite } from "../../Features/Note";
 import { Register } from "../../Features/User/index"
 import { CalendarFeature } from '../../Features/Calendar/index';
-import { NavigationPlate } from "../../Entities/Navigation";
+import NavigationButtons from "../../Features/Navigation";
+
 
 // import { TaskButton, SwipeButton } from "../../Pull/Buttons";
 
@@ -26,18 +27,10 @@ const Notepad = () => {
     return (
         <>
             <CalendarFeature />
-            <MainWidgetPlate style = {styles.NotepadStyle}>
-                
-                <NoteWrite/>
+            <MainWidgetPlate style = {styles.NotepadStyle}> 
+                <NoteWrite />
             </MainWidgetPlate>
-            {/* <NavigationPlate
-            
-                Caesar={<SwipeButton side='left' img={GroupImage} />}
-                Bismark={<TaskButton  />}
-                Napoleon={<SwipeButton side='right' img={SettingsImage} />}
-            />   */}
-            <NavigationPlate />
-
+            <NavigationButtons />
         </>
 )};
 

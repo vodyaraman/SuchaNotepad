@@ -12,6 +12,8 @@ import InputText from "./UI/input-text";
 import getNoteType from "./Helpers/note-type-helper";
 // Helper для определения стилей и функций для каждого типа заметок
 
-export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText};
+import NavigationPlate from "./UI/navigation-plate";
+
+export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText, NavigationPlate};
 
 /* Pull/Note определяет визуальное оформление для заметок */

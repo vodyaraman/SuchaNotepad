@@ -1,33 +1,18 @@
-import { SafeAreaView, StyleSheet } from "react-native";
+// import { useNoteData } from "../../Note/Helpers/note-manager";
 
-import { SwipeButton, TaskButton } from "../../../Pull/Buttons";
+export const NavigationPlate = ({children}) => {
 
-import SettingsImage from "../../../../assets/swipeSettingsButton.png";
-import GroupImage from "../../../../assets/swipeGroupButton.png";
-import AddTask from '../../../../assets/plusTaskButton.png';
-
-export const NavigationPlate = () => {
+    // const handleClick = () => {
+    //     const data = useNoteData();
+    //     console.log(data)
+    // }
 
     return(
         <SafeAreaView style={styles.container}>
-            <SwipeButton side={'left'} img={GroupImage} />
-            <TaskButton img={AddTask} />
-            <SwipeButton side={'right'} img={SettingsImage} />
+            {/* <SwipeButton side={'left'} img={GroupImage} />
+            <TaskButton handleClick={handleClick} img={AddTask} />
+            <SwipeButton side={'right'} img={SettingsImage} /> */}
+            {children}
         </SafeAreaView>
     )
 }
-
-const styles = StyleSheet.create({
-    container:{
-        width: '100%',
-        height: '9vh',
-        display: 'flex',
-        position: 'absolute',
-        bottom: '3%',
-
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-
-        zIndex: 5,
-    },
-})

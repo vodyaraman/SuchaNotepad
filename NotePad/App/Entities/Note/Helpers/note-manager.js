@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
 // Context to manage note content
-const TextContext = createContext();
+export const TextContext = createContext();
 
 // Provider
 export const NoteManagerProvider = ({ children }) => {
@@ -9,7 +9,7 @@ export const NoteManagerProvider = ({ children }) => {
     const [noteText, setNoteText] = useState("Default text that might be large and span multiple lines, requiring some additional formatting like justification.");
     const [userName, setUserName] = useState("Павел Башкирцев");
     const [notePriority, setNoteAdd] = useState(true);
-    const [timestamp, setTimestamp] = useState({"isTemporary": false, "dateStart": new Date(), "dateEnd": new Date()});
+    const [timestamp, setTimestamp] = useState({isTemporary: false, dateStart: new Date(), dateEnd: new Date()});
     const [noteType, setNoteType] = useState(2);
 
     return (

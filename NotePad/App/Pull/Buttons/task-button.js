@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Pressable, Image } from 'react-native';
 
-const TaskButton = ({ onPress, img }) => {
+const TaskButton = ({ handleClick, img }) => {
     
     return (
         <Pressable style={({pressed})=>[styles.taskButton, {opacity: pressed ? 0.7 : 1}]} 
-        onPress={onPress}>
+        onPress={handleClick}>
             <Image style={styles.ImageInButton} source={img} />
         </Pressable>
     );
