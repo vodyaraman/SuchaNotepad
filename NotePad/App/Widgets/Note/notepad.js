@@ -27,9 +27,11 @@ const Notepad = () => {
         <>
             <CalendarFeature />
             <MainWidgetPlate style = {styles.NotepadStyle}>
+                
                 <NoteWrite/>
             </MainWidgetPlate>
             {/* <NavigationPlate
+            
                 Caesar={<SwipeButton side='left' img={GroupImage} />}
                 Bismark={<TaskButton  />}
                 Napoleon={<SwipeButton side='right' img={SettingsImage} />}
@@ -44,9 +46,8 @@ export default Notepad;
 const styles = StyleSheet.create({
     NotepadStyle: {
         zIndex: 1,
-        top: "2%",
-        paddingTop: "15%",
-        paddingBottom: "15%",
+        paddingTop: "10%",
+        paddingBottom: "25%",
 
         position: 'relative',
         flexDirection: 'row',

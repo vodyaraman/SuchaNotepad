@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, View} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import { CurrentDateEntitie } from '../../Entities/Calendar/current-date-entity';
 import { CalendarEntitie } from '../../Entities/Calendar/calendar-entity';
 import { SelectedContext } from '../../Entities/Calendar/Hooks/context-of-selected';
@@ -19,29 +19,29 @@ export function CalendarFeature(){
     
     return(
         <SelectedContext.Provider value={selected}>
-            <SafeAreaView style={styles.mainContainer} >
+            <View style={styles.mainContainer} >
                 <CurrentDateEntitie showCalendar={showCalendar} />
                 <View style={styles.calendarContainer}>
                     <CalendarEntitie setSelected={setSelected} isVisible={isVisible} /> 
                 </View>
-            </SafeAreaView>
+            </View>
         </SelectedContext.Provider>       
     )
 }
 
 const styles = StyleSheet.create({
     mainContainer: {
-        top: '5%',
+        width: '100%',
+        top: '1%',
         alignItems: 'center',
         display: 'flex',
         justifyContent: 'space-between',
 
-        position: 'relative',
+        position: 'absolute',
         zIndex: 2,
     },
     calendarContainer: {
         width: '100%',
         position: 'absolute',
-        top: '100%',
     }
 })

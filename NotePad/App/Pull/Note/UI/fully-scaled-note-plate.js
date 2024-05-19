@@ -30,17 +30,19 @@ export default FullScaledNotePlate;
 
 const styles = StyleSheet.create({
   orionStyle: {
-    padding: '4%',
+    padding: '5%',
     width: '100%',
+    backgroundColor: '#fcfcfcb0',
   },
   scorpiusStyle: {
     width: '100%',
-    padding: 3,
+
+    justifyContent: 'center',
+    padding: 4,
     flex: 1,
   },
   andromedaStyle: {
     width: '100%',
-    padding: 3,
     flex: 10,
 
     alignItems: 'center',
@@ -48,8 +50,9 @@ const styles = StyleSheet.create({
   prometheusStyle: {
     alignItems: 'flex-start',
 
+    backgroundColor: '#fcfcfcb0',
     width: '100%',
-    padding: 5,
+    padding: 10,
   },
 });
 

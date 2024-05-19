@@ -48,7 +48,8 @@ const InputText = ({
 const styles = StyleSheet.create({
   input: {
     width: '100%',
-    padding: '3.5%',
+    paddingLeft: '3.5%',
+    paddingRight: '3.5%',
     backgroundColor: 'transparent',
     
     borderRadius: 15,

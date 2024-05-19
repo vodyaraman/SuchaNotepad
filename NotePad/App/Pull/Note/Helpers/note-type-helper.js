@@ -2,7 +2,7 @@ const getNoteType = (note) => {
     switch (note.type) {
       case 'important':
         return {
-          backgroundColor: '#29ff3e7f',
+          backgroundColor: '#00ffffd3',
           textColor: '#89eb34',
           text: note.content,
           numberOfLines: undefined

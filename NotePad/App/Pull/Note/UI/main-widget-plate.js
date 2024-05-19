@@ -13,13 +13,14 @@ export default MainWidgetPlate;
 const styles = StyleSheet.create({
     MainWidgetPlateStyle: {
         zIndex: 1,
-        minHeight: '85vh',
-        maxHeight: '85vh',
+        minHeight: '97vh',
+        maxHeight: '97vh',
         height: '100%',
         
+        marginTop: '6%',
         
         width: "100%",
-        borderRadius: 25,
+        borderRadius: 30,
         backgroundColor: "white",
     }
 });

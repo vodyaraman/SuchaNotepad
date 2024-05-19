@@ -5,9 +5,9 @@ const TextContext = createContext();
 
 // Provider
 export const NoteManagerProvider = ({ children }) => {
-    const [noteTitle, setNoteTitle] = useState("Note Title");
+    const [noteTitle, setNoteTitle] = useState("Заголовок заметки");
     const [noteText, setNoteText] = useState("Default text that might be large and span multiple lines, requiring some additional formatting like justification.");
-    const [userName, setUserName] = useState("Anton Saevsky");
+    const [userName, setUserName] = useState("Павел Башкирцев");
     const [notePriority, setNoteAdd] = useState(true);
     const [timestamp, setTimestamp] = useState({"isTemporary": false, "dateStart": new Date(), "dateEnd": new Date()});
     const [noteType, setNoteType] = useState(2);
