@@ -1,26 +1,59 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateNote } from '../../../Processes/Note/note-slice';
 
 // Context to manage note content
 export const TextContext = createContext();
 
 // Provider
 export const NoteManagerProvider = ({ children }) => {
-    const [noteTitle, setNoteTitle] = useState("Заголовок заметки");
-    const [noteText, setNoteText] = useState("Default text that might be large and span multiple lines, requiring some additional formatting like justification.");
-    const [userName, setUserName] = useState("Павел Башкирцев");
-    const [notePriority, setNotePriority] = useState(true);
-    const [timestamp, setTimestamp] = useState({isTemporary: false, dateStart: new Date(), dateEnd: new Date()});
-    const [noteType, setNoteType] = useState(2);
+    const dispatch = useDispatch();
 
-    console.log(noteTitle, noteText, userName, notePriority, timestamp, noteType)
+    const note = useSelector((state) => state.note);
+    
+    // Dispatch the updated note object to Redux
+    const setNote = (updatedNote) => {
+        dispatch(updateNote(updatedNote));
+    };
+
+    // Individual setters for each state property
+    const setNoteTitle = (title) => {
+        setNote({ ...note, noteTitle: title });
+    };
+
+    const setNoteText = (text) => {
+        setNote({ ...note, noteText: text });
+    };
+
+    const setUserName = (name) => {
+        setNote({ ...note, userName: name });
+    };
+
+    const setNotePriority = (priority) => {
+        setNote({ ...note, notePriority: priority });
+    };
+
+    const setTimestamp = (timestamp) => {
+        setNote({ ...note, timestamp });
+    };
+
+    const setNoteType = (type) => {
+        setNote({ ...note, noteType: type });
+    };
+
+    // Split note object into individual states
+    const { noteTitle, noteText, userName, notePriority, timestamp, noteType } = note;
+
     return (
         <TextContext.Provider value={{
-             noteTitle, setNoteTitle,
-             noteText, setNoteText, 
-             userName, setUserName,
-             notePriority, setNotePriority,
-             timestamp, setTimestamp,
-             noteType, setNoteType }}>
+            noteTitle, setNoteTitle,
+            noteText, setNoteText,
+            userName, setUserName,
+            notePriority, setNotePriority,
+            timestamp, setTimestamp,
+            noteType, setNoteType,
+            setNote
+        }}>
             {children}
         </TextContext.Provider>
     );
@@ -28,17 +61,3 @@ export const NoteManagerProvider = ({ children }) => {
 
 // Custom hook
 export const useText = () => useContext(TextContext);
-
-/*
-export const noteData = () => {
-    const { noteTitle, noteText, userName, notePriority, timestamp, noteType } = useContext(TextContext);
-    return {
-        title: noteTitle,
-        content: noteText,
-        user: userName,
-        priority: notePriority,
-        date: timestamp,
-        type: noteType
-    };
-};
-*/

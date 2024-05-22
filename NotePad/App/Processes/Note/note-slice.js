@@ -6,7 +6,7 @@ const initialState = {
   noteText: "Default text that might be large and span multiple lines, requiring some additional formatting like justification.",
   userName: "Павел Башкирцев",
   notePriority: true,
-  timestamp: { isTemporary: false, dateStart: new Date(), dateEnd: new Date() },
+  timestamp: { isTemporary: false, dateStart: "12.08.2024 8:00", dateEnd: "12.08.2025 21:00" },
   noteType: 2,
 };
 

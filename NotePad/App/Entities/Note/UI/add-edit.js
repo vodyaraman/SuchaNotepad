@@ -10,11 +10,11 @@ const NoteAddEdit = ({ flex = 'center', fontWeight = "normal", fontSize = 14 }) 
         const newTimestamp = { ...timestamp };
 
         if (dates.length === 2) {
-            newTimestamp.dateStart = new Date(dates[0]);
-            newTimestamp.dateEnd = dates[1] ? new Date(dates[1]) : null;
+            newTimestamp.dateStart = dates[0];
+            newTimestamp.dateEnd = dates[1] || "";
         } else if (dates.length === 1) {
-            newTimestamp.dateStart = new Date(dates[0]);
-            newTimestamp.dateEnd = null;
+            newTimestamp.dateStart = dates[0];
+            newTimestamp.dateEnd = "";
         }
 
         setTimestamp(newTimestamp);
@@ -22,9 +22,9 @@ const NoteAddEdit = ({ flex = 'center', fontWeight = "normal", fontSize = 14 }) 
 
     const formatDateString = () => {
         if (timestamp.dateEnd) {
-            return `${timestamp.dateStart.toLocaleDateString()}, ${timestamp.dateEnd.toLocaleDateString()}`;
+            return `${timestamp.dateStart}, ${timestamp.dateEnd}`;
         }
-        return timestamp.dateStart.toLocaleDateString();
+        return timestamp.dateStart;
     };
 
     return (
@@ -44,3 +44,4 @@ const NoteAddEdit = ({ flex = 'center', fontWeight = "normal", fontSize = 14 }) 
 };
 
 export default NoteAddEdit;
+
