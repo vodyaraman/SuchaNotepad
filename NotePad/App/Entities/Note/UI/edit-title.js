@@ -8,7 +8,7 @@ const EditNoteTitle = ({ flex = 'center', fontWeight = "bold", fontSize = 20 }) 
         <InputText
             textColor="#0d0c0c"
             text={noteTitle}
-            onChangeText={setNoteTitle}
+            onChangeText={(text) => (setNoteTitle(text))}
             textAlign={flex}
             fontWeight={fontWeight}
             fontSize={fontSize}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
 const InputText = ({
@@ -8,15 +8,21 @@ const InputText = ({
   fontWeight = 'normal',
   color = '#000',
   textAlign = 'left',
-  placeholder="Enter note",
-  height= "auto",
-  multiline= true,
+  placeholder = "Enter note",
+  height = "auto",
+  multiline = true,
+  onChangeText = () => {},
 }) => {
   const [currentText, setCurrentText] = useState(text);
-  const [isFocused, setIsFocused] = useState(false);  // Состояние для отслеживания фокуса
+  const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    setCurrentText(text);
+  }, [text]);
 
   const handleChangeText = (text) => {
     setCurrentText(text);
+    onChangeText(text);
   };
 
   return (
@@ -31,7 +37,7 @@ const InputText = ({
           textAlign: textAlign,
           height: height,
         },
-        isFocused && styles.focusedInput // Добавляем стили для активированного состояния
+        isFocused && styles.focusedInput // Add styles for focused state
       ]}
       onChangeText={handleChangeText}
       value={currentText}
@@ -39,8 +45,8 @@ const InputText = ({
       keyboardType="default"
       multiline={multiline}
       numberOfLines={4}
-      onFocus={() => setIsFocused(true)}  // Устанавливаем фокус
-      onBlur={() => setIsFocused(false)}  // Снимаем фокус
+      onFocus={() => setIsFocused(true)}  // Set focus
+      onBlur={() => setIsFocused(false)}  // Remove focus
     />
   );
 };
@@ -51,8 +57,6 @@ const styles = StyleSheet.create({
     paddingLeft: '3.5%',
     paddingRight: '3.5%',
     backgroundColor: 'transparent',
-    
-    borderRadius: 15,
   },
   focusedInput: {
     borderWidth: 0,
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
 });
 
 export default InputText;
+
 
 
 

@@ -8,16 +8,17 @@ export const NoteManagerProvider = ({ children }) => {
     const [noteTitle, setNoteTitle] = useState("Заголовок заметки");
     const [noteText, setNoteText] = useState("Default text that might be large and span multiple lines, requiring some additional formatting like justification.");
     const [userName, setUserName] = useState("Павел Башкирцев");
-    const [notePriority, setNoteAdd] = useState(true);
+    const [notePriority, setNotePriority] = useState(true);
     const [timestamp, setTimestamp] = useState({isTemporary: false, dateStart: new Date(), dateEnd: new Date()});
     const [noteType, setNoteType] = useState(2);
 
+    console.log(noteTitle, noteText, userName, notePriority, timestamp, noteType)
     return (
         <TextContext.Provider value={{
              noteTitle, setNoteTitle,
              noteText, setNoteText, 
              userName, setUserName,
-             notePriority, setNoteAdd,
+             notePriority, setNotePriority,
              timestamp, setTimestamp,
              noteType, setNoteType }}>
             {children}
@@ -28,16 +29,16 @@ export const NoteManagerProvider = ({ children }) => {
 // Custom hook
 export const useText = () => useContext(TextContext);
 
-// Custom hook to get the updated note data
-export const useNoteData = () => {
-    const { noteTitle, noteText, notePriority, timestamp, noteType } = useContext(TextContext);
-
+/*
+export const noteData = () => {
+    const { noteTitle, noteText, userName, notePriority, timestamp, noteType } = useContext(TextContext);
     return {
         title: noteTitle,
         content: noteText,
+        user: userName,
         priority: notePriority,
-        timestamp,
+        date: timestamp,
         type: noteType
     };
 };
-
+*/
