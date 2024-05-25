@@ -5,6 +5,7 @@ const initialState = {
   noteTitle: "Заголовок заметки",
   noteText: "Default text that might be large and span multiple lines, requiring some additional formatting like justification.",
   userName: "Павел Башкирцев",
+  userID: 1,
   notePriority: true,
   timestamp: { isTemporary: false, dateStart: "12.08.2024 8:00", dateEnd: "12.08.2025 21:00" },
   noteType: 2,
@@ -18,6 +19,7 @@ const noteSlice = createSlice({
     setNoteTitle: (state, action) => { state.noteTitle = action.payload; },
     setNoteText: (state, action) => { state.noteText = action.payload; },
     setUserName: (state, action) => { state.userName = action.payload; },
+    setUserID: (state, action) => { state.userID = action.payload; },
     setNotePriority: (state, action) => { state.notePriority = action.payload; },
     setTimestamp: (state, action) => { state.timestamp = action.payload; },
     setNoteType: (state, action) => { state.noteType = action.payload; },
@@ -25,5 +27,6 @@ const noteSlice = createSlice({
   },
 });
 
-export const { setNoteTitle, setNoteText, setUserName, setNotePriority, setTimestamp, setNoteType, updateNote } = noteSlice.actions;
+export const { setNoteTitle, setNoteText, setUserName, setUserID, setNotePriority, setTimestamp, setNoteType, updateNote } = noteSlice.actions;
 export default noteSlice.reducer;
+

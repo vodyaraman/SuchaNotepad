@@ -2,10 +2,10 @@ import NoteModel from '../models/note.js';
 
 export const create = async (req, res) => {
     try {
-        const { userId = req.userId, noteType, title, noteText, notePriority, timestamp } = req.body;
+        const { userID, noteType, title, noteText, notePriority, timestamp } = req.body;
 
         const newNote = new NoteModel({
-            userId,
+            userID,
             noteType,
             title,
             noteText,
