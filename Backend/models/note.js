@@ -1,25 +1,46 @@
 import mongoose from '../mongoDB.js';
 
 const noteSchema = new mongoose.Schema({
-    userId:{
-        type: mongoose.Schema.Types.ObjectId, //Специальный тип айдишника, который имеется внутри монгуза
-        ref: 'user', //Ссылается на модель user
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
         required: true,
     },
-    noteType:{
+    noteType: {
         type: Number,
         required: true,
     },
-    title:{
+    title: {
         type: String,
         required: true,
     },
-    noteText:{
+    noteText: {
         type: String,
         required: true,
     },
-    additionalParams: Array,
+    notePriority: {
+        type: Boolean,
+        default: false,
+    },
+    timestamp: {
+        isTemporary: {
+            type: Boolean,
+            default: false,
+        },
+        dateStart: {
+            type: Date,
+            required: false,
+        },
+        dateEnd: {
+            type: Date,
+            required: false,
+        },
+    },
+    dateCreated: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
-})
+export default mongoose.model('Note', noteSchema);
 
-export default mongoose.model('Note', noteSchema)

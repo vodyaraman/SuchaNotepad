@@ -1,2 +1,2 @@
-export * from './noteApi';
+export * from '../Note/NoteAPI/noteApi';
 export * from './store';

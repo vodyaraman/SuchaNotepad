@@ -7,7 +7,7 @@ export const noteApi = createApi({
     endpoints: build => ({
         createNote: build.mutation({
             query: (body) => ({
-                url: '/createNote',
+                url: '/notes/createNote',
                 method: 'POST',
                 body,
             }),
