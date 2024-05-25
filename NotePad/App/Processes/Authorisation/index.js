@@ -1,2 +1,2 @@
-import { loginUser, registerUser } from "./AuthorisationAPI/auth-redux-slice";
+import { loginUser, registerUser } from "./AuthorisationAPI/auth-slice";
 export { loginUser, registerUser };

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { noteApi } from './noteApi';
-import noteReducer from '../Note/note-slice';
+import {noteReducer} from '../Note/index';
 
 export const store = configureStore({
   reducer: {

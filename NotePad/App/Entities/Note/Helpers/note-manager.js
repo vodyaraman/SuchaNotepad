@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateNote } from '../../../Processes/Note/note-slice';
+import { updateNote } from '../../../Processes/Note'; // скорректируйте путь
 
 // Context to manage note content
 export const TextContext = createContext();
@@ -8,15 +8,12 @@ export const TextContext = createContext();
 // Provider
 export const NoteManagerProvider = ({ children }) => {
     const dispatch = useDispatch();
-
     const note = useSelector((state) => state.note);
-    
-    // Dispatch the updated note object to Redux
+
     const setNote = (updatedNote) => {
         dispatch(updateNote(updatedNote));
     };
 
-    // Individual setters for each state property
     const setNoteTitle = (title) => {
         setNote({ ...note, noteTitle: title });
     };
@@ -41,7 +38,6 @@ export const NoteManagerProvider = ({ children }) => {
         setNote({ ...note, noteType: type });
     };
 
-    // Split note object into individual states
     const { noteTitle, noteText, userName, notePriority, timestamp, noteType } = note;
 
     return (
