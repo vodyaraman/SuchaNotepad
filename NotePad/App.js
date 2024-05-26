@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { TestPage } from './App/Pages';
+import { PageUserEntrypoint } from './App/Pages';
 import { Provider } from 'react-redux';
 import {store} from './App/Processes/Store';
 
@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <TestPage/>
+      <PageUserEntrypoint/>
     </Provider>
   );
 }

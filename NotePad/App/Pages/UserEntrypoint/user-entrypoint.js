@@ -3,14 +3,14 @@ import { StyleSheet, View } from "react-native";
 import { RegAndAuth } from "../../Widgets";
 
 
-const TestPage = () => {
+const PageUserEntrypoint = () => {
     return (
     <View style = { styles.TestPageStyle}>
         <RegAndAuth/>
     </View>
 )};
 
-export default TestPage;
+export default PageUserEntrypoint;
 
 const styles = StyleSheet.create({
     TestPageStyle: {

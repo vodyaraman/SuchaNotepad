@@ -1,2 +1,3 @@
 import Notepad from "./Note/notepad";
-export { Notepad };
+import RegAndAuth from "./User/registration-authentication"
+export { Notepad, RegAndAuth };

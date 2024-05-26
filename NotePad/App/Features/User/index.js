@@ -1,2 +1,8 @@
+// API
 import Register from "./UserAPI/register";
-export { Register };
+
+// UI
+import UserAuth from "./UI/authorisation";
+import UserReg from "./UI/registration";
+
+export { Register, UserAuth, UserReg };
