@@ -9,6 +9,9 @@ import {store} from './App/Processes/Store';
 // ---- Импорт userEntryPoint окон ----
 import StartEntryPage from './App/Pages/UserEntrypoint/StartEntryPage/start-entry-page';
 
+// ---- Импорт окон регистрации ----
+import { SubmitRegisterButton } from './App/Entities/User';
+
 const loadFonts = async () => {
   await Font.loadAsync({
     'Montserrata-bold': require('./assets/fonts/MontserratAlternates-Bold.ttf'),
@@ -42,7 +45,7 @@ export default function App() {
   return (
     <Provider store={store} >
       {/* <PageUserEntrypoint/> */}
-      <StartEntryPage />
+      <TestPage />
     </Provider>
   );
 }

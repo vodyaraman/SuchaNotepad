@@ -8,6 +8,7 @@ import UserEmail from './UI/Registration/email';
 import UserPasswordRepeat from './UI/Registration/password-repeat';
 import UserPasswordReg from './UI/Registration/password';
 import UserUsername from './UI/Registration/username';
+import SubmitRegisterButton from './UI/Registration/submit-register-button';
 
 // ---- Компоненты для главного окна ----
 import UserEntryLoginButton from "./UI/Main/user-entry-login-button";
@@ -23,6 +24,7 @@ export {
   UserPasswordRepeat,
   UserPasswordReg,
   UserUsername,
+  SubmitRegisterButton,
   UserEntryLoginButton,
   UserEntryRegisterButton,
   UserEntryMainTitle,
