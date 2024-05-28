@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     opacity: 0.9,
 
     height: "100%",
-    display: "flex",
     flexDirection: "row",
 
     alignItems: "center",
+
   },
 });

@@ -1,10 +1,19 @@
-import UserLogin from './Authorisation/login';
-import UserPassword from './Authorisation/password';
-import UserSubmit from './Authorisation/submit';
-import UserEmail from './Registration/email';
-import UserPasswordRepeat from './Registration/password-repeat';
-import UserPasswordReg from './Registration/password';
-import UserUsername from './Registration/username';
+// ---- Компоненты для окна авторизации ----
+import UserLogin from './UI/Authorisation/login';
+import UserPassword from './UI/Authorisation/password';
+import UserSubmit from './UI/Authorisation/submit';
+
+// ---- Компоненты для окна регистрации ----
+import UserEmail from './UI/Registration/email';
+import UserPasswordRepeat from './UI/Registration/password-repeat';
+import UserPasswordReg from './UI/Registration/password';
+import UserUsername from './UI/Registration/username';
+
+// ---- Компоненты для главного окна ----
+import UserEntryLoginButton from "./UI/Main/user-entry-login-button";
+import UserEntryRegisterButton from "./UI/Main/user-entry-register-button";
+import UserEntryMainTitle from "./UI/Main/user-entry-main-title";
+import UserEntryFooterContainer from "./UI/Main/user-entry-footer-container";
 
 export {
   UserLogin,
@@ -13,5 +22,9 @@ export {
   UserEmail,
   UserPasswordRepeat,
   UserPasswordReg,
-  UserUsername
+  UserUsername,
+  UserEntryLoginButton,
+  UserEntryRegisterButton,
+  UserEntryMainTitle,
+  UserEntryFooterContainer
 };

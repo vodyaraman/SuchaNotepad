@@ -1,7 +1,7 @@
-import { CalendarUI } from "./ui/calendar-ui";
-import { CalendarWindow } from "./ui/calendar-window";
-import { MainCalendarButton } from './ui/main-calendar-button';
-import { RotateAnim } from './ui/rotate-anim';
-import { SwitchDateButton } from './ui/switch-date-button';
+import { CalendarUI } from "./UI/calendar-ui";
+import { CalendarWindow } from "./UI/calendar-window";
+import { MainCalendarButton } from './UI/main-calendar-button';
+import { RotateAnim } from './UI/rotate-anim';
+import { SwitchDateButton } from './UI/switch-date-button';
 
 export{CalendarUI, CalendarWindow, MainCalendarButton,RotateAnim,SwitchDateButton}
