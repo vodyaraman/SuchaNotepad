@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { TestPage } from './App/Pages';
 import { Provider } from 'react-redux';
 import {store} from './App/Processes/Store';
 
-// ---- Импорт userEntryPoint окон ----
-import StartEntryPage from './App/Pages/UserEntrypoint/StartEntryPage/start-entry-page';
-
-// ---- Импорт окон регистрации ----
-import { SubmitRegisterButton } from './App/Entities/User';
+// ---- Импорт userEntryPoint окна ----
+import { PageUserEntrypoint } from './App/Pages';
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -44,16 +39,7 @@ export default function App() {
 
   return (
     <Provider store={store} >
-      {/* <PageUserEntrypoint/> */}
-      <TestPage />
+      <PageUserEntrypoint/>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'strech',
-    justifyContent: 'center',
-  },
-});

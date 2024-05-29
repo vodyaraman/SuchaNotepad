@@ -1,7 +1,10 @@
-// Здесь логин или емайл для входа в аккаунт
+// Здесь емайл для входа в аккаунт
+import { InputText } from "../../../../Pull/Note";
 
 const UserLogin = () => {
-    return <></>;
+    return <>
+      <InputText/>
+    </>;
   };
   
   export default UserLogin;

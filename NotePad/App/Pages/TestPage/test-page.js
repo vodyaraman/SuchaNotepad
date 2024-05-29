@@ -1,17 +1,10 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { RegAndAuth } from "../../Widgets";
-
-//Импорты компонентов из окон авторизации и регистрации
-import { UserButton } from "../../Pull/Buttons";
-import { StartEntryPage } from "../UserEntrypoint/StartEntryPage/start-entry-page";
-import { SubmitRegisterButton } from "../../Entities/User";
 import { MainRegAuthPlate } from "../../Pull/User";
 
 const TestPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
-        {/* <RegAndAuth/> */}
         <MainRegAuthPlate />
     </View>
     

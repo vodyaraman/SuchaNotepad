@@ -11,7 +11,7 @@ const UserSubmitButton = ({textColor, text, fontSize, fontWeight, textAlign, onP
             start={{x: -2, y: -5}}
             end={{x: 2, y: 5}}
             style={styles.button}>
-            <Pressable onPress={(e) => onPressHandler(e)} style={({pressed}) => [ styles.button, {backgroundColor: pressed ? '#B4E8FF' : colors}]}>
+            <Pressable onPress={(e) => onPressHandler(e)} style={({pressed}) => [ {backgroundColor: pressed ? '#B4E8FF' : colors}]}>
                 <CustomText textColor={textColor} text={text} fontSize={fontSize} textAlign={textAlign} fontWeight={fontWeight}/>
             </Pressable>
         </LinearGradient>    
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     button:{
         width: '100%',
         borderRadius: 25,
-        paddingVertical: '2%',
+        paddingVertical: '4%',
+        marginBottom: '6%'
     },
 })

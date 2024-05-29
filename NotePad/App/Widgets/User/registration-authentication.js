@@ -1,27 +1,23 @@
-import React from "react";
-import { StyleSheet } from 'react-native';
-import { MainWidgetPlate} from '../../Pull/Note/index';
-import { UserReg } from "../../Features/User/index"
+import React, { useState } from "react";
+import { UserReg, UserAuth } from "../../Features/User/index";
+import { UserEntrypointPlate } from "../../Pull/User";
 
 const RegAndAuth = () => {
+    const [isRegistering, setIsRegistering] = useState(true);
+
+    const onPressHandler = (event) => {
+        console.log(event.target);
+    };
+
+    /*const toggleForm = () => {
+        setIsRegistering(!isRegistering);
+    };*/
+
     return (
-        <>
-            <MainWidgetPlate style = {styles.NotepadStyle}> 
-                <UserReg/>
-            </MainWidgetPlate>
-        </>
-)};
+        <UserEntrypointPlate>
+            {isRegistering ? <UserReg onPressHandler={onPressHandler} /> : <UserAuth onPressHandler={onPressHandler} />}
+        </UserEntrypointPlate>
+    );
+};
 
 export default RegAndAuth;
-
-const styles = StyleSheet.create({
-    NotepadStyle: {
-        zIndex: 1,
-        paddingTop: "10%",
-        paddingBottom: "25%",
-
-        position: 'relative',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    }
-});

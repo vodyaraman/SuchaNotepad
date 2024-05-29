@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const MainRegAuthPlate = ({children}) => {
@@ -8,9 +7,7 @@ const MainRegAuthPlate = ({children}) => {
             colors={colors}
             start={{x: -2, y: -5}}
             end={{x: 2, y: 5}}>
-            <View>
                 {children}
-            </View>
         </LinearGradient>
     )
 }

@@ -5,11 +5,19 @@ import {widthPercentageToDP as wd, heightPercentageToDP as hg} from 'react-nativ
 const UserEntryMainTitle = () => {
     return(
         <View style={styles.title}>
-            <View>
-                <CustomText text={'Starts your planning'} textColor={'white'} fontWeight='bold' textAlign='center' fontSize={hg('6%')} numberOfLines={2}/>
-            </View>
+            <CustomText 
+                text={'Start your planning'}
+                textColor={'white'} 
+                fontWeight='bold' 
+                textAlign='center' 
+                fontSize={hg('6%')} 
+                numberOfLines={2}/>
             <View style={{marginTop: '3%'}}>
-                <CustomText text={'with the NotePad'} textColor={'white'} textAlign='center' fontSize={hg('2.5%')} />
+                <CustomText
+                    text={'with the NotePad'} 
+                    textColor={'white'} 
+                    textAlign='center' 
+                    fontSize={hg('2.5%')} />
             </View>
         </View>      
     )
