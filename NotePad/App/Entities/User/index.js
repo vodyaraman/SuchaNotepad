@@ -16,6 +16,8 @@ import UserEntryRegisterButton from "./UI/Registration/entry-button";
 import UserEntryMainTitle from "./UI/Main/user-entry-main-title";
 import UserEntryFooterContainer from "./UI/Main/user-entry-footer-container";
 
+import { UserProvider } from './Helpers/user-manager';
+
 export {
   UserLogin,
   UserPassword,
@@ -28,5 +30,6 @@ export {
   UserEntryLoginButton,
   UserEntryRegisterButton,
   UserEntryMainTitle,
-  UserEntryFooterContainer
+  UserEntryFooterContainer,
+  UserProvider
 };
