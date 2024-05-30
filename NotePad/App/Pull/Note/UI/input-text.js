@@ -56,12 +56,13 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingLeft: '3.5%',
     paddingRight: '3.5%',
+    paddingBottom: 5,
     backgroundColor: 'transparent',
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
   },
   focusedInput: {
-    borderWidth: 0,
-    borderColor: 'transparent',
-    backgroundColor: '#ffffff26'
+    outlineStyle: 'none'
   },
 });
 

@@ -15,14 +15,15 @@ const UserReg = () => {
     }
 
     return (
-        <UserProvider>
-            <UserEntryMainTitle/>
+        // <UserProvider>
+        <UserEntryMainTitle>
             <View style={Styles.buttonsContainer}>
                 <UserEntryLoginButton onPressHandler={onPressHandler} />
                 <UserEntryRegisterButton onPressHandler={onPressHandler} />
             </View>
             <UserEntryFooterContainer onPressHandler={onPressHandler} />
-        </UserProvider>
+        </UserEntryMainTitle>
+        // </UserProvider>
     );
 };
 

@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, setPasswordRepeat, setLogin, setUserPassword, registerUser, loginUser } from '../../../Processes/Authorisation/auth-slice'; // скорректируйте путь
+import { setUsername, setEmail, setPassword, setPasswordRepeat, setLogin, setUserPassword, registerUser, loginUser } from '../../../Processes/Authorisation/API/auth-slice'; // скорректируйте путь
 
 // Context to manage user authentication and registration
 export const UserContext = createContext();
