@@ -4,6 +4,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux';
 import {store} from './App/Processes/Store';
 
+import {TestPage} from './App/Pages';
+
 // ---- Импорт userEntryPoint окна ----
 import { PageUserEntrypoint } from './App/Pages';
 
@@ -39,7 +41,9 @@ export default function App() {
 
   return (
     <Provider store={store} >
-      <PageUserEntrypoint/>
+      {/* <PageUserEntrypoint/> */}
+      <TestPage />
+      
     </Provider>
   );
 }
