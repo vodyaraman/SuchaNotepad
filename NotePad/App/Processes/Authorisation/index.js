@@ -1,2 +1,2 @@
-import { loginUser, registerUser } from "./AuthorisationAPI/auth-slice";
+import { loginUser, registerUser } from "./API/auth-slice";
 export { loginUser, registerUser };

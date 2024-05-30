@@ -1,4 +1,4 @@
-import noteReducer, { setNoteTitle, setNoteText, setUserName, setNotePriority, setTimestamp, setNoteType, updateNote } from './NoteSlices/note-slice';
+import noteReducer, { setNoteTitle, setNoteText, setUserName, setNotePriority, setTimestamp, setNoteType, updateNote } from './API/note-slice';
 
 export {
   noteReducer,

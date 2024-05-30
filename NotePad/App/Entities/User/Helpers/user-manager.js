@@ -1,47 +1,54 @@
-// Здесь развернут Context API для контроля пользователей
+import React, { createContext, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUsername, setEmail, setPassword, setPasswordRepeat, setLogin, setUserPassword, registerUser, loginUser } from '../../../Processes/Authorisation/auth-slice'; // скорректируйте путь
 
-import React, { createContext, useState } from 'react';
-import { useContext } from 'react';
-
+// Context to manage user authentication and registration
 export const UserContext = createContext();
 
+// Provider
 export const UserProvider = ({ children }) => {
-    // для регистрации
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordRepeat, setPasswordRepeat] = useState('');
+    const dispatch = useDispatch();
+    const auth = useSelector((state) => state.auth);
 
-    // для авторизации
-    const [login, setLogin] = useState('');
-    const [userPassword, setUserPassword] = useState('');
+    const updateUsername = (username) => {
+        dispatch(setUsername(username));
+    };
+
+    const updateEmail = (email) => {
+        dispatch(setEmail(email));
+    };
+
+    const updatePassword = (password) => {
+        dispatch(setPassword(password));
+    };
+
+    const updatePasswordRepeat = (passwordRepeat) => {
+        dispatch(setPasswordRepeat(passwordRepeat));
+    };
+
+    const updateLogin = (login) => {
+        dispatch(setLogin(login));
+    };
+
+    const updateUserPassword = (userPassword) => {
+        dispatch(setUserPassword(userPassword));
+    };
+
+    const { username, email, password, passwordRepeat, login, userPassword} = auth;
 
     return (
         <UserContext.Provider value={{
-            username,
-            setUsername,
-            email,
-            setEmail,
-            password,
-            setPassword,
-            passwordRepeat,
-            setPasswordRepeat,
-            login,
-            setLogin,
-            userPassword,
-            setUserPassword
+            username, updateUsername,
+            email, updateEmail,
+            password, updatePassword,
+            passwordRepeat, updatePasswordRepeat,
+            login, updateLogin,
+            userPassword, updateUserPassword
         }}>
             {children}
         </UserContext.Provider>
     );
 };
 
-export const useUser = () => {
-    const context = useContext(UserContext);
-
-    if (context === undefined) {
-        throw new Error('useUser must be used within a UserProvider');
-    }
-
-    return context;
-};
+// Custom hook
+export const useUser = () => useContext(UserContext);

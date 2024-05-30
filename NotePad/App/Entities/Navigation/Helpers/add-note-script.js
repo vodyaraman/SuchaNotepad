@@ -1,4 +1,4 @@
-import { useCreateNoteMutation } from '../../../Processes/Note/NoteAPI/noteApi';
+import { useCreateNoteMutation } from '../../../Processes/Note/API/note-api';
 import { useSelector } from 'react-redux';
 
 export const useAddNote = () => {
