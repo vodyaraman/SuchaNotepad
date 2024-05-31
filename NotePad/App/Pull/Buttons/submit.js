@@ -2,8 +2,18 @@ import {StyleSheet, Pressable} from 'react-native';
 import { CustomText } from '../Note';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const UserSubmitButton = ({textColor, text, fontSize, fontWeight, textAlign, onPressHandler}) => {
-    const colors = ['#61ACCC', '#94D4EF']
+const UserSubmitButton = (
+    {textColor, 
+    text,
+    fontFamily = 'Lexend-bold', 
+    fontSize, 
+    fontWeight, 
+    textAlign='center', 
+    onPressHandler,
+    color1='#61ACCC',
+    color2='#94D4EF'}
+    ) => {
+    const colors = [color1, color2]
     return(
         //{backgroundColor: pressed ? '#B4E8FF' : '#94D4EF'}, 
         <LinearGradient
@@ -12,7 +22,7 @@ const UserSubmitButton = ({textColor, text, fontSize, fontWeight, textAlign, onP
             end={{x: 2, y: 5}}
             style={styles.button}>
             <Pressable onPress={(e) => onPressHandler(e)} style={({pressed}) => [ {backgroundColor: pressed ? '#B4E8FF' : colors}]}>
-                <CustomText textColor={textColor} text={text} fontSize={fontSize} textAlign={textAlign} fontWeight={fontWeight}/>
+                <CustomText textColor={textColor} text={text} fontFamily={fontFamily} fontSize={fontSize} textAlign={textAlign} fontWeight={fontWeight}/>
             </Pressable>
         </LinearGradient>    
     )
@@ -25,6 +35,5 @@ const styles = StyleSheet.create({
         width: '100%',
         borderRadius: 25,
         paddingVertical: '4%',
-        marginBottom: '6%'
     },
 })

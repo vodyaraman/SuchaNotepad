@@ -13,6 +13,8 @@ const loadFonts = async () => {
   await Font.loadAsync({
     'Montserrata-bold': require('./assets/fonts/MontserratAlternates-Bold.ttf'),
     'Montserrata-medium': require('./assets/fonts/MontserratAlternates-Medium.ttf'),
+    'Lexend-Bold': require('./assets/fonts/Lexend-Bold.ttf'),
+    'Lexend-Medium': require('./assets/fonts/Lexend-Medium.ttf'),
   });
 };
 

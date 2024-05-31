@@ -1,9 +1,14 @@
-import { UserSubmitButton } from "../../../../Pull/Buttons";
-import {widthPercentageToDP as wd, heightPercentageToDP as hg} from 'react-native-responsive-screen'
+import UserSubmitButton from "../../../../Pull/Buttons/submit";
+import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
 
 const SubmitRegisterButton = ({onPressHandler}) => {
     return(
-        <UserSubmitButton onPressHandler={onPressHandler} textColor={'white'} text={'Register'} fontSize={hg('3%')} fontWeight={'bold'} textAlign={'center'} />
+        <UserSubmitButton 
+            textColor={'white'} 
+            text={'Register'}
+            fontSize={hg('2.8%')}
+            fontWeight={'bold'}
+            onPressHandler={onPressHandler} />
     )
 }
 

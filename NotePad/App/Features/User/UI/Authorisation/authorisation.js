@@ -1,7 +1,10 @@
 import React from "react";
-import { UserEntryLoginButton, UserEntryRegisterButton, UserEntryMainTitle, UserProvider } from "../../../../Entities/User"
 import { View, StyleSheet } from 'react-native';
-import { UserEntryFooterContainer } from "../../../../Entities/User";
+
+import {UserProvider, UserLogin, UserPassword, UserSubmit } from "../../../../Entities/User"
+import { RegAuthPlate } from "../../../../Pull/User";
+import {HelpTextButton} from "../../../../Entities/User";
+
 
 // Да, код регистрации и авторизации повторяется в двух файлах, здесь я хочу подчернуть
 // что все комопненты, используемые тут, должны использоваться либо на этом слое, либо ниже
@@ -9,28 +12,45 @@ import { UserEntryFooterContainer } from "../../../../Entities/User";
 // логина и регистрации отдельно
 // А ещё я как-бы хочу сюда инпуты вставить, так что это полностью оправданно
 
-const UserAuth = () => {
-    const onPressHandler = (event) => {
+const UserAuth = ({onPressHandler}) => {
+    const onPressHandler1 = (event) => {
         console.log(event.target)
     }
 
+    const onChangeInputLogin = () => {
+        console.log('Login input')
+    }
+
+    const onChangeInputPassword = () => {
+        console.log('Password input')
+    }
+
     return (
-        <UserProvider>
-            <UserEntryMainTitle/>
-            <View style={Styles.buttonsContainer}>
-                <UserEntryLoginButton onPressHandler={onPressHandler} />
-                <UserEntryRegisterButton onPressHandler={onPressHandler} />
-            </View>
-            <UserEntryFooterContainer onPressHandler={onPressHandler} />
-        </UserProvider>
-        
+        // <UserProvider> пока закоментил потому что с ним не работает
+            
+        <View style={styles.mainContainer}>
+            <RegAuthPlate>
+                <View style={styles.inputContainer}>
+                    <UserLogin onChangeHandler={onChangeInputLogin} />
+                    <UserPassword onChangeHandler={onChangeInputPassword} />
+                </View>
+            </RegAuthPlate>
+            <UserSubmit onPressHandler={onPressHandler1} />
+            <HelpTextButton textDesc={'Don\'t have an account yet?'} textButton={'Register'} onPressHandler={onPressHandler} />
+        </View>
+            
+        // </UserProvider>    
     );
 };
 
 export default UserAuth;
 
-const Styles = StyleSheet.create({
-    buttonsContainer:{
-        width: '60%',
+const styles = StyleSheet.create({
+    mainContainer:{
+        width: '100%',
+        gap: 15,
+    },
+    inputContainer:{
+        gap: 40,
     },
 })

@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Image, Pressable } from 'react-native';
-import { TextBetweenLine } from '../../../../Pull/Note';
+import { TextBetweenLine } from '../../Note';
 
-import googleButtonIcon from '@/../../assets/google-button-icon.png';
-import vkButtonIcon from '@/../../assets/vk-button-icon.png';
-import mailButtonIcon from '@/../../assets/mail-button-icon.png';
+import {heightPercentageToDP as hg, widthPercentageToDP as wd} from 'react-native-responsive-screen';
+
+import googleButtonIcon from '@/../../../assets/google-button-icon.png';
+import vkButtonIcon from '@/../../../assets/vk-button-icon.png';
+import mailButtonIcon from '@/../../../assets/mail-button-icon.png';
 
 const UserEntryFooterContainer = ({
   img1 = googleButtonIcon,
@@ -19,7 +21,7 @@ const UserEntryFooterContainer = ({
       </View>
       <View style={Styles.imgContainer}>
         <Pressable onPress={(e) => onPressHandler(e)}>
-          <Image source={img1} />
+          <Image source={img1} style={{resizeMode: 'cover',}} />
         </Pressable>
         <Pressable onPress={(e) => onPressHandler(e)}>
           <Image source={img2} />
@@ -36,11 +38,11 @@ export default UserEntryFooterContainer;
 
 const Styles = StyleSheet.create({
   container: {
-    width: '50%',
+    width: '80%',
     justifyContent: 'center',
   },
   imgContainer: {
-    width: '100%',
+    
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',

@@ -6,5 +6,3 @@ const UserEntryLoginButton = ({onPressHandler}) => {
         <SubmitButton onPressHandler={onPressHandler} textColor={'white'} text={'Login'} fontSize={hg('3.7%')} fontWeight={'bold'} textAlign={'center'} />
     )
 }
-
-export default UserEntryLoginButton;

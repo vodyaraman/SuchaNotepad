@@ -18,7 +18,9 @@ export default RegAuthPlate;
 
 const styles = StyleSheet.create({
     container: {
-        paddingVertical: 55,
-        paddingHorizontal: 45,
+        width: '100%',
+        paddingVertical: '9%',
+        paddingHorizontal: '9%',
+        borderRadius: 25,
     },
 })

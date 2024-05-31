@@ -1,5 +1,5 @@
 import {View, StyleSheet} from 'react-native';
-import { CustomText } from '../../../../Pull/Note';
+import { CustomText } from '../../Note';
 import {widthPercentageToDP as wd, heightPercentageToDP as hg} from 'react-native-responsive-screen';
 
 const UserEntryMainTitle = () => {

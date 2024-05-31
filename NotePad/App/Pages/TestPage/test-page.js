@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { UserLogin } from "../../Entities/User";
 
+import RegAndAuth from "../../Widgets/User/registration-authentication";
 
 const TestPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
-        <UserLogin />
+        <RegAndAuth />
     </View>
     
 )};
@@ -17,9 +17,8 @@ const styles = StyleSheet.create({
     TestPageStyle: {
         zIndex: 0,
         width: '100%',
-        height: '25%', //Поставил 0 потому что при рендере на странице этот гей растягивался на 100%
+        height: 0, //Поставил 0 потому что при рендере на странице этот гей растягивался на 100%
         position: 'relative',
-        backgroundColor: "red",
         flexDirection: "column",
     }
 });

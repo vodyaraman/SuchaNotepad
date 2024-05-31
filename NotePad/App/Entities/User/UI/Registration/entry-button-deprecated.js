@@ -6,5 +6,3 @@ const UserEntryRegisterButton = ({onPressHandler}) => {
         <SubmitButton onPressHandler={onPressHandler} textColor={'white'} text={'Register'} fontSize={hg('3.7%')} fontWeight={'bold'} textAlign={'center'} />
     )
 }
-
-export default UserEntryRegisterButton;

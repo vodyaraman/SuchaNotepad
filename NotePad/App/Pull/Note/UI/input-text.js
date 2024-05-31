@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
+import {heightPercentageToDP as hg, widthPercentageToDP as wd} from 'react-native-responsive-screen';
+
 const InputText = ({
   text = "",
   fontSize = 12,
@@ -11,6 +13,7 @@ const InputText = ({
   placeholder = "Enter note",
   height = "auto",
   multiline = true,
+  secureTextEntry = false,
   onChangeText = () => {},
 }) => {
   const [currentText, setCurrentText] = useState(text);
@@ -27,6 +30,7 @@ const InputText = ({
 
   return (
     <TextInput
+      secureTextEntry={secureTextEntry}
       style={[
         styles.input, 
         {
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     backgroundColor: 'transparent',
     borderBottomColor: 'white',
-    borderBottomWidth: 1,
+    borderBottomWidth: hg('0.2%'),
   },
   focusedInput: {
     outlineStyle: 'none'
