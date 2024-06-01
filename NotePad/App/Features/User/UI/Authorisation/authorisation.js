@@ -1,5 +1,5 @@
 import React from "react";
-import { UserEntryLoginButton, UserEntryRegisterButton, UserEntryMainTitle, UserProvider } from "../../../../Entities/User"
+import { UserEntryLoginButton, UserEntryRegisterButton, UserEntryMainTitle, AuthProvider } from "../../../../Entities/User"
 import { View, StyleSheet } from 'react-native';
 import { UserEntryFooterContainer } from "../../../../Entities/User";
 
@@ -15,14 +15,14 @@ const UserAuth = () => {
     }
 
     return (
-        <UserProvider>
+        <AuthProvider>
             <UserEntryMainTitle/>
             <View style={Styles.buttonsContainer}>
                 <UserEntryLoginButton onPressHandler={onPressHandler} />
                 <UserEntryRegisterButton onPressHandler={onPressHandler} />
             </View>
             <UserEntryFooterContainer onPressHandler={onPressHandler} />
-        </UserProvider>
+        </AuthProvider>
         
     );
 };
