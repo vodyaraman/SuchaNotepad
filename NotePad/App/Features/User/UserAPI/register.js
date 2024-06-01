@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../../Processes/Authorisation/index'; 
+import { registerUser } from '../../../Processes/Authentication/index'; 
 import { SubmitButton } from '../../../Pull/User/index';
 
 const Register = (props) => { // props позволяет передавать данные извне
