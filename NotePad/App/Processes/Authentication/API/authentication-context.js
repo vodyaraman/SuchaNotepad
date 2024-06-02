@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 //Создание констекста 
-export const AuthorisationContext = createContext();
+export const AuthenticationContext = createContext();
 
 //Обеспечение контекстом корневого элемента
-export const AuthorisationProvider = ({ children }) => {
+export const AuthenticationProvider = ({ children }) => {
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem('user');
         return storedUser ? JSON.parse(storedUser) : null;
@@ -19,8 +19,8 @@ export const AuthorisationProvider = ({ children }) => {
     };
 
     return (
-        <AuthorisationContext.Provider value={{ user, handleSetUser }}>
+        <AuthenticationContext.Provider value={{ user, handleSetUser }}>
             {children}
-        </AuthorisationContext.Provider>
+        </AuthenticationContext.Provider>
     );
 };

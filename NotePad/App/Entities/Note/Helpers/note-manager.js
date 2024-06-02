@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateNote } from '../../../Processes/Note'; // скорректируйте путь
+import { updateNote } from '../../../Processes/Note';
 
 // Context to manage note content
 export const TextContext = createContext();
