@@ -3,15 +3,20 @@ import User from '../models/user.js';
 import passport from 'passport';
 import { generateToken } from '../utils/JWT.js';
 
+//Импорт контроллеров
+import { checkUser } from '../controllers/User/userController.js';
+
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
       return res.status(409).json({ message: 'User with this email already exists' });
-    }
+    } 
 
     const newUser = new User({
       name,
@@ -33,6 +38,8 @@ router.post('/register', async (req, res) => {
     res.status(500).json({ message: 'Error registering user', error: error.message });
   }
 });
+
+router.get('/checkUser', checkUser)
 
 // Маршрут для входа пользователя
 router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {

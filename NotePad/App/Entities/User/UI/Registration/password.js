@@ -4,14 +4,19 @@ import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
 
 import passwordIcon from '@../../../assets/password-input-icon.png'
 
-const UserPasswordReg = ({onChangeHandler}) => {
+//Импорт контекста
+import { useRegistration } from "../../Helpers/user-manager";
+
+const UserPasswordReg = () => {
+    const {updatePassword} = useRegistration()
+
     return (
       <UserInputContainer 
         img={passwordIcon} 
         fontSize={hg('2.3%')} 
         fontFamily={'Lexend-Medium'} 
         placeholder={'Password:'} 
-        onChangeHandler={onChangeHandler} 
+        onChangeHandler={updatePassword} 
         secureTextEntry={true} />
     );
   };

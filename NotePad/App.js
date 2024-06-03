@@ -6,9 +6,6 @@ import {store} from './App/Processes/Store';
 
 import {TestPage} from './App/Pages';
 
-// ---- Импорт userEntryPoint окна ----
-import { PageUserEntrypoint } from './App/Pages';
-
 const loadFonts = async () => {
   await Font.loadAsync({
     'Montserrata-bold': require('./assets/fonts/MontserratAlternates-Bold.ttf'),
@@ -43,9 +40,7 @@ export default function App() {
 
   return (
     <Provider store={store} >
-      {/* <PageUserEntrypoint/> */}
       <TestPage />
-      
     </Provider>
   );
 }

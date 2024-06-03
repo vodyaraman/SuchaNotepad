@@ -4,7 +4,8 @@ import { TextInput, StyleSheet } from 'react-native';
 import {heightPercentageToDP as hg, widthPercentageToDP as wd} from 'react-native-responsive-screen';
 
 const InputText = ({
-  text = "",
+  // text = "",
+  borderBottomColor = 'white',
   fontSize = 12,
   fontFamily = 'Montserrata-medium',
   fontWeight = 'normal',
@@ -16,16 +17,16 @@ const InputText = ({
   secureTextEntry = false,
   onChangeText = () => {},
 }) => {
-  const [currentText, setCurrentText] = useState(text);
+  const [currentText, setCurrentText] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    setCurrentText(text);
-  }, [text]);
+    setCurrentText('');
+  }, []);
 
-  const handleChangeText = (text) => {
-    setCurrentText(text);
-    onChangeText(text);
+  const handleChangeText = (value) => {
+    setCurrentText(value);
+    onChangeText(value);
   };
 
   return (
@@ -40,6 +41,7 @@ const InputText = ({
           color: color, 
           textAlign: textAlign,
           height: height,
+          borderBottomColor: borderBottomColor,
         },
         isFocused && styles.focusedInput // Add styles for focused state
       ]}
@@ -62,7 +64,6 @@ const styles = StyleSheet.create({
     paddingRight: '3.5%',
     paddingBottom: 5,
     backgroundColor: 'transparent',
-    borderBottomColor: 'white',
     borderBottomWidth: hg('0.2%'),
   },
   focusedInput: {

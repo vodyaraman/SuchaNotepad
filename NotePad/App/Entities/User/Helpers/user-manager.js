@@ -12,9 +12,10 @@ export const AuthProvider = ({ children }) => {
 
     // Registration state and actions
     const registerState = useSelector((state) => state.auth.register);
+    
     const [passwordState, setPasswordState] = useState({
         passwordRepeat: '',
-        passwordsMatch: true
+        passwordsMatch: false
     });
 
     const setRegistration = (updatedRegister) => {
@@ -24,15 +25,18 @@ export const AuthProvider = ({ children }) => {
     };
 
     const updateUsername = (username) => {
+        console.log(username) //Потом убрать
         setRegistration({ ...registerState, username });
     };
 
     const updateEmail = (email) => {
         setRegistration({ ...registerState, email });
+        console.log(email) //Потом убрать
     };
 
     const updatePassword = (password) => {
         setRegistration({ ...registerState, password });
+        
         setPasswordState({
             ...passwordState,
             passwordsMatch: password === passwordState.passwordRepeat
@@ -44,6 +48,7 @@ export const AuthProvider = ({ children }) => {
             passwordRepeat: repeatPassword,
             passwordsMatch: repeatPassword === registerState.password
         });
+        
     };
 
     const register = () => {

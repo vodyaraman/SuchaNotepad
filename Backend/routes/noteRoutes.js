@@ -1,6 +1,6 @@
 import express from 'express';
 import checkAuth from '../utils/checkAuth.js';
-import { create, update, getNotes } from '../controllers/noteController.js';
+import { create, update, getNotes } from '../controllers/Note/noteController.js';
 import { noteCreatingRules } from '../validations/note-validation.js';
 
 const router = express.Router();
