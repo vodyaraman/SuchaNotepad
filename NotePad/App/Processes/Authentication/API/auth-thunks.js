@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '../../../Pull/Utils/APIClient';
 import { saveTokenToLocalStorage } from '../Helpers/save-token';
+import axios from 'axios';
 
 // Асинхронные действия
 export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, password, name }, { rejectWithValue }) => {
@@ -17,8 +18,10 @@ export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, pass
 
 export const registerUser = createAsyncThunk('auth/registerUser', async (userData, { rejectWithValue }) => {
   try {
-    const { data } = await apiClient.post('/users/register', userData);
-    const { token } = data;
+    const data = await apiClient.post('/users/register', userData);
+    console.log(data)
+
+    const { token } = data.data;
     if (token) {
       saveTokenToLocalStorage(token);
       return { isAuthenticated: true, token };
@@ -26,8 +29,9 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
       console.log('No token received');
       return rejectWithValue('No token received');
     }
+    
+    
   } catch (error) {
-    console.error('Registration error:', error);
-    return rejectWithValue(error.response.data);
+    return rejectWithValue(error);
   }
 });

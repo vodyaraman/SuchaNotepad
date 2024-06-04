@@ -14,7 +14,7 @@ const authSlice = createSlice({
       error: null,
     },
     register: {
-      username: '',
+      name: '',
       email: '',
       password: '',
       isAuthenticated: false,
@@ -37,7 +37,7 @@ const authSlice = createSlice({
       state.register.token = null;
     },
     setUsername(state, action) {
-      state.register.username = action.payload;
+      state.register.name = action.payload;
     },
     setEmail(state, action) {
       state.register.email = action.payload;

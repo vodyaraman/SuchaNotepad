@@ -10,14 +10,14 @@ import UserPasswordReg from './UI/Registration/password';
 import UserUsernameReg from './UI/Registration/username';
 import SubmitRegisterButton from './UI/Registration/submit';
 
+// ---- Компоненты для модалки ошибки ----
+import AnimatedErrorModal from './UI/Main/animatedErrorModal';
+
 // ---- Компоненты для фона ----
 import UserBackground from './UI/Main/user-background';
 
 // ---- Компонент текста с мини-кнопкой ---- 
 import HelpTextButton from './UI/Main/help-text-button';
-
-
-import { UserProvider } from './Helpers/user-manager';
 
 export {
   UserLogin,
@@ -30,5 +30,5 @@ export {
   SubmitRegisterButton,
   UserBackground,
   HelpTextButton,
-  UserProvider
+  AnimatedErrorModal,
 };

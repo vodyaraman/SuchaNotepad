@@ -1,5 +1,6 @@
 import UserSubmitButton from "../../../../Pull/Buttons/submit";
 import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
+import React, {useState} from 'react';
 
 // Импорт контекста
 import { useRegistration } from "../../Helpers/user-manager";

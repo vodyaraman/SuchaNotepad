@@ -6,23 +6,28 @@ import { RegAuthPlate } from "../../../../Pull/User";
 
 import {HelpTextButton} from "../../../../Entities/User";
 
+//Временный импорт
+import {AnimatedErrorModal} from "../../../../Entities/User";
+import { useSelector } from "react-redux";
+
 const UserReg = () => {
 
     return (
-        // <UserProvider>
-        <View style={styles.mainContainer}>
-            <RegAuthPlate>
-                <View style={styles.inputContainer}>
-                    <UserEmailReg />
-                    <UserUsernameReg />
-                    <UserPasswordReg />
-                    <UserPasswordRepeatReg />
-                </View>
-            </RegAuthPlate>
-            <SubmitRegisterButton />
-            <HelpTextButton textDesc={'Already have an acount?'} textButton={'Login'} />
-        </View>
-        // </UserProvider>
+        <>
+            <AnimatedErrorModal />
+            <View style={styles.mainContainer}>
+                <RegAuthPlate>
+                    <View style={styles.inputContainer}>
+                        <UserEmailReg />
+                        <UserUsernameReg />
+                        <UserPasswordReg />
+                        <UserPasswordRepeatReg />
+                    </View>
+                </RegAuthPlate>
+                <SubmitRegisterButton />
+                <HelpTextButton textDesc={'Already have an acount?'} textButton={'Login'} />
+            </View>
+        </>
     );
 };
 

@@ -19,14 +19,14 @@ export const AuthProvider = ({ children }) => {
     });
 
     const setRegistration = (updatedRegister) => {
-        dispatch(setUsername(updatedRegister.username));
+        dispatch(setUsername(updatedRegister.name));
         dispatch(setEmail(updatedRegister.email));
         dispatch(setPassword(updatedRegister.password));
     };
 
-    const updateUsername = (username) => {
-        console.log(username) //Потом убрать
-        setRegistration({ ...registerState, username });
+    const updateUsername = (name) => {
+        console.log(name) //Потом убрать
+        setRegistration({ ...registerState, name });
     };
 
     const updateEmail = (email) => {
