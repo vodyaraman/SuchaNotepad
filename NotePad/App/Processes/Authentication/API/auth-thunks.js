@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '../../../Pull/Utils/APIClient';
 import { saveTokenToLocalStorage } from '../Helpers/save-token';
-import axios from 'axios';
 
 // Асинхронные действия
 export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, password, name }, { rejectWithValue }) => {

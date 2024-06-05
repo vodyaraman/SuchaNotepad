@@ -1,7 +1,7 @@
 import axios from "axios"
 // import apiClient from "../../../Pull/Utils/APIClient"
 const getCorrectUsername = async (username) => {
-    const SERVER = 'http://localhost:10101'
+    const SERVER = 'http://localhost:10101' // подать через .env или отправить с помощью apiClient
     try {
         const data = await axios(
             {url: `${SERVER}/users/checkUser`, 
