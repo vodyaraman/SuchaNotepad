@@ -1,24 +1,29 @@
-import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
+import User from '../models/user';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
 
-// Настройка JWT Strategy
 passport.use(
-  new JwtStrategy(
+  new LocalStrategy(
     {
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // Получение JWT из заголовка Authorization
-      secretOrKey: secretKey,
+      usernameField: 'email',
+      passwordField: 'password',
     },
-    async (jwtPayload, done) => {
+    async (email, password, done) => {
       try {
-        // Поиск пользователя по ID из JWT-полей
-        const user = await User.findById(jwtPayload.id);
+        const user = await User.findOne({ email });
         if (!user) {
-          return done(null, false, { message: 'User not found' });
+          return done(null, false, { message: 'Invalid email or password' });
         }
-
-        return done(null, user); // Успешная аутентификация
+        const isPasswordValid = await user.validatePassword(password);
+        if (!isPasswordValid) {
+          return done(null, false, { message: 'Invalid email or password' });
+        }
+        return done(null, user);
       } catch (error) {
         return done(error);
       }
     }
   )
 );
+
+

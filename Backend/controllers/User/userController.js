@@ -33,8 +33,13 @@ export const register = async (req, res) => {
 };
 
 export const login = (req, res) => {
-  res.status(200).json({ message: 'Login successful', user: req.user });
-};
+    // В этой точке уже сработала стратегия local
+    const user = req.user;
+
+    const token = generateToken(user);
+  
+    res.status(200).json({ message: 'Login successful', token, user });
+  };
 
 export const check = async (req, res) => {
   try {

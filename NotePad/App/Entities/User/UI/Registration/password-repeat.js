@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 // повторение пароля выносим отдельно, подключаем логику проверки на совпадение на уровне
 import { UserInputContainer } from "../../../../Pull/User";
 import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
