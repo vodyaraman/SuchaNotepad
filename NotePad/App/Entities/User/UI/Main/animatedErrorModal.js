@@ -1,8 +1,11 @@
 import { AnimatedModal } from "../../../../Pull/User";
+import { OpeningAnim } from "../../../../Pull/User";
 
-const AnimatedErrorModal = ({text = 'User with this email already exists!'}) => {
+const AnimatedErrorModal = ({text, isVisible}) => {
     return(
-        <AnimatedModal text={text} />
+        <OpeningAnim isVisible={isVisible}>
+            <AnimatedModal text={text} />
+        </OpeningAnim>
     )
 }
 

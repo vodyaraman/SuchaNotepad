@@ -11,7 +11,7 @@ import { useRegistration } from "../../Helpers/user-manager";
 //Импорт валидации
 import { usernameValidation } from "../../Helpers/username-validation";
 
-const UserUsernameReg = ({setMessage, setIsVisible}) => {
+const UserUsernameReg = ({message, setMessage, setIsVisible}) => {
     const {updateUsername, registerState} = useRegistration()
     const [borderColor, setBorderColor] = useState('white')
 
@@ -22,12 +22,15 @@ const UserUsernameReg = ({setMessage, setIsVisible}) => {
       if (status.status) {
         setBorderColor('white')  
       } else{
-        setMessage(status.message)
+        setMessage([...message, status.message])
         setIsVisible(true)
         setBorderColor('red')
 
         setTimeout(() => {
           setIsVisible(false)
+          setTimeout(() => {
+            setMessage('')
+          }, 1000)
         }, 3000)
       }
     }

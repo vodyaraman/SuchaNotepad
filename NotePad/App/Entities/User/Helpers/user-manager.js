@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser } from '../../../Processes/Authentication';
+import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser} from '../../../Processes/Authentication';
 
 // Contexts to manage user authentication and registration
 export const RegistrationContext = createContext();
@@ -51,10 +51,10 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = () => {
-        if (passwordState.passwordsMatch) {
-            dispatch(registerUser(registerState));
+        if (passwordState.passwordsMatch && registerState.name && registerState.email) {
+            dispatch(registerUser(registerState));  
         } else {
-            alert("Passwords do not match");
+            alert("Check that the data is entered correctly");
         }
     };
 
@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }) => {
             password: registerState.password, updatePassword,
             passwordRepeat: passwordState.passwordRepeat, updatePasswordRepeat,
             passwordsMatch: passwordState.passwordsMatch,
-            register
+            register,
         }}>
             <LoginContext.Provider value={{
                 login: loginState.login, updateLogin,

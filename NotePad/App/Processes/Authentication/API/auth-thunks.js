@@ -17,18 +17,17 @@ export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, pass
 
 export const registerUser = createAsyncThunk('auth/registerUser', async (userData, { rejectWithValue }) => {
   try {
-    const data = await apiClient.post('/users/register', userData);
-    console.log(data)
+    const response = await apiClient.post('/users/register', userData);
+    console.log(response)
 
-    const { token } = data.data;
+    const { token } = response.data;
     if (token) {
       saveTokenToLocalStorage(token);
       return { isAuthenticated: true, token };
     } else {
       console.log('No token received');
-      return rejectWithValue('No token received');
+      return rejectWithValue(response.data);
     }
-    
     
   } catch (error) {
     return rejectWithValue(error);

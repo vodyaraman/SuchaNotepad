@@ -43,6 +43,9 @@ const UserEmailReg = ({setMessage, setIsVisible}) => {
 
         setTimeout(() => {
           setIsVisible(false)
+          setTimeout(() => {
+            setMessage('')
+          }, 1000)
         }, 3000)
       }
     }

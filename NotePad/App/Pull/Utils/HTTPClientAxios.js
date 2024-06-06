@@ -16,13 +16,8 @@ class HttpClient {
     }
 
     async post(url, data) {
-        try {
-            const response = await axios.post(`${ this.baseURL }${ url }`, data);
-            return response;
-        } catch (error) {
-            console.error('Error performing POST request:', error);
-            throw error;
-        }
+        const response = await axios.post(`${ this.baseURL }${ url }`, data);
+        return response;
     }
 
     async put(url, data) {
