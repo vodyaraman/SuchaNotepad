@@ -16,6 +16,7 @@ const InputText = ({
   multiline = true,
   secureTextEntry = false,
   onChangeText = () => {},
+  onBlur = () => {},
 }) => {
   const [currentText, setCurrentText] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -28,6 +29,11 @@ const InputText = ({
     setCurrentText(value);
     onChangeText(value);
   };
+
+  const onBlurAction = () => {
+    setIsFocused(false)
+    onBlur()
+  }
 
   return (
     <TextInput
@@ -52,7 +58,7 @@ const InputText = ({
       multiline={multiline}
       numberOfLines={4}
       onFocus={() => setIsFocused(true)}  // Set focus
-      onBlur={() => setIsFocused(false)}  // Remove focus
+      onBlur={onBlurAction}  // Remove focus
     />
   );
 };

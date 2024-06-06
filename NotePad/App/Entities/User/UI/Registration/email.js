@@ -9,16 +9,15 @@ import emailIcon from '@../../../assets/email-input-icon.png'
 import { useRegistration } from "../../Helpers/user-manager";
 
 //Импорт валидации
-import { emailValidation } from "../../Helpers/email-validation";
+import { emailValidation, checkAvailabilityEmail } from "../../Helpers/email-validation";
 
-const UserEmailReg = () => {
+const UserEmailReg = ({setMessage, setIsVisible}) => {
 
-    const {updateEmail} = useRegistration()
+    const {updateEmail, registerState} = useRegistration()
     const [borderColor, setBorderColor] = useState('white')
 
     const onChangeEmail = (email) => {
       if(emailValidation(email)){
-        console.log('Корректный email')
         setBorderColor('white')
         updateEmail(email)
       }
@@ -31,12 +30,30 @@ const UserEmailReg = () => {
       }
     }
 
+    const onBlurCheckEmail = async () => {
+      const currentEmail = registerState.email
+      const status = await checkAvailabilityEmail(currentEmail)
+
+      if (status.status) {
+        setBorderColor('white')
+      } else{
+        setMessage(status.message)
+        setIsVisible(true)
+        setBorderColor('red')
+
+        setTimeout(() => {
+          setIsVisible(false)
+        }, 3000)
+      }
+    }
+
     return (
       <UserInputContainer 
         img={emailIcon} 
         fontSize={hg('2.3%')} 
         fontFamily={'Lexend-Medium'} 
-        onChangeHandler={onChangeEmail} 
+        onChangeHandler={onChangeEmail}
+        onBlurHandler={onBlurCheckEmail} 
         placeholder={'Email:'}
         borderBottomColor={borderColor} /> 
     );

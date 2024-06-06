@@ -5,8 +5,18 @@ import UserEntryFooterContainer from "./UI/user-entry-footer-container";
 import RegAuthPlate from "./UI/regauth-plate";
 import UserInputContainer from "./UI/user-input-container";
 import BearIcon from "./UI/bear-icon";
+import AnimatedModal from "./UI/animated-modal";
+import { OpeningAnim } from "../Calendar/UI/opening-anim";
 
-export {UserEntrypointPlate, BearIcon, RegAuthPlate, UserInputContainer, UserEntryMainTitle, UserEntryFooterContainer};
+export {
+    UserEntrypointPlate, 
+    BearIcon, 
+    RegAuthPlate, 
+    UserInputContainer, 
+    UserEntryMainTitle, 
+    UserEntryFooterContainer,
+    AnimatedModal,
+    OpeningAnim};
 
 /*В Pull/User мы создаём некоторые фрагменты кода, которые будут связаны с ситемой создание групп, регистрации,
 авторизации, ведением аккаунта и идентификацией пользователя*/

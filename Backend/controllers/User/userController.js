@@ -43,7 +43,7 @@ export const login = (req, res) => {
     res.status(200).json({ message: 'Login successful', token });
   };
 
-export const check = async (req, res) => {
+export const checkUser = async (req, res) => {
   try {
     const { name } = req.query;
     console.log(name);
@@ -53,7 +53,7 @@ export const check = async (req, res) => {
     console.log(existingName);
 
     if (existingName) {
-      return res.json({ status: false });
+      return res.json({ status: false, message: 'This user already exists!' });
     }
 
     res.json({
@@ -62,6 +62,28 @@ export const check = async (req, res) => {
   } catch (error) {
     console.error('Error in checking user:', error);
     res.status(500).json({ message: 'Error checking user', error: error.message });
+  }
+};
+
+export const checkEmail = async (req, res) => {
+  try {
+    const { email } = req.query;
+    console.log(email);
+
+    const existingEmail = await User.findOne({ email });
+
+    console.log(existingEmail);
+
+    if (existingEmail) {
+      return res.json({ status: false, message: 'User with this email already exists!' });
+    }
+
+    res.json({
+      status: true
+    });
+
+  } catch (error) {
+    console.log(error.message)
   }
 };
 

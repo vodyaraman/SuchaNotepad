@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser } from '../../../Processes/Authentication';
 
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     
     const [passwordState, setPasswordState] = useState({
         passwordRepeat: '',
-        passwordsMatch: false
+        passwordsMatch: null
     });
 
     const setRegistration = (updatedRegister) => {
@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }) => {
     };
 
     const updateUsername = (name) => {
-        console.log(name) //Потом убрать
         setRegistration({ ...registerState, name });
     };
 
@@ -43,12 +42,12 @@ export const AuthProvider = ({ children }) => {
         });
     };
 
+
     const updatePasswordRepeat = (repeatPassword) => {
         setPasswordState({
             passwordRepeat: repeatPassword,
             passwordsMatch: repeatPassword === registerState.password
         });
-        
     };
 
     const register = () => {
@@ -81,6 +80,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <RegistrationContext.Provider value={{
+            registerState,
             username: registerState.username, updateUsername,
             email: registerState.email, updateEmail,
             password: registerState.password, updatePassword,

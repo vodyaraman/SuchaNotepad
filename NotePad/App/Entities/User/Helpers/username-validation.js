@@ -1,7 +1,7 @@
 import axios from "axios"
 // import apiClient from "../../../Pull/Utils/APIClient"
 const getCorrectUsername = async (username) => {
-    const SERVER = 'http://localhost:10101' // подать через .env или отправить с помощью apiClient
+    const SERVER = `http://${process.env.HOST}:${process.env.PORT}` // подать через .env или отправить с помощью apiClient
     try {
         const data = await axios(
             {url: `${SERVER}/users/checkUser`, 
@@ -15,11 +15,10 @@ const getCorrectUsername = async (username) => {
 }
 
 export const usernameValidation = async (username) => {
-    const status = await getCorrectUsername(username).then(res => res.data.status)
-    if (status) {
-        return true;
+    const response = await getCorrectUsername(username).then(res => res.data)
+    if (response.status) {
+        return {status: response.status};
     } else{
-        console.log('Такой пользователь уже существует!')
-        return false;
+        return {status: response.status, message: response.message};
     }
 }

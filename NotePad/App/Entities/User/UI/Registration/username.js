@@ -11,17 +11,24 @@ import { useRegistration } from "../../Helpers/user-manager";
 //Импорт валидации
 import { usernameValidation } from "../../Helpers/username-validation";
 
-const UserUsernameReg = () => {
-    const {updateUsername} = useRegistration()
+const UserUsernameReg = ({setMessage, setIsVisible}) => {
+    const {updateUsername, registerState} = useRegistration()
     const [borderColor, setBorderColor] = useState('white')
 
-    const onChangeUsername = async (username) => {
-      const status = await usernameValidation(username)
-      if (status) {
-        setBorderColor('white')
-        updateUsername(username)
+    const onBlurCheckUser = async () => {
+      const currentUsername = registerState.name
+      
+      const status = await usernameValidation(currentUsername)
+      if (status.status) {
+        setBorderColor('white')  
       } else{
+        setMessage(status.message)
+        setIsVisible(true)
         setBorderColor('red')
+
+        setTimeout(() => {
+          setIsVisible(false)
+        }, 3000)
       }
     }
 
@@ -31,7 +38,8 @@ const UserUsernameReg = () => {
         borderBottomColor={borderColor} 
         fontSize={hg('2.3%')}
         fontFamily={'Lexend-Medium'} 
-        onChangeHandler={onChangeUsername} 
+        onChangeHandler={updateUsername}
+        onBlurHandler={onBlurCheckUser} 
         placeholder={'Username:'} />
     );
   };
