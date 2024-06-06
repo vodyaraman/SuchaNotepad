@@ -37,8 +37,10 @@ export const login = (req, res) => {
     const user = req.user;
 
     const token = generateToken(user);
+
+    console.log(token)
   
-    res.status(200).json({ message: 'Login successful', token, user });
+    res.status(200).json({ message: 'Login successful', token });
   };
 
 export const check = async (req, res) => {
