@@ -1,7 +1,7 @@
 import mongoose from '../mongoDB.js';
 
 const noteSchema = new mongoose.Schema({
-    userId: {
+    ownerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,

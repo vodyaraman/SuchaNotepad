@@ -15,6 +15,8 @@ import { nodeProfilingIntegration } from '@sentry/profiling-node';
 // Импорты маршрутов
 import userRoutes from './routes/userRoutes.js';
 import noteRoutes from './routes/noteRoutes.js';
+import groupRoutes from './routes/groupRoutes.js'
+import noteAccess from './models/noteAccess.js';
 
 // Импорты стратегий
 import './strategies/local.js';
@@ -58,6 +60,9 @@ app.use((req, res, next) => {
 // Маршруты
 app.use('/users', userRoutes);
 app.use('/notes', noteRoutes);
+app.use('/notes', noteAccess);
+app.use('/groups', groupRoutes);
+
 
 // Обработчик ошибок Sentry
 app.use(Sentry.Handlers.errorHandler());
