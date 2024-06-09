@@ -3,7 +3,7 @@ import mongoose from '../mongoDB.js';
 const noteSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'User',
         required: true,
     },
     noteType: {
