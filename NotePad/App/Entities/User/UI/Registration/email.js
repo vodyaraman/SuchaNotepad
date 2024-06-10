@@ -11,7 +11,7 @@ import { useRegistration } from "../../Helpers/user-manager";
 //Импорт валидации
 import { emailValidation, checkAvailabilityEmail } from "../../Helpers/email-validation";
 
-const UserEmailReg = ({setMessage, setIsVisible}) => {
+const UserEmailReg = ({message, setMessage, setIsVisible}) => {
 
     const {updateEmail, registerState} = useRegistration()
     const [borderColor, setBorderColor] = useState('white')
@@ -37,16 +37,9 @@ const UserEmailReg = ({setMessage, setIsVisible}) => {
       if (status.status) {
         setBorderColor('white')
       } else{
-        setMessage(status.message)
+        setMessage([...message, status.message])
         setIsVisible(true)
         setBorderColor('red')
-
-        setTimeout(() => {
-          setIsVisible(false)
-          setTimeout(() => {
-            setMessage('')
-          }, 1000)
-        }, 3000)
       }
     }
 

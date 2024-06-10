@@ -14,7 +14,7 @@ export function OpeningAnim({isVisible, children}){
         }).start();
 
         Animated.timing(translateY, {
-            toValue: 0,
+            toValue: 50,
             duration: 300,
             useNativeDriver: true,
           }).start();
@@ -22,7 +22,7 @@ export function OpeningAnim({isVisible, children}){
       } else{
         Animated.timing(fadeAnim, {
           toValue: 0,
-          duration: 500,
+          duration: 700,
           useNativeDriver: true,
         }).start();
         
@@ -36,7 +36,7 @@ export function OpeningAnim({isVisible, children}){
     // })
   
     return (    
-        <Animated.View style={{transformOrigin: 'top', transform: [{translateY: translateY}], opacity: fadeAnim, position: 'absolute', width: '80%', }}>
+        <Animated.View style={{transformOrigin: 'top', transform: [{translateY: translateY}], opacity: fadeAnim,  width: '80%', zIndex: 4, }}>
           {children}
         </Animated.View> 
     );

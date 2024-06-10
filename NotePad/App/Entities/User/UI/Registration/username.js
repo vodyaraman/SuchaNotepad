@@ -25,13 +25,6 @@ const UserUsernameReg = ({message, setMessage, setIsVisible}) => {
         setMessage([...message, status.message])
         setIsVisible(true)
         setBorderColor('red')
-
-        setTimeout(() => {
-          setIsVisible(false)
-          setTimeout(() => {
-            setMessage('')
-          }, 1000)
-        }, 3000)
       }
     }
 

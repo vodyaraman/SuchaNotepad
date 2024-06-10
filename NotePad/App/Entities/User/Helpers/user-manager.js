@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser} from '../../../Processes/Authentication';
+import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
 
 // Contexts to manage user authentication and registration
 export const RegistrationContext = createContext();
@@ -12,6 +12,13 @@ export const AuthProvider = ({ children }) => {
 
     // Registration state and actions
     const registerState = useSelector((state) => state.auth.register);
+    const [serverError, setServerError] = useState([])
+
+    if (registerState.error) {
+        const tempArr = registerState.error.map(error => error.msg).filter(elem => !serverError.includes(elem))
+        setServerError([...serverError, ...tempArr])
+        dispatch(clearErrors())      
+    }
     
     const [passwordState, setPasswordState] = useState({
         passwordRepeat: '',
@@ -54,7 +61,8 @@ export const AuthProvider = ({ children }) => {
         if (passwordState.passwordsMatch && registerState.name && registerState.email) {
             dispatch(registerUser(registerState));  
         } else {
-            alert("Check that the data is entered correctly");
+            setServerError([...serverError,"Check that the data is entered correctly"])
+            
         }
     };
 
@@ -80,7 +88,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <RegistrationContext.Provider value={{
-            registerState,
+            registerState, serverError, setServerError,
             username: registerState.username, updateUsername,
             email: registerState.email, updateEmail,
             password: registerState.password, updatePassword,
