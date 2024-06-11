@@ -28,9 +28,7 @@ const UserReg = () => {
     
     return (
         <>
-            <View style={styles.alertContainer}>
-                {message && message.map((message, index) => <AnimatedErrorModal key={index} text={message} setIsVisible={setIsVisible} setMessage={setMessage} isVisible={isVisible} />)}
-            </View>
+            {message && message.map((message, index) => <AnimatedErrorModal key={index} text={message} setIsVisible={setIsVisible} setMessage={setMessage} isVisible={isVisible} /> )}
             
             <View style={styles.mainContainer}>
                 <RegAuthPlate>
@@ -57,12 +55,5 @@ const styles = StyleSheet.create({
     },
     inputContainer:{
         gap: 20,
-    },
-    alertContainer: {
-        position: 'absolute', 
-        zIndex: 5, 
-        gap: 10, 
-        width: '100%', 
-        left: '10%', 
     },
 })
