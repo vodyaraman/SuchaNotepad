@@ -7,6 +7,8 @@ const InputText = ({
   // text = "",
   borderBottomColor = 'white',
   fontSize = 12,
+  lineHeight,
+  maxLength,
   fontFamily = 'Montserrata-medium',
   fontWeight = 'normal',
   color = '#000',
@@ -17,6 +19,7 @@ const InputText = ({
   secureTextEntry = false,
   onChangeText = () => {},
   onBlur = () => {},
+  onKeyPress = () => {},
 }) => {
   const [currentText, setCurrentText] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -37,11 +40,13 @@ const InputText = ({
 
   return (
     <TextInput
+      maxLength={maxLength}
       secureTextEntry={secureTextEntry}
       style={[
         styles.input, 
         {
-          fontSize: fontSize, 
+          fontSize: fontSize,
+          lineHeight: lineHeight,
           fontFamily: fontFamily, 
           fontWeight: fontWeight, 
           color: color, 
@@ -52,6 +57,7 @@ const InputText = ({
         isFocused && styles.focusedInput // Add styles for focused state
       ]}
       onChangeText={handleChangeText}
+      
       value={currentText}
       placeholder={placeholder}
       keyboardType="default"
@@ -59,6 +65,8 @@ const InputText = ({
       numberOfLines={4}
       onFocus={() => setIsFocused(true)}  // Set focus
       onBlur={onBlurAction}  // Remove focus
+      onKeyPress={(e) => onKeyPress(e)}
+      
     />
   );
 };

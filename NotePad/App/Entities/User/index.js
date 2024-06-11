@@ -9,6 +9,7 @@ import UserPasswordRepeatReg from './UI/Registration/password-repeat';
 import UserPasswordReg from './UI/Registration/password';
 import UserUsernameReg from './UI/Registration/username';
 import SubmitRegisterButton from './UI/Registration/submit';
+import MailCode from './UI/Registration/mail-code';
 
 // ---- Компоненты для модалки ошибки ----
 import AnimatedErrorModal from './UI/Main/animatedErrorModal';
@@ -31,4 +32,5 @@ export {
   UserBackground,
   HelpTextButton,
   AnimatedErrorModal,
+  MailCode,
 };
