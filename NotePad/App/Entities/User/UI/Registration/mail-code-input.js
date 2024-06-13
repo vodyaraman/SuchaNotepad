@@ -1,29 +1,14 @@
 import { RegAuthPlate } from "../../../../Pull/User";
 import { CustomText} from "../../../../Pull/Note";
 
-import {View, StyleSheet, TextInput} from 'react-native';
+import {View, StyleSheet, TextInput, Pressable} from 'react-native';
 import React,{useRef, useState} from 'react';
 
 import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
 
-const MailCode = () => {
-    const input1 = React.createRef(),
-          input2 = React.createRef(),
-          input3 = React.createRef(),
-          input4 = React.createRef();
-
-    const [value1, setValue1] = useState('')
-    const [value2, setValue2] = useState('')
-    const [value3, setValue3] = useState('')
-    const [value4, setValue4] = useState('')
-    
-    const inputConf = [
-        {ref: input1, value: value1, onChangeHandler: (value) => setValue1(value) },
-        {ref: input2, value: value2, onChangeHandler: (value) => setValue2(value) },
-        {ref: input3, value: value3, onChangeHandler: (value) => setValue3(value) },
-        {ref: input4, value: value4, onChangeHandler: (value) => setValue4(value) },
-    ]
-
+const MailCodeInput = () => {
+    const [values, setValues] = useState(Array(4).fill('')) //Для того чтобы использовать элементы массива для обработки onChange события на инпуте
+    const inputRefs = useRef([]); //Для того чтобы создать массив всех инпутов и ссылаться на определенный из них в атрибуте компонента
 
     const [isFocused, setIsFocused] = useState(false);
     const onBlurAction = () => {
@@ -36,8 +21,19 @@ const MailCode = () => {
         }
     }
 
+    const onChangeHandler = ({target}) => { //Функция в которой происходит вся магия
+        let index = target.id;
+        const value = target.value
+        
+        setValues(values.map((n, i) => index == i ? value : n))
+
+        if(index < values.length - 1 && value){
+            inputRefs.current[++index].focus()
+        }
+    }
+
     return(
-        <RegAuthPlate>
+        <>
             <CustomText 
                 text={'Enter the confirmation code sent to your email:'}
                 textColor={'white'}
@@ -47,14 +43,13 @@ const MailCode = () => {
                 fontSize={hg('2.3%')} />
 
             <View style={styles.codeContainer}>
-                {inputConf.map((n, i) =>(
+                {values.map((n, i) =>(
                     <TextInput
-                        value={n.value}
                         key={i}
-                        ref={n.ref}
-                        onChangeText={n.onChangeHandler(n.value)}
-
+                        id={i}
+                        ref={input => inputRefs.current[i] = input}
                         keyboardType={'numeric'}
+                        onChange={onChangeHandler}
                         placeholder={''}
                         maxLength={1}
                         onKeyPress={(e) => onKeyPress(e)}
@@ -64,11 +59,11 @@ const MailCode = () => {
                     />
                 ))}
             </View>
-        </RegAuthPlate>
+        </>
     )
 }
 
-export default MailCode;
+export default MailCodeInput;
 
 const styles = StyleSheet.create({
     codeContainer:{

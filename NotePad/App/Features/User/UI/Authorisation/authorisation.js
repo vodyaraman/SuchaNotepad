@@ -25,9 +25,7 @@ const UserAuth = ({onPressHandler}) => {
         console.log('Password input')
     }
 
-    return (
-        // <UserProvider> пока закоментил потому что с ним не работает
-            
+    return (            
         <View style={styles.mainContainer}>
             <RegAuthPlate>
                 <View style={styles.inputContainer}>
@@ -37,9 +35,7 @@ const UserAuth = ({onPressHandler}) => {
             </RegAuthPlate>
             <UserSubmit onPressHandler={onPressHandler1} />
             <HelpTextButton textDesc={'Don\'t have an account yet?'} textButton={'Register'} onPressHandler={onPressHandler} />
-        </View>
-            
-        // </UserProvider>    
+        </View>   
     );
 };
 

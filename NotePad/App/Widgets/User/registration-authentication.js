@@ -9,14 +9,7 @@ const RegAndAuth = () => {
         setIsRegistering(!isRegistering);
     };
 
-    /*const toggleForm = () => {
-        setIsRegistering(!isRegistering);
-    };*/
-
     return (
-        // <UserEntrypointPlate>
-        //     {isRegistering ? <UserReg onPressHandler={onPressHandler} /> : <UserAuth onPressHandler={onPressHandler} />}
-        // </UserEntrypointPlate>
         <UserBackground>
             {isRegistering ? <UserReg onPressHandler={onPressHandler} /> : <UserAuth onPressHandler={onPressHandler} />}
         </UserBackground>

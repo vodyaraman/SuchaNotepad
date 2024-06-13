@@ -11,7 +11,7 @@ import {AnimatedErrorModal} from "../../../../Entities/User";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
 
 
-const UserReg = () => {
+const UserReg = ({onPressHandler}) => {
 
     const [message, setMessage] = useState([])
     const [isVisible, setIsVisible] = useState(false)  
@@ -40,7 +40,7 @@ const UserReg = () => {
                     </View>
                 </RegAuthPlate>
                 <SubmitRegisterButton />
-                <HelpTextButton textDesc={'Already have an acount?'} textButton={'Login'} />
+                <HelpTextButton onPressHandler={onPressHandler} textDesc={'Already have an acount?'} textButton={'Login'} />
             </View>
         </>      
     );
