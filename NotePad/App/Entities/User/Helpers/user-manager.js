@@ -61,8 +61,7 @@ export const AuthProvider = ({ children }) => {
         if (passwordState.passwordsMatch && registerState.name && registerState.email) {
             dispatch(registerUser(registerState));  
         } else {
-            setServerError([...serverError,"Check that the data is entered correctly"])
-            
+            setServerError([...serverError,"Check that the data is entered correctly"]) 
         }
     };
 
@@ -82,7 +81,7 @@ export const AuthProvider = ({ children }) => {
         setLoginState({ ...loginState, userPassword });
     };
 
-    const login = () => {
+    const makeLogin = () => {
         dispatch(loginUser(loginState));
     };
 
@@ -99,7 +98,7 @@ export const AuthProvider = ({ children }) => {
             <LoginContext.Provider value={{
                 login: loginState.login, updateLogin,
                 userPassword: loginState.userPassword, updateUserPassword,
-                login
+                makeLogin,
             }}>
                 {children}
             </LoginContext.Provider>

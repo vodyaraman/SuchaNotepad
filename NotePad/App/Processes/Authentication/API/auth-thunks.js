@@ -3,12 +3,19 @@ import apiClient from '../../../Pull/Utils/APIClient';
 import { saveTokenToLocalStorage } from '../Helpers/save-token';
 
 // Асинхронные действия
-export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, password, name }, { rejectWithValue }) => {
+export const loginUser = createAsyncThunk('auth/loginUser', async ({ login, userPassword }, { rejectWithValue }) => {
   try {
-    const { data } = await apiClient.post('/users/login', { email, password, name });
-    const { token } = data;
-    saveTokenToLocalStorage(token);
-    return { isAuthenticated: true, token };
+    // пока что возможно аутентификация только по емэйлу, по этому на сервер отправляем его
+    const response = await apiClient.post('/users/login', { email: login, password: userPassword });
+    const { token } = response.data;
+
+    if (token) {
+      saveTokenToLocalStorage(token);
+      return { isAuthenticated: true, token };
+    } else {
+      console.log('No token received');
+      return rejectWithValue(response.data);
+    }
   } catch (error) {
     console.error('Login error:', error);
     return rejectWithValue(error.response.data);

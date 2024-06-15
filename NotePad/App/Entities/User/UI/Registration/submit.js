@@ -1,12 +1,12 @@
 import UserSubmitButton from "../../../../Pull/Buttons/submit";
 import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
-import React, {useState} from 'react';
+import React from 'react';
 
 // Импорт контекста
 import { useRegistration } from "../../Helpers/user-manager";
 
 const SubmitRegisterButton = () => {
-    const {register} = useRegistration()
+    const {register} = useRegistration();
 
     return(
         <UserSubmitButton 
@@ -16,6 +16,6 @@ const SubmitRegisterButton = () => {
             fontWeight={'bold'}
             onPressHandler={register} />
     )
-}
+};
 
 export default SubmitRegisterButton;

@@ -53,7 +53,7 @@ app.use(passport.initialize());
 
 // Логгирование запросов
 app.use((req, res, next) => {
-  console.log(`${req.method} request to ${req.path}`);
+  console.log(`${req.method} request to ${req.path}, body ${JSON.stringify(req.body)}`);
   next();
 });
 
