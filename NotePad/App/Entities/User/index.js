@@ -8,6 +8,7 @@ import UserEmailReg from './UI/Registration/email';
 import UserPasswordRepeatReg from './UI/Registration/password-repeat';
 import UserPasswordReg from './UI/Registration/password';
 import UserUsernameReg from './UI/Registration/username';
+import UserRegisterButton from './UI/Registration/user-register-button';
 import SubmitRegisterButton from './UI/Registration/submit';
 import MailCodeInput from './UI/Registration/mail-code-input';
 
@@ -28,6 +29,7 @@ export {
   UserPasswordRepeatReg,
   UserPasswordReg,
   UserUsernameReg,
+  UserRegisterButton,
   SubmitRegisterButton,
   UserBackground,
   HelpTextButton,

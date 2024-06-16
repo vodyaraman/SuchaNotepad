@@ -57,12 +57,29 @@ export const AuthProvider = ({ children }) => {
         });
     };
 
-    const register = () => {
-        if (passwordState.passwordsMatch && registerState.name && registerState.email) {
-            dispatch(registerUser(registerState));  
-        } else {
-            setServerError([...serverError,"Check that the data is entered correctly"]) 
+    const checkRegisterForm = () => {
+        if (passwordState.passwordsMatch && registerState.name && registerState.email && registerState.password.length >= 6 && serverError.length === 0) {
+            return true;
+        } else if(registerState.password.length < 6 && registerState.name || registerState.email){
+            setServerError([...serverError,"Password must be at least 6 characters long"])
+            return false;
+        } else if(!passwordState.passwordsMatch && !registerState.name && !registerState.email) {
+            setServerError([...serverError,"Check that the data is entered correctly"])
+            return false; 
         }
+    }
+
+    const checkEmailCode = () => {
+        console.log(registerState.email)
+    }
+
+    const register = () => {
+        if (passwordState.passwordsMatch && registerState.name && registerState.email && serverError.length === 0) {
+            dispatch(registerUser(registerState));
+        }
+        // else {
+        //     setServerError([...serverError,"Check that the data is entered correctly"]) 
+        // }
     };
 
     // Login state and actions
@@ -92,8 +109,8 @@ export const AuthProvider = ({ children }) => {
             email: registerState.email, updateEmail,
             password: registerState.password, updatePassword,
             passwordRepeat: passwordState.passwordRepeat, updatePasswordRepeat,
-            passwordsMatch: passwordState.passwordsMatch,
-            register,
+            passwordsMatch: passwordState.passwordsMatch, 
+            checkRegisterForm, checkEmailCode, register,
         }}>
             <LoginContext.Provider value={{
                 login: loginState.login, updateLogin,

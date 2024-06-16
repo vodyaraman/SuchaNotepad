@@ -6,8 +6,8 @@ import React,{useRef, useState} from 'react';
 
 import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
 
-const MailCodeInput = () => {
-    const [values, setValues] = useState(Array(4).fill('')) //Для того чтобы использовать элементы массива для обработки onChange события на инпуте
+const MailCodeInput = ({values, setValues}) => {
+    
     const inputRefs = useRef([]); //Для того чтобы создать массив всех инпутов и ссылаться на определенный из них в атрибуте компонента
 
     const [isFocused, setIsFocused] = useState(false);

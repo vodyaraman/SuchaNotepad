@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, registerUser } from './auth-thunks';
+import { checkEmailRegister, loginUser, registerUser } from './auth-thunks';
 
 // Создание слайса для аутентификации
 const authSlice = createSlice({
@@ -17,6 +17,7 @@ const authSlice = createSlice({
       name: '',
       email: '',
       password: '',
+      isActivate: false,
       isAuthenticated: false,
       token: null,
       loading: false,
@@ -70,12 +71,18 @@ const authSlice = createSlice({
         state.login.loading = false;
         state.login.error = action.payload;
       })
+      .addCase(checkEmailRegister.pending, (state) => {
+        state.register.loading = true;
+        state.register.error = null;
+      })
+      
       .addCase(registerUser.pending, (state) => {
         state.register.loading = true;
         state.register.error = null;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.register.isAuthenticated = action.payload.isAuthenticated;
+        state.register.isActivate = action.payload.isActivate;
         state.register.token = action.payload.token;
         state.register.loading = false;
       })

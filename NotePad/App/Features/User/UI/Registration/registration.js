@@ -6,16 +6,15 @@ import { RegAuthPlate } from "../../../../Pull/User";
 
 import {HelpTextButton} from "../../../../Entities/User";
 
-//Временный импорт
 import {AnimatedErrorModal} from "../../../../Entities/User";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
 
 
-const UserReg = ({changeAuthHandler}) => {
+const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
 
     const [message, setMessage] = useState([])
     const [isVisible, setIsVisible] = useState(false)  
-    const {serverError, setServerError} = useRegistration()
+    const {serverError, setServerError, checkRegisterForm} = useRegistration()
 
     useEffect(() => {
         if (serverError.length !== 0) {
@@ -24,6 +23,13 @@ const UserReg = ({changeAuthHandler}) => {
             setServerError([])
         }
     }, [serverError])
+
+    const checkRegister = () => {
+        const status = checkRegisterForm()
+        if(status){
+            MailCodeWindow()
+        }
+    }
 
     
     return (
@@ -39,7 +45,7 @@ const UserReg = ({changeAuthHandler}) => {
                         <UserPasswordRepeatReg />
                     </View>
                 </RegAuthPlate>
-                <SubmitRegisterButton />
+                <SubmitRegisterButton onPressHandler={checkRegister} />
                 <HelpTextButton onPressHandler={changeAuthHandler} textDesc={'Already have an acount?'} textButton={'Login'} />
             </View>
         </>      

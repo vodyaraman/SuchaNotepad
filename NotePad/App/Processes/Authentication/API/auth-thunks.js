@@ -30,7 +30,7 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
     const { token } = response.data;
     if (token) {
       saveTokenToLocalStorage(token);
-      return { isAuthenticated: true, token };
+      return { isActivate: true, isAuthenticated: true, token };
     } else {
       console.log('No token received');
       return rejectWithValue(response.data);
@@ -38,5 +38,14 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
     
   } catch (error) {
     return rejectWithValue(error);
+  }
+});
+
+export const checkEmailRegister = createAsyncThunk('auth/checkEmailRegister' , async (email, {rejectWithValue}) => {
+  try {
+    const response = await apiClient.post('/users/register', email);
+    console.log(response)
+  } catch (error) {
+    
   }
 });

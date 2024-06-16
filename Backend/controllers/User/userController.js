@@ -39,6 +39,24 @@ export const register = async (req, res) => {
   }
 };
 
+export const checkEmailCode = async (req, res) => {
+  const errors = validationResult(req)
+
+    if(!errors.isEmpty()){
+      return res.json(errors.array())
+    }
+
+    const { name, email, password } = req.body;
+
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return res.status(409).json({ message: 'User with this email already exists' });
+    }
+    
+    console.log(name, email, password)
+};
+
 export const login = (req, res) => {
     // В этой точке уже сработала стратегия local
     const user = req.user;
@@ -48,7 +66,7 @@ export const login = (req, res) => {
     console.log(token)
   
     res.status(200).json({ message: 'Login successful', token });
-  };
+};
 
 export const checkUser = async (req, res) => {
   try {
