@@ -4,7 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux';
 import {store} from './App/Processes/Store';
 
-import {TestPage} from './App/Pages';
+import AppNavigation from './App/Processes/Navigation/navigation-stack';
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -40,7 +40,7 @@ export default function App() {
 
   return (
     <Provider store={store} >
-      <TestPage />
+      <AppNavigation/>
     </Provider>
   );
 }
