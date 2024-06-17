@@ -15,11 +15,11 @@ const MailCodeInput = ({values, setValues}) => {
         setIsFocused(false)
     }
 
-    const onKeyPress = (event) => { //Функция разрешающая только ввод цифр и использование клавиши Backspace
-        if (!/[0-9]/.test(event.key) && event.key !== 'Backspace') {
-            event.preventDefault();
-        }
-    }
+    // const onKeyPress = (event) => { //Функция разрешающая только ввод цифр и использование клавиши Backspace
+    //     if (!/[0-9]/.test(event.key) && event.key !== 'Backspace') {
+    //         event.preventDefault();
+    //     }
+    // }
 
     const onChangeHandler = ({target}) => { //Функция в которой происходит вся магия
         let index = target.id;
@@ -52,7 +52,6 @@ const MailCodeInput = ({values, setValues}) => {
                         onChange={onChangeHandler}
                         placeholder={''}
                         maxLength={1}
-                        onKeyPress={(e) => onKeyPress(e)}
                         style={[styles.input, isFocused && styles.focusedInput]}
                         onFocus={() => setIsFocused(true)}
                         onBlur={onBlurAction}

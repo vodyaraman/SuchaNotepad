@@ -1,5 +1,5 @@
 // API
-import Register from "./UserAPI/register";
+import Register from "./UserAPI (deprecated)/register";
 
 // UI
 import UserAuth from "./UI/Authorisation/authorisation";

@@ -8,17 +8,22 @@ import { View, StyleSheet } from "react-native";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
 
 const UserMailCode = () => {
-    const {register, checkEmailCode} = useRegistration()
-    const [isActivate, setActivate] = useState(false)
+    const {register, checkValidationEmailCode} = useRegistration()
+
     const [values, setValues] = useState(Array(4).fill('')) //Для того чтобы использовать элементы массива для обработки onChange события на инпуте
     const status = values.every(el => el !== '')
     
-    const onPressHandler = () => {
+    const onPressHandler = async () => {
         
-        if(!status){
-            console.log('Введен неправильный код!')
-        } else if(!isActivate){
-            checkEmailCode()
+        if(status){
+            const code = values.join('')
+            const status = await checkValidationEmailCode(code)
+            console.log(status)
+            if(status){
+                register()
+            } else{
+                return console.log('Код неверный')
+            }
         }
     }
     

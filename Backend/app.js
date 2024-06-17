@@ -22,10 +22,6 @@ import noteAccess from './models/noteAccess.js';
 import './strategies/local.js';
 import './strategies/authentication.js';
 
-//Импорт библиотеки для отправки почты
-import * as nodemailer from 'nodemailer'
-
-
 // Инициализация приложения express
 const app = express();
 
@@ -39,17 +35,6 @@ Sentry.init({
   ],
   tracesSampleRate: 1.0,
   profilesSampleRate: 1.0,
-});
-
-//Инициализация и настройка почтового сервера
-const transporter = nodemailer.createTransport({
-  host: "smtp.yandex.ru",
-  port: 465,
-  secure: true, // Use `true` for port 465, `false` for all other ports
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASS,
-  },
 });
 
 // Обработчик запросов Sentry

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
+import { setUsername, setEmail, setPassword, sendEmailCode, validateEmailCode, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
 
 // Contexts to manage user authentication and registration
 export const RegistrationContext = createContext();
@@ -67,19 +67,24 @@ export const AuthProvider = ({ children }) => {
             setServerError([...serverError,"Check that the data is entered correctly"])
             return false; 
         }
+        else {
+            setServerError([...serverError,"Check that the data is entered correctly"]) 
+        }
     }
 
-    const checkEmailCode = () => {
-        console.log(registerState.email)
+    const emailActivate = () => {
+        dispatch(sendEmailCode(registerState.email))
+    }
+
+    const checkValidationEmailCode = (code) => {
+        const status = dispatch(validateEmailCode(code))
+        return status;
     }
 
     const register = () => {
         if (passwordState.passwordsMatch && registerState.name && registerState.email && serverError.length === 0) {
             dispatch(registerUser(registerState));
         }
-        // else {
-        //     setServerError([...serverError,"Check that the data is entered correctly"]) 
-        // }
     };
 
     // Login state and actions
@@ -110,7 +115,7 @@ export const AuthProvider = ({ children }) => {
             password: registerState.password, updatePassword,
             passwordRepeat: passwordState.passwordRepeat, updatePasswordRepeat,
             passwordsMatch: passwordState.passwordsMatch, 
-            checkRegisterForm, checkEmailCode, register,
+            checkRegisterForm, emailActivate, checkValidationEmailCode, register,
         }}>
             <LoginContext.Provider value={{
                 login: loginState.login, updateLogin,
