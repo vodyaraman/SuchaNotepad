@@ -41,15 +41,23 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
   }
 });
 
-export const sendEmailCode = createAsyncThunk('auth/sendEmailCode' , async (email, {rejectWithValue}) => {
+//Запрос на проверку корректности введенных данных пользователем
+export const validateUserData = createAsyncThunk('auth/validateUserData', async (userData, {rejectWithValue}) => {
   try {
-    const response = await apiClient.post('/users/sendEmailCode', {email});
+    const response = await apiClient.post('/users/validateUserData', userData);
     console.log(response)
+    if (response.data.status) {
+      return {isActivate: 'proccess'};
+    } else{
+      return rejectWithValue(response.data)
+    }
+
   } catch (error) {
     return rejectWithValue(error);
   }
 });
 
+//Проверка кода на совпадение 
 export const validateEmailCode = createAsyncThunk('auth/validateEmailCode', async (code, {rejectWithValue}) =>{
   try {
     const response = await apiClient.post('/users/validateEmailCode', {code});
@@ -60,6 +68,7 @@ export const validateEmailCode = createAsyncThunk('auth/validateEmailCode', asyn
       return false;
     }
   } catch (error) {
+    console.log(error)
     return rejectWithValue(error);
   }
 });

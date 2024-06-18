@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, sendEmailCode, validateEmailCode, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
+import { setUsername, setEmail, setPassword, validateUserData, validateEmailCode, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
 
 // Contexts to manage user authentication and registration
 export const RegistrationContext = createContext();
@@ -13,17 +13,20 @@ export const AuthProvider = ({ children }) => {
     // Registration state and actions
     const registerState = useSelector((state) => state.auth.register);
     const [serverError, setServerError] = useState([])
-
-    if (registerState.error) {
-        const tempArr = registerState.error.map(error => error.msg).filter(elem => !serverError.includes(elem))
-        setServerError([...serverError, ...tempArr])
-        dispatch(clearErrors())      
-    }
     
     const [passwordState, setPasswordState] = useState({
         passwordRepeat: '',
         passwordsMatch: null
     });
+
+    useEffect(() => {
+        if (registerState.error.length !== 0) {
+            const tempArr = registerState.error.map(error => error.msg).filter(elem => !serverError.includes(elem))
+            setServerError([...serverError, ...tempArr])
+            dispatch(clearErrors())
+        }
+        
+    }, [registerState.error])
 
     const setRegistration = (updatedRegister) => {
         dispatch(setUsername(updatedRegister.name));
@@ -37,7 +40,6 @@ export const AuthProvider = ({ children }) => {
 
     const updateEmail = (email) => {
         setRegistration({ ...registerState, email });
-        console.log(email) //Потом убрать
     };
 
     const updatePassword = (password) => {
@@ -58,33 +60,21 @@ export const AuthProvider = ({ children }) => {
     };
 
     const checkRegisterForm = () => {
-        if (passwordState.passwordsMatch && registerState.name && registerState.email && registerState.password.length >= 6 && serverError.length === 0) {
-            return true;
-        } else if(registerState.password.length < 6 && registerState.name || registerState.email){
-            setServerError([...serverError,"Password must be at least 6 characters long"])
-            return false;
-        } else if(!passwordState.passwordsMatch && !registerState.name && !registerState.email) {
-            setServerError([...serverError,"Check that the data is entered correctly"])
-            return false; 
+        if(passwordState.passwordsMatch && registerState.name && registerState.email){
+            const status = dispatch(validateUserData(registerState)).then(res => res)
+            console.log(status)
         }
         else {
             setServerError([...serverError,"Check that the data is entered correctly"]) 
         }
     }
 
-    const emailActivate = () => {
-        dispatch(sendEmailCode(registerState.email))
-    }
-
     const checkValidationEmailCode = (code) => {
-        const status = dispatch(validateEmailCode(code))
-        return status;
+        dispatch(validateEmailCode(code))
     }
 
-    const register = () => {
-        if (passwordState.passwordsMatch && registerState.name && registerState.email && serverError.length === 0) {
-            dispatch(registerUser(registerState));
-        }
+    const register = () => {  
+        dispatch(registerUser(registerState));
     };
 
     // Login state and actions
@@ -115,7 +105,7 @@ export const AuthProvider = ({ children }) => {
             password: registerState.password, updatePassword,
             passwordRepeat: passwordState.passwordRepeat, updatePasswordRepeat,
             passwordsMatch: passwordState.passwordsMatch, 
-            checkRegisterForm, emailActivate, checkValidationEmailCode, register,
+            checkRegisterForm, checkValidationEmailCode, register,
         }}>
             <LoginContext.Provider value={{
                 login: loginState.login, updateLogin,

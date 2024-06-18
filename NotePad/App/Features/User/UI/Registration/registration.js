@@ -14,24 +14,22 @@ const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
 
     const [message, setMessage] = useState([])
     const [isVisible, setIsVisible] = useState(false)  
-    const {serverError, setServerError, checkRegisterForm, emailActivate} = useRegistration()
+    const {serverError, setServerError, checkRegisterForm} = useRegistration()
 
     useEffect(() => {
         if (serverError.length !== 0) {
             setMessage([...serverError])
-            setIsVisible(true)
             setServerError([])
+            setIsVisible(true)
+            
         }
     }, [serverError])
 
     const checkRegister = () => {
-        const status = checkRegisterForm()
-        if(status){
-            emailActivate()
-            MailCodeWindow()
-        }
+        checkRegisterForm()
+        
+        // MailCodeWindow()
     }
-
     
     return (
         <>

@@ -17,13 +17,15 @@ const UserMailCode = () => {
         
         if(status){
             const code = values.join('')
-            const status = await checkValidationEmailCode(code)
+            const activateStatus = await checkValidationEmailCode(code)
             console.log(status)
-            if(status){
+            if(activateStatus){
                 register()
             } else{
                 return console.log('Код неверный')
             }
+        } else{
+            console.log('Проверьте правильность ввода')
         }
     }
     

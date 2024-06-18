@@ -72,14 +72,12 @@ const styles = StyleSheet.create({
     },
 
     input:{
-        height:hg('25%'),
-        fontSize:hg('9%'),
-        lineHeight:hg('24%'),
+        height:hg('23%'),
+        fontSize:hg('8%'),
+        lineHeight:hg('22%'),
         color:'white',
         textAlign:'center',
         width: '100%',
-        paddingLeft: '3.5%',
-        paddingRight: '3.5%',
         paddingBottom: 5,
         backgroundColor: 'transparent',
         borderBottomColor: 'white',

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkEmailRegister, loginUser, registerUser, sendEmailCode, validateEmailCode } from './auth-thunks';
+import { checkEmailRegister, loginUser, registerUser, sendEmailCode, validateEmailCode, validateUserData } from './auth-thunks';
 
 // Создание слайса для аутентификации
 const authSlice = createSlice({
@@ -21,7 +21,7 @@ const authSlice = createSlice({
       isAuthenticated: false,
       token: null,
       loading: false,
-      error: null,
+      error: [],
     }
   },
   reducers: {
@@ -53,14 +53,14 @@ const authSlice = createSlice({
       state.login.userPassword = action.payload;
     },
     clearErrors(state){
-      state.register.error = null;
+      state.register.error = [];
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
         state.login.loading = true;
-        state.login.error = null;
+        state.login.error = [];
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.login.isAuthenticated = action.payload.isAuthenticated;
@@ -69,34 +69,37 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.login.loading = false;
-        state.login.error = action.payload;
-      })
-      .addCase(sendEmailCode.pending, (state) => {
-        state.register.loading = true;
-        state.register.error = null;
-      })
-      .addCase(sendEmailCode.fulfilled, (state) => {
-        state.register.loading = false;
-      })
-      .addCase(sendEmailCode.rejected, (state, action) => {
-        state.register.loading = false;
-        state.register.error = action.payload
+        state.login.error = [...state.login.error, ...action.payload];
       })
       .addCase(validateEmailCode.pending, (state) => {
         state.register.loading = true;
-        state.register.error = null;
+        state.register.error = [];
       })
       .addCase(validateEmailCode.fulfilled, (state) => {
-        state.register.loading = true;
-        state.register.error = null;
+        state.register.loading = false;
+        state.register.error = [];
       })
       .addCase(validateEmailCode.rejected, (state, action) => {
         state.register.loading = false;
-        state.register.error = action.payload;
+        console.log('validateEmailCode rejected')
+        state.register.error = [...state.login.error, ...action.payload];
+      })
+      .addCase(validateUserData.pending, (state) => {
+        state.register.loading = true;
+        state.register.error = [];
+      })
+      .addCase(validateUserData.fulfilled, (state, action) => {
+        state.register.loading = false;
+        state.register.isActivate = action.payload.isActivate
+        state.register.error = [];
+      })
+      .addCase(validateUserData.rejected, (state, action) => {
+        state.register.loading = false;
+        state.register.error = [...state.register.error, ...action.payload]
       })
       .addCase(registerUser.pending, (state) => {
         state.register.loading = true;
-        state.register.error = null;
+        state.register.error = [];
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.register.isAuthenticated = action.payload.isAuthenticated;
@@ -105,7 +108,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.register.loading = false;
-        state.register.error = action.payload
+        state.register.error = [...state.login.error, ...action.payload]
       });
   },
 });
