@@ -1,14 +1,7 @@
-<<<<<<< Updated upstream
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, validateUserData, validateEmailCode, registerUser, setLogin, setUserPassword, loginUser, clearErrors, setError} from '../../../Processes/Authentication';
-=======
-import React, { createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import { setUsername, setEmail, setPassword,
-    validateEmailCode, validateUserData, registerUser, setLogin, setUserPassword, loginUser, setError, clearErrors} from '../../../Processes/Authentication';
->>>>>>> Stashed changes
+import { setUsername, setEmail, setPassword, validateEmailCode, validateUserData, registerUser, setLogin, setUserPassword, loginUser, setError, clearErrors} from '../../../Processes/Authentication';
 
 // Contexts to manage user authentication and registration
 export const RegistrationContext = createContext();

@@ -6,9 +6,7 @@ import { Notepad } from "../../Widgets";
 const MainPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
-        <AuthProvider >
             <Notepad />
-        </AuthProvider>
     </View>
     
 )};
