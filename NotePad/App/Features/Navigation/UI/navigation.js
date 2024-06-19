@@ -3,7 +3,6 @@ import { NoteAddButton, SwitchToGroups, SwitchToSettings } from '../../../Entiti
 import { NoteManagerProvider } from "../../../Entities/Note";
 
 export const NavigationButtons = () => {
-
     return (
         <NoteManagerProvider>
             <NavigationPlate>
@@ -12,5 +11,4 @@ export const NavigationButtons = () => {
                 <SwitchToSettings />
             </NavigationPlate>
         </NoteManagerProvider>
-    )
-}
+)};

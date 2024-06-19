@@ -1,15 +1,16 @@
-// App/Navigation.js
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { TestPage, MainPage, PageUserEntrypoint } from '../../Pages'
+import { TestPage, MainPage, PageUserEntrypoint } from '../../Pages';
+
+export const navigationRef = React.createRef();
 
 const Stack = createStackNavigator();
 
 function AppNavigation() {
     return (
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator initialRouteName="Test">
           <Stack.Screen 
             name="Main" 
@@ -32,3 +33,4 @@ function AppNavigation() {
   }
 
 export default AppNavigation;
+

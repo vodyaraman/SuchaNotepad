@@ -1,16 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '../../../Pull/Utils/APIClient';
+import Relocate from '../../Navigation/Rules/stack-rules';
 import { saveTokenToLocalStorage } from '../Helpers/save-token';
 
 // Асинхронные действия
-export const loginUser = createAsyncThunk('auth/loginUser', async ({ login, userPassword, navigate }, { rejectWithValue }) => {
+export const loginUser = createAsyncThunk('auth/loginUser', async ({ login, userPassword }, { rejectWithValue }) => {
   try {
     const response = await apiClient.post('/users/login', { email: login, password: userPassword });
     const { token } = response.data;
 
     if (token) {
       saveTokenToLocalStorage(token);
-      navigate('Main'); // Добавляем навигацию на MainPage
+
+      Relocate.toMain();
+
       return { isAuthenticated: true, token };
     } else {
       console.log('No token received');

@@ -4,7 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux';
 import {store} from './App/Processes/Store';
 
-import AppNavigation from './App/Processes/Navigation/navigation-stack';
+import AppNavigation from './App/Processes/Navigation/stack';
 
 const loadFonts = async () => {
   await Font.loadAsync({

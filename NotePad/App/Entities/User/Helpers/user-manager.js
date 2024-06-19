@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
 import { setUsername, setEmail, setPassword, validateEmailCode, validateUserData, registerUser, setLogin, setUserPassword, loginUser, setError, clearErrors} from '../../../Processes/Authentication';
 
 // Contexts to manage user authentication and registration
@@ -10,8 +9,6 @@ export const LoginContext = createContext();
 // Combined Provider
 export const AuthProvider = ({ children }) => {
     const dispatch = useDispatch();
-
-    const navigation = useNavigation();
 
     // Registration state and actions
     const registerState = useSelector((state) => state.auth.register);
@@ -102,7 +99,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const makeLogin = () => {
-        dispatch(loginUser({loginState, navigate: navigation.navigate}));
+        dispatch(loginUser(loginState));
     };
 
     return (
