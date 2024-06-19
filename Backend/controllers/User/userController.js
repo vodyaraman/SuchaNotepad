@@ -1,14 +1,19 @@
 import User from '../../models/user.js';
+import TempUser from '../../models/activateTempUser.js';
 import { generateToken } from '../../utils/JWT.js';
 import { generateActivateCode } from '../../utils/generateActivateCode.js';
 import { validationResult } from 'express-validator';
 import { sendEmailCode } from '../../utils/sendEmailCode.js';
 
-let activateCode;
-
 export const register = async (req, res) => {
   try {
-    const { name, email, password } = req.body; 
+    const {name, email, password} = req.body.userData;
+
+    const activateUser = await TempUser.findOne({email, code: req.body.code})
+    
+    if (!activateUser) {
+      return res.status(401).json({message: 'Неверный проверочный код'})
+    }
 
     const newUser = new User({
       name,
@@ -17,14 +22,17 @@ export const register = async (req, res) => {
     });
 
     await newUser.save();
-
+    
     const token = generateToken(newUser);
     console.log('Sending token:', token);
+
+    await TempUser.deleteOne({ email });
 
     res.status(201).json({
       message: 'User registered successfully',
       token,
     });
+    
   } catch (error) {
     console.error('Error in registration:', error);
     res.status(500).json({ message: 'Error registering user', error: error.message });
@@ -40,10 +48,18 @@ export const validateUserData = async(req, res) => {
       return res.status(401).json(errors.array())
     }
 
-    activateCode = generateActivateCode()
+    const code = generateActivateCode()
     const {email} = req.body
 
-    sendEmailCode(email, activateCode)
+    sendEmailCode(email, code)
+
+    const newTempUser = new TempUser({
+      email,
+      code,
+    })
+
+    await newTempUser.save()
+
     res.status(200).json({status: true, message: 'Проверка корректности данных прошла. Код успешно отправлен на почту!'})
 
   } catch (error) {

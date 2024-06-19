@@ -8,7 +8,7 @@ import { View, StyleSheet } from "react-native";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
 
 const UserMailCode = () => {
-    const {register, checkValidationEmailCode} = useRegistration()
+    const {register} = useRegistration()
 
     const [values, setValues] = useState(Array(4).fill('')) //Для того чтобы использовать элементы массива для обработки onChange события на инпуте
     const status = values.every(el => el !== '')
@@ -17,6 +17,7 @@ const UserMailCode = () => {
         
         if(status){
             const code = values.join('')
+            register(code)
             
         } else{
             console.log('Проверьте правильность ввода')

@@ -40,7 +40,7 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
     }
     
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue(error.response.data);
   }
 });
 

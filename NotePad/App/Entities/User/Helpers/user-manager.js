@@ -78,8 +78,8 @@ export const AuthProvider = ({ children }) => {
         dispatch(validateEmailCode(code))
     }
 
-    const register = () => {  
-        dispatch(registerUser(registerState));
+    const register = (code) => {  
+        dispatch(registerUser({userData: registerState, code}));
     };
 
     // Login state and actions

@@ -11,7 +11,7 @@ const authSlice = createSlice({
       isAuthenticated: false,
       token: null,
       loading: false,
-      error: null,
+      error: [],
     },
     register: {
       name: '',
@@ -97,7 +97,8 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.register.loading = false;
-        state.register.error = [...state.login.error, ...action.payload]
+        console.log('register rejected')
+        state.register.error = [...state.register.error, ...action.payload]
       });
   },
 });
