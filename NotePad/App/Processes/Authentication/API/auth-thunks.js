@@ -41,22 +41,6 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
   }
 });
 
-//Запрос на проверку корректности введенных данных пользователем
-export const validateUserData = createAsyncThunk('auth/validateUserData', async (userData, {rejectWithValue}) => {
-  try {
-    const response = await apiClient.post('/users/validateUserData', userData);
-    console.log(response)
-    if (response.data.status) {
-      return {isActivate: 'proccess'};
-    } else{
-      return rejectWithValue(response.data)
-    }
-
-  } catch (error) {
-    return rejectWithValue(error);
-  }
-});
-
 //Проверка кода на совпадение 
 export const validateEmailCode = createAsyncThunk('auth/validateEmailCode', async (code, {rejectWithValue}) =>{
   try {

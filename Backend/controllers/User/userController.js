@@ -37,7 +37,7 @@ export const validateUserData = async(req, res) => {
     const errors = validationResult(req)
 
     if(!errors.isEmpty()){
-      return res.json(errors.array())
+      return res.status(401).json(errors.array())
     }
 
     activateCode = generateActivateCode()

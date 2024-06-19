@@ -1,12 +1,13 @@
 <<<<<<< Updated upstream
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, validateUserData, validateEmailCode, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
+import { setUsername, setEmail, setPassword, validateUserData, validateEmailCode, registerUser, setLogin, setUserPassword, loginUser, clearErrors, setError} from '../../../Processes/Authentication';
 =======
 import React, { createContext, useContext, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
+import { setUsername, setEmail, setPassword,
+    validateEmailCode, validateUserData, registerUser, setLogin, setUserPassword, loginUser, setError, clearErrors} from '../../../Processes/Authentication';
 >>>>>>> Stashed changes
 
 // Contexts to manage user authentication and registration
@@ -68,10 +69,15 @@ export const AuthProvider = ({ children }) => {
         });
     };
 
-    const checkRegisterForm = () => {
+    const checkRegisterForm = async () => {
         if(passwordState.passwordsMatch && registerState.name && registerState.email){
-            const status = dispatch(validateUserData(registerState)).then(res => res)
-            console.log(status)
+            const status = await validateUserData(registerState)           
+            if (status.status) {
+                return true;
+            }else{
+                dispatch(setError(status))
+                return false;
+            }
         }
         else {
             setServerError([...serverError,"Check that the data is entered correctly"]) 

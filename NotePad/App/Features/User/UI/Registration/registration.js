@@ -25,10 +25,12 @@ const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
         }
     }, [serverError])
 
-    const checkRegister = () => {
-        checkRegisterForm()
+    const checkRegister = async () => {
+        const status = await checkRegisterForm();
         
-        // MailCodeWindow()
+        if (status) {
+            MailCodeWindow()
+        }
     }
     
     return (

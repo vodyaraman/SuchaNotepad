@@ -17,13 +17,7 @@ const UserMailCode = () => {
         
         if(status){
             const code = values.join('')
-            const activateStatus = await checkValidationEmailCode(code)
-            console.log(status)
-            if(activateStatus){
-                register()
-            } else{
-                return console.log('Код неверный')
-            }
+            
         } else{
             console.log('Проверьте правильность ввода')
         }

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkEmailRegister, loginUser, registerUser, sendEmailCode, validateEmailCode, validateUserData } from './auth-thunks';
+import { loginUser, registerUser, validateEmailCode } from './auth-thunks';
 
 // Создание слайса для аутентификации
 const authSlice = createSlice({
@@ -17,7 +17,6 @@ const authSlice = createSlice({
       name: '',
       email: '',
       password: '',
-      isActivate: false,
       isAuthenticated: false,
       token: null,
       loading: false,
@@ -52,6 +51,9 @@ const authSlice = createSlice({
     setUserPassword(state, action) {
       state.login.userPassword = action.payload;
     },
+    setError(state, action) {
+      state.register.error = [...state.register.error, ...action.payload]
+    },
     clearErrors(state){
       state.register.error = [];
     },
@@ -84,19 +86,6 @@ const authSlice = createSlice({
         console.log('validateEmailCode rejected')
         state.register.error = [...state.login.error, ...action.payload];
       })
-      .addCase(validateUserData.pending, (state) => {
-        state.register.loading = true;
-        state.register.error = [];
-      })
-      .addCase(validateUserData.fulfilled, (state, action) => {
-        state.register.loading = false;
-        state.register.isActivate = action.payload.isActivate
-        state.register.error = [];
-      })
-      .addCase(validateUserData.rejected, (state, action) => {
-        state.register.loading = false;
-        state.register.error = [...state.register.error, ...action.payload]
-      })
       .addCase(registerUser.pending, (state) => {
         state.register.loading = true;
         state.register.error = [];
@@ -113,7 +102,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAuth, logout, setUsername, setEmail, setPassword, setLogin, setUserPassword, clearErrors} = authSlice.actions;
+export const { setAuth, logout, setUsername, setEmail, setPassword, setLogin, setUserPassword, setError, clearErrors} = authSlice.actions;
 
 export default authSlice.reducer;
 
