@@ -1,16 +1,13 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-import RegAndAuth from "../../Widgets/User/registration-authentication";
-
-//Импорт провайдера авторизации и регистрации
-import { AuthProvider } from "../../Entities/User/Helpers/user-manager";
+import { Notepad } from "../../Widgets";
 
 const MainPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
         <AuthProvider >
-            <RegAndAuth />
+            <Notepad />
         </AuthProvider>
     </View>
     

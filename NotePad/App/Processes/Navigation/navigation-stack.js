@@ -11,7 +11,11 @@ function AppNavigation() {
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Test">
-          <Stack.Screen name="Main" component={MainPage} />
+          <Stack.Screen 
+            name="Main" 
+            component={MainPage}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen 
             name="Test" 
             component={TestPage} 

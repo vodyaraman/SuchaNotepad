@@ -1,6 +1,13 @@
+<<<<<<< Updated upstream
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUsername, setEmail, setPassword, validateUserData, validateEmailCode, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
+=======
+import React, { createContext, useContext, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { setUsername, setEmail, setPassword, registerUser, setLogin, setUserPassword, loginUser, clearErrors} from '../../../Processes/Authentication';
+>>>>>>> Stashed changes
 
 // Contexts to manage user authentication and registration
 export const RegistrationContext = createContext();
@@ -9,6 +16,8 @@ export const LoginContext = createContext();
 // Combined Provider
 export const AuthProvider = ({ children }) => {
     const dispatch = useDispatch();
+
+    const navigation = useNavigation();
 
     // Registration state and actions
     const registerState = useSelector((state) => state.auth.register);
@@ -94,7 +103,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const makeLogin = () => {
-        dispatch(loginUser(loginState));
+        dispatch(loginUser({loginState, navigate: navigation.navigate}));
     };
 
     return (
