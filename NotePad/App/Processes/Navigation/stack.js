@@ -1,10 +1,8 @@
-import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { TestPage, MainPage, PageUserEntrypoint } from '../../Pages';
-
-export const navigationRef = React.createRef();
+import { navigationRef } from './Rules/stack-rules';
 
 const Stack = createStackNavigator();
 

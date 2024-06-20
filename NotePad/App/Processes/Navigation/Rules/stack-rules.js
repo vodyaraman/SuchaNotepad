@@ -1,4 +1,6 @@
-import { navigationRef } from '../stack';
+import * as React from 'react';
+
+export const navigationRef = React.createRef();
 
 class Relocate {
     static navigate(name, params) {
