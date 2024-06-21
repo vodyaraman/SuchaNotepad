@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, registerUser, validateEmailCode } from './auth-thunks';
+import { loginUser, registerUser } from './auth-thunks';
 
 // Создание слайса для аутентификации
 const authSlice = createSlice({
@@ -53,6 +53,8 @@ const authSlice = createSlice({
     },
     setError(state, action) {
       state.register.error = [...state.register.error, ...action.payload]
+      console.log('Сработал setError')
+      console.log(action.payload)
     },
     clearErrors(state){
       state.register.error = [];
@@ -73,19 +75,6 @@ const authSlice = createSlice({
         state.login.loading = false;
         state.login.error = [...state.login.error, ...action.payload];
       })
-      .addCase(validateEmailCode.pending, (state) => {
-        state.register.loading = true;
-        state.register.error = [];
-      })
-      .addCase(validateEmailCode.fulfilled, (state) => {
-        state.register.loading = false;
-        state.register.error = [];
-      })
-      .addCase(validateEmailCode.rejected, (state, action) => {
-        state.register.loading = false;
-        console.log('validateEmailCode rejected')
-        state.register.error = [...state.login.error, ...action.payload];
-      })
       .addCase(registerUser.pending, (state) => {
         state.register.loading = true;
         state.register.error = [];
@@ -98,7 +87,8 @@ const authSlice = createSlice({
       .addCase(registerUser.rejected, (state, action) => {
         state.register.loading = false;
         console.log('register rejected')
-        state.register.error = [...state.register.error, ...action.payload]
+        state.register.error = [...state.register.error, action.payload]
+        console.log(state.register.error)
       });
   },
 });

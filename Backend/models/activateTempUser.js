@@ -10,7 +10,15 @@ const activateTempUserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    createdAt: { type: Date, expires: '1m', default: Date.now },
+    expiredAt: {
+        type: Date,
+        default: Date.now,
+        required: true,
+       
+    }
 })
+
+// activateTempUserSchema.index({"expiredAt": 1},{expireAfterSeconds: 10})
+//нихера не работает автоудаление, но пока оставить это
 
 export default mongoose.model('TempUser', activateTempUserSchema);

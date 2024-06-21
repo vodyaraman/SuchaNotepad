@@ -4,7 +4,11 @@ import { OpeningAnim } from "../../../../Pull/User";
 import { useRef, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 
-const AnimatedErrorModal = ({text, isVisible, setIsVisible, setMessage}) => {
+import { useDispatch } from "react-redux";
+import { clearErrors } from "../../../../Processes/Authentication";
+
+const AnimatedErrorModal = ({text, isVisible, setIsVisible}) => {
+    const dispatch = useDispatch()
     const timerIDRef = useRef(null)
 
     useEffect(() => {
@@ -15,7 +19,7 @@ const AnimatedErrorModal = ({text, isVisible, setIsVisible, setMessage}) => {
         
             timerIDRef.current = setTimeout(() => {
                 setIsVisible(false);
-                setMessage('');
+                dispatch(clearErrors())
             }, 3000);
         
             return () => {
@@ -24,7 +28,7 @@ const AnimatedErrorModal = ({text, isVisible, setIsVisible, setMessage}) => {
                 }
             };
         }
-    }, [text, setIsVisible, setMessage]);
+    }, [text, setIsVisible]);
 
 
     return(

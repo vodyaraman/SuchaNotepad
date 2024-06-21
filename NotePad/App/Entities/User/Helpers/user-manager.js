@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, setEmail, setPassword, validateEmailCode, validateUserData, registerUser, setLogin, setUserPassword, loginUser, setError, clearErrors} from '../../../Processes/Authentication';
+import { setUsername, setEmail, setPassword, validateUserData, registerUser, setLogin, setUserPassword, loginUser, setError, clearErrors} from '../../../Processes/Authentication';
 
 // Contexts to manage user authentication and registration
 export const RegistrationContext = createContext();
@@ -12,21 +12,16 @@ export const AuthProvider = ({ children }) => {
 
     // Registration state and actions
     const registerState = useSelector((state) => state.auth.register);
-    const [serverError, setServerError] = useState([])
     
     const [passwordState, setPasswordState] = useState({
         passwordRepeat: '',
         passwordsMatch: null
     });
 
-    useEffect(() => {
-        if (registerState.error.length !== 0) {
-            const tempArr = registerState.error.map(error => error.msg).filter(elem => !serverError.includes(elem))
-            setServerError([...serverError, ...tempArr])
-            dispatch(clearErrors())
-        }
-        
-    }, [registerState.error])
+    const setErrors = (err) => {
+        dispatch(clearErrors())
+        dispatch(setError(err))
+    }
 
     const setRegistration = (updatedRegister) => {
         dispatch(setUsername(updatedRegister.name));
@@ -60,22 +55,21 @@ export const AuthProvider = ({ children }) => {
     };
 
     const checkRegisterForm = async () => {
+        console.log('Кнопка нажата')
         if(passwordState.passwordsMatch && registerState.name && registerState.email){
-            const status = await validateUserData(registerState)           
+            const status = await validateUserData(registerState)
+                       
             if (status.status) {
                 return true;
             }else{
-                dispatch(setError(status))
+                const errorMsg = status.map(err => err.msg)
+                setErrors(errorMsg)
                 return false;
             }
         }
         else {
-            setServerError([...serverError,"Check that the data is entered correctly"]) 
+            setErrors(["Check that the data is entered correctly"]) 
         }
-    }
-
-    const checkValidationEmailCode = (code) => {
-        dispatch(validateEmailCode(code))
     }
 
     const register = (code) => {  
@@ -104,13 +98,13 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <RegistrationContext.Provider value={{
-            registerState, serverError, setServerError,
+            registerState,
             username: registerState.username, updateUsername,
             email: registerState.email, updateEmail,
             password: registerState.password, updatePassword,
             passwordRepeat: passwordState.passwordRepeat, updatePasswordRepeat,
             passwordsMatch: passwordState.passwordsMatch, 
-            checkRegisterForm, checkValidationEmailCode, register,
+            checkRegisterForm, register, setErrors
         }}>
             <LoginContext.Provider value={{
                 login: loginState.login, updateLogin,

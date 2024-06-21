@@ -12,18 +12,9 @@ import { useRegistration } from "../../../../Entities/User/Helpers/user-manager"
 
 const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
 
-    const [message, setMessage] = useState([])
     const [isVisible, setIsVisible] = useState(false)  
-    const {serverError, setServerError, checkRegisterForm} = useRegistration()
-
-    useEffect(() => {
-        if (serverError.length !== 0) {
-            setMessage([...serverError])
-            setServerError([])
-            setIsVisible(true)
-            
-        }
-    }, [serverError])
+    const {checkRegisterForm, registerState} = useRegistration()
+    const {error} = registerState
 
     const checkRegister = async () => {
         const status = await checkRegisterForm();
@@ -35,13 +26,14 @@ const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
     
     return (
         <>
-            {message && message.map((message, index) => <AnimatedErrorModal key={index} text={message} setIsVisible={setIsVisible} setMessage={setMessage} isVisible={isVisible} /> )}
+            
+            {error && error.map((err, index) => <AnimatedErrorModal key={index} text={err} setIsVisible={setIsVisible} isVisible={true} /> )}
             
             <View style={styles.mainContainer}>
                 <RegAuthPlate>
                     <View style={styles.inputContainer}>
-                        <UserEmailReg message={message} setMessage={setMessage} setIsVisible={setIsVisible} />
-                        <UserUsernameReg message={message} setMessage={setMessage} setIsVisible={setIsVisible} />
+                        <UserEmailReg setIsVisible={setIsVisible} />
+                        <UserUsernameReg setIsVisible={setIsVisible} />
                         <UserPasswordReg />
                         <UserPasswordRepeatReg />
                     </View>

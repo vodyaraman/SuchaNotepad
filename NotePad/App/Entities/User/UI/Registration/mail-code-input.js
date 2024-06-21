@@ -6,7 +6,7 @@ import React,{useRef, useState} from 'react';
 
 import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
 
-const MailCodeInput = ({values, setValues}) => {
+const MailCodeInput = ({values, setValues, borderBottomColor = 'white'}) => {
     
     const inputRefs = useRef([]); //Для того чтобы создать массив всех инпутов и ссылаться на определенный из них в атрибуте компонента
 
@@ -52,7 +52,7 @@ const MailCodeInput = ({values, setValues}) => {
                         onChange={onChangeHandler}
                         placeholder={''}
                         maxLength={1}
-                        style={[styles.input, isFocused && styles.focusedInput]}
+                        style={[styles.input, isFocused && styles.focusedInput, {borderBlockColor:borderBottomColor}]}
                         onFocus={() => setIsFocused(true)}
                         onBlur={onBlurAction}
                     />
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingBottom: 5,
         backgroundColor: 'transparent',
-        borderBottomColor: 'white',
         borderBottomWidth: hg('0.2%'),
     },
 

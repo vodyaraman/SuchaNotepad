@@ -43,19 +43,3 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
     return rejectWithValue(error.response.data);
   }
 });
-
-//Проверка кода на совпадение 
-export const validateEmailCode = createAsyncThunk('auth/validateEmailCode', async (code, {rejectWithValue}) =>{
-  try {
-    const response = await apiClient.post('/users/validateEmailCode', {code});
-    console.log(response)
-    if(response.data){
-      return true;
-    } else{
-      return false;
-    }
-  } catch (error) {
-    console.log(error)
-    return rejectWithValue(error);
-  }
-});

@@ -50,12 +50,21 @@ export const validateUserData = async(req, res) => {
 
     const code = generateActivateCode()
     const {email} = req.body
+    const expiredAt = new Date() //Сервер выдает время на 3 часа раньше
+    expiredAt.setHours(expiredAt.getHours() + 3)
 
+    const existingUser = TempUser.findOne({email})
+
+    if (existingUser) {
+      await TempUser.deleteOne(existingUser)
+    }
+    
     sendEmailCode(email, code)
 
     const newTempUser = new TempUser({
       email,
       code,
+      expiredAt
     })
 
     await newTempUser.save()
@@ -67,20 +76,6 @@ export const validateUserData = async(req, res) => {
     res.status(500).json({message: 'Что-то пошло не так'})
   }
   
-};
-
-export const validateEmailCode = async (req, res) => {
-  try {
-    const {code} = req.body
-    if (code === activateCode) {
-      res.status(200).json(true)
-    } else{
-      return res.json(false)
-    }
-  } catch (error) {
-    console.error('Error validating activate code:', error);
-    res.status(500).json([{ message: 'Error validating activate code', error: error.message }]);
-  }
 };
 
 export const login = (req, res) => {

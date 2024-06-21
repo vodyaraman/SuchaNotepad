@@ -11,18 +11,18 @@ import { useRegistration } from "../../Helpers/user-manager";
 //Импорт валидации
 import { usernameValidation } from "../../Helpers/username-validation";
 
-const UserUsernameReg = ({message, setMessage, setIsVisible}) => {
-    const {updateUsername, registerState} = useRegistration()
+const UserUsernameReg = ({setIsVisible}) => {
+    const {updateUsername, registerState, setErrors} = useRegistration()
     const [borderColor, setBorderColor] = useState('white')
 
     const onBlurCheckUser = async () => {
       const currentUsername = registerState.name
-      
-      const status = await usernameValidation(currentUsername)
+      const status = await usernameValidation(currentUsername) 
+
       if (status.status) {
         setBorderColor('white')  
       } else{
-        setMessage([...message, status.message])
+        setErrors([status.message])
         setIsVisible(true)
         setBorderColor('red')
       }

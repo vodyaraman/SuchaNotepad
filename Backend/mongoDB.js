@@ -9,7 +9,7 @@ const mongoURI = process.env.MONGO_URI;
 
 // Подключение к MongoDB с обработкой событий
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }) // параметры для совместимости
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true,  }) // параметры для совместимости
   .then(() => {
     console.log('Connected to MongoDB');
   })
