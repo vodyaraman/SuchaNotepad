@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '../../../Pull/Utils/APIClient';
-import Relocate from '../../Navigation/';
+import Relocate from '../../Navigation/Rules';
 import { saveTokenToLocalStorage } from '../Helpers/save-token';
 
 // Асинхронные действия
