@@ -6,11 +6,14 @@ import RegAndAuth from "../../Widgets/User/registration-authentication";
 //Импорт провайдера авторизации и регистрации
 import { AuthProvider } from "../../Entities/User/Helpers/user-manager";
 
+import { UserMailCode } from "../../Features/User";
+
 const TestPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
         <AuthProvider >
-            <RegAndAuth />
+            {/* <RegAndAuth /> */}
+            <UserMailCode />
         </AuthProvider>
     </View>
     

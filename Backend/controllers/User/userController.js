@@ -7,18 +7,18 @@ import { sendEmailCode } from '../../utils/sendEmailCode.js';
 
 export const register = async (req, res) => {
   try {
-    const {name, email, password} = req.body.userData;
+    const {code} = req.body;
 
-    const activateUser = await TempUser.findOne({email, code: req.body.code})
+    const activateUser = await TempUser.findOne({code: code})
     
     if (!activateUser) {
-      return res.status(401).json({message: 'Неверный проверочный код'})
+      return res.status(401).json(['Неверный проверочный код'])
     }
 
     const newUser = new User({
-      name,
-      email,
-      password,
+      name: activateUser.name,
+      email: activateUser.email,
+      password: activateUser.password,
     });
 
     await newUser.save();
@@ -26,7 +26,7 @@ export const register = async (req, res) => {
     const token = generateToken(newUser);
     console.log('Sending token:', token);
 
-    await TempUser.deleteOne({ email });
+    await TempUser.deleteOne({ code });
 
     res.status(201).json({
       message: 'User registered successfully',
@@ -47,22 +47,34 @@ export const validateUserData = async(req, res) => {
     if(!errors.isEmpty()){
       return res.status(401).json(errors.array())
     }
+    const {name, email, password} = req.body
+
+    const existingEmail = await User.findOne({email})
+    const existingUsername = await User.findOne({name})
+
+    if (existingEmail) {
+      return res.status(401).json([{msg: 'User with this email already exists'}])
+    } else if(existingUsername){
+      return res.status(401).json([{msg: 'User with this username already exists'}])
+    }
 
     const code = generateActivateCode()
-    const {email} = req.body
+    const {} = req.body
     const expiredAt = new Date() //Сервер выдает время на 3 часа раньше
     expiredAt.setHours(expiredAt.getHours() + 3)
 
-    const existingUser = TempUser.findOne({email})
+    const existingTempUser = TempUser.findOne({email})
 
-    if (existingUser) {
-      await TempUser.deleteOne(existingUser)
+    if (existingTempUser) {
+      await TempUser.deleteOne(existingTempUser)
     }
     
     sendEmailCode(email, code)
 
     const newTempUser = new TempUser({
+      name,
       email,
+      password,
       code,
       expiredAt
     })

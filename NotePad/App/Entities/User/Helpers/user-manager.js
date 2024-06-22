@@ -55,7 +55,6 @@ export const AuthProvider = ({ children }) => {
     };
 
     const checkRegisterForm = async () => {
-        console.log('Кнопка нажата')
         if(passwordState.passwordsMatch && registerState.name && registerState.email){
             const status = await validateUserData(registerState)
                        
@@ -73,7 +72,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = (code) => {  
-        dispatch(registerUser({userData: registerState, code}));
+        dispatch(registerUser({code}));
     };
 
     // Login state and actions

@@ -87,7 +87,7 @@ const authSlice = createSlice({
       .addCase(registerUser.rejected, (state, action) => {
         state.register.loading = false;
         console.log('register rejected')
-        state.register.error = [...state.register.error, action.payload]
+        state.register.error = [...state.register.error, ...action.payload]
         console.log(state.register.error)
       });
   },

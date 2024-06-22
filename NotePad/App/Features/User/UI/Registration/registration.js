@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { View, StyleSheet } from 'react-native';
 
 import { UserEmailReg, UserUsernameReg, UserPasswordReg, UserPasswordRepeatReg, SubmitRegisterButton } from "../../../../Entities/User";
@@ -26,8 +26,9 @@ const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
     
     return (
         <>
-            
-            {error && error.map((err, index) => <AnimatedErrorModal key={index} text={err} setIsVisible={setIsVisible} isVisible={true} /> )}
+            <View style={styles.alertContainer}>
+                {error && error.map((err, index) => <AnimatedErrorModal key={index} text={err} setIsVisible={setIsVisible} isVisible={true} /> )}
+            </View>
             
             <View style={styles.mainContainer}>
                 <RegAuthPlate>
@@ -54,5 +55,12 @@ const styles = StyleSheet.create({
     },
     inputContainer:{
         gap: 20,
+    },
+    alertContainer:{
+        position: 'absolute', 
+        zIndex: 5, 
+        gap: 10, 
+        width: '100%', 
+        left: '10%', 
     },
 })

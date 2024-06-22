@@ -32,26 +32,17 @@ const AnimatedErrorModal = ({text, isVisible, setIsVisible}) => {
 
 
     return(
-        <View style={styles.alertContainer}>
-            <OpeningAnim isVisible={isVisible}>
-                <AnimatedModal text={text} />
-            </OpeningAnim>
-        </View>  
+        
+        <OpeningAnim isVisible={isVisible}>
+            <AnimatedModal text={text} />
+        </OpeningAnim>
+         
         
     )
 }
 
 export default AnimatedErrorModal;
 
-const styles = StyleSheet.create({
-    alertContainer: {
-        position: 'absolute', 
-        zIndex: 5, 
-        gap: 10, 
-        width: '100%', 
-        left: '10%', 
-    },
-})
 
 
 

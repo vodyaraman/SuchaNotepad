@@ -15,17 +15,17 @@ const MailCodeInput = ({values, setValues, borderBottomColor = 'white'}) => {
         setIsFocused(false)
     }
 
-    // const onKeyPress = (event) => { //Функция разрешающая только ввод цифр и использование клавиши Backspace
-    //     if (!/[0-9]/.test(event.key) && event.key !== 'Backspace') {
-    //         event.preventDefault();
-    //     }
-    // }
-
     const onChangeHandler = ({target}) => { //Функция в которой происходит вся магия
+        let start = target.selectionStart;
+        let end = target.selectionEnd;
+
         let index = target.id;
+        target.value = target.value.toUpperCase()
+
+        target.setSelectionRange(start, end);
         const value = target.value
         
-        setValues(values.map((n, i) => index == i ? value : n))
+        setValues(values.map((n, i) => index == i ? value.toUpperCase() : n))
 
         if(index < values.length - 1 && value){
             inputRefs.current[++index].focus()
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 
     input:{
         height:hg('23%'),
-        fontSize:hg('8%'),
+        fontSize:hg('7.5%'),
         lineHeight:hg('22%'),
         color:'white',
         textAlign:'center',
