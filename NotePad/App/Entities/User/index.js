@@ -21,6 +21,9 @@ import UserBackground from './UI/Main/user-background';
 // ---- Компонент текста с мини-кнопкой ---- 
 import HelpTextButton from './UI/Main/help-text-button';
 
+// ---- Компоненты для приветсвенной модалки ----
+import { WelcomeButton } from './UI/Main/welcome-button';
+
 export {
   UserLogin,
   UserPassword,
@@ -35,4 +38,5 @@ export {
   HelpTextButton,
   AnimatedErrorModal,
   MailCodeInput,
+  WelcomeButton,
 };

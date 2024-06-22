@@ -6,8 +6,6 @@ import {store} from './App/Processes/Store';
 
 import AppNavigation from './App/Processes/Navigation/stack';
 
-//Временный импорт
-import { TestPage } from './App/Pages';
 
 const loadFonts = async () => {
   await Font.loadAsync({
