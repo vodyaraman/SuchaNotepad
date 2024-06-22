@@ -10,19 +10,18 @@ import {AnimatedErrorModal} from "../../../../Entities/User";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
 
 
-const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
-
-    const [isVisible, setIsVisible] = useState(false)  
-    const {checkRegisterForm, registerState} = useRegistration()
-    const {error} = registerState
+const UserReg = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const {checkRegisterForm, registerState} = useRegistration();
+    const {error} = registerState;
 
     const checkRegister = async () => {
         const status = await checkRegisterForm();
         
         if (status) {
-            MailCodeWindow()
+            console.log("Сюда добавить переход")
         }
-    }
+    };
     
     return (
         <>
@@ -40,7 +39,7 @@ const UserReg = ({changeAuthHandler, MailCodeWindow}) => {
                     </View>
                 </RegAuthPlate>
                 <SubmitRegisterButton onPressHandler={checkRegister} />
-                <HelpTextButton onPressHandler={changeAuthHandler} textDesc={'Already have an acount?'} textButton={'Login'} />
+                <HelpTextButton textDesc={'Already have an acount?'} textButton={'Login'} />
             </View>
         </>      
     );

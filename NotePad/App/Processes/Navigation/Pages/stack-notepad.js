@@ -3,14 +3,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { NoteOverlook, NoteCheck, NoteWrite } from '../../../Features/Note';
-import { notepadNavRef } from '../Rules/stack-notepad-rules';
+import { notepadNavRef } from '../Rules/show-feature';
 
 const NotepadStack = createStackNavigator();
 
 export default function NotepadNavigation() {
     return (
         <NavigationContainer ref={notepadNavRef} independent={true}>
-            <NotepadStack.Navigator initialRouteName="Overlook">
+            <NotepadStack.Navigator initialRouteName="Write">
                 <NotepadStack.Screen 
                     name="Check" 
                     component={NoteCheck}

@@ -2,7 +2,9 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import GradientBackground from './linear-gradient';
 
-const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, Prometheus, backgroundColor, height }) => {
+const Noop = ()=> null;
+
+const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, Prometheus = Noop, backgroundColor, height }) => {
   return (
     <GradientBackground 
       backgroundColor={backgroundColor} 

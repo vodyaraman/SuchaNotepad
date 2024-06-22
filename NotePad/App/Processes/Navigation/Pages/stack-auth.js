@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { UserReg, UserAuth, UserMailCode } from '../../../Features/User';
-import { authNavigationRef } from '../Rules/stack-auth-rules';
+import { authNavigationRef } from '../Rules/show-feature';
 
 const AuthStack = createStackNavigator();
 
@@ -14,7 +14,7 @@ export default function AuthNavigation() {
                 <AuthStack.Screen 
                     name="UserReg" 
                     component={UserReg}
-                    options={{ headerShown: false }}
+                    options={{ headerShown: true }}
                 />
                 <AuthStack.Screen 
                     name="UserAuth" 

@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { TestPage, MainPage, PageUserEntrypoint } from '../../Pages';
-import { navigationRef } from './Rules/stack-rules';
+import { navigationRef } from './Rules/relocate-page';
 
 const Stack = createStackNavigator();
 

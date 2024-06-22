@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthNavigation } from '../../Processes/Navigation';
 import { UserBackground } from '../../Entities/User';
 
-const RegAndAuth = () => {
+const Authentication = () => {
     return (
         <UserBackground>
             <AuthNavigation />
@@ -10,4 +10,4 @@ const RegAndAuth = () => {
     );
 };
 
-export default RegAndAuth;
+export default Authentication;

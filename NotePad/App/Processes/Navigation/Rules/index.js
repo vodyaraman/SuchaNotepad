@@ -1,6 +1,5 @@
 // Rules
-import Relocate from "./stack-rules"
-import Notepad from "./stack-notepad-rules";
-import Authentication from "./stack-auth-rules";
+import Relocate from "./relocate-page"
+import Show from "./show-feature";
 
-export { Relocate, Notepad, Authentication };
+export { Relocate, Show };

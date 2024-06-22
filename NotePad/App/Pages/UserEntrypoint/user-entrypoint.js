@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
-import { RegAndAuth } from "../../Widgets";
+import { Authentication } from "../../Widgets";
 
 
 const PageUserEntrypoint = () => {
     return (
     <SafeAreaView style = { styles.TestPageStyle}>
-        <RegAndAuth/>
+        <Authentication/>
     </SafeAreaView>
 )};
 
