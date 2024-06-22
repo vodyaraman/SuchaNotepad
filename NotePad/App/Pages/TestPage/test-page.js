@@ -6,11 +6,14 @@ import {Authentication} from "../../Widgets";
 //Импорт провайдера авторизации и регистрации
 import { AuthProvider } from "../../Entities/User/Helpers/user-manager";
 
+//Временный импорт
+import { AuthNavigation } from "../../Processes/Navigation";
+
 const TestPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
         <AuthProvider >
-            <Authentication />
+            <AuthNavigation/>
         </AuthProvider>
     </View>
     
@@ -22,7 +25,7 @@ const styles = StyleSheet.create({
     TestPageStyle: {
         zIndex: 0,
         width: '100%',
-        height: 0, //Поставил 0 потому что при рендере на странице этот гей растягивался на 100%
+        height: '100%',
         position: 'relative',
         flexDirection: "column",
     }

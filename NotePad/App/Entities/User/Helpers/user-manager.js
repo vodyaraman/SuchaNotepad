@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUsername, setEmail, setPassword, validateUserData, registerUser, setLogin, setUserPassword, loginUser, setError, clearErrors} from '../../../Processes/Authentication';
 

@@ -6,25 +6,25 @@ import { navigationRef } from './Rules/relocate-page';
 
 const Stack = createStackNavigator();
 
-function AppNavigation() {
+const AppNavigation = () => {
     return (
-      <NavigationContainer ref={navigationRef}>
+      <NavigationContainer ref={navigationRef} independent={true}>
         <Stack.Navigator initialRouteName="Test">
-          <Stack.Screen 
-            name="Main" 
-            component={MainPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen 
+        <Stack.Screen 
             name="Test" 
             component={TestPage} 
             options={{ headerShown: false }} 
           />
           <Stack.Screen 
+            name="Main" 
+            component={MainPage}
+            options={{ headerShown: false }}
+          />
+          {/* <Stack.Screen 
             name="User" 
             component={PageUserEntrypoint} 
             options={{ headerShown: false }} 
-          />
+          /> */}
         </Stack.Navigator>
       </NavigationContainer>
     );
