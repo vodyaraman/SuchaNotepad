@@ -1,5 +1,5 @@
 import Notepad from "./Note/notepad";
-import Authentication from "./User/authentication"
+import Authentication from "./User/authentication";
+import Group from "./Group/group";
 
-
-export { Notepad, Authentication };
+export { Notepad, Authentication, Group };

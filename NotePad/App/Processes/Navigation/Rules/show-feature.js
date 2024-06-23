@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export const notepadNavRef = React.createRef();
 export const authNavigationRef = React.createRef();
+export const groupNavRef = React.createRef();
 
 class Show {
     static navigate(ref, name, params) {
@@ -41,6 +42,20 @@ class Show {
     static EmailCode(params) {
         Show.navigate(authNavigationRef, 'Validate Email', params);
     }
-};
+
+    // Group methods
+    static Control(params) {
+        Show.navigate(groupNavRef, 'Control', params);
+    }
+
+    static Create(params) {
+        Show.navigate(groupNavRef, 'Create', params);
+    }
+
+    static OverlookGroup(params) {
+        Show.navigate(groupNavRef, 'Overlook', params);
+    }
+}
 
 export default Show;
+
