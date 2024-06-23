@@ -3,8 +3,9 @@ import { View, StyleSheet } from 'react-native';
 
 import { UserLogin, UserPassword, UserSubmit, HelpTextButton, UserBackground } from "../../../../Entities/User"
 import { RegAuthPlate } from "../../../../Pull/User";
+import { Show } from "../../../../Processes/Navigation/Rules";
 
-const UserAuth = ({changeAuthHandler}) => {
+const UserAuth = () => {
     return (
         <UserBackground>
             <View style={styles.mainContainer}>
@@ -15,7 +16,10 @@ const UserAuth = ({changeAuthHandler}) => {
                     </View>
                 </RegAuthPlate>
                 <UserSubmit/>
-                <HelpTextButton textDesc={'Don\'t have an account yet?'} textButton={'Register'} onPressHandler={changeAuthHandler} />
+                <HelpTextButton 
+                    textDesc={'Don\'t have an account yet?'} 
+                    textButton={'Register'} 
+                    onPressHandler={ () => { Show.Registration() } } />
             </View>
         </UserBackground>               
     );

@@ -11,20 +11,20 @@ const AuthStack = createStackNavigator();
 export default function AuthNavigation() {
     
     return (
-        <NavigationContainer independent={true}>
-            <AuthStack.Navigator initialRouteName="UserReg">
+        <NavigationContainer ref={authNavigationRef} independent={true}>
+            <AuthStack.Navigator initialRouteName="Registration">
                 <AuthStack.Screen 
-                    name="UserReg" 
+                    name="Registration" 
                     component={UserReg}
                     options={{ headerShown: false }}
                 />
                 <AuthStack.Screen 
-                    name="UserAuth" 
+                    name="Authorisation" 
                     component={UserAuth}
                     options={{ headerShown: false }}
                 />
                 <AuthStack.Screen 
-                    name="UserMailCode" 
+                    name="Validate Email" 
                     component={UserMailCode}
                     options={{ headerShown: false }}
                 />

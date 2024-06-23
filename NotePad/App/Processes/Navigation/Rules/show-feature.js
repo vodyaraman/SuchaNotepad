@@ -30,16 +30,16 @@ class Show {
     }
 
     // Authentication methods
-    static toUserReg(params) {
-        Show.navigate(authNavigationRef, 'UserReg', params);
+    static Registration(params) {
+        Show.navigate(authNavigationRef, 'Registration', params);
     }
 
-    static toUserAuth(params) {
-        Show.navigate(authNavigationRef, 'UserAuth', params);
+    static Authorisation(params) {
+        Show.navigate(authNavigationRef, 'Authorisation', params);
     }
 
-    static toUserMailCode(params) {
-        Show.navigate(authNavigationRef, 'UserMailCode', params);
+    static EmailCode(params) {
+        Show.navigate(authNavigationRef, 'Validate Email', params);
     }
 };
 
