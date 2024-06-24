@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '../../../Pull/Utils/APIClient';
-import Relocate from '../../Navigation/Rules';
+import { Relocate } from '../../Navigation/Rules';
 import { saveTokenToLocalStorage } from '../Helpers/save-token';
 
 // Асинхронные действия
@@ -21,7 +21,7 @@ export const loginUser = createAsyncThunk('auth/loginUser', async ({ login, user
     }
   } catch (error) {
     console.error('Login error:', error);
-    return rejectWithValue(error.response.data);
+    return rejectWithValue([error.response.data]);
   }
 });
 

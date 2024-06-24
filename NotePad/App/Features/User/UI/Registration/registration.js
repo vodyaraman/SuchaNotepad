@@ -23,12 +23,15 @@ const UserReg = () => {
                 ))}
             </View>
             <View style={styles.mainContainer}>
-                <RegAuthPlate mainContainerStyle={styles.mainContainer} inputContainerStyle={styles.inputContainer}>
+                
+                <RegAuthPlate >
                     <UserEmailReg setIsVisible={setIsVisible} />
                     <UserUsernameReg setIsVisible={setIsVisible} />
                     <UserPasswordReg />
                     <UserPasswordRepeatReg />
                 </RegAuthPlate>
+                
+                
                 <SubmitRegisterButton onPressHandler={checkRegister} />
                 <HelpTextButton 
                     textDesc={'Already have an account?'} 
