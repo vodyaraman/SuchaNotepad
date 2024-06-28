@@ -1,4 +1,4 @@
-import { RegAuthPlate } from "../../../../Pull/User";
+import { UserBackgroundPlate } from "../../../../Pull/User";
 import { CustomText } from "../../../../Pull/Note";
 import { WelcomeButton } from "../../../../Entities/User";
 
@@ -10,14 +10,14 @@ const Welcome = () => {
     return(
         <View style={styles.mainContainer}>
             <View style={styles.textContainer}>
-                <RegAuthPlate>
+                <UserBackgroundPlate>
                     <CustomText
                         textColor={'white'}
                         text={'Регистрация прошла успешно! Добро пожаловать, пройдите небольшое обучение о том, как эффективно использовать это приложение! '}
                         numberOfLines={5}
                         textAlign={'center'}
                         fontSize={hg('2%')} />
-                </RegAuthPlate>
+                </UserBackgroundPlate>
             </View>
             <View style={styles.buttonsContainer}>
                 <WelcomeButton text={'Пройти обучение'} />

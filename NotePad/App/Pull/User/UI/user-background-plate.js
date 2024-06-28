@@ -1,7 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet } from "react-native";
 
-const RegAuthPlate = ({children, firstColor = '#61ACCC', secondColor = '#94D4EF'}) => {
+const UserBackgroundPlate = ({children, firstColor = '#61ACCC', secondColor = '#94D4EF'}) => {
     const colors = [firstColor, secondColor]
     return(
         <LinearGradient
@@ -14,7 +14,7 @@ const RegAuthPlate = ({children, firstColor = '#61ACCC', secondColor = '#94D4EF'
     )
 }
 
-export default RegAuthPlate;
+export default UserBackgroundPlate;
 
 const styles = StyleSheet.create({
     container: {

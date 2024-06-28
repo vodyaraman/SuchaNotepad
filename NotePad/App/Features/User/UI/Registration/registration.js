@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { UserEmailReg, UserUsernameReg, UserPasswordReg, UserPasswordRepeatReg, SubmitRegisterButton, UserBackground, HelpTextButton, AnimatedErrorModal } from "../../../../Entities/User";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
 import { Show } from "../../../../Processes/Navigation/Rules";
-import { RegAuthPlate } from "../../../../Pull/User";
+import { UserBackgroundPlate } from "../../../../Pull/User";
 
 const UserReg = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -24,12 +24,12 @@ const UserReg = () => {
             </View>
             <View style={styles.mainContainer}>
                 
-                <RegAuthPlate >
+                <UserBackgroundPlate >
                     <UserEmailReg setIsVisible={setIsVisible} />
                     <UserUsernameReg setIsVisible={setIsVisible} />
                     <UserPasswordReg />
                     <UserPasswordRepeatReg />
-                </RegAuthPlate>
+                </UserBackgroundPlate>
                 
                 
                 <SubmitRegisterButton onPressHandler={checkRegister} />

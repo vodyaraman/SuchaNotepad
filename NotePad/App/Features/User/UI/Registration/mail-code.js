@@ -1,5 +1,5 @@
 import { MailCodeInput, SubmitRegisterButton, UserBackground } from "../../../../Entities/User";
-import { RegAuthPlate } from "../../../../Pull/User";
+import { UserBackgroundPlate } from "../../../../Pull/User";
 import {AnimatedErrorModal} from "../../../../Entities/User";
 
 import React, { useState, useEffect } from 'react';
@@ -45,9 +45,9 @@ const UserMailCode = () => {
             </View>
             
             <View style={styles.container}>
-                <RegAuthPlate>
+                <UserBackgroundPlate>
                     <MailCodeInput values={values} setValues={setValues} borderBottomColor={borderBottomColor} />
-                </RegAuthPlate>
+                </UserBackgroundPlate>
                 <SubmitRegisterButton onPressHandler={onPressHandler} /> 
             </View>
         </UserBackground>
