@@ -6,15 +6,24 @@ import {Authentication} from "../../Widgets";
 //Импорт провайдера авторизации и регистрации
 import { AuthProvider } from "../../Entities/User/Helpers/user-manager";
 
-//Временный импорт
+//Импорт навигации по авторизации/регистрации
 import { AuthNavigation } from "../../Processes/Navigation";
+
+//Временный импорт
+import { MainWidgetPlate } from "../../Pull/Note";
+import { ItemBlock } from "../../Entities/Group";
+import {AnimatedSearchButton} from "../../Entities/Group";
 
 const TestPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
-        <AuthProvider >
+        {/* <AuthProvider >
             <AuthNavigation/>
-        </AuthProvider>
+        </AuthProvider> */}
+        <MainWidgetPlate>
+            <AnimatedSearchButton />
+            <ItemBlock />
+        </MainWidgetPlate>
     </View>
     
 )};
@@ -28,5 +37,8 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'relative',
         flexDirection: "column",
+        backgroundColor: '#EC7171',
+        paddingTop: 30,
+        paddingBottom: 15,
     }
 });

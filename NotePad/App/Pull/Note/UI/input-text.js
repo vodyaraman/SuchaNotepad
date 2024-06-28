@@ -62,7 +62,7 @@ const InputText = ({
       placeholder={placeholder}
       keyboardType="default"
       multiline={multiline}
-      numberOfLines={4}
+      numberOfLines={'auto'}
       onFocus={() => setIsFocused(true)}  // Set focus
       onBlur={onBlurAction}  // Remove focus
       onKeyPress={(e) => onKeyPress(e)}
