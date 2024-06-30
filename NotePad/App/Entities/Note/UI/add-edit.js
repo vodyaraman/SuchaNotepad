@@ -2,7 +2,7 @@ import React from "react";
 import { InputText, SmallUnderplate } from "../../../Pull/Note";
 import { useText } from '../Helpers/note-manager';
 
-const NoteAddEdit = ({ flex = 'center', fontWeight = "normal", fontSize = 14 }) => {
+const NoteAddEdit = ({ flex = 'center', fontWeight = "normal", fontSize = 13 }) => {
     const { timestamp, setTimestamp } = useText();
 
     const handleDateChange = (newDateString) => {

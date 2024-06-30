@@ -11,6 +11,7 @@ const NoteChangeType = () => {
 
   const handleSwitchChange = (index) => {
     setNoteType(index);
+    console.log(index);
   };
 
   return (

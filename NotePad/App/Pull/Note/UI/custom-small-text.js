@@ -20,10 +20,8 @@ const styles = StyleSheet.create({
   text: {
         fontFamily: "Montserrata-bold",
         fontWeight: 500,
-        fontSize: 16,
-
+        fontSize: "0.9em",
         color: 'black',
-        
         justifyContent: 'center',
     },
 });

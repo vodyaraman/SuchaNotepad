@@ -8,7 +8,7 @@ const Switcher = ({
   height = 40,
   totalStates = 3,
   stateLabels = ['Заметка 📒', 'Список📋', 'На время⌚️'],
-  onChange, // Add this line
+  onChange,
 }) => {
   const [activeIndex, setActiveIndex] = useState(initialActive);
   const animation = useRef(new Animated.Value(activeIndex)).current;
@@ -20,7 +20,7 @@ const Switcher = ({
       duration: 300,
       useNativeDriver: false
     }).start();
-    if (onChange) onChange(activeIndex); // Call onChange when activeIndex changes
+    if (onChange) onChange(activeIndex);
   }, [activeIndex]);
 
   const panResponder = PanResponder.create({
@@ -76,9 +76,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   labelText: {
-    fontWeight: '600',
+    fontWeight: '300',
     fontFamily: 'Roboto Slab',
-    fontSize: 16,
+    fontSize: 13,
     color: '#000',
   },
 });

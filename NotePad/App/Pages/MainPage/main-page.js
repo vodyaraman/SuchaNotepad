@@ -16,8 +16,11 @@ const styles = StyleSheet.create({
     TestPageStyle: {
         zIndex: 0,
         width: '100%',
-        height: 0,
+        height: '100%',
         position: 'relative',
         flexDirection: "column",
+        backgroundColor: '#EC7171',
+        paddingTop: 30,
+        paddingBottom: 15,
     }
 });

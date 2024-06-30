@@ -2,28 +2,41 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import GradientBackground from './linear-gradient';
 
-const Noop = ()=> null;
-
-const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, Prometheus = Noop, backgroundColor, height }) => {
+const FullScaledNotePlate = ({ 
+  User = null, 
+  Title = null, 
+  Note = null, 
+  Extra = null, 
+  backgroundColor = '#ffff', 
+  height = '100%',
+}) => {
   return (
     <GradientBackground 
       backgroundColor={backgroundColor} 
       height={height} 
       width={'100%'}
-      borderRadius={0}
-      >
-      <View style={styles.orionStyle}>
-        <Orion />
-      </View>
-      <View style={styles.scorpiusStyle}>
-        <Scorpius />
-      </View>
-      <View style={styles.andromedaStyle}>
-        <Andromeda />
-        <View style={styles.prometheusStyle}>
-          <Prometheus/>
+      borderRadius={15}
+    >
+      {User && (
+        <View style={styles.userStyle}>
+          <User />
         </View>
-      </View>
+      )}
+      {Title && (
+        <View style={styles.titleStyle}>
+          <Title />
+        </View>
+      )}
+      {Note && (
+        <View style={styles.noteStyle}>
+          <Note />
+        </View>)}
+      {Extra && (
+        <View style={styles.extraStyle}>
+          <Extra />
+        </View>
+      )}
+
     </GradientBackground>
   );
 };
@@ -31,36 +44,30 @@ const FullScaledNotePlate = ({ Orion, Scorpius, Andromeda, Prometheus = Noop, ba
 export default FullScaledNotePlate;
 
 const styles = StyleSheet.create({
-  orionStyle: {
+  userStyle: {
+    flex: 1,
     padding: '5%',
     width: '100%',
     backgroundColor: '#fcfcfcb0',
   },
-  scorpiusStyle: {
+  titleStyle: {
     width: '100%',
-
     justifyContent: 'center',
     padding: 4,
     flex: 1,
   },
-  andromedaStyle: {
+  noteStyle: {
     width: '100%',
-    flex: 10,
-
+    flex: 9.5,
     alignItems: 'center',
   },
-  prometheusStyle: {
-    alignItems: 'flex-start',
-
+  extraStyle: {
+    flex: 2,
+    alignItems: 'center',
     backgroundColor: '#fcfcfcb0',
     width: '100%',
     padding: 10,
   },
 });
 
-/*    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4, */
 
