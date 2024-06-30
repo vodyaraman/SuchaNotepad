@@ -4,11 +4,16 @@ import { useText } from '../Helpers/note-manager';
 
 const EditNote = ({ textColor = '#000', fontSize = 18 }) => {
     const { noteText, setNoteText } = useText();
+    
+    const handleChangeText = (text) => {
+        setNoteText(text);
+    };
+
     return (
         <InputText
           textColor={textColor}
           text={noteText}
-          onChangeText={setNoteText}
+          onChangeText={handleChangeText}
           multiline={true}
           height={"100%"}
           fontSize={fontSize}
@@ -17,3 +22,5 @@ const EditNote = ({ textColor = '#000', fontSize = 18 }) => {
 };
 
 export default EditNote;
+
+
