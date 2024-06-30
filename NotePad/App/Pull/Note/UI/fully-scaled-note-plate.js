@@ -2,16 +2,14 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import GradientBackground from './linear-gradient';
 
-const FullScaledNotePlate = React.memo(({ 
+const FullScaledNotePlate = ({ 
   User = null, 
   Title = null, 
   Note = null, 
-  Extra = null,
-  Timezone = null,
+  Extra = null, 
   backgroundColor = '#ffff', 
   height = '100%',
 }) => {
-  console.log("Render noteplate")
   return (
     <GradientBackground 
       backgroundColor={backgroundColor} 
@@ -33,19 +31,15 @@ const FullScaledNotePlate = React.memo(({
         <View style={styles.noteStyle}>
           <Note />
         </View>)}
-      {Timezone && (
-        <View style={styles.timezoneStyle}>
-          <Timezone />
-        </View>
-      )}
       {Extra && (
         <View style={styles.extraStyle}>
           <Extra />
         </View>
       )}
+
     </GradientBackground>
   );
-});
+};
 
 export default FullScaledNotePlate;
 
@@ -57,19 +51,12 @@ const styles = StyleSheet.create({
   titleStyle: {
     width: '100%',
     justifyContent: 'center',
-    flex: 2,
+    flex: 1,
   },
   noteStyle: {
     width: '100%',
     flex: 9.5,
     alignItems: 'center',
-  },
-  timezoneStyle: {
-    flex: 1,
-    alignItems: 'center',
-    width: '100%',
-    padding: 10,
-    backgroundColor: '#fcfcfcb0',
   },
   extraStyle: {
     flex: 2,
@@ -79,6 +66,5 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-
 
 

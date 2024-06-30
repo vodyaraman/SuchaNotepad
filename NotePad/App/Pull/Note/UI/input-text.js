@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
-import { heightPercentageToDP as hg, widthPercentageToDP as wd } from 'react-native-responsive-screen';
+
+import {heightPercentageToDP as hg, widthPercentageToDP as wd} from 'react-native-responsive-screen';
 
 const InputText = ({
-  text = "",
+  // text = "",
   borderBottomColor = 'white',
   fontSize = 12,
   lineHeight,
@@ -11,7 +12,7 @@ const InputText = ({
   fontFamily = 'Montserrata-medium',
   fontWeight = 'normal',
   color = '#000',
-  backgroundColor,
+  backgroundColor = "#fffff",
   textAlign = 'left',
   placeholder = "Enter note",
   height = "auto",
@@ -21,12 +22,12 @@ const InputText = ({
   onBlur = () => {},
   onKeyPress = () => {},
 }) => {
-  const [currentText, setCurrentText] = useState(text);
+  const [currentText, setCurrentText] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    setCurrentText(text);
-  }, [text]);
+    setCurrentText('');
+  }, []);
 
   const handleChangeText = (value) => {
     setCurrentText(value);
@@ -34,22 +35,22 @@ const InputText = ({
   };
 
   const onBlurAction = () => {
-    setIsFocused(false);
-    onBlur();
-  };
+    setIsFocused(false)
+    onBlur()
+  }
 
   return (
     <TextInput
       maxLength={maxLength}
       secureTextEntry={secureTextEntry}
       style={[
-        styles.input,
+        styles.input, 
         {
           fontSize: fontSize,
           lineHeight: lineHeight,
-          fontFamily: fontFamily,
-          fontWeight: fontWeight,
-          color: color,
+          fontFamily: fontFamily, 
+          fontWeight: fontWeight, 
+          color: color, 
           textAlign: textAlign,
           height: height,
           borderBottomColor: borderBottomColor,
@@ -58,6 +59,7 @@ const InputText = ({
         isFocused && styles.focusedInput
       ]}
       onChangeText={handleChangeText}
+      
       value={currentText}
       placeholder={placeholder}
       keyboardType="default"
@@ -66,6 +68,7 @@ const InputText = ({
       onFocus={() => setIsFocused(true)}
       onBlur={onBlurAction}
       onKeyPress={(e) => onKeyPress(e)}
+      
     />
   );
 };
@@ -85,9 +88,6 @@ const styles = StyleSheet.create({
 });
 
 export default InputText;
-
-
-
 
 
 
