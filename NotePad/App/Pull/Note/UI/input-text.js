@@ -12,6 +12,7 @@ const InputText = ({
   fontFamily = 'Montserrata-medium',
   fontWeight = 'normal',
   color = '#000',
+  backgroundColor = "#fffff",
   textAlign = 'left',
   placeholder = "Enter note",
   height = "auto",
@@ -53,8 +54,9 @@ const InputText = ({
           textAlign: textAlign,
           height: height,
           borderBottomColor: borderBottomColor,
+          backgroundColor: backgroundColor,
         },
-        isFocused && styles.focusedInput // Add styles for focused state
+        isFocused && styles.focusedInput
       ]}
       onChangeText={handleChangeText}
       
@@ -63,8 +65,8 @@ const InputText = ({
       keyboardType="default"
       multiline={multiline}
       numberOfLines={'auto'}
-      onFocus={() => setIsFocused(true)}  // Set focus
-      onBlur={onBlurAction}  // Remove focus
+      onFocus={() => setIsFocused(true)}
+      onBlur={onBlurAction}
       onKeyPress={(e) => onKeyPress(e)}
       
     />

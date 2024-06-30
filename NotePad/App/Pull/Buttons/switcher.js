@@ -20,8 +20,11 @@ const Switcher = ({
       duration: 300,
       useNativeDriver: false
     }).start();
-    if (onChange) onChange(activeIndex);
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (onChange) onChange(activeIndex);
+  }, [activeIndex, onChange]);
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -31,7 +34,9 @@ const Switcher = ({
     onPanResponderRelease: (_, gesture) => {
       const movedBy = gesture.dx > 0 ? Math.floor(gesture.dx / (width / totalStates)) : Math.ceil(gesture.dx / (width / totalStates));
       const newIndex = Math.min(Math.max(activeIndex + movedBy, 0), totalStates - 1);
-      setActiveIndex(newIndex);
+      if (newIndex !== activeIndex) {
+        setActiveIndex(newIndex);
+      }
     }
   });
 
@@ -41,7 +46,9 @@ const Switcher = ({
   });
 
   const handlePress = (index) => {
-    setActiveIndex(index);
+    if (index !== activeIndex) {
+      setActiveIndex(index);
+    }
   };
 
   return (
@@ -84,6 +91,7 @@ const styles = StyleSheet.create({
 });
 
 export default Switcher;
+
 
 
 

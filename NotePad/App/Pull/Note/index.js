@@ -10,7 +10,7 @@ import InputText from "./UI/input-text";
 import TextBetweenLine from "./UI/text-between-line";
 // CustomText - заготовки для текстового компонента под единым стилем
 
-import getNoteType from "./Helpers/note-type-helper";
+import { getNoteType } from "./Helpers/note-type-helper";
 // Helper для определения стилей и функций для каждого типа заметок
 
 import NavigationPlate from "./UI/navigation-plate";

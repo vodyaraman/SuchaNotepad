@@ -46,14 +46,11 @@ export default FullScaledNotePlate;
 const styles = StyleSheet.create({
   userStyle: {
     flex: 1,
-    padding: '5%',
     width: '100%',
-    backgroundColor: '#fcfcfcb0',
   },
   titleStyle: {
     width: '100%',
     justifyContent: 'center',
-    padding: 4,
     flex: 1,
   },
   noteStyle: {

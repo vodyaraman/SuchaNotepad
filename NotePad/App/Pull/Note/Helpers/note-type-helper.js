@@ -1,27 +1,28 @@
-const getNoteType = (note) => {
-    switch (note.type) {
-      case 'important':
+export const getNoteType = (type) => {
+    switch (type) {
+      case 0:
         return {
           backgroundColor: '#00ffffd3',
           textColor: '#89eb34',
-          text: note.content,
-          numberOfLines: undefined
+          timezone: false,
         };
-      case 'reminder':
+      case 1:
         return {
           backgroundColor: '#89eb34',
           textColor: '#0000ff',
-          text: note.content,
-          numberOfLines: 2
+          timezone: false,
+        };
+      case 2:
+        return {
+          backgroundColor: '#FFDA00',
+          textColor: '#FFDA00',
+          timezone: true,
         };
       default:
         return {
-          backgroundColor: '#fff',
-          textColor: '#333',
-          text: note.content,
-          numberOfLines: undefined
+          backgroundColor: '#0000ff',
+          textColor: '#89eb34',
+          timezone: false,
         };
     }
 };
-
-export default getNoteType;
