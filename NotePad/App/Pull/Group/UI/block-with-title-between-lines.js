@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         gap: 25,
 
         borderColor: 'white',
+        borderRadius: 20,
         borderWidth: 1,
         
         width: '100%',
@@ -50,11 +51,12 @@ const styles = StyleSheet.create({
         padding: hg('1.5%'),
 
         borderColor: 'white',
+        borderRadius: 20,
         borderWidth: 1,
     },
 
     scrollContent:{
         height: '100%',
-        gap: 50,
+        gap: 20,
     }
 })

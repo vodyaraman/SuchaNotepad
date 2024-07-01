@@ -16,7 +16,7 @@ export default BackButton;
 const styles = StyleSheet.create({
     mainContainer:{
         position: 'absolute',
-        top: hg('-4%'),
-        left: hg('-4%')
+        top: hg('-3%'),
+        left: hg('-3%')
     }
 })
