@@ -34,6 +34,5 @@ const styles = StyleSheet.create({
     button:{
         width: '100%',
         borderRadius: 25,
-        paddingVertical: '4%',
     },
 })
