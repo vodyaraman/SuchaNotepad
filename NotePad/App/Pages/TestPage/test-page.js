@@ -11,8 +11,7 @@ import { AuthNavigation } from "../../Processes/Navigation";
 
 //Временный импорт
 import { MainWidgetPlate } from "../../Pull/Note";
-import { ItemBlock } from "../../Entities/Group";
-import {AnimatedSearchButton} from "../../Entities/Group";
+import { Control, Create, Overlook } from "../../Features/Group";
 
 const TestPage = () => {
     return (
@@ -21,8 +20,7 @@ const TestPage = () => {
             <AuthNavigation/>
         </AuthProvider> */}
         <MainWidgetPlate>
-            <AnimatedSearchButton />
-            <ItemBlock />
+            <Overlook />
         </MainWidgetPlate>
     </View>
     

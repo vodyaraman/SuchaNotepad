@@ -13,9 +13,10 @@ export default MainWidgetPlate;
 const styles = StyleSheet.create({
     MainWidgetPlateStyle: {
         zIndex: 1,
+        position: 'relative',
         
         height: '100%',
-        width: "100%",
+        width: '100%',
         
         borderRadius: 30,
         backgroundColor: "#FAFAFA",

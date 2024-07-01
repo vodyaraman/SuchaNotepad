@@ -1,9 +1,9 @@
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
 
-const BackgroundItemPlate = ({children, bgColor = 'white', namePlace = null, ownerPlace = null}) => {
+const BackgroundItemPlate = ({children, bgColor = 'white', namePlace = null, ownerPlace = null, }) => {
     return(
-        <View style={[styles.mainContainer, {backgroundColor: bgColor}]}> 
+        <View style={[styles.mainContainer, {backgroundColor: bgColor,}]}> 
             {namePlace && <View>{namePlace}</View>}
             {ownerPlace && <View>{ownerPlace}</View>}
             {children}
@@ -16,9 +16,10 @@ export default BackgroundItemPlate;
 const styles = StyleSheet.create({
     mainContainer:{
         borderRadius: 25,
-        padding: 15,
-
         width: '100%',
+        paddingVertical: 8,
+        paddingHorizontal: 15,
+
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',

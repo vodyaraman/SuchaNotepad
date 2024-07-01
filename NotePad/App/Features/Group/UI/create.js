@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import { UserBackgroundPlate } from '../../../Pull/User';
+
+import { GroupName, GroupLink } from '../../../Entities/Group';
 
 const Create = () => {
     return (
-        <View>
-            <Text>Create Screen</Text>
-        </View>
+        <UserBackgroundPlate firstColor='#EC7171' secondColor='#DA8E8E'>
+            <GroupName />
+            <GroupLink />
+        </UserBackgroundPlate>
     );
 };
 

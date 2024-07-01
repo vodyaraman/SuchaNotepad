@@ -4,11 +4,11 @@ import {View, StyleSheet, Text, Pressable} from 'react-native';
 
 import React, {useState} from 'react'
 
-const ItemBlock = ({onPressHandler, groupName='Group1', ownerName='Owner1'}) => {
-    const [textColor, setTextColor] = useState('#8A0596')
+const ItemBlock = ({onPressHandler, groupName='Group1', ownerName='Owner1', fontColor='#8A0596'}) => {
+    const [textColor, setTextColor] = useState(fontColor)
 
     return(
-        <Pressable onPress={onPressHandler}>
+        <Pressable onPress={onPressHandler} style={{marginBottom: 15,}} >
             <BackgroundItemPlate 
             namePlace={<CustomText textColor={textColor} text={groupName} fontSize={20} fontWeight="bold" />}
             ownerPlace={

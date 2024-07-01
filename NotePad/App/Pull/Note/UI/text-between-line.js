@@ -12,7 +12,7 @@ const TextBetweenLine = ({
 
     return(
         <>
-            <View style={[Styles.lines, {borderBottomColor:lineColor, width:lineWidth}]}/>
+            <View style={[Styles.lines, {borderColor:lineColor, width:lineWidth}]}/>
             <Text style={[Styles.text, {backgroundColor: textBackground, color: textColor, fontSize: fontSize}]}>{text}</Text>
         </>
     )
@@ -24,12 +24,13 @@ const Styles = StyleSheet.create({
     lines: {
         position:'absolute',
         alignSelf:'center',
-        borderBottomWidth:1,
-        height:'50%',
+        borderWidth: 1,
+        
     },
 
     text: {
         alignSelf:'center',
-        paddingHorizontal:15,
+        paddingHorizontal: hg('2%'),
+        
     },
 })
