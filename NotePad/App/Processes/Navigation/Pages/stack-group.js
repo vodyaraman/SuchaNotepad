@@ -10,7 +10,7 @@ const GroupStack = createStackNavigator();
 export default function GroupNavigation() {
     return (
         <NavigationContainer ref={groupNavRef} independent={true}>
-            <GroupStack.Navigator initialRouteName="Overlook">
+            <GroupStack.Navigator initialRouteName="Control">
                 <GroupStack.Screen 
                     name="Control" 
                     component={Control}

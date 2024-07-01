@@ -3,12 +3,12 @@ import { CustomText } from "../../Note";
 
 import { heightPercentageToDP as hg } from "react-native-responsive-screen";
 
-const ItemContainerWithImg = ({img, text='GroupName_1', onPressHandler}) => {
+const ItemContainerWithImg = ({img, text='GroupName_1', textColor='white', fontWeight='bold', onPressHandler}) => {
     return(
         <View style={styles.mainContainer}>
-            <CustomText text={text} fontSize={hg('2.2%')} fontWeight='bold' fontFamily='Lexend-Bold' />
+            <CustomText text={text} fontSize={hg('2.2%')} fontWeight={fontWeight} textColor={textColor} />
             <Pressable style={styles.imgContainer} onPress={onPressHandler}>
-                <Image source={img} style={{height: hg('5%'), width: hg('5%')}} />
+                <Image source={img} style={{height: hg('4%'), width: hg('4%')}} />
             </Pressable>
         </View>
     )

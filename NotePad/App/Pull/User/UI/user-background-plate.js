@@ -23,5 +23,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: '9%',
         borderRadius: 25,
         gap: 20,
+        position: 'relative',
     },
 })

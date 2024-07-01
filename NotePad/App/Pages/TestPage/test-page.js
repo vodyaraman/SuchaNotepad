@@ -9,9 +9,11 @@ import { AuthProvider } from "../../Entities/User/Helpers/user-manager";
 //Импорт навигации по авторизации/регистрации
 import { AuthNavigation } from "../../Processes/Navigation";
 
+//Импорт навигации по группам
+import { GroupNavigation } from "../../Processes/Navigation";
+
 //Временный импорт
 import { MainWidgetPlate } from "../../Pull/Note";
-import { Control, Create, Overlook } from "../../Features/Group";
 
 const TestPage = () => {
     return (
@@ -19,8 +21,10 @@ const TestPage = () => {
         {/* <AuthProvider >
             <AuthNavigation/>
         </AuthProvider> */}
+        
+        {/* Пока что фон серый потому что внутри GroupNavigation еще не те файлы потом все поправится */}
         <MainWidgetPlate>
-            <Overlook />
+            <GroupNavigation />
         </MainWidgetPlate>
     </View>
     

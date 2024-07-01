@@ -7,7 +7,7 @@ const BlockWithTitleBetweenLines = ({children, text='Group name', textBackground
     return(
         <View style={styles.mainContainer}>
            <View >
-                {scroll ? <ScrollView style={styles.scrollContainer} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>{children}</ScrollView> : <View style={styles.contentContainer}>{children}</View>}
+                {scroll ? <ScrollView style={styles.scrollContainer} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>{children}</ScrollView> : <View style={[styles.contentContainer, {borderColor:lineColor}]}>{children}</View>}
             </View>
             
             <Text style={[styles.textStyle, {backgroundColor:textBackground, color:textColor}]}>{text}</Text>
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: '5%',
         gap: 25,
 
-        borderColor: 'white',
         borderRadius: 20,
         borderWidth: 1,
         

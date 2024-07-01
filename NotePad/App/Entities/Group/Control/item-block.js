@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 
 const ItemBlock = ({onPressHandler, groupName='Group1', ownerName='Owner1', fontColor='#8A0596'}) => {
     const [textColor, setTextColor] = useState(fontColor)
-
+    //Подумать над логикой отображения, возможно в данном варианте удобнее будет с уровня Feature прокинуть пропсами данные
     return(
         <Pressable onPress={onPressHandler} style={{marginBottom: 15,}} >
             <BackgroundItemPlate 

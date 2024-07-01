@@ -1,7 +1,7 @@
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
 
-const BackgroundItemPlate = ({children, bgColor = 'white', namePlace = null, ownerPlace = null, }) => {
+const BackgroundItemPlate = ({children=null, bgColor = 'white', namePlace = null, ownerPlace = null, }) => {
     return(
         <View style={[styles.mainContainer, {backgroundColor: bgColor,}]}> 
             {namePlace && <View>{namePlace}</View>}
