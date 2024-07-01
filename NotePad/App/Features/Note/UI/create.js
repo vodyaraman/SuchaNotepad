@@ -1,41 +1,21 @@
-import React, { useState, useEffect} from "react";
-import { EditNote, EditNoteTitle, NoteAddEdit, NoteChangeType } from "../../../Entities/Note";
-import { FullScaledNotePlate, getNoteType } from "../../../Pull/Note";
-import { useText } from "../../../Entities/Note/Helpers/note-manager";
+import React from "react";
+import { EditNote, EditNoteTitle, NoteAddEdit, NoteBackground, NoteChangeType } from "../../../Entities/Note";
+import { FullScaledNotePlate } from "../../../Pull/Note";
 
 const NoteWrite = () => {
-    const { noteType } = useText();
-    const [colors, setColors] = useState(getNoteType(noteType));
-
-    useEffect(() => {
-        // Обновляем цвета при изменении noteType
-        setColors(getNoteType(noteType));
-        console.log(`Цвет заметки изменен на: ${colors.backgroundColor}`);
-    }, [noteType]);
-    
+    console.log('rendering NoteWrite...')
     return (
         <FullScaledNotePlate
-            backgroundColor={colors.backgroundColor}
-            height="100%"
-            Title={() => (
-                <>
-                    <EditNoteTitle/>
-                </>    
-            )}
-            Note={() => (
-                <>
-                    <EditNote/>
-                </>
-            )}
-            Extra={() => (
-                <>
-                    <NoteAddEdit/>
-                    <NoteChangeType/>
-                </>
-            )}
+            Background={NoteBackground}
+            Title={EditNoteTitle}
+            Note={EditNote}
+            Extra={NoteChangeType}
+            Timezone={NoteAddEdit}
         />
     );
 };
 
 export default NoteWrite;
+
+
 

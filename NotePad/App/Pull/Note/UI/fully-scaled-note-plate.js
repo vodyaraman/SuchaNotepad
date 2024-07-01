@@ -1,22 +1,21 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import GradientBackground from './linear-gradient';
 
-const FullScaledNotePlate = ({ 
-  User = null, 
-  Title = null, 
-  Note = null, 
-  Extra = null, 
-  backgroundColor = '#ffff', 
-  height = '100%',
+const FullScaledNotePlate = React.memo(({
+  User = null,
+  Title = null,
+  Note = null,
+  Extra = null,
+  Timezone = null,
+  Background = null,
 }) => {
   return (
-    <GradientBackground 
-      backgroundColor={backgroundColor} 
-      height={height} 
-      width={'100%'}
-      borderRadius={15}
-    >
+    <>
+      {Background && (
+        <View style={styles.backgroundStyle}>
+          <Background />
+        </View>
+      )}
       {User && (
         <View style={styles.userStyle}>
           <User />
@@ -30,20 +29,36 @@ const FullScaledNotePlate = ({
       {Note && (
         <View style={styles.noteStyle}>
           <Note />
-        </View>)}
+        </View>
+      )}
+      {Timezone && (
+        <View style={styles.timezoneStyle}>
+          <Timezone />
+        </View>
+      )}
       {Extra && (
         <View style={styles.extraStyle}>
           <Extra />
         </View>
       )}
-
-    </GradientBackground>
+      </>
   );
-};
+});
 
 export default FullScaledNotePlate;
 
 const styles = StyleSheet.create({
+  backgroundStyle: {
+    width: '100%',
+    height: '100%',
+
+    position: 'absolute',
+    top: 0,
+    left: 0,
+
+    margin: 0,
+    padding: 0,
+  },
   userStyle: {
     flex: 1,
     width: '100%',
@@ -58,6 +73,13 @@ const styles = StyleSheet.create({
     flex: 9.5,
     alignItems: 'center',
   },
+  timezoneStyle: {
+    flex: 1,
+    alignItems: 'center',
+    width: '100%',
+    padding: 10,
+    backgroundColor: '#fcfcfcb0',
+  },
   extraStyle: {
     flex: 2,
     alignItems: 'center',
@@ -66,5 +88,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
 
 
