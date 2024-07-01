@@ -1,47 +1,44 @@
-import React from "react";
-import { InputText, SmallUnderplate } from "../../../Pull/Note";
+import React, { useEffect, useState } from "react";
+import { InputText, SmallUnderplate, getNoteType } from "../../../Pull/Note";
 import { useText } from '../Helpers/note-manager';
+import { View, StyleSheet } from "react-native";
 
-const NoteAddEdit = ({ flex = 'center', fontWeight = "normal", fontSize = 13 }) => {
-    const { timestamp, setTimestamp } = useText();
+const NoteAddEdit = () => {
+    const { timestamp, setTimestamp, noteType } = useText();
+    const [shouldRender, setShouldRender] = useState(false);
 
-    const handleDateChange = (newDateString) => {
-        const dates = newDateString.split(',').map(date => date.trim());
-        const newTimestamp = { ...timestamp };
+    useEffect(() => {
+        const { timezone } = getNoteType(noteType);
+        setShouldRender(timezone);
+        console.log(timezone);
+    }, [noteType]);
 
-        if (dates.length === 2) {
-            newTimestamp.dateStart = dates[0];
-            newTimestamp.dateEnd = dates[1] || "";
-        } else if (dates.length === 1) {
-            newTimestamp.dateStart = dates[0];
-            newTimestamp.dateEnd = "";
-        }
-
-        setTimestamp(newTimestamp);
-    };
-
-    const formatDateString = () => {
-        if (timestamp.dateEnd) {
-            return `${timestamp.dateStart}, ${timestamp.dateEnd}`;
-        }
-        return timestamp.dateStart;
-    };
-
-    return (
-        <SmallUnderplate>
-            <InputText
-                textColor="#0d0c0c"
-                text={formatDateString()}
-                onChangeText={handleDateChange}
-                textAlign={flex}
-                fontWeight={fontWeight}
-                fontSize={fontSize}
-                placeholder=""
-                multiline={false}
-            />
-        </SmallUnderplate>
-    );
+    return shouldRender ? (
+        <View style={styles.container}>
+            <SmallUnderplate>
+                <InputText
+                    textColor="#0d0c0c"
+                    text={timestamp}
+                    onChangeText={setTimestamp}
+                    textAlign={"center"}
+                    fontWeight={"normal"}
+                    placeholder=""
+                    multiline={false}
+                />
+            </SmallUnderplate>
+        </View>
+    ) : null;
 };
 
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        width: '100%',
+        padding: 10,
+        backgroundColor: '#fcfcfcb0',
+    },
+});
+
 export default NoteAddEdit;
+
 

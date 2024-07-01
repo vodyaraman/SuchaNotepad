@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useMemo} from "react";
+import React, {useEffect, useState} from "react";
 import { GradientBackground, getNoteType } from "../../../Pull/Note";
 import { useText } from "../Helpers/note-manager";
 
@@ -9,13 +9,11 @@ const NoteBackground = () => {
     useEffect(() => {
         const { backgroundColor } = getNoteType(noteType);
         setBackgroundColor(backgroundColor);
-        console.log(`Цвет заметки изменен на: ${backgroundColor}`);
     }, [noteType]);
 
-    const memoizedBackgroundColor = useMemo(() => backgroundColor, [backgroundColor]);
     return (
     <GradientBackground
-      backgroundColor={memoizedBackgroundColor}
+      backgroundColor={backgroundColor}
       height={'100%'}
       width={'100%'}
       borderRadius={15}

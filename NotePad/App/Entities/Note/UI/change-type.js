@@ -8,7 +8,6 @@ const NoteChangeType = () => {
   const handleSwitchChange = (index) => {
     if (index !== noteType) {
       setNoteType(index);
-      console.log(index);
     }
   };
 
