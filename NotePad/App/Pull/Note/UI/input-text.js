@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
-import {heightPercentageToDP as hg, widthPercentageToDP as wd} from 'react-native-responsive-screen';
-
 const InputText = ({
-  // text = "",
+  value,
   borderBottomColor = 'white',
   fontSize = 12,
   lineHeight,
@@ -22,12 +20,12 @@ const InputText = ({
   onBlur = () => {},
   onKeyPress = () => {},
 }) => {
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState(value);
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    setCurrentText('');
-  }, []);
+    setCurrentText(value);
+  }, [value]);
 
   const handleChangeText = (value) => {
     setCurrentText(value);
@@ -35,9 +33,9 @@ const InputText = ({
   };
 
   const onBlurAction = () => {
-    setIsFocused(false)
-    onBlur()
-  }
+    setIsFocused(false);
+    onBlur();
+  };
 
   return (
     <TextInput
@@ -59,7 +57,6 @@ const InputText = ({
         isFocused && styles.focusedInput
       ]}
       onChangeText={handleChangeText}
-      
       value={currentText}
       placeholder={placeholder}
       keyboardType="default"
@@ -68,7 +65,6 @@ const InputText = ({
       onFocus={() => setIsFocused(true)}
       onBlur={onBlurAction}
       onKeyPress={(e) => onKeyPress(e)}
-      
     />
   );
 };
@@ -80,14 +76,15 @@ const styles = StyleSheet.create({
     paddingRight: '3.5%',
     paddingBottom: 5,
     backgroundColor: 'transparent',
-    borderBottomWidth: hg('0.2%'),
+    borderBottomWidth: 1,
   },
   focusedInput: {
-    outlineStyle: 'none'
+    outlineStyle: 'none',
   },
 });
 
 export default InputText;
+
 
 
 

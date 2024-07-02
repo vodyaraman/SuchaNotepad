@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 // Начальное состояние
 const initialState = {
   noteTitle: "Заголовок заметки",
-  noteText: "Default text that might be large and span multiple lines, requiring some additional formatting like justification.",
+  noteText: {
+    "text": "This is a simple note" | ["Item 1", "Item 2", "Item 3"]
+  },
   userName: "Павел Башкирцев",
   userID: 1,
   notePriority: true,

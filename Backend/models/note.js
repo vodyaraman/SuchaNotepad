@@ -1,5 +1,16 @@
 import mongoose from '../mongoDB.js';
 
+export const listItemSchema = new mongoose.Schema({
+    text: {
+        type: String,
+        required: true,
+    },
+    completed: {
+        type: Boolean,
+        default: false,
+    },
+});
+
 const noteSchema = new mongoose.Schema({
     ownerId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -15,7 +26,7 @@ const noteSchema = new mongoose.Schema({
         required: true,
     },
     noteText: {
-        type: String,
+        type: mongoose.Schema.Types.Mixed, // Может быть строкой или массивом объектов
         required: true,
     },
     notePriority: {
@@ -43,4 +54,5 @@ const noteSchema = new mongoose.Schema({
 });
 
 export default mongoose.model('Note', noteSchema);
+
 

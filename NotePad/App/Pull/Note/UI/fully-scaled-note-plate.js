@@ -32,7 +32,9 @@ const FullScaledNotePlate = React.memo(({
         </View>
       )}
       {Timezone && (
-        <Timezone />
+        <View style={styles.timezoneStyle}>
+          <Timezone />
+        </View>  
       )}
       {Extra && (
         <View style={styles.extraStyle}>
@@ -70,6 +72,9 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 9.5,
     alignItems: 'center',
+  },
+  timezoneStyle: {
+    margin: 0,
   },
   extraStyle: {
     flex: 2,

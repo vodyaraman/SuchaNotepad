@@ -10,6 +10,7 @@ import CustomSmallText from "./UI/custom-small-text";
 import InputText from "./UI/input-text";
 import TextBetweenLine from "./UI/text-between-line";
 import TimeInput from "./UI/time-input";
+import List from "./UI/list";
 // CustomText - заготовки для текстового компонента под единым стилем
 
 import { getNoteType } from "./Helpers/note-type-helper";
@@ -17,6 +18,6 @@ import { getNoteType } from "./Helpers/note-type-helper";
 
 import NavigationPlate from "./UI/navigation-plate";
 
-export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText, NavigationPlate, TextBetweenLine, GradientBackground, TimeInput};
+export {NotePlate, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText, NavigationPlate, TextBetweenLine, GradientBackground, TimeInput, List};
 
 /* Pull/Note определяет визуальное оформление для заметок */

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switcher } from '../../../Pull/Buttons';
-import { useText } from '../Helpers/note-manager';
+import { useType } from '../Helpers/type-manager';
 
 const NoteChangeType = () => {
-  const { noteType, setNoteType } = useText();
+  const { noteType, setNoteType } = useType();
 
   const handleSwitchChange = (index) => {
     if (index !== noteType) {

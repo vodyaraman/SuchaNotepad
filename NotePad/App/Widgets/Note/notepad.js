@@ -4,17 +4,17 @@ import { MainWidgetPlate} from '../../Pull/Note/index';
 import { CalendarFeature } from '../../Features/Calendar/index';
 import NavigationButtons from "../../Features/Navigation";
 import { NotepadNavigation } from "../../Processes/Navigation";
-import { NoteManagerProvider } from "../../Entities/Note";
+import { CombinedNoteProviders } from "../../Entities/Note";
 
 const Notepad = () => {
     return (
-        <NoteManagerProvider>
+        <CombinedNoteProviders>
             <CalendarFeature />
             <MainWidgetPlate style = {styles.NotepadStyle}> 
                 <NotepadNavigation/>
             </MainWidgetPlate>
             <NavigationButtons />
-        </NoteManagerProvider>
+        </CombinedNoteProviders>
 )};
 
 export default Notepad;

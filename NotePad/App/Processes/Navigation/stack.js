@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const AppNavigation = () => {
     return (
       <NavigationContainer ref={navigationRef} independent={true}>
-        <Stack.Navigator initialRouteName="Test">
+        <Stack.Navigator initialRouteName="Main">
         <Stack.Screen 
             name="Test" 
             component={TestPage} 
@@ -20,11 +20,11 @@ const AppNavigation = () => {
             component={MainPage}
             options={{ headerShown: false }}
           />
-          {/* <Stack.Screen 
+          <Stack.Screen 
             name="User" 
             component={PageUserEntrypoint} 
             options={{ headerShown: false }} 
-          /> */}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );

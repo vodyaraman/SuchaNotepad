@@ -1,15 +1,18 @@
 import React from "react";
-import { EditNote, EditNoteTitle, NoteAddEdit, NoteBackground, NoteChangeType } from "../../../Entities/Note";
+import { EditNote, EditNoteList, EditNoteTitle, NoteAddEdit, NoteBackground, NoteChangeType } from "../../../Entities/Note";
 import { FullScaledNotePlate } from "../../../Pull/Note";
+import { useType } from "../../../Entities/Note/Helpers/type-manager";
 
 const NoteWrite = () => {
+    const { noteType } = useType();
+
     console.log('rendering NoteWrite...');
 
     return (
         <FullScaledNotePlate
             Background={NoteBackground}
             Title={EditNoteTitle}
-            Note={EditNote}
+            Note={noteType == 1 ? EditNoteList : EditNote}
             Timezone={NoteAddEdit}
             Extra={NoteChangeType}
         />

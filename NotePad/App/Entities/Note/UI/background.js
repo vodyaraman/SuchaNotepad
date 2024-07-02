@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { GradientBackground, getNoteType } from "../../../Pull/Note";
-import { useText } from "../Helpers/note-manager";
+import { useType } from "../Helpers/type-manager";
 
 const NoteBackground = () => {
-    const { noteType } = useText();
+    const { noteType } = useType();
     const [backgroundColor, setBackgroundColor] = useState("white");
 
     useEffect(() => {

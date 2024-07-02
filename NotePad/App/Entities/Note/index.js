@@ -9,6 +9,8 @@ import Note from "./UI/note";
 import EditNote from "./UI/edit-note";
 import EditNoteTitle from "./UI/edit-title";
 import NoteAddEdit from "./UI/add-edit";
+import EditNoteList from "./UI/edit-note-list";
+import NoteList from "./UI/note-list";
 
 // Прочие графические элементы заметок
 import NoteManipulate from "./UI/manipulate";
@@ -16,6 +18,6 @@ import NoteChangeType from "./UI/change-type"
 import NoteBackground from "./UI/background";
 
 // Провайдер контекста заметки
-import { NoteManagerProvider } from "./Helpers/note-manager";
+import CombinedNoteProviders from "./Helpers/manager";
 
-export { Note, NoteUser, NoteTitle, NoteManipulate, EditNoteTitle, EditNote, NoteAddEdit, NoteChangeType, NoteBackground, NoteManagerProvider };
+export { Note, NoteUser, NoteTitle, NoteManipulate, EditNoteTitle, EditNote, NoteAddEdit, NoteChangeType, NoteBackground, NoteList, EditNoteList, CombinedNoteProviders };

@@ -34,11 +34,7 @@ export const NoteManagerProvider = ({ children }) => {
         setNote({ ...note, timestamp });
     };
 
-    const setNoteType = (type) => {
-        setNote({ ...note, noteType: type });
-    };
-
-    const { noteTitle, noteText, userName, notePriority, timestamp, noteType } = note;
+    const { noteTitle, noteText, userName, notePriority, timestamp } = note;
 
     return (
         <TextContext.Provider value={{
@@ -47,7 +43,6 @@ export const NoteManagerProvider = ({ children }) => {
             userName, setUserName,
             notePriority, setNotePriority,
             timestamp, setTimestamp,
-            noteType, setNoteType,
             setNote
         }}>
             {children}
@@ -57,3 +52,4 @@ export const NoteManagerProvider = ({ children }) => {
 
 // Custom hook
 export const useText = () => useContext(TextContext);
+
