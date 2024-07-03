@@ -3,7 +3,7 @@ import { TextInput, StyleSheet } from 'react-native';
 
 const InputText = ({
   value,
-  borderBottomColor = 'white',
+  borderBottomColor = 'transparent',
   fontSize = 12,
   lineHeight,
   maxLength,

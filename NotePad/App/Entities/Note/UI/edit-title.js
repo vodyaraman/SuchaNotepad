@@ -7,7 +7,6 @@ const EditNoteTitle = ({ flex = 'center', fontWeight = "bold", fontSize = 20}) =
     const { noteTitle, setNoteTitle } = useText();
     return (
         <InputText
-            textColor="#0d0c0c"
             text={noteTitle}
             onChangeText={(text) => (setNoteTitle(text))}
             textAlign={flex}

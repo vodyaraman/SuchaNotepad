@@ -3,7 +3,7 @@ import { EditNote, EditNoteList, EditNoteTitle, NoteAddEdit, NoteBackground, Not
 import { FullScaledNotePlate } from "../../../Pull/Note";
 import { useType } from "../../../Entities/Note/Helpers/type-manager";
 
-const NoteWrite = () => {
+const NoteWrite = React.memo(() => {
     const { noteType } = useType();
 
     console.log('rendering NoteWrite...');
@@ -17,7 +17,7 @@ const NoteWrite = () => {
             Extra={NoteChangeType}
         />
     );
-};
+});
 
 export default NoteWrite;
 

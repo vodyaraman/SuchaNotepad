@@ -79,7 +79,9 @@ const styles = StyleSheet.create({
   extraStyle: {
     flex: 2,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#fcfcfcb0',
+    maxHeight: '60px',
     width: '100%',
     padding: 10,
   },
