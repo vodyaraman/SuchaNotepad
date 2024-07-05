@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
     },
     calendarContainer: {
         width: '100%',
-        position: 'absolute',
+        position: 'relative',
     }
 })

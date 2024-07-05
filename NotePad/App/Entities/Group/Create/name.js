@@ -5,12 +5,16 @@ import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
 
 import groupIcon from '@../../../assets/group.png'
 
+//Импорт контекста
+import { useGroup } from '../Helpers/group-manager';
+
 const GroupName = ({ fontWeight = 'bold', groupName = 'Pandas' }) => {
 
     const [borderColor, setBorderColor] = useState('white')
+    const {updateGroupName} = useGroup();
 
     const onChangeGroupName = (groupName) => {
-        console.log(groupName)
+        updateGroupName(groupName)
     }
 
     const onBlurGroupName = async () => {

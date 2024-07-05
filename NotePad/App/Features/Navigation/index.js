@@ -1,3 +1,5 @@
-import { NavigationButtons } from "./UI/navigation";
+import { NavigationNoteButtons } from "./Note/UI/navigation-buttons";
+import { NavigationGroupButtons } from "./Group/UI/navigation-buttons";
 
-export default NavigationButtons;
+
+export {NavigationGroupButtons, NavigationNoteButtons};

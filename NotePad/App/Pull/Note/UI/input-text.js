@@ -10,10 +10,11 @@ const InputText = ({
   fontFamily = 'Montserrata-medium',
   fontWeight = 'normal',
   color = '#000',
-  backgroundColor = "#fffff",
+  backgroundColor = "#fff0",
   textAlign = 'left',
   placeholder = "Enter note",
   height = "auto",
+  numberOfLines = 1,
   multiline = true,
   secureTextEntry = false,
   onChangeText = () => {},
@@ -61,7 +62,7 @@ const InputText = ({
       placeholder={placeholder}
       keyboardType="default"
       multiline={multiline}
-      numberOfLines={'auto'}
+      numberOfLines={numberOfLines}
       onFocus={() => setIsFocused(true)}
       onBlur={onBlurAction}
       onKeyPress={(e) => onKeyPress(e)}

@@ -14,6 +14,8 @@ import { GroupNavigation } from "../../Processes/Navigation";
 
 //Временный импорт
 import { MainWidgetPlate } from "../../Pull/Note";
+import { NavigationGroupButtons } from "../../Features/Navigation";
+import { GroupManagerProvider } from "../../Entities/Group";
 
 const TestPage = () => {
     return (
@@ -23,9 +25,12 @@ const TestPage = () => {
         </AuthProvider> */}
         
         {/* Пока что фон серый потому что внутри GroupNavigation еще не те файлы потом все поправится */}
-        <MainWidgetPlate>
-            <GroupNavigation />
-        </MainWidgetPlate>
+        <GroupManagerProvider>
+            <MainWidgetPlate>
+                <GroupNavigation />
+                <NavigationGroupButtons />
+            </MainWidgetPlate>
+        </GroupManagerProvider> 
     </View>
     
 )};

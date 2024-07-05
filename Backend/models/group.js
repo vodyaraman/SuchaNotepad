@@ -10,23 +10,27 @@ const groupSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    groupCustom: {
-        groupColor: {
-            type: String,
-            required: true,
-            default: "white",
-        },
-        groupPicture: {
-            type: String,
-            required: true,
-            default: "panda",
-        }
-    },
-    isPrivate: {
-        type: Boolean,
+    groupLink: {
+        type: String,
         required: true,
-        default: false,
     },
+    // groupCustom: {
+    //     groupColor: {
+    //         type: String,
+    //         required: true,
+    //         default: "white",
+    //     },
+    //     groupPicture: {
+    //         type: String,
+    //         required: true,
+    //         default: "panda",
+    //     }
+    // },
+    // isPrivate: {
+    //     type: Boolean,
+    //     required: true,
+    //     default: false,
+    // },
     createdAt: {
         type: Date,
         default: Date.now,

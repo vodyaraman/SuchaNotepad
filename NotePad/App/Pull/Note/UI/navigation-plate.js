@@ -11,10 +11,10 @@ const NavigationPlate = ({children}) => {
 const styles = StyleSheet.create({
     container:{
         width: '100%',
-        height: '9vh',
+        height: '10vh',
         display: 'flex',
         position: 'absolute',
-        bottom: '3%',
+        bottom: '7%',
 
         flexDirection: 'row',
         justifyContent: 'space-between',

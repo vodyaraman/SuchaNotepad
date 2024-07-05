@@ -19,11 +19,9 @@ export default SwipeButton;
 
 const styles = StyleSheet.create({
   swipeButton: {
-    minHeight: '9vh',
-    maxHeight: '10vh',
-    height: '100%',
     
-    width: '23vw',
+    
+    width: 85,
     backgroundColor: '#FFF4C4',
 
     alignItems: 'center',
@@ -41,8 +39,8 @@ const styles = StyleSheet.create({
   },
 
   ImageInButton: {
-    height: 40,
-    width: 40,
+    height: 35,
+    width: 35,
     objectFit: 'fill',
   },
 });

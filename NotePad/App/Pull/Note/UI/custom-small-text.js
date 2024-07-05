@@ -19,8 +19,7 @@ export default CustomSmallText;
 const styles = StyleSheet.create({
   text: {
         fontFamily: "Montserrata-bold",
-        fontWeight: 500,
-        fontSize: "0.9em",
+        fontWeight: 'normal',
         color: 'black',
         justifyContent: 'center',
     },

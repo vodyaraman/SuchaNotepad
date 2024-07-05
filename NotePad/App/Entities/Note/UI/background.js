@@ -4,7 +4,7 @@ import { useType } from "../Helpers/type-manager";
 
 const NoteBackground = () => {
     const { noteType } = useType();
-    const [backgroundColor, setBackgroundColor] = useState("white");
+    const [backgroundColor, setBackgroundColor] = useState("#fff");
 
     useEffect(() => {
         const { backgroundColor } = getNoteType(noteType);
