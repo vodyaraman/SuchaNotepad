@@ -26,6 +26,14 @@ const groupSlice = createSlice({
         error: [],
       };
     },
+    setError(state, action) {
+      state.group.error = [...state.group.error, ...action.payload]
+      console.log('Сработал setError')
+      console.log(state.group.error)
+    },
+    clearError(state){
+      state.group.error = []
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -56,6 +64,6 @@ const groupSlice = createSlice({
   },
 });
 
-export const { setGroupName, clearGroup } = groupSlice.actions;
+export const { setGroupName, clearGroup, setError, clearError } = groupSlice.actions;
 
 export default groupSlice.reducer;

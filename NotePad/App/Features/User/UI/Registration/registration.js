@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from 'react-native';
 import { UserEmailReg, UserUsernameReg, UserPasswordReg, UserPasswordRepeatReg, SubmitRegisterButton, UserBackground, HelpTextButton, AnimatedErrorModal } from "../../../../Entities/User";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
@@ -14,12 +14,18 @@ const UserReg = () => {
         if (status) {
             Show.EmailCode();
     }};
+
+    useEffect(()=>{
+        if (error.length !== 0) {
+            setIsVisible(true)
+        }
+    }, [error])
     
     return (
         <UserBackground>
             <View style={styles.alertContainer}>
                 {error && error.map((err, index) => (
-                    <AnimatedErrorModal key={index} text={err} setIsVisible={setIsVisible} isVisible={isVisible=true} />
+                    <AnimatedErrorModal key={index} text={err} setIsVisible={setIsVisible} isVisible={isVisible} />
                 ))}
             </View>
             <View style={styles.mainContainer}>

@@ -1,6 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGroupName, clearGroup } from '../../../Processes/Group';
+import { setGroupName, clearGroup, setError, clearError } from '../../../Processes/Group';
+
 // import { createGroup, updateGroup, addUserToGroup } from './group-thunks';
 
 // Context to manage group content
@@ -22,11 +23,16 @@ export const GroupManagerProvider = ({ children }) => {
     const clearGroupData = () => {
         dispatch(clearGroup());
     };
+
+    const setErrors = (error) => {
+        dispatch(clearError())
+        dispatch(setError(error))
+    }
     
 
     return (
         <GroupContext.Provider value={{
-            setGroupData, clearGroupData, updateGroupName
+            groupState, setErrors, updateGroupName, setGroupData, clearGroupData, 
         }}>
             {children}
         </GroupContext.Provider>

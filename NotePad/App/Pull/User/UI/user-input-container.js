@@ -3,7 +3,7 @@ import { InputText } from '../../Note';
 
 import {heightPercentageToDP as hg, widthPercentageToDP as wd} from 'react-native-responsive-screen';
 
-const UserInputContainer = ({img, additImg=false, onImgPassPress, borderBottomColor, fontSize, fontFamily, placeholder, onChangeHandler, onBlurHandler, secureTextEntry}) => {
+const UserInputContainer = ({img, additImg=false, onImgPassPress=()=>{}, borderBottomColor, fontSize, fontFamily, placeholder, onChangeHandler, onBlurHandler, secureTextEntry=false}) => {
     return(
         <View style={styles.mainContainer}>
           <View style={styles.imageContainer}>

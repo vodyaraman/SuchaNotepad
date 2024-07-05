@@ -8,17 +8,41 @@ import groupIcon from '@../../../assets/group.png'
 //Импорт контекста
 import { useGroup } from '../Helpers/group-manager';
 
+//Импорт Валидации
+import { groupNameValidation, checkGroupNameAvailability } from '../Helpers/groupNameValidation';
+import { checkAvailabilityEmail } from '../../User/Helpers/email-validation';
+import { setError } from '../../../Processes/Group';
+
 const GroupName = ({ fontWeight = 'bold', groupName = 'Pandas' }) => {
 
     const [borderColor, setBorderColor] = useState('white')
-    const {updateGroupName} = useGroup();
+    const { updateGroupName, groupState, setErrors } = useGroup();
 
     const onChangeGroupName = (groupName) => {
-        updateGroupName(groupName)
+        const status = groupNameValidation(groupName) 
+        if(status.status){
+            setBorderColor('white')
+            console.log('Валидация пройдена')
+            updateGroupName(groupName)
+        }
+        else if(groupName === ''){
+            setBorderColor('white')
+        }
+        else{
+            setBorderColor('red')
+        }
     }
 
     const onBlurGroupName = async () => {
-        console.log('Blur group name input')
+        const currentGroupName = groupState.groupName
+        const status = await checkAvailabilityEmail(currentGroupName)
+        if (status) {
+            console.log('Данное имя свободно.')
+            setBorderColor('white')
+        } else{
+            setBorderColor('red')
+            setError(status.message)
+        }
     }
 
     return (

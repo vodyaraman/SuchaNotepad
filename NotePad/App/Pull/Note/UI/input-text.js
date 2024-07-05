@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
 const InputText = ({
-  value,
+  value='',
   borderBottomColor = 'transparent',
   fontSize = 12,
   lineHeight,

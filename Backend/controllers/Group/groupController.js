@@ -58,3 +58,20 @@ export const listGroups = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+//Controller to check groupName Validation
+export const checkGroupName = async (req, res) => {
+    try {  
+        const { groupName } = req.query
+        const existingGroup = await Group.findOne({groupName});
+
+        if (existingGroup) {
+            return res.status(400).json({status: false, message: ['This group already exists!']})
+        }
+        res.json(true)
+
+    } catch (error) {
+        console.error('Error in checking group:', error);
+        res.status(500).json({ message: ['Error checking user'], error: error.message });
+    }
+}
