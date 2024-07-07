@@ -75,3 +75,8 @@ export const checkGroupName = async (req, res) => {
         res.status(500).json({ message: ['Error checking user'], error: error.message });
     }
 }
+
+//Contoller to create invite link
+export const createInviteLink = async (req, res) => {
+    
+}

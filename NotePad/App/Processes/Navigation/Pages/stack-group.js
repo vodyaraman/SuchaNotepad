@@ -7,20 +7,22 @@ import { groupNavRef } from '../Rules/show-feature';
 
 const GroupStack = createStackNavigator();
 
-export default function GroupNavigation() {
+export default function GroupNavigation({setStatus}) {
     return (
         <NavigationContainer ref={groupNavRef} independent={true} >
-            <GroupStack.Navigator initialRouteName="Create">
+            <GroupStack.Navigator initialRouteName="Control">
                 <GroupStack.Screen 
                     name="Control" 
-                    component={Control}
                     options={{ headerShown: false}}
-                />
+                >
+                    {(props) => <Control  {...props} />}
+                </GroupStack.Screen>
                 <GroupStack.Screen 
                     name="Create" 
-                    component={Create}
                     options={{ headerShown: false }}
-                />
+                >
+                    {() => <Create />}
+                </GroupStack.Screen>
                 <GroupStack.Screen 
                     name="Overlook" 
                     component={Overlook}

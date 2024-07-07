@@ -1,36 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-
-import {Authentication} from "../../Widgets";
-
-//Импорт провайдера авторизации и регистрации
-import { AuthProvider } from "../../Entities/User/Helpers/user-manager";
-
-//Импорт навигации по авторизации/регистрации
-import { AuthNavigation } from "../../Processes/Navigation";
-
-//Импорт навигации по группам
-import { GroupNavigation } from "../../Processes/Navigation";
-
-//Временный импорт
-import { MainWidgetPlate } from "../../Pull/Note";
-import { NavigationGroupButtons } from "../../Features/Navigation";
-import { GroupManagerProvider } from "../../Entities/Group";
+import { Group } from "../../Widgets";
 
 const TestPage = () => {
     return (
     <View style = { styles.TestPageStyle}>
-        {/* <AuthProvider >
-            <AuthNavigation/>
-        </AuthProvider> */}
-        
-        {/* Пока что фон серый потому что внутри GroupNavigation еще не те файлы потом все поправится */}
-        <GroupManagerProvider>
-            <MainWidgetPlate>
-                <GroupNavigation />
-                <NavigationGroupButtons />
-            </MainWidgetPlate>
-        </GroupManagerProvider> 
+        <Group />
     </View>
     
 )};

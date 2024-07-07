@@ -1,19 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import AddTask from '../../../../assets/plusTaskButton.png';
 import { TaskButton } from '../../../Pull/Buttons';
 
 import { Show } from '../../../Processes/Navigation/Rules';
 
-export const GroupAddButton = () => {
+//Импорт контекста
+import { useGroup } from '../../Group';
+
+export const GroupAddButton = ({setStatus, status}) => {
+    const {create, groupState} = useGroup();
+
+
+    const handleGroupCreateShow = () => {
+        Show.Create()
+        setStatus(true)
+    }
 
     const handleGroupCreate = () => {
-        Show.Create()
+        create(groupState)
     }
 
     return (
         <>
-            <TaskButton handleClick={handleGroupCreate} img={AddTask} />
+            <TaskButton handleClick={status ? handleGroupCreate : handleGroupCreateShow} img={AddTask} backgroundColor={status ? '#fff' : '#FFF4C4'} />
         </>
     );
 };

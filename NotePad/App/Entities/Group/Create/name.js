@@ -13,10 +13,10 @@ import { groupNameValidation, checkGroupNameAvailability } from '../Helpers/grou
 import { checkAvailabilityEmail } from '../../User/Helpers/email-validation';
 import { setError } from '../../../Processes/Group';
 
-const GroupName = ({ fontWeight = 'bold', groupName = 'Pandas' }) => {
+const GroupName = ({ setStatus, fontWeight = 'bold' }) => {
 
     const [borderColor, setBorderColor] = useState('white')
-    const { updateGroupName, groupState, setErrors } = useGroup();
+    const { updateOwnerId, updateGroupName, groupState, setErrors } = useGroup();
 
     const onChangeGroupName = (groupName) => {
         const status = groupNameValidation(groupName) 
@@ -38,6 +38,7 @@ const GroupName = ({ fontWeight = 'bold', groupName = 'Pandas' }) => {
         const status = await checkAvailabilityEmail(currentGroupName)
         if (status) {
             console.log('Данное имя свободно.')
+            updateOwnerId(1)
             setBorderColor('white')
         } else{
             setBorderColor('red')

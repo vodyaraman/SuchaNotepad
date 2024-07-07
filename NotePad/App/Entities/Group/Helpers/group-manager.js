@@ -1,8 +1,9 @@
 import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGroupName, clearGroup, setError, clearError } from '../../../Processes/Group';
+import { setOwnerId, setGroupName, clearGroup, setError, clearError } from '../../../Processes/Group';
 
-// import { createGroup, updateGroup, addUserToGroup } from './group-thunks';
+import { createGroup, updateGroup, addUserToGroup } from '../../../Processes/Group';
+import GroupItemBlock from '../Overlook/group-item-block';
 
 // Context to manage group content
 export const GroupContext = createContext();
@@ -14,10 +15,15 @@ export const GroupManagerProvider = ({ children }) => {
 
     const setGroupData = (updatedGroup) => {
         dispatch(setGroupName(updatedGroup.groupName));
+        dispatch(setOwnerId(updatedGroup.ownerId));
     };
 
     const updateGroupName = (groupName) => {
         setGroupData({...groupState, groupName})
+    }
+
+    const updateOwnerId = (ownerId) => {
+        setGroupData({...groupState, ownerId})
     }
 
     const clearGroupData = () => {
@@ -28,11 +34,15 @@ export const GroupManagerProvider = ({ children }) => {
         dispatch(clearError())
         dispatch(setError(error))
     }
+
+    const create = (groupData) => {
+        dispatch(createGroup(groupData))
+    }
     
 
     return (
         <GroupContext.Provider value={{
-            groupState, setErrors, updateGroupName, setGroupData, clearGroupData, 
+            groupState, setErrors, updateOwnerId, updateGroupName, setGroupData, clearGroupData, create
         }}>
             {children}
         </GroupContext.Provider>

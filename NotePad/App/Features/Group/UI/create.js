@@ -4,14 +4,14 @@ import { heightPercentageToDP as hg } from 'react-native-responsive-screen';
 
 import { UserBackgroundPlate } from '../../../Pull/User';
 
-import { GroupName, GroupLink } from '../../../Entities/Group';
+import { GroupName } from '../../../Entities/Group';
 
 const Create = () => {
+    
     return (
         <View style={Styles.mainContainer}>
             <UserBackgroundPlate firstColor='#EC7171' secondColor='#DA8E8E'>
                 <GroupName />
-                <GroupLink />
             </UserBackgroundPlate>
         </View>
     );

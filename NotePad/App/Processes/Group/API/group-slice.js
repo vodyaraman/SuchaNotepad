@@ -6,7 +6,7 @@ const groupSlice = createSlice({
   name: 'group',
   initialState: {
     group: {
-      ownerID: '',
+      ownerId: '',
       groupName: '',
       createdAt: Date.now(),
       loading: false,
@@ -17,9 +17,12 @@ const groupSlice = createSlice({
     setGroupName(state, action) {
       state.group.groupName = action.payload ;
     },
+    setOwnerId(state, action){
+      state.group.ownerId = action.payload ;
+    },
     clearGroup(state) {
       state.group = {
-        ownerID: '',
+        ownerId: '',
         groupName: '',
         createdAt: Date.now(),
         loading: false,
@@ -64,6 +67,6 @@ const groupSlice = createSlice({
   },
 });
 
-export const { setGroupName, clearGroup, setError, clearError } = groupSlice.actions;
+export const { setOwnerId, setGroupName, clearGroup, setError, clearError } = groupSlice.actions;
 
 export default groupSlice.reducer;

@@ -3,7 +3,7 @@ import mongoose from '../mongoDB.js';
 const groupSchema = new mongoose.Schema({
     ownerID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'User',
         required: true,
     },
     groupName: {
