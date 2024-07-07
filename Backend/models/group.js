@@ -1,16 +1,12 @@
 import mongoose from '../mongoDB.js';
 
 const groupSchema = new mongoose.Schema({
-    ownerID: {
+    ownerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
     groupName: {
-        type: String,
-        required: true,
-    },
-    groupLink: {
         type: String,
         required: true,
     },

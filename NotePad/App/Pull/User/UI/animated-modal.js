@@ -1,11 +1,11 @@
 import {View, StyleSheet} from 'react-native';
 import {CustomText} from '../../Note'
 
-const AnimatedModal = ({text}) => {
+const AnimatedModal = ({text, textColor}) => {
     return(
         <View style={styles.container}>
             <CustomText 
-                textColor={'#EC7171'} 
+                textColor={textColor} 
                 text={text} 
                 textAlign={'center'}
                 fontFamily={'Lexend-bold'}

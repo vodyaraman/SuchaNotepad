@@ -2,20 +2,20 @@ import React from "react";
 import { View, StyleSheet } from 'react-native';
 
 import { UserLogin, UserPassword, UserSubmit, HelpTextButton, UserBackground } from "../../../../Entities/User"
-import { RegAuthPlate } from "../../../../Pull/User";
+import { UserBackgroundPlate } from "../../../../Pull/User";
 import { Show } from "../../../../Processes/Navigation/Rules";
 
 const UserAuth = () => {
     return (
         <UserBackground>
             <View style={styles.mainContainer}>
-                <RegAuthPlate>
+                <UserBackgroundPlate>
                     <View style={styles.inputContainer}>
-                        <UserLogin/>
-                        <UserPassword/>
+                        <UserLogin />
+                        <UserPassword />
                     </View>
-                </RegAuthPlate>
-                <UserSubmit/>
+                </UserBackgroundPlate>
+                <UserSubmit />
                 <HelpTextButton 
                     textDesc={'Don\'t have an account yet?'} 
                     textButton={'Register'} 

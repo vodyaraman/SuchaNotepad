@@ -1,15 +1,16 @@
 import { AnimatedModal } from "../../../../Pull/User";
 import { OpeningAnim } from "../../../../Pull/User";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { useDispatch } from "react-redux";
 import { clearErrors } from "../../../../Processes/Authentication";
 
-const AnimatedErrorModal = ({text, isVisible, setIsVisible}) => {
+const AnimatedMessageModal = ({text, isVisible, setIsVisible, modalType='error'}) => {
     const dispatch = useDispatch()
     const timerIDRef = useRef(null)
+    const [type] = useState(modalType)
 
     useEffect(() => {
         if (text) {
@@ -34,14 +35,14 @@ const AnimatedErrorModal = ({text, isVisible, setIsVisible}) => {
     return(
         
         <OpeningAnim isVisible={isVisible}>
-            <AnimatedModal text={text} />
+            <AnimatedModal text={text} textColor={type === 'error' ? '#EC7171' : '#7171EC'}  />
         </OpeningAnim>
          
         
     )
 }
 
-export default AnimatedErrorModal;
+export default AnimatedMessageModal;
 
 
 

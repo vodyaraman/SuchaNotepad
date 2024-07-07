@@ -1,6 +1,6 @@
 import { MailCodeInput, SubmitRegisterButton, UserBackground } from "../../../../Entities/User";
 import { UserBackgroundPlate } from "../../../../Pull/User";
-import {AnimatedErrorModal} from "../../../../Entities/User";
+import {AnimatedMessageModal} from "../../../../Entities/User";
 
 import React, { useState, useEffect } from 'react';
 
@@ -41,7 +41,7 @@ const UserMailCode = () => {
     return(
         <UserBackground>
             <View style={styles.alertContainer}>
-                {error && error.map((err, index) => <AnimatedErrorModal key={index} text={err} setIsVisible={setIsVisible} isVisible={true} />)}
+                {error && error.map((err, index) => <AnimatedMessageModal key={index} text={err} setIsVisible={setIsVisible} isVisible={true} modalType={'error'} />)}
             </View>
             
             <View style={styles.container}>

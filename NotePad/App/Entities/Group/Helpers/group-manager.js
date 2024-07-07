@@ -1,9 +1,8 @@
 import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOwnerId, setGroupName, clearGroup, setError, clearError } from '../../../Processes/Group';
+import { setValidation, setGroupName, clearGroup, setError, clearError } from '../../../Processes/Group';
 
-import { createGroup, updateGroup, addUserToGroup } from '../../../Processes/Group';
-import GroupItemBlock from '../Overlook/group-item-block';
+import { getGroupList, createGroup, updateGroup, addUserToGroup } from '../../../Processes/Group';
 
 // Context to manage group content
 export const GroupContext = createContext();
@@ -15,15 +14,14 @@ export const GroupManagerProvider = ({ children }) => {
 
     const setGroupData = (updatedGroup) => {
         dispatch(setGroupName(updatedGroup.groupName));
-        dispatch(setOwnerId(updatedGroup.ownerId));
     };
 
     const updateGroupName = (groupName) => {
         setGroupData({...groupState, groupName})
     }
 
-    const updateOwnerId = (ownerId) => {
-        setGroupData({...groupState, ownerId})
+    const updateValidation = (status) => {
+        dispatch(setValidation(status))
     }
 
     const clearGroupData = () => {
@@ -35,14 +33,26 @@ export const GroupManagerProvider = ({ children }) => {
         dispatch(setError(error))
     }
 
-    const create = (groupData) => {
-        dispatch(createGroup(groupData))
+    const create = async (groupData) => {
+        if(groupData.groupName && groupData.validation){
+            await dispatch(createGroup(groupData))
+            clearGroupData()
+            console.log(groupState)
+
+        } else{
+            setErrors(['Проверьте правильность введенных данных'])
+        }
+        
+    }
+
+    const getGroups = () => {
+        dispatch(getGroupList())
     }
     
 
     return (
         <GroupContext.Provider value={{
-            groupState, setErrors, updateOwnerId, updateGroupName, setGroupData, clearGroupData, create
+            groupState, setErrors, updateValidation, updateGroupName, setGroupData, clearGroupData, create, getGroups,
         }}>
             {children}
         </GroupContext.Provider>

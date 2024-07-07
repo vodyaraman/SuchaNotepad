@@ -1,13 +1,25 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '../../../Pull/Utils/APIClient';
+import axios from 'axios';
 
 // Асинхронные действия для групп
-export const createGroup = createAsyncThunk('group/createGroup', async (groupData, { rejectWithValue }) => {
+export const getGroupList = createAsyncThunk('group/getGroupList', async () => {
   try {
-    const response = await apiClient.post('/groups/create', groupData);
+    const response = await apiClient.get('/groups/')
+    
+  } catch (error) {
+    console.log(error)
+  }
+
+})
+
+export const createGroup = createAsyncThunk('group/createGroup', async (groupData) => {
+  try {
+    const response = await axios.post(`http://${process.env.HOST}:${process.env.PORT}/groups/create`, groupData, {headers:{Authorization: `Bearer ${localStorage.getItem('authToken')}`}});
+    console.log(response.data)
     return response.data;
   } catch (error) {
-    return rejectWithValue(error.response.data);
+    console.log(error)
   }
 });
 

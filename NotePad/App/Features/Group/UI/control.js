@@ -1,14 +1,16 @@
-import React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import React, {useEffect} from 'react';
+import { View, ScrollView, StyleSheet, Text } from 'react-native';
 
 import { ItemBlock, AnimatedSearchButton } from '../../../Entities/Group';
 import { heightPercentageToDP as hg } from 'react-native-responsive-screen';
 
 import { Show } from '../../../Processes/Navigation/Rules';
 
-const Control = () => {
+//Импорт кастомного хука fetchBaseQuery для запроса на сервер
+import { useGetGroupListQuery } from '../../../Processes/Group/API/group-api';
 
-    const groupListResponse = []
+const Control = () => {
+    const { data=[], isLoading } = useGetGroupListQuery()
 
     const onPressHandler = () => {
         Show.OverlookGroup()
@@ -19,8 +21,8 @@ const Control = () => {
             <ItemBlock 
                 key={index} 
                 groupName={item.groupName} 
-                ownerName={item.owner} 
-                fontColor={item.color}
+                ownerName={item.ownerId.name} 
+                fontColor={'purple'}
                 onPressHandler={onPressHandler} />
         )
     }
@@ -31,7 +33,7 @@ const Control = () => {
                 <AnimatedSearchButton />
                 
                 <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContentContainer}>
-                    {groupListResponse.map((item, index) => groupListControlRender(item,index))}
+                    {data.map((item, index) => groupListControlRender(item, index))}
                 </ScrollView>
             </View>
         

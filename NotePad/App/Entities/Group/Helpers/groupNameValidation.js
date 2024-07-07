@@ -20,7 +20,6 @@ export const checkGroupNameAvailability = async (groupName) => {
         return data
             
     } catch (error) {
-        console.log('Ошибка')
-        console.error(error)
+        return error.response.data
     }
 }

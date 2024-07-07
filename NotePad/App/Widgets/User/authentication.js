@@ -1,9 +1,12 @@
 import React from 'react';
 import { AuthNavigation } from '../../Processes/Navigation';
+import { AuthProvider } from '../../Entities/User/Helpers/user-manager';
 
 const Authentication = () => {
     return (
-        <AuthNavigation />
+        <AuthProvider>
+            <AuthNavigation />  
+        </AuthProvider>
     );
 };
 

@@ -12,7 +12,7 @@ export default function AuthNavigation() {
     
     return (
         <NavigationContainer ref={authNavigationRef} independent={true}>
-            <AuthStack.Navigator initialRouteName="Registration">
+            <AuthStack.Navigator initialRouteName="Authorisation">
                 <AuthStack.Screen 
                     name="Registration" 
                     component={UserReg}
@@ -24,7 +24,7 @@ export default function AuthNavigation() {
                     options={{ headerShown: false }}
                 />
                 <AuthStack.Screen 
-                    name="Validate Email" 
+                    name="ValidateEmail" 
                     component={UserMailCode}
                     options={{ headerShown: false }}
                 />

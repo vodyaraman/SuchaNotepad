@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createGroup, updateGroup } from './group-thunks';
+import { createGroup, getGroupList, updateGroup } from './group-thunks';
 
 // Создание слайса для управления группами
 const groupSlice = createSlice({
   name: 'group',
   initialState: {
     group: {
-      ownerId: '',
       groupName: '',
       createdAt: Date.now(),
+      validation: false,
       loading: false,
       error: [],
     },
@@ -17,8 +17,8 @@ const groupSlice = createSlice({
     setGroupName(state, action) {
       state.group.groupName = action.payload ;
     },
-    setOwnerId(state, action){
-      state.group.ownerId = action.payload ;
+    setValidation(state, action){
+      state.group.validation = action.payload ;
     },
     clearGroup(state) {
       state.group = {
@@ -40,6 +40,16 @@ const groupSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getGroupList.pending, (state) => {
+        state.group.loading = true;
+        state.group.error = [];
+      })
+      .addCase(getGroupList.fulfilled, (state, action) => {
+
+      })
+      .addCase(getGroupList.rejected, (state, action) => {
+        
+      })
       .addCase(createGroup.pending, (state) => {
         state.group.loading = true;
         state.group.error = [];
@@ -67,6 +77,6 @@ const groupSlice = createSlice({
   },
 });
 
-export const { setOwnerId, setGroupName, clearGroup, setError, clearError } = groupSlice.actions;
+export const { setValidation, setGroupName, clearGroup, setError, clearError } = groupSlice.actions;
 
 export default groupSlice.reducer;

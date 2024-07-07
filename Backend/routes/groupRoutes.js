@@ -7,11 +7,13 @@ import {
     checkGroupName,
 } from '../controllers/Group/groupController.js';
 
+import checkAuth from '../utils/checkAuth.js';
+
 const router = express.Router();
 
 router.get('/checkGroupName', checkGroupName)
 
-router.post('/create', createGroup);
+router.post('/create', checkAuth, createGroup);
 router.post('/addUser', addUserToGroup);
 router.get('/:groupId', getGroupDetails);
 router.get('/', listGroups);

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
  
 import { UserInputContainer } from '../../../Pull/User';
 import {heightPercentageToDP as hg} from 'react-native-responsive-screen';
@@ -10,39 +10,35 @@ import { useGroup } from '../Helpers/group-manager';
 
 //Импорт Валидации
 import { groupNameValidation, checkGroupNameAvailability } from '../Helpers/groupNameValidation';
-import { checkAvailabilityEmail } from '../../User/Helpers/email-validation';
-import { setError } from '../../../Processes/Group';
 
-const GroupName = ({ setStatus, fontWeight = 'bold' }) => {
+const GroupName = ({ }) => {
 
     const [borderColor, setBorderColor] = useState('white')
-    const { updateOwnerId, updateGroupName, groupState, setErrors } = useGroup();
+    const { updateGroupName, updateValidation, groupState, setErrors } = useGroup();
 
     const onChangeGroupName = (groupName) => {
-        const status = groupNameValidation(groupName) 
-        if(status.status){
-            setBorderColor('white')
-            console.log('Валидация пройдена')
-            updateGroupName(groupName)
-        }
-        else if(groupName === ''){
-            setBorderColor('white')
-        }
-        else{
-            setBorderColor('red')
-        }
+        updateGroupName(groupName)
     }
 
     const onBlurGroupName = async () => {
         const currentGroupName = groupState.groupName
-        const status = await checkAvailabilityEmail(currentGroupName)
-        if (status) {
-            console.log('Данное имя свободно.')
-            updateOwnerId(1)
-            setBorderColor('white')
+        const validation = groupNameValidation(currentGroupName) 
+
+        if(validation.status){
+            const availability = await checkGroupNameAvailability(currentGroupName)
+            if(availability.status){
+                console.log('Данное имя свободно.')
+                updateValidation(true)
+                setBorderColor('white')
+            } else{
+                setErrors(availability.message)
+                updateValidation(false)
+                setErrors(['This group already exists!'])
+            }
         } else{
             setBorderColor('red')
-            setError(status.message)
+            setErrors(validation.message)
+            updateValidation(false)
         }
     }
 

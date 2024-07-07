@@ -19,6 +19,7 @@ export const GroupAddButton = ({setStatus, status}) => {
 
     const handleGroupCreate = () => {
         create(groupState)
+        Show.Control()
     }
 
     return (

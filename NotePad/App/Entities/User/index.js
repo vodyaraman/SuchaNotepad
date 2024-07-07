@@ -12,8 +12,8 @@ import UserRegisterButton from './UI/Registration/user-register-button';
 import SubmitRegisterButton from './UI/Registration/submit';
 import MailCodeInput from './UI/Registration/mail-code-input';
 
-// ---- Компоненты для модалки ошибки ----
-import AnimatedErrorModal from './UI/Main/animatedErrorModal';
+// ---- Компоненты для модалки сообщений ----
+import AnimatedMessageModal from './UI/Main/animatedMessageModal';
 
 // ---- Компоненты для фона ----
 import UserBackground from './UI/Main/user-background';
@@ -36,7 +36,7 @@ export {
   SubmitRegisterButton,
   UserBackground,
   HelpTextButton,
-  AnimatedErrorModal,
+  AnimatedMessageModal,
   MailCodeInput,
   WelcomeButton,
 };

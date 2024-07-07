@@ -29,6 +29,7 @@ const UserPassword = () => {
         placeholder={'Password:'} 
         onChangeHandler={ updateUserPassword } 
         secureTextEntry={statusSecureText}
+        borderBottomColor={'white'}
       />
     );
   };

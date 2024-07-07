@@ -1,20 +1,28 @@
 import Group from '../../models/group.js';
 import GroupMember from '../../models/groupMember.js';
 
+import { generateInviteLink } from '../../utils/generateInviteLink.js';
+
 // Controller to create a new group
 export const createGroup = async (req, res) => {
-    const { ownerID, groupName, groupColor, groupPicture, isPrivate } = req.body;
-
     try {
+        const {groupName} = req.body
+        const ownerId = req.userId
+        console.log(groupName, ownerId)
+
         const group = new Group({
-            ownerID,
+            ownerId,
             groupName,
-            groupCustom: { groupColor, groupPicture },
-            isPrivate,
         });
+
         await group.save();
-        res.status(201).json(group);
+
+        await generateInviteLink(group._id)
+        
+        res.status(201).json({status: 'success', message:['Успешное создание группы']});
+
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: error.message });
     }
 };
@@ -52,8 +60,8 @@ export const getGroupDetails = async (req, res) => {
 // Controller to list all groups
 export const listGroups = async (req, res) => {
     try {
-        const groups = await Group.find().populate('ownerID', 'name email');
-        res.status(200).json(groups);
+        const groups = await Group.find().populate('ownerId');
+        res.status(200).json(groups)
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -68,15 +76,10 @@ export const checkGroupName = async (req, res) => {
         if (existingGroup) {
             return res.status(400).json({status: false, message: ['This group already exists!']})
         }
-        res.json(true)
+        res.json({status: true})
 
     } catch (error) {
         console.error('Error in checking group:', error);
         res.status(500).json({ message: ['Error checking user'], error: error.message });
     }
-}
-
-//Contoller to create invite link
-export const createInviteLink = async (req, res) => {
-    
 }

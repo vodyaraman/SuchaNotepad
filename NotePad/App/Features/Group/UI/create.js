@@ -6,6 +6,7 @@ import { UserBackgroundPlate } from '../../../Pull/User';
 
 import { GroupName } from '../../../Entities/Group';
 
+
 const Create = () => {
     
     return (

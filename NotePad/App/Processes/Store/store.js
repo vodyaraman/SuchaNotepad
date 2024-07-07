@@ -9,6 +9,7 @@ import authSlice from "../Authentication/API/auth-slice";
 
 //Импорт редьюсеров Group
 import groupSlice from "../Group/API/group-slice";
+import { groupApi } from "../Group";
 
 export const store = configureStore({
   reducer: {
@@ -16,7 +17,8 @@ export const store = configureStore({
     note: noteReducer,
     auth: authSlice,
     group: groupSlice,
+    [groupApi.reducerPath]: groupApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(noteApi.middleware),
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware().concat(noteApi.middleware, groupApi.middleware),
 });

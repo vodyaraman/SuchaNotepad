@@ -13,7 +13,8 @@ const UserLogin = () => {
             fontSize={hg('2.3%')} 
             fontFamily={'Lexend-Medium'} 
             onChangeHandler={updateLogin} 
-            placeholder={'Email:'} />
+            placeholder={'Email:'}
+            borderBottomColor={'white'} />
     )
   };
   

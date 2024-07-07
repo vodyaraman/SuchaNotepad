@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from 'react-native';
-import { UserEmailReg, UserUsernameReg, UserPasswordReg, UserPasswordRepeatReg, SubmitRegisterButton, UserBackground, HelpTextButton, AnimatedErrorModal } from "../../../../Entities/User";
+import { UserEmailReg, UserUsernameReg, UserPasswordReg, UserPasswordRepeatReg, SubmitRegisterButton, UserBackground, HelpTextButton, AnimatedMessageModal } from "../../../../Entities/User";
 import { useRegistration } from "../../../../Entities/User/Helpers/user-manager";
 import { Show } from "../../../../Processes/Navigation/Rules";
 import { UserBackgroundPlate } from "../../../../Pull/User";
@@ -25,7 +25,7 @@ const UserReg = () => {
         <UserBackground>
             <View style={styles.alertContainer}>
                 {error && error.map((err, index) => (
-                    <AnimatedErrorModal key={index} text={err} setIsVisible={setIsVisible} isVisible={isVisible} />
+                    <AnimatedMessageModal key={index} text={err} setIsVisible={setIsVisible} isVisible={isVisible} modalType={'error'} />
                 ))}
             </View>
             <View style={styles.mainContainer}>
