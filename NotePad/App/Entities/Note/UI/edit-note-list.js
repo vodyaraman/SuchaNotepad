@@ -6,39 +6,39 @@ import { InputText } from '../../../Pull/Note';
 
 const EditNoteList = () => {
     const { noteText, setNoteText } = useText();
-    const [items, setItems] = useState(Array.isArray(noteText) ? noteText : []);
+    const [items, setItems] = useState(noteText.text || []);
 
     useEffect(() => {
-        console.log('Received noteText:', noteText);
-        if (Array.isArray(noteText)) {
-            setItems(noteText);
+        if (noteText.text) {
+            setItems(noteText.text);
+            console.log(noteText);
         } else {
-            console.warn('noteText is not an array. Received:', noteText);
+            console.warn('noteText.text is not defined. Received:', noteText);
             setItems([]);
         }
     }, [noteText]);
 
     const handleItemChange = (index, value) => {
         const newItems = [...items];
-        newItems[index].text = value;
+        newItems[index] = value;
         setItems(newItems);
-        setNoteText(newItems);
+        setNoteText({ text: newItems });
     };
 
     const handleAddItem = () => {
-        const newItems = [...items, { text: '', completed: false }];
+        const newItems = [...items, ''];
         setItems(newItems);
-        setNoteText(newItems);
+        setNoteText({ text: newItems });
     };
 
     const handleRemoveItem = (index) => {
         const newItems = items.filter((_, i) => i !== index);
         setItems(newItems);
-        setNoteText(newItems);
+        setNoteText({ text: newItems });
     };
 
     const handleKeyDown = (index, event) => {
-        if (event.nativeEvent.key === 'Backspace' && items[index].text === '') {
+        if (event.nativeEvent.key === 'Backspace' && items[index] === '') {
             handleRemoveItem(index);
         } else if (index === items.length - 1 && event.nativeEvent.key === 'Enter') {
             handleAddItem();
@@ -51,10 +51,11 @@ const EditNoteList = () => {
                 items.map((item, index) => (
                     <InputText
                         key={index}
-                        value={item.text}
+                        value={item}
                         onChangeText={(text) => handleItemChange(index, text)}
                         onKeyPress={(e) => handleKeyDown(index, e)}
                         style={styles.input}
+                        placeholder='Enter text'
                     />
                 ))
             ) : (
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
 });
 
 export default EditNoteList;
+
 
 
 

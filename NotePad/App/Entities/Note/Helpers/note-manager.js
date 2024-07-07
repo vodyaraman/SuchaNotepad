@@ -2,10 +2,8 @@ import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateNote } from '../../../Processes/Note';
 
-// Context to manage note content
 export const TextContext = createContext();
 
-// Provider
 export const NoteManagerProvider = ({ children }) => {
     const dispatch = useDispatch();
     const note = useSelector((state) => state.note);
