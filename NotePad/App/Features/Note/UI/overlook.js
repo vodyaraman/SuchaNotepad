@@ -1,15 +1,13 @@
 import {NoteTitle, NoteManipulate, NoteUser} from "../../../Entities/Note";
 import { NotePlate } from "../../../Pull/Note";
-import React, { useState } from "react";
+import React from "react";
 
 const NoteOverlook = () => {
-    const [leftColor, setLeftColor] = useState("#9CFFF3")
-    const [rightColor ,setRightColor] = useState("#A2EFE6")
+
     return (
         <NotePlate 
-            leftColor={leftColor} 
-            rightColor={rightColor} 
-            height={60} 
+            leftColor={"#9CFFF3"} 
+            rightColor={"#A2EFE6"}
             leftSlot={<NoteUser />}
             rightSlot={<NoteTitle/>}
             bottomSlot={<NoteManipulate/>}/>

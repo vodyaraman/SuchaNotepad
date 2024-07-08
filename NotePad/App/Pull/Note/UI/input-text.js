@@ -14,7 +14,7 @@ const InputText = ({
   textAlign = 'left',
   placeholder = "",
   height = "auto",
-  numberOfLines = 1,
+  rows = 1,
   multiline = true,
   secureTextEntry = false,
   onChangeText = () => {},
@@ -62,7 +62,7 @@ const InputText = ({
       placeholder={placeholder}
       keyboardType="default"
       multiline={multiline}
-      numberOfLines={numberOfLines}
+      rows={rows}
       onFocus={() => setIsFocused(true)}
       onBlur={onBlurAction}
       onKeyPress={(e) => onKeyPress(e)}

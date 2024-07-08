@@ -3,7 +3,6 @@ import GroupMember from '../../models/groupMember.js';
 
 import { generateInviteLink } from '../../utils/generateInviteLink.js';
 
-// Controller to create a new group
 export const createGroup = async (req, res) => {
     try {
         const {groupName} = req.body
@@ -59,15 +58,30 @@ export const getGroupDetails = async (req, res) => {
 
 // Controller to list all groups
 export const listGroups = async (req, res) => {
+    const userId = req.params.userId; // Предполагаем, что userId передается как параметр URL
+
     try {
-        const groups = await Group.find().populate('ownerId');
-        res.status(200).json(groups)
+        // Найти все группы, где пользователь является участником
+        const memberGroups = await GroupMember.find({ userId }).populate('groupId');
+        const memberGroupIds = memberGroups.map(member => member.groupId._id);
+
+        // Найти все группы, где пользователь является владельцем
+        const ownerGroups = await Group.find({ ownerId: userId });
+
+        // Объединить и удалить дубликаты
+        const allGroupIds = [...new Set([...memberGroupIds, ...ownerGroups.map(group => group._id)])];
+        
+        // Извлечь все уникальные группы
+        const groups = await Group.find({ _id: { $in: allGroupIds }}).populate('ownerId');
+
+        res.status(200).json(groups);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-//Controller to check groupName Validation
+//Controller to check groupName Validation 
+// Паша, удали проверку на уникальность групп!!!
 export const checkGroupName = async (req, res) => {
     try {  
         const { groupName } = req.query

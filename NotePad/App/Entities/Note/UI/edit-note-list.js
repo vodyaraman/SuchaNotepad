@@ -52,7 +52,7 @@ const EditNoteList = () => {
     };
 
     return (
-        <ScrollView ref={scrollViewRef} style={styles.OL}>
+        <ScrollView ref={scrollViewRef} style={styles.List}>
             {items.length > 0 ? (
                 items.map((item, index) => (
                     <View style={styles.OL} key={index}>
@@ -93,17 +93,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 20,
     },
+    List: {
+        width: '100%',
+        paddingHorizontal: '5%',
+    },
     OL: {
         flexDirection: 'row',
         width: '100%',
-        marginLeft: '5%'
     },
     numeric: {
         flex: 1,
         fontWeight: 'bold'
     },
     listInputs: {
-        flex: 12
+        flex: 12,
+        width: '100%'
     },
 });
 

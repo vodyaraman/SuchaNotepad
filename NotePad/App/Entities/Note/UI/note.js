@@ -1,16 +1,16 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView } from "react-native";
 import { CustomText } from "../../../Pull/Note";
+import { useText } from "../Helpers/note-manager";
 
-const Note = ({ 
-  textColor = '#000', 
-  text = 'Текст по умолчанию достаточно большой, возомжно, он занимает больше одной строки и ему требуется какое-то дополнительное форматирование по типу выравнивания по ширине' 
-}) => {
+const Note = () => {
+  const {noteText} = useText();
+
     return (
       <ScrollView>
         <CustomText
           textColor={textColor}
-          text={text}
+          text={noteText.text[0]}
           flex="center"
           numberOfLines={null}
         />
