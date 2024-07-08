@@ -1,58 +1,25 @@
-import React, {useEffect} from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
-
-import { ItemBlock, AnimatedSearchButton } from '../../../Entities/Group';
-import { heightPercentageToDP as hg } from 'react-native-responsive-screen';
-
+import React from 'react';
+import { View } from 'react-native';
 import { Show } from '../../../Processes/Navigation/Rules';
 
-//Импорт кастомного хука fetchBaseQuery для запроса на сервер
-import { useGetGroupListQuery } from '../../../Processes/Group/API/group-api';
+import { GroupItemBlock, LinkItemBlock, MembersItemBlock} from '../../../Entities/Group';
+import { UserBackgroundPlate } from '../../../Pull/User';
+
+import { BackButton } from '../../../Pull/Buttons';
 
 const Control = () => {
-    const { data=[], isLoading } = useGetGroupListQuery()
-
-    const onPressHandler = () => {
-        Show.OverlookGroup()
-    }
-
-    const groupListControlRender = (item, index) => {
-        return(
-            <ItemBlock 
-                key={index} 
-                groupName={item.groupName} 
-                ownerName={item.ownerId.name} 
-                fontColor={'purple'}
-                onPressHandler={onPressHandler} />
-        )
-    }
-
     return (
-        
-            <View style={styles.mainContainer}>
-                <AnimatedSearchButton />
-                
-                <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContentContainer}>
-                    {data.map((item, index) => groupListControlRender(item, index))}
-                </ScrollView>
+        <UserBackgroundPlate firstColor='#EC7171' secondColor='#EC7171'>
+            <BackButton onPressHandler={() => Show.Control()} />
+
+            <View style={{gap: 50}}>
+                <GroupItemBlock />
+                <MembersItemBlock />
+                <LinkItemBlock />
             </View>
-        
+            
+        </UserBackgroundPlate>
     );
 };
 
 export default Control;
-
-const styles = StyleSheet.create({
-    mainContainer:{
-        height: hg('72%'),
-        paddingHorizontal: 15,
-    },
-
-    scrollContainer:{
-        borderRadius: 25, 
-    },
-
-    scrollContentContainer:{
-        height: '100%',
-    }
-})

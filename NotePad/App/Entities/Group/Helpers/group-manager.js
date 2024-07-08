@@ -2,7 +2,9 @@ import React, { createContext, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setValidation, setGroupName, clearGroup, setError, clearError } from '../../../Processes/Group';
 
-import { getGroupList, createGroup, updateGroup, addUserToGroup } from '../../../Processes/Group';
+import { getGroupList, updateGroup, addUserToGroup } from '../../../Processes/Group';
+
+import { useAddGroupMutation } from '../../../Processes/Group/API/group-api';
 
 // Context to manage group content
 export const GroupContext = createContext();
@@ -11,6 +13,7 @@ export const GroupContext = createContext();
 export const GroupManagerProvider = ({ children }) => {
     const dispatch = useDispatch();
     const groupState = useSelector((state) => state.group.group);
+    const [addGroup, {error}] = useAddGroupMutation();
 
     const setGroupData = (updatedGroup) => {
         dispatch(setGroupName(updatedGroup.groupName));
@@ -35,9 +38,9 @@ export const GroupManagerProvider = ({ children }) => {
 
     const create = async (groupData) => {
         if(groupData.groupName && groupData.validation){
-            await dispatch(createGroup(groupData))
+            const data = await addGroup(groupData).unwrap()
             clearGroupData()
-            console.log(groupState)
+            return data
 
         } else{
             setErrors(['Проверьте правильность введенных данных'])

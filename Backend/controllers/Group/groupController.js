@@ -58,16 +58,23 @@ export const getGroupDetails = async (req, res) => {
 
 // Controller to list all groups
 export const listGroups = async (req, res) => {
-    const userId = req.params.userId; // Предполагаем, что userId передается как параметр URL
-
+    const userId = req.userId
+    
     try {
         // Найти все группы, где пользователь является участником
         const memberGroups = await GroupMember.find({ userId }).populate('groupId');
+        console.log(memberGroups)
+
         const memberGroupIds = memberGroups.map(member => member.groupId._id);
 
-        // Найти все группы, где пользователь является владельцем
+        // // Найти все группы, где пользователь является владельцем
         const ownerGroups = await Group.find({ ownerId: userId });
+        console.log(ownerGroups)
 
+        if(ownerGroups.length === 0 && memberGroups.length === 0){
+            console.log('Групп нет')
+            return res.status(404).json({status: false})
+        }
         // Объединить и удалить дубликаты
         const allGroupIds = [...new Set([...memberGroupIds, ...ownerGroups.map(group => group._id)])];
         
@@ -79,21 +86,3 @@ export const listGroups = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
-//Controller to check groupName Validation 
-// Паша, удали проверку на уникальность групп!!!
-export const checkGroupName = async (req, res) => {
-    try {  
-        const { groupName } = req.query
-        const existingGroup = await Group.findOne({groupName});
-
-        if (existingGroup) {
-            return res.status(400).json({status: false, message: ['This group already exists!']})
-        }
-        res.json({status: true})
-
-    } catch (error) {
-        console.error('Error in checking group:', error);
-        res.status(500).json({ message: ['Error checking user'], error: error.message });
-    }
-}

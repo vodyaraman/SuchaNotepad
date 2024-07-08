@@ -9,17 +9,23 @@ import { Show } from '../../../Processes/Navigation/Rules';
 import { useGroup } from '../../Group';
 
 export const GroupAddButton = ({setStatus, status}) => {
-    const {create, groupState} = useGroup();
-
+    const {groupState, create} = useGroup();
+    
 
     const handleGroupCreateShow = () => {
         Show.Create()
         setStatus(true)
     }
 
-    const handleGroupCreate = () => {
-        create(groupState)
-        Show.Control()
+    const handleGroupCreate = async () => {
+        const response = await create(groupState)
+        if (response.status === 'success') {
+            console.log(response.message) //Потом сделать нормальный вывод окон с сообщениями и ошибками
+            setStatus(false)
+            Show.OverlookGroup()
+        } else{
+            console.log('Что то пошло не так')
+        }
     }
 
     return (

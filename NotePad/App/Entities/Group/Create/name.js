@@ -25,20 +25,13 @@ const GroupName = ({ }) => {
         const validation = groupNameValidation(currentGroupName) 
 
         if(validation.status){
-            const availability = await checkGroupNameAvailability(currentGroupName)
-            if(availability.status){
-                console.log('Данное имя свободно.')
-                updateValidation(true)
-                setBorderColor('white')
-            } else{
-                setErrors(availability.message)
-                updateValidation(false)
-                setErrors(['This group already exists!'])
-            }
-        } else{
-            setBorderColor('red')
-            setErrors(validation.message)
+            updateValidation(true)
+            setBorderColor('white')
+        }
+        else{
             updateValidation(false)
+            setBorderColor('red')
+            setErrors(['Название группы должно быть не менее 3х символов!'])
         }
     }
 

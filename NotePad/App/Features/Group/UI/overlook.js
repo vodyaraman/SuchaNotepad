@@ -1,25 +1,64 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, {useEffect} from 'react';
+import { View, ScrollView, StyleSheet, Text } from 'react-native';
+
+//Импорт составных компонентов
+import { ItemBlock, AnimatedSearchButton, EmptyGroupMessage } from '../../../Entities/Group';
+import { heightPercentageToDP as hg } from 'react-native-responsive-screen';
+
+//Импорт навигации
 import { Show } from '../../../Processes/Navigation/Rules';
 
-import { GroupItemBlock, LinkItemBlock, MembersItemBlock} from '../../../Entities/Group';
-import { UserBackgroundPlate } from '../../../Pull/User';
-
-import { BackButton } from '../../../Pull/Buttons';
+//Импорт кастомного хука fetchBaseQuery для запроса на сервер
+import { useGetGroupListQuery } from '../../../Processes/Group/API/group-api';
 
 const Overlook = () => {
-    return (
-        <UserBackgroundPlate firstColor='#EC7171' secondColor='#EC7171'>
-            <BackButton onPressHandler={() => Show.Control()} />
+    const { data=[], isLoading, error } = useGetGroupListQuery()
 
-            <View style={{gap: 50}}>
-                <GroupItemBlock />
-                <MembersItemBlock />
-                <LinkItemBlock />
+    const onPressHandler = () => {
+        Show.OverlookGroup()
+    }
+
+    const groupListControlRender = (item) => {
+        return(
+            <ItemBlock 
+                key={item._id} 
+                groupName={item.groupName} 
+                ownerName={item.ownerId.name} 
+                fontColor={'purple'}
+                onPressHandler={onPressHandler} />
+        )
+    }
+
+    if (isLoading) {
+        return(<Text style={{fontWeight:'900', textAlign:'center'}}>Loading...</Text>)
+    }
+
+    return (
+        
+            <View style={styles.mainContainer}>
+                <AnimatedSearchButton />
+                {error && <EmptyGroupMessage />}
+                <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContentContainer}>
+                    {data.map((item) => groupListControlRender(item))}
+                </ScrollView>
             </View>
-            
-        </UserBackgroundPlate>
+        
     );
 };
 
 export default Overlook;
+
+const styles = StyleSheet.create({
+    mainContainer:{
+        height: hg('72%'),
+        paddingHorizontal: 15,
+    },
+
+    scrollContainer:{
+        borderRadius: 25, 
+    },
+
+    scrollContentContainer:{
+        height: '100%',
+    }
+})
