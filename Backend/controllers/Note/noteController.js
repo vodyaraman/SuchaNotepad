@@ -1,11 +1,14 @@
 import NoteModel from '../../models/note.js';
+import NoteAccess from '../../models/noteAccess.js';
+import GroupMember from '../../models/groupMember.js';
 
 export const create = async (req, res) => {
     try {
-        const { userID, noteType, title, noteText, notePriority, timestamp } = req.body;
+        const { noteType, title, noteText, notePriority, timestamp } = req.body;
+        const userId = req.userId;
 
         const newNote = new NoteModel({
-            userID,
+            ownerId: userId,
             noteType,
             title,
             noteText,
@@ -16,31 +19,20 @@ export const create = async (req, res) => {
 
         const post = await newNote.save();
 
-        res.json({ post });
+        // Найти все группы, к которым принадлежит пользователь
+        const userGroups = await GroupMember.find({ userId }).select('groupId');
+
+        // Создать записи NoteAccess для каждой группы
+        const noteAccessEntries = userGroups.map(group => ({
+            noteId: post._id,
+            groupId: group.groupId
+        }));
+
+        await NoteAccess.insertMany(noteAccessEntries);
+
+        res.status(201).json({ post });
     } catch (error) {
         res.status(500).json({ error: 'Failed to create note' });
     }
 };
 
-export const update = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const updateData = req.body;
-
-        const updatedNote = await NoteModel.findByIdAndUpdate(id, updateData, { new: true });
-
-        res.json({ updatedNote });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to update note' });
-    }
-};
-
-export const getNotes = async (req, res) => {
-    try {
-        const notes = await NoteModel.find({ userId: req.userId });
-
-        res.json({ notes });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch notes' });
-    }
-};

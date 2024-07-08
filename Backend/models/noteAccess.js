@@ -6,28 +6,15 @@ const noteAccessSchema = new mongoose.Schema({
         ref: 'Note',
         required: true,
     },
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: false,
-    },
-    groupId: {
+    groupIds: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Group',
-        required: false,
-    },
+        required: true,
+    }],
 });
 
-// Ensure unique access entries for userId and groupId combinations
-noteAccessSchema.index({ noteId: 1, userId: 1 }, { unique: true, sparse: true });
-noteAccessSchema.index({ noteId: 1, groupId: 1 }, { unique: true, sparse: true });
-
-noteAccessSchema.pre('save', function (next) {
-    if (!this.userId && !this.groupId) {
-        next(new Error('Note access must be associated with either a user or a group.'));
-    } else {
-        next();
-    }
-});
+// Ensure unique access entries for noteId and groupId combinations
+noteAccessSchema.index({ noteId: 1, groupIds: 1 }, { unique: true });
 
 export default mongoose.model('NoteAccess', noteAccessSchema);
+
