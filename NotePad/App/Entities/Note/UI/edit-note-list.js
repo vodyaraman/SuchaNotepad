@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useText } from '../Helpers/note-manager';
 import { SubmitButton } from '../../../Pull/Buttons';
 import { InputText } from '../../../Pull/Note';
@@ -7,11 +7,11 @@ import { InputText } from '../../../Pull/Note';
 const EditNoteList = () => {
     const { noteText, setNoteText } = useText();
     const [items, setItems] = useState(noteText.text || []);
+    const scrollViewRef = useRef(null);
 
     useEffect(() => {
         if (noteText.text) {
             setItems(noteText.text);
-            console.log(noteText);
         } else {
             console.warn('noteText.text is not defined. Received:', noteText);
             setItems([]);
@@ -29,6 +29,12 @@ const EditNoteList = () => {
         const newItems = [...items, ''];
         setItems(newItems);
         setNoteText({ text: newItems });
+
+        setTimeout(() => {
+            if (scrollViewRef.current) {
+                scrollViewRef.current.scrollToEnd({ animated: true });
+            }
+        }, 100);
     };
 
     const handleRemoveItem = (index) => {
@@ -46,17 +52,20 @@ const EditNoteList = () => {
     };
 
     return (
-        <View>
+        <ScrollView ref={scrollViewRef} style={styles.OL}>
             {items.length > 0 ? (
                 items.map((item, index) => (
-                    <InputText
-                        key={index}
-                        value={item}
-                        onChangeText={(text) => handleItemChange(index, text)}
-                        onKeyPress={(e) => handleKeyDown(index, e)}
-                        style={styles.input}
-                        placeholder='Enter text'
-                    />
+                    <View style={styles.OL} key={index}>
+                        <Text style={styles.numeric}>{index + 1}</Text>
+                        <InputText
+                            fontSize={18}
+                            value={item}
+                            onChangeText={(text) => handleItemChange(index, text)}
+                            onKeyPress={(e) => handleKeyDown(index, e)}
+                            placeholder='Enter text'
+                            style={styles.listInputs}
+                        />
+                    </View>
                 ))
             ) : (
                 <Text style={styles.emptyMessage}>No items to display</Text>
@@ -69,18 +78,11 @@ const EditNoteList = () => {
                 color2="transparent"
                 style={styles.addButton}
             />
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
-    input: {
-        fontSize: 18,
-        padding: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: 'gray',
-        marginBottom: 10,
-    },
     addButton: {
         alignItems: 'center',
         padding: 10,
@@ -91,9 +93,22 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 20,
     },
+    OL: {
+        flexDirection: 'row',
+        width: '100%',
+        marginLeft: '5%'
+    },
+    numeric: {
+        flex: 1,
+        fontWeight: 'bold'
+    },
+    listInputs: {
+        flex: 12
+    },
 });
 
 export default EditNoteList;
+
 
 
 

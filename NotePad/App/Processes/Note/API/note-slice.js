@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   noteTitle: "Заголовок заметки",
   noteText: {
-    "text": ["Item 1", "Item 2", "Item 3"]
+    "text": ["", ]
   },
   userName: "Павел Башкирцев",
   userID: 1,
