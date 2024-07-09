@@ -8,6 +8,7 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import http from 'http';
+import { Server } from 'socket.io';
 import { initWebSocket } from "./websocket-config.js"
 
 // Импорты Sentry
@@ -17,7 +18,7 @@ import { nodeProfilingIntegration } from '@sentry/profiling-node';
 // Импорты маршрутов
 import userRoutes from './routes/userRoutes.js';
 import noteRoutes from './routes/noteRoutes.js';
-import groupRoutes from './routes/groupRoutes.js'
+import groupRoutes from './routes/groupRoutes.js';
 import noteAccess from './models/noteAccess.js';
 
 // Импорты стратегий
@@ -31,7 +32,12 @@ const app = express();
 const server = http.createServer(app);
 
 // Инициализация WebSocket
-const io = initWebSocket(server);
+const io = new Server(server, {
+  cors: {
+      origin: '*', // Настройте origin в зависимости от нужд безопасности
+      methods: ['GET', 'POST']
+  }
+});
 
 // Инициализация Sentry
 Sentry.init({
@@ -50,6 +56,14 @@ app.use(Sentry.Handlers.requestHandler());
 
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
+
+io.on('connection', (socket) => {
+  console.log('New client connected:', socket.id);
+
+  socket.on('disconnect', () => {
+      console.log('Client disconnected:', socket.id);
+  });
+});
 
 // Промежуточное обеспечение
 app.use(cors());
@@ -71,7 +85,6 @@ app.use('/notes', noteRoutes);
 app.use('/notes', noteAccess);
 app.use('/groups', groupRoutes);
 
-
 // Обработчик ошибок Sentry
 app.use(Sentry.Handlers.errorHandler());
 
@@ -91,7 +104,15 @@ app.use((err, req, res, next) => {
   });
 });
 
+const PORT = process.env.PORT || 10101;
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}/`);
+  console.log(`WebSocket server is running on port ${PORT}`);
+});
+
 export default app;
+
+
 
 
 

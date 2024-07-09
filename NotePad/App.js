@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { initWebSocket } from './websocket';
+import { initWebSocket } from './websocket-conf';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux';
-import {store} from './App/Processes/Store';
+import { store } from './App/Processes/Store';
 import { serverURL } from './App/Pull/Consts';
-
 import AppNavigation from './App/Processes/Navigation/stack';
 
 const loadFonts = async () => {
@@ -20,9 +19,9 @@ const loadFonts = async () => {
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  initWebSocket(serverURL);
-  
   useEffect(() => {
+    initWebSocket(serverURL); // Перемещаем инициализацию WebSocket сюда
+
     const loadResources = async () => {
       try {
         await SplashScreen.preventAutoHideAsync();
@@ -43,8 +42,8 @@ export default function App() {
   }
 
   return (
-    <Provider store={store} >
-      <AppNavigation/>
+    <Provider store={store}>
+      <AppNavigation />
     </Provider>
   );
 }
