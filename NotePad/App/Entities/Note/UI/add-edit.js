@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { SmallUnderplate, getNoteType, TimeInput } from "../../../Pull/Note";
-import { useText } from '../Helpers/note-manager';
+import { useTimestamp, useNoteType } from '../Hooks/note-api-hooks';
 import { View, StyleSheet } from "react-native";
 import { SubmitButton } from "../../../Pull/Buttons";
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { useType } from "../Helpers/type-manager";
 
 const NoteAddEdit = () => {
-    const { timestamp, setTimestamp } = useText();
-    const { noteType } = useType();
+    const [timestamp, updateTimestamp] = useTimestamp();
+    const [noteType] = useNoteType();
     const [shouldRender, setShouldRender] = useState(false);
     const [inputCount, setInputCount] = useState(0);
     const [showPicker, setShowPicker] = useState(false);
@@ -28,7 +27,7 @@ const NoteAddEdit = () => {
 
     const delInput = () => {
         if (inputCount > 0) {
-            setTimestamp(prev => ({
+            updateTimestamp(prev => ({
                 ...prev,
                 dateEnd: inputCount === 2 ? '' : prev.dateEnd,
                 dateStart: inputCount === 1 ? '' : prev.dateStart
@@ -43,7 +42,7 @@ const NoteAddEdit = () => {
         const minutes = newTime.getMinutes();
         const timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 
-        setTimestamp(prev => ({ ...prev, [pickerTarget]: timeString }));
+        updateTimestamp(prev => ({ ...prev, [pickerTarget]: timeString }));
         setShowPicker(false);
 
         if (pickerTarget === 'dateStart') {
@@ -59,7 +58,7 @@ const NoteAddEdit = () => {
                 <SmallUnderplate width="30%">
                     <TimeInput
                         time={timestamp.dateStart}
-                        onChange={time => setTimestamp(prev => ({ ...prev, dateStart: time }))}
+                        onChange={time => updateTimestamp(prev => ({ ...prev, dateStart: time }))}
                         placeholder="Start Time"
                     />
                 </SmallUnderplate>
@@ -68,7 +67,7 @@ const NoteAddEdit = () => {
                 <SmallUnderplate width="30%">
                     <TimeInput
                         time={timestamp.dateEnd}
-                        onChange={time => setTimestamp(prev => ({ ...prev, dateEnd: time }))}
+                        onChange={time => updateTimestamp(prev => ({ ...prev, dateEnd: time }))}
                         placeholder="End Time"
                     />
                 </SmallUnderplate>
@@ -127,11 +126,3 @@ const styles = StyleSheet.create({
 });
 
 export default NoteAddEdit;
-
-
-
-
-
-
-
-

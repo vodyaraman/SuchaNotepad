@@ -1,9 +1,9 @@
 import React from "react";
 import { CustomText } from "../../../Pull/Note";
-import { useText } from '../Helpers/note-manager';
+import { useUserName } from '../Hooks/note-api-hooks';
 
 const NoteUser = ({ fontWeight = 'bold' }) => {
-    const { userName } = useText();
+    const [userName] = useUserName();
     return (
         <CustomText 
             textColor="#fc7303" 
@@ -15,3 +15,4 @@ const NoteUser = ({ fontWeight = 'bold' }) => {
 };
 
 export default NoteUser;
+

@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const AppNavigation = () => {
     return (
       <NavigationContainer ref={navigationRef} independent={true}>
-        <Stack.Navigator initialRouteName="User" >
+        <Stack.Navigator initialRouteName="Main" >
         <Stack.Screen 
             name="Test" 
             component={TestPage} 

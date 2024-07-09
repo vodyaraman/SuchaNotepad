@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useText } from '../Helpers/note-manager';
+import { useNoteText } from '../Hooks/note-api-hooks';
 import { SubmitButton } from '../../../Pull/Buttons';
 import { InputText } from '../../../Pull/Note';
 
 const EditNoteList = () => {
-    const { noteText, setNoteText } = useText();
+    const [noteText, updateNoteText] = useNoteText();
     const [items, setItems] = useState(noteText.text || []);
     const scrollViewRef = useRef(null);
 
@@ -22,13 +22,13 @@ const EditNoteList = () => {
         const newItems = [...items];
         newItems[index] = value;
         setItems(newItems);
-        setNoteText({ text: newItems });
+        updateNoteText({ text: newItems });
     };
 
     const handleAddItem = () => {
         const newItems = [...items, ''];
         setItems(newItems);
-        setNoteText({ text: newItems });
+        updateNoteText({ text: newItems });
 
         setTimeout(() => {
             if (scrollViewRef.current) {
@@ -40,7 +40,7 @@ const EditNoteList = () => {
     const handleRemoveItem = (index) => {
         const newItems = items.filter((_, i) => i !== index);
         setItems(newItems);
-        setNoteText({ text: newItems });
+        updateNoteText({ text: newItems });
     };
 
     const handleKeyDown = (index, event) => {
@@ -112,9 +112,3 @@ const styles = StyleSheet.create({
 });
 
 export default EditNoteList;
-
-
-
-
-
-

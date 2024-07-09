@@ -1,13 +1,13 @@
 import React from 'react';
 import { Switcher } from '../../../Pull/Buttons';
-import { useType } from '../Helpers/type-manager';
+import { useNoteType } from '../Hooks/note-api-hooks';
 
 const NoteChangeType = () => {
-  const { noteType, setNoteType } = useType();
+  const [noteType, updateNoteType] = useNoteType();
 
   const handleSwitchChange = (index) => {
     if (index !== noteType) {
-      setNoteType(index);
+      updateNoteType(index);
     }
   };
 
@@ -24,5 +24,3 @@ const NoteChangeType = () => {
 };
 
 export default NoteChangeType;
-
-

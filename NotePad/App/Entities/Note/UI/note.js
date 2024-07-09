@@ -1,10 +1,10 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import { CustomText } from "../../../Pull/Note";
-import { useText } from "../Helpers/note-manager";
+import { useNoteText } from '../Hooks/note-api-hooks';
 
 const Note = () => {
-  const {noteText} = useText();
+  const [noteText] = useNoteText();
 
     return (
       <ScrollView>
@@ -19,4 +19,3 @@ const Note = () => {
 };
 
 export default Note;
-

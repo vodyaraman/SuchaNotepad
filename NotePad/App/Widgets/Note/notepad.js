@@ -3,16 +3,15 @@ import { StyleSheet } from 'react-native';
 import { MainWidgetPlate} from '../../Pull/Note/index';
 import { CalendarFeature } from '../../Features/Calendar/index';
 import { NotepadNavigation } from "../../Processes/Navigation";
-import { CombinedNoteProviders } from "../../Entities/Note";
 
 const Notepad = () => {
     return (
-        <CombinedNoteProviders>
+        <>
             <CalendarFeature />
             <MainWidgetPlate style = {styles.NotepadStyle}> 
                 <NotepadNavigation/>
             </MainWidgetPlate>
-        </CombinedNoteProviders>
+        </>
 )};
 
 export default Notepad;

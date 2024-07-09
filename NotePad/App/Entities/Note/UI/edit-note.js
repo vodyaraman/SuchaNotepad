@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { InputText } from "../../../Pull/Note";
-import { useText } from '../Helpers/note-manager';
+import { useNoteText } from '../Hooks/note-api-hooks';
 
 const EditNote = () => {
-    const { noteText, setNoteText } = useText();
+    const [noteText, updateNoteText] = useNoteText();
     const [inputValue, setInputValue] = useState(noteText.text[0]);
 
     console.log("Render note edit");
@@ -12,9 +12,9 @@ const EditNote = () => {
         if (newText !== inputValue) {
             setInputValue(newText);
             const updatedText = [newText, ...noteText.text.slice(1)];
-            setNoteText({ text: updatedText });
+            updateNoteText({ text: updatedText });
         }
-    }, [inputValue, noteText.text, setNoteText]);
+    }, [inputValue, noteText.text, updateNoteText]);
 
     return (
         <InputText
@@ -31,6 +31,3 @@ const EditNote = () => {
 };
 
 export default EditNote;
-
-
-

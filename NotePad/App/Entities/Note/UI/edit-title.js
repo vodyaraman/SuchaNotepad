@@ -1,14 +1,13 @@
 import React from "react";
 import { InputText } from "../../../Pull/Note";
-import { useText } from '../Helpers/note-manager';
-
+import { useNoteTitle } from '../Hooks/note-api-hooks';
 
 const EditNoteTitle = ({ flex = 'center', fontWeight = "bold", fontSize = 20}) => {
-    const { noteTitle, setNoteTitle } = useText();
+    const [noteTitle, updateNoteTitle] = useNoteTitle();
     return (
         <InputText
             text={noteTitle}
-            onChangeText={(text) => (setNoteTitle(text))}
+            onChangeText={(text) => (updateNoteTitle(text))}
             textAlign={flex}
             fontWeight={fontWeight}
             fontSize={fontSize}
