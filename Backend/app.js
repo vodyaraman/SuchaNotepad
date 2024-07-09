@@ -7,6 +7,8 @@ import cors from 'cors';
 import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import http from 'http';
+import { initWebSocket } from "./websocket-config.js"
 
 // Импорты Sentry
 import * as Sentry from '@sentry/node';
@@ -24,6 +26,12 @@ import './strategies/authentication.js';
 
 // Инициализация приложения express
 const app = express();
+
+// Инициализация сервера
+const server = http.createServer(app);
+
+// Инициализация WebSocket
+const io = initWebSocket(server);
 
 // Инициализация Sentry
 Sentry.init({
