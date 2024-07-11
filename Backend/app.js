@@ -8,7 +8,7 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import http from 'http';
-import { initWebSocket, getIo } from "./websocket-config.js"
+import { initWebSocket } from "./websocket-config.js"
 
 // Импорты Sentry
 import * as Sentry from '@sentry/node';
@@ -64,15 +64,6 @@ app.use((req, res, next) => {
 
 // Инициализация WebSocket
 initWebSocket(server);
-const io = getIo();
-
-io.on('connection', (socket) => {
-  console.log('New client connected:', socket.id);
-
-  socket.on('disconnect', () => {
-      console.log('Client disconnected:', socket.id);
-  });
-});
 
 // Маршруты
 app.use('/users', userRoutes);

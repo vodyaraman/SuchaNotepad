@@ -10,7 +10,7 @@ const NotepadStack = createStackNavigator();
 export default function NotepadNavigation() {
     return (
         <NavigationContainer ref={notepadNavRef} independent={true}>
-            <NotepadStack.Navigator initialRouteName="Write">
+            <NotepadStack.Navigator initialRouteName="Overlook">
                 <NotepadStack.Screen 
                     name="Check" 
                     component={NoteCheck}

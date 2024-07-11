@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { CustomText } from "../../../Pull/Note";
 import { useNoteTitle } from '../Hooks/note-api-hooks';
 

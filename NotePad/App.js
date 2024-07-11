@@ -20,8 +20,6 @@ export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
-    initWebSocket(serverURL); // Перемещаем инициализацию WebSocket сюда
-
     const loadResources = async () => {
       try {
         await SplashScreen.preventAutoHideAsync();
@@ -41,6 +39,8 @@ export default function App() {
     return null;
   }
 
+  initWebSocket(serverURL);
+  
   return (
     <Provider store={store}>
       <AppNavigation />
