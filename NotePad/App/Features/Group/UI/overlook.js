@@ -12,16 +12,18 @@ import { Show } from '../../../Processes/Navigation/Rules';
 import { useGetGroupListQuery } from '../../../Processes/Group/API/group-api';
 
 const Overlook = () => {
+    
     const { data=[], isLoading, error } = useGetGroupListQuery()
 
-    const onPressHandler = () => {
-        Show.OverlookGroup()
+    const onPressHandler = (id) => {
+        Show.Control({id: id})
     }
 
-    const groupListControlRender = (item) => {
+    const groupListControlRender = (item, index) => {
         return(
             <ItemBlock 
-                key={item._id} 
+                key={item._id}
+                id={item._id}
                 groupName={item.groupName} 
                 ownerName={item.ownerId.name} 
                 fontColor={'purple'}
@@ -34,15 +36,18 @@ const Overlook = () => {
     }
 
     return (
-        
             <View style={styles.mainContainer}>
                 <AnimatedSearchButton />
                 {error && <EmptyGroupMessage />}
-                <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContentContainer}>
-                    {data.map((item) => groupListControlRender(item))}
-                </ScrollView>
-            </View>
-        
+                
+                    <ScrollView  
+                        style={styles.scrollContainer} 
+                        showsVerticalScrollIndicator={false} 
+                        contentContainerStyle={styles.scrollContentContainer}
+                    > 
+                        {data.map((item, index) => groupListControlRender(item, index))}
+                    </ScrollView>
+            </View>  
     );
 };
 

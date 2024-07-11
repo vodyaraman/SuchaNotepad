@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 import { store } from './App/Processes/Store';
-import { addNote, updateNote, deleteNote } from './App/Processes/Note';
+import { addNote, updateNote, deleteNote } from './App/Processes/Note/API/note-slice';
 
 let socket;
 

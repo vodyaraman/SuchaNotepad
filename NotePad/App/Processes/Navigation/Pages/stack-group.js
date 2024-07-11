@@ -12,11 +12,10 @@ export default function GroupNavigation({setStatus}) {
         <NavigationContainer ref={groupNavRef} independent={true} >
             <GroupStack.Navigator initialRouteName="Overlook">
                 <GroupStack.Screen 
-                    name="Control" 
+                    name="Control"
+                    component={Control} 
                     options={{ headerShown: false}}
-                >
-                    {(props) => <Control  {...props} />}
-                </GroupStack.Screen>
+                />
                 <GroupStack.Screen 
                     name="Create" 
                     options={{ headerShown: false }}
