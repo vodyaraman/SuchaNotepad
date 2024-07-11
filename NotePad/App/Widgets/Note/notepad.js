@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { MainWidgetPlate} from '../../Pull/Note/index';
 import { CalendarFeature } from '../../Features/Calendar/index';
 import { NotepadNavigation } from "../../Processes/Navigation";
+import { NavigationButtons } from "../../Features/Navigation";
 
 const Notepad = () => {
     return (
@@ -10,6 +11,7 @@ const Notepad = () => {
             <CalendarFeature />
             <MainWidgetPlate style = {styles.NotepadStyle}> 
                 <NotepadNavigation/>
+                <NavigationButtons screen="note"/>
             </MainWidgetPlate>
         </>
 )};

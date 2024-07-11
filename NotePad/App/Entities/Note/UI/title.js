@@ -1,24 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import { CustomText } from "../../../Pull/Note";
-import { useNoteTitle } from '../Hooks/note-api-hooks';
 
-const NoteTitle = ({ flex = 'flex-start', fontWeight = "normal", fontSize=18 }) => {
-    const [noteTitle, updateNoteTitle] = useNoteTitle();
-    const [textColor, setTextColor] = useState("#0d0c0c");
-
+const NoteTitle = ({ title }) => {
     return (
-    <>
         <CustomText 
-            textColor={textColor} 
-            text={noteTitle} 
-            flex={flex} 
-            fontWeight={fontWeight}
-            fontSize={fontSize}
-            onChangeText={updateNoteTitle}
-            placeholder="Enter title"
-            multiline={false}
+            textColor="#000" 
+            text={title} 
+            flex="start" 
+            fontWeight="bold"
+            fontSize={20}
         />
-    </>
-)};
+    );
+};
 
 export default NoteTitle;
+

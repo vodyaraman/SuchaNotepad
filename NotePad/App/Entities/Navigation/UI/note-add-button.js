@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { useAddNote } from '../Helpers/add-note-script';
+import { useAddNote } from '../../Note/Hooks/add-note';
 import AddTask from '../../../../assets/plusTaskButton.png';
 import { TaskButton } from '../../../Pull/Buttons';
 
@@ -16,4 +16,3 @@ export const NoteAddButton = () => {
         </>
     );
 };
-

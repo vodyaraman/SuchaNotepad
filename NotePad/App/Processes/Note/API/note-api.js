@@ -16,7 +16,7 @@ export const noteApi = createApi({
     }),
     endpoints: (build) => ({
         getNotesList: build.query({
-            query: () => `notes/`,
+            query: () => `notes/getNotes`,
             providesTags: [{ type: 'Notes', id: 'LIST' }],
         }),
         createNote: build.mutation({
