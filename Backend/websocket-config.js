@@ -5,19 +5,12 @@ let io;
 export const initWebSocket = (httpServer) => {
     io = new Server(httpServer, {
         cors: {
-            origin: '*', // Настроить origin в зависимости от нужд безопасности
+            origin: '*',
             methods: ['GET', 'POST']
         }
     });
 
-    io.on('connection', (socket) => {
-        console.log('New client connected:', socket.id);
-
-        // Здесь можно определить обработчики событий
-        socket.on('disconnect', () => {
-            console.log('Client disconnected:', socket.id);
-        });
-    });
+    console.log('websocket in use')
 
     return io;
 };

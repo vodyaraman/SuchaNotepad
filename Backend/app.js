@@ -8,8 +8,7 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import http from 'http';
-import { Server } from 'socket.io';
-import { initWebSocket } from "./websocket-config.js"
+import { initWebSocket, getIo } from "./websocket-config.js"
 
 // Импорты Sentry
 import * as Sentry from '@sentry/node';
@@ -31,14 +30,6 @@ const app = express();
 // Инициализация сервера
 const server = http.createServer(app);
 
-// Инициализация WebSocket
-const io = new Server(server, {
-  cors: {
-      origin: '*', // Настройте origin в зависимости от нужд безопасности
-      methods: ['GET', 'POST']
-  }
-});
-
 // Инициализация Sentry
 Sentry.init({
   dsn: "https://65332efa9675266be2d8db713c2d5347@o4507217079304192.ingest.sentry.io/4507225970507856",
@@ -57,14 +48,6 @@ app.use(Sentry.Handlers.requestHandler());
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
 
-io.on('connection', (socket) => {
-  console.log('New client connected:', socket.id);
-
-  socket.on('disconnect', () => {
-      console.log('Client disconnected:', socket.id);
-  });
-});
-
 // Промежуточное обеспечение
 app.use(cors());
 app.use(logger('dev'));
@@ -77,6 +60,18 @@ app.use(passport.initialize());
 app.use((req, res, next) => {
   console.log(`${req.method} request to ${req.path}, body ${JSON.stringify(req.body)}`);
   next();
+});
+
+// Инициализация WebSocket
+initWebSocket(server);
+const io = getIo();
+
+io.on('connection', (socket) => {
+  console.log('New client connected:', socket.id);
+
+  socket.on('disconnect', () => {
+      console.log('Client disconnected:', socket.id);
+  });
 });
 
 // Маршруты
@@ -106,7 +101,6 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 10101;
 server.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}/`);
   console.log(`WebSocket server is running on port ${PORT}`);
 });
 
