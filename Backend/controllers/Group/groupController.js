@@ -50,12 +50,15 @@ export const getGroupDetails = async (req, res) => {
         const members = await GroupMember.find({ groupId }).populate('userId', 'name');
         console.log(members)
         const link = await Invite.findOne({groupId})
-        const invationLink = `http://${process.env.HOST}:${process.env.PORT}/${link.linkId}`
-        console.log(invationLink)
+        const invationLink = `http://${process.env.HOST}:${process.env.PORT}/groups/${link.linkId}`
         res.status(200).json({ members, invationLink });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+};
+
+export const inviteToGroup = async (req, res) => {
+    console.log(req.params)
 };
 
 // Controller to list all groups

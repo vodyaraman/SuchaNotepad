@@ -7,7 +7,7 @@ const ItemContainerWithImg = ({img, text='GroupName_1', textColor='white', fontW
     return(
         <View style={styles.mainContainer}>
             <CustomText text={text} fontSize={hg('2.2%')} fontWeight={fontWeight} textColor={textColor} />
-            <Pressable style={styles.imgContainer} onPress={onPressHandler}>
+            <Pressable style={({pressed})=>[{opacity: pressed ? 0.7 : 1}, styles.imgContainer]} onPress={onPressHandler}>
                 <Image source={img} style={{height: hg('4%'), width: hg('4%')}} />
             </Pressable>
         </View>

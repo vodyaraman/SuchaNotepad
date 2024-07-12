@@ -2,10 +2,13 @@ import { ItemContainerWithImg, BlockWithTitleBetweenLines } from "../../../Pull/
 
 import copyLinkItemIcon from '@../../../assets/copy-button.png'
 
+//Импорт функции копирования текста в буфер обмена
+import { copyTextToClipboard } from "../Helpers/copyToClipboard";
+
 const LinkItemBlock = ({invationLink=''}) => {
 
-    const onPressHandler = () => {
-        console.log('Ссылка скопирована')
+    const onPressHandler = async () => {
+        copyTextToClipboard(invationLink)
     }
 
     return(
