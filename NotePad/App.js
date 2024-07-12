@@ -39,7 +39,7 @@ export default function App() {
     return null;
   }
 
-  initWebSocket(serverURL);
+  // initWebSocket(serverURL);
   
   return (
     <Provider store={store}>

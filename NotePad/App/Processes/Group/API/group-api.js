@@ -23,6 +23,11 @@ export const groupApi = createApi({
             ]
             : [{type: 'Groups', id: 'LIST'},]
         }),
+
+        getGroupDetails: build.query({
+            query: (groupId) => ({url: `groups/${groupId}`})
+        }),
+
         addGroup: build.mutation({
             query: (body) => ({
                 url: 'groups/create',
@@ -34,4 +39,4 @@ export const groupApi = createApi({
     })
 });
 
-export const { useGetGroupListQuery, useAddGroupMutation } = groupApi;
+export const { useGetGroupListQuery, useGetGroupDetailsQuery, useAddGroupMutation } = groupApi;

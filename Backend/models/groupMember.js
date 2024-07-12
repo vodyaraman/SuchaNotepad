@@ -11,6 +11,10 @@ const groupMemberSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
+    role: {
+        type: String,
+        required: true,
+    },
     joinedAt: {
         type: Date,
         default: Date.now,

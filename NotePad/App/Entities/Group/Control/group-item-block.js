@@ -2,17 +2,15 @@ import { ItemContainerWithImg, BlockWithTitleBetweenLines } from "../../../Pull/
 
 import editItemIcon from '@../../../assets/edit-item-button.png'
 
-const GroupItemBlock = () => {
+const GroupItemBlock = ({groupName}) => {
     
     const onPressHandler = () => {
         console.log('Нажата кнопка редактирования')
     }
 
-    const groupResponse = {groupName: 'Group1'}
-
     return(
         <BlockWithTitleBetweenLines>
-            <ItemContainerWithImg text={groupResponse.groupName} img={editItemIcon} onPressHandler={onPressHandler} />
+            <ItemContainerWithImg text={groupName} img={editItemIcon} onPressHandler={onPressHandler} />
         </BlockWithTitleBetweenLines>
     )
 }

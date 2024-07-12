@@ -8,7 +8,7 @@ const ItemBlock = ({id, onPressHandler, groupName='Group1', ownerName='Owner1', 
     const [textColor, setTextColor] = useState(fontColor)
     //Подумать над логикой отображения, возможно в данном варианте удобнее будет с уровня Feature прокинуть пропсами данные
     return(
-        <Pressable onPress={() => onPressHandler(id)} style={({pressed})=>[{marginBottom: 15, opacity: pressed ? 0.7 : 1}]} >
+        <Pressable onPress={() => onPressHandler(id, groupName, ownerName)} style={({pressed})=>[{marginBottom: 15, opacity: pressed ? 0.7 : 1}]} >
             <BackgroundItemPlate 
             namePlace={<CustomText textColor={textColor} text={groupName} fontSize={20} fontWeight="bold" />}
             ownerPlace={

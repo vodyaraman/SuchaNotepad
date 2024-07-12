@@ -15,8 +15,8 @@ const Overlook = () => {
     
     const { data=[], isLoading, error } = useGetGroupListQuery()
 
-    const onPressHandler = (id) => {
-        Show.Control({id: id})
+    const onPressHandler = (id, groupName) => {
+        Show.Control({id, groupName})
     }
 
     const groupListControlRender = (item, index) => {

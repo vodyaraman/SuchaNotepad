@@ -2,17 +2,15 @@ import { ItemContainerWithImg, BlockWithTitleBetweenLines } from "../../../Pull/
 
 import copyLinkItemIcon from '@../../../assets/copy-button.png'
 
-const LinkItemBlock = () => {
+const LinkItemBlock = ({invationLink=''}) => {
 
     const onPressHandler = () => {
         console.log('Ссылка скопирована')
     }
 
-    const linkResponse = {link: 'kjgler#321l;1;l/dfsdf'}
-
     return(
         <BlockWithTitleBetweenLines text='Link'>
-            <ItemContainerWithImg text={linkResponse.link} img={copyLinkItemIcon} fontWeight='normal' onPressHandler={onPressHandler} />
+            <ItemContainerWithImg text={invationLink} img={copyLinkItemIcon} fontWeight='normal' onPressHandler={onPressHandler} />
         </BlockWithTitleBetweenLines>
     )
 }
