@@ -16,7 +16,7 @@ import { useGetNotes } from '../Hooks/use-get-notes';
 import { NoteUser, NoteTitle } from '../../../Entities/Note';
 
 const Overlook = () => {
-    const { data: notes = [], isLoading, error } = useGetNotes();
+    const { notes, isLoading, error } = useGetNotes();
     console.log(`Re-render note's overlook with data ${notes}`)
 
     const onPressHandler = (id) => {

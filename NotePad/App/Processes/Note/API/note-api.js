@@ -17,7 +17,8 @@ export const noteApi = createApi({
     endpoints: (build) => ({
         getNotesList: build.query({
             query: () => `notes/getNotes`,
-            providesTags: [{ type: 'Notes', id: 'LIST' }],
+            providesTags: (result) =>
+                result ? [...result.map(({ _id }) => ({ type: 'Notes', id: _id })), { type: 'Notes', id: 'LIST' }] : [{ type: 'Notes', id: 'LIST' }],
         }),
         createNote: build.mutation({
             query: (body) => ({
@@ -46,4 +47,3 @@ export const noteApi = createApi({
 });
 
 export const { useGetNotesListQuery, useCreateNoteMutation, useUpdateNoteMutation, useDeleteNoteMutation } = noteApi;
-

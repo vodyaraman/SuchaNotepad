@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   notes: [],
   noteTitle: "",
-  noteText: { "text": ["",] },
+  noteText: { text: [""] },
   userName: "Павел Башкирцев",
   userID: 1,
   notePriority: true,
@@ -51,5 +51,6 @@ export const {
 } = noteSlice.actions;
 
 export default noteSlice.reducer;
+
 
 

@@ -87,16 +87,26 @@ export const getNotes = async (req, res) => {
     try {
         const userId = req.userId;
 
-        // Найти все заметки, где пользователь является владельцем
-        const ownedNotes = await NoteModel.find({ ownerId: userId }).select('-noteText');
+        // Найти все заметки, где пользователь является владельцем, и populate для ownerId
+        const ownedNotes = await NoteModel.find({ ownerId: userId })
+            .select('-noteText')
+            .populate('ownerId', 'name _id'); // добавляем name и _id
 
         // Найти все группы, к которым принадлежит пользователь
         const userGroups = await getUserGroups(userId);
 
-        // Найти все заметки, к которым имеют доступ эти группы
+        // Найти все заметки, к которым имеют доступ эти группы, и populate для ownerId
         const accessibleNotes = await NoteAccess.find({
             groupId: { $in: userGroups.map(group => group.groupId) }
-        }).populate('noteId', '-noteText');
+        })
+        .populate({
+            path: 'noteId',
+            select: '-noteText',
+            populate: {
+                path: 'ownerId',
+                select: 'name _id', // добавляем name и _id
+            }
+        });
 
         // Извлечь заметки из accessibleNotes
         const groupNotes = accessibleNotes.map(access => access.noteId);
@@ -107,6 +117,7 @@ export const getNotes = async (req, res) => {
             id => notes.find(note => note._id.toString() === id)
         );
 
+        console.log(uniqueNotes);
         res.status(200).json(uniqueNotes);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch notes' });
