@@ -1,27 +1,21 @@
 import React from "react";
-import { NoteUser, NoteTitle, Note } from "../../../Entities/Note";
-import { FullScaledNotePlate, getNoteType } from "../../../Pull/Note";
+import { NoteUser, NoteTitle, Note, NoteBackground } from "../../../Entities/Note";
+import { FullScaledNotePlate } from "../../../Pull/Note";
+import { useGetNoteById } from "../Hooks/use-get-note";
 
-const NoteCheck = ({ note = { type: 'important', content: 'Контент' } }) => {
-    const noteProps = getNoteType(note);
+const NoteCheck = ( id ) => {
+  const { note } = useGetNoteById(id.route.params);
 
-    return (
-        <FullScaledNotePlate
-            backgroundColor={noteProps.backgroundColor}
-            height="100%"
-            Orion={() => <NoteUser 
-                fontWeight={"bold"}
-            />}
-            Scorpius={() => <NoteTitle 
-                flex={"center"}
-                fontWeight={"bold"}
-                fontSize={18}
-            />}
-            Andromeda={() => <Note 
-                note={note}
-            />}
-        />
-    );
+  return (
+    <FullScaledNotePlate
+      User={() => <NoteUser fontWeight="bold"/>}
+      Title={() => <NoteTitle flex="center" fontWeight="bold" fontSize={18}/>}
+      Note={() => <Note/>}
+      Background={() => <NoteBackground/>}
+    />
+  );
 };
 
 export default NoteCheck;
+
+

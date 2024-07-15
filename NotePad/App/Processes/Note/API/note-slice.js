@@ -27,7 +27,7 @@ const noteSlice = createSlice({
       state.notes = state.notes.filter(note => note._id !== action.payload);
     },
     setNoteTitle: (state, action) => { state.noteTitle = action.payload; },
-    setNoteText: (state, action) => { state.noteText = action.payload; },
+    setNoteText: (state, action) => { state.noteText = { text: [action.payload] }; },
     setUserName: (state, action) => { state.userName = action.payload; },
     setUserID: (state, action) => { state.userID = action.payload; },
     setNotePriority: (state, action) => { state.notePriority = action.payload; },
@@ -51,6 +51,3 @@ export const {
 } = noteSlice.actions;
 
 export default noteSlice.reducer;
-
-
-

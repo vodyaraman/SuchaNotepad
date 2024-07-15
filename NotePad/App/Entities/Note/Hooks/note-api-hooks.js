@@ -24,10 +24,10 @@ export const useNoteTitle = () => {
 
 export const useNoteText = () => {
     const dispatch = useDispatch();
-    const noteText = useSelector((state) => state.note.noteText);
-    
+    const noteText = useSelector((state) => state.note.noteText.text[0]);
+
     const updateNoteText = (text) => {
-        dispatch(setNoteText(text));
+        dispatch(setNoteText({ text: [text] }));
     };
 
     return [noteText, updateNoteText];

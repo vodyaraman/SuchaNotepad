@@ -1,37 +1,29 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
-
-// Импорт составных компонентов
-import { NotePlate } from '../../../Pull/Note';
+import { NotePlate } from '../../../Pull/Note'; // Ensure this path is correct
 import { EmptyGroupMessage } from '../../../Entities/Group';
 import { heightPercentageToDP as hg } from 'react-native-responsive-screen';
-
-// Импорт навигации
+import { NoteUser, NoteTitle } from '../../../Entities/Note';
 import { Show } from '../../../Processes/Navigation/Rules';
-
-// Импорт кастомного хука fetchBaseQuery для запроса на сервер
 import { useGetNotes } from '../Hooks/use-get-notes';
 
-// Импорт компонентов для отображения содержимого заметок
-import { NoteUser, NoteTitle } from '../../../Entities/Note';
-
-const Overlook = () => {
+const Overlook = React.memo(() => {
     const { notes, isLoading, error } = useGetNotes();
-    console.log(`Re-render note's overlook with data ${notes}`)
+    console.log(`Re-render note's overlook with data ${notes}`);
 
     const onPressHandler = (id) => {
-        Show.Check({ id });
+        Show.Check(id);
+        console.log({id});
     };
 
-    const noteListControlRender = (note) => {
+    const noteListControlRender = (note, index) => {
+        console.log(note._id)
         return (
             <NotePlate 
-                key={note._id}
-                leftColor={"#9CFFF3"} 
-                rightColor={"#A2EFE6"}
-                leftSlot={<NoteUser userName={note.ownerId.name} />}
-                rightSlot={<NoteTitle title={note.title} />}
-                onPress={() => onPressHandler(note._id)}
+                key={index}
+                LeftSlot={() => <NoteUser userName={note.ownerId.name} />}
+                RightSlot={() => <NoteTitle title={note.title} />}
+                OnPress={() => onPressHandler(note._id)}
             />
         );
     };
@@ -48,11 +40,11 @@ const Overlook = () => {
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.scrollContentContainer}
             >
-                {notes.map(note => noteListControlRender(note))}
+                {notes.map((note, index) => noteListControlRender(note, index))}
             </ScrollView>
         </View>
     );
-};
+});
 
 export default Overlook;
 
@@ -61,15 +53,10 @@ const styles = StyleSheet.create({
         height: hg('72%'),
         paddingHorizontal: 15,
     },
-
     scrollContainer: {
         borderRadius: 25, 
     },
-
     scrollContentContainer: {
         height: '100%',
     }
 });
-
-
-

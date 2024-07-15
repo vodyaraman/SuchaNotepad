@@ -7,9 +7,11 @@ import { navigationRef } from './Rules/relocate-page';
 const Stack = createStackNavigator();
 
 const AppNavigation = () => {
+  const token = localStorage.getItem("authToken");
+
     return (
       <NavigationContainer ref={navigationRef} independent={true}>
-        <Stack.Navigator initialRouteName="User" >
+        <Stack.Navigator initialRouteName={token ? "Main" : "User"}>
         <Stack.Screen 
             name="Test" 
             component={TestPage} 

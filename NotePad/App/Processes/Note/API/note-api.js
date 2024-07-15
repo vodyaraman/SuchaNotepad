@@ -43,7 +43,25 @@ export const noteApi = createApi({
             }),
             invalidatesTags: [{ type: 'Notes', id: 'LIST' }],
         }),
+        getNoteById: build.query({
+            query: (id) => `notes/getNote/${id}`,
+            providesTags: (result, error, id) => [{ type: 'Notes', id }],
+            async onQueryStarted(id, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    dispatch(setNoteText(data.text));
+                } catch {
+                    // handle error
+                }
+            }
+        }),
     })
 });
 
-export const { useGetNotesListQuery, useCreateNoteMutation, useUpdateNoteMutation, useDeleteNoteMutation } = noteApi;
+export const { 
+    useGetNotesListQuery, 
+    useCreateNoteMutation, 
+    useUpdateNoteMutation, 
+    useDeleteNoteMutation, 
+    useGetNoteByIdQuery 
+} = noteApi;
