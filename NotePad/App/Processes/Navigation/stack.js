@@ -8,6 +8,7 @@ const Stack = createStackNavigator();
 
 const AppNavigation = () => {
   const token = localStorage.getItem("authToken");
+  console.log('Auth token:', token);
 
     return (
       <NavigationContainer ref={navigationRef} independent={true}>

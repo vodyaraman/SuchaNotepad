@@ -6,8 +6,9 @@ import { setNoteTitle, setNoteText, setUserName, setUserID, setNotePriority, set
 export const useGetNoteById = (id) => {
   const dispatch = useDispatch();
 
-  const { data: note, isLoading, error } = useGetNoteByIdQuery(id, { skip: !id });
+  const { data: noteTextData, isLoading, error } = useGetNoteByIdQuery(id, { skip: !id });
 
+  const note = useSelector((state) => state.note.notes.find(note => note._id === id));
   const noteTitle = useSelector((state) => state.note.noteTitle);
   const noteText = useSelector((state) => state.note.noteText);
   const userName = useSelector((state) => state.note.userName);
@@ -19,14 +20,16 @@ export const useGetNoteById = (id) => {
   useEffect(() => {
     if (note) {
       dispatch(setNoteTitle(note.title));
-      dispatch(setNoteText(note.text));
       dispatch(setUserName(note.userName));
       dispatch(setUserID(note.userID));
       dispatch(setNotePriority(note.priority));
       dispatch(setTimestamp(note.timestamp));
       dispatch(setNoteType(note.type));
     }
-  }, [note, dispatch]);
+    if (noteTextData) {
+      dispatch(setNoteText(noteTextData.noteText));
+    }
+  }, [note, noteTextData, dispatch]);
 
   return { note, noteTitle, noteText, userName, userID, notePriority, timestamp, noteType, isLoading, error };
 };

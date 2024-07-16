@@ -129,6 +129,8 @@ export const getNoteById = async (req, res) => {
         const { id } = req.params;
         const userId = req.userId;
 
+        console.log('note id request', id, 'user requests', userId)
+
         // Найти заметку по ID
         const note = await NoteModel.findById(id).select('noteText ownerId');
         if (!note) {
@@ -136,14 +138,14 @@ export const getNoteById = async (req, res) => {
         }
 
         // Проверка, что пользователь имеет доступ к заметке
-        const isOwner = note.ownerId.toString() === userId;
+        const isOwner = note.ownerId._id.toString() === userId;
         const hasAccess = await checkNoteAccess(id, userId);
 
         if (!isOwner && !hasAccess) {
             return res.status(403).json({ error: 'User does not have permission to access this note' });
         }
-
-        res.status(200).json({ noteText: note.noteText, isOwner, hasAccess });
+        console.log(`Sending`, note.noteText, `owner`, isOwner, `can read?`, hasAccess)
+        res.status(200).json({ noteText: note.noteText.text, isOwner });
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch note content' });
     }

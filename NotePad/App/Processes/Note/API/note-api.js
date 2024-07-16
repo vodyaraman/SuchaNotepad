@@ -45,15 +45,7 @@ export const noteApi = createApi({
         }),
         getNoteById: build.query({
             query: (id) => `notes/getNote/${id}`,
-            providesTags: (result, error, id) => [{ type: 'Notes', id }],
-            async onQueryStarted(id, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-                    dispatch(setNoteText(data.text));
-                } catch {
-                    // handle error
-                }
-            }
+            providesTags: (result) => [{ type: 'Notes', noteText: result.noteText }],
         }),
     })
 });

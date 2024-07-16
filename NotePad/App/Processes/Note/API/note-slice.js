@@ -4,7 +4,7 @@ const initialState = {
   notes: [],
   noteTitle: "",
   noteText: { text: [""] },
-  userName: "Павел Башкирцев",
+  userName: "",
   userID: 1,
   notePriority: true,
   timestamp: { isTemporary: false, dateStart: "12.08.2024 8:00", dateEnd: "12.08.2025 21:00" },

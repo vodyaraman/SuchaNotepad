@@ -9,7 +9,7 @@ import { useGetNotes } from '../Hooks/use-get-notes';
 
 const Overlook = React.memo(() => {
     const { notes, isLoading, error } = useGetNotes();
-    console.log(`Re-render note's overlook with data ${notes}`);
+    console.log(`Re-render note's overlook with data ${notes._id}`);
 
     const onPressHandler = (id) => {
         Show.Check(id);
