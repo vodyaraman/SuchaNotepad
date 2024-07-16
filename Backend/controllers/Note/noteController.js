@@ -145,7 +145,7 @@ export const getNoteById = async (req, res) => {
             return res.status(403).json({ error: 'User does not have permission to access this note' });
         }
         console.log(`Sending`, note.noteText, `owner`, isOwner, `can read?`, hasAccess)
-        res.status(200).json({ noteText: note.noteText.text, isOwner });
+        res.status(200).json({ noteText: note.noteText, isOwner });
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch note content' });
     }

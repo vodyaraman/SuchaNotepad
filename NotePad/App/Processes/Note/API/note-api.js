@@ -45,8 +45,9 @@ export const noteApi = createApi({
         }),
         getNoteById: build.query({
             query: (id) => `notes/getNote/${id}`,
-            providesTags: (result) => [{ type: 'Notes', noteText: result.noteText }],
-        }),
+            transformResponse: (response) => response.noteText,
+            providesTags: (result) => [{ type: 'Notes', id: result?.id }],
+          }),          
     })
 });
 
