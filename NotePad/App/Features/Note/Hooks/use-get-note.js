@@ -1,25 +1,8 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useGetNoteByIdQuery } from '../../../Processes/Store';
-import { setNoteText } from '../../../Processes/Store';
+import { useSelector } from 'react-redux';
+import { selectNoteById } from '../../../Processes/Note/selectors';
 
 export const useGetNoteById = (id) => {
-  const dispatch = useDispatch();
-  const { data, error, isLoading } = useGetNoteByIdQuery(id);
-  
-  const note = useSelector((state) => state.note.notes.find(note => note._id === id));
-  const noteText = useSelector((state) => state.note.noteText);
+  const note = useSelector((state) => selectNoteById(state, id));
 
-  useEffect(() => {
-    if (data) {
-      dispatch(setNoteText(data));
-    }
-  }, [data, dispatch]);
-
-  console.log('текст заметки в хуке:', data);
-  console.log('текст заметки из редакса в хуке:', noteText);
-
-  return { note, noteText, isLoading, error };
+  return { note };
 };
-
-

@@ -2,14 +2,13 @@ import React from "react";
 import { ScrollView } from "react-native";
 import { CustomText } from "../../../Pull/Note";
 
-const Note = ({noteText}) => {
-
-  console.log(`Note is rendered with text: ${noteText}`);
+const Note = ({text}) => {
+  console.log(`Note is rendered with text: ${text}`);
 
   return (
     <ScrollView>
       <CustomText
-          text={noteText.text}
+          text={text}
           flex="center"
         />
     </ScrollView>

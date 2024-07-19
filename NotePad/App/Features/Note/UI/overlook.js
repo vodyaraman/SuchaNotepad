@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
-import { NotePlate } from '../../../Pull/Note'; // Ensure this path is correct
+import { View, ScrollView, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import { NotePlate } from '../../../Pull/Note';
 import { EmptyGroupMessage } from '../../../Entities/Group';
 import { heightPercentageToDP as hg } from 'react-native-responsive-screen';
 import { NoteUser, NoteTitle } from '../../../Entities/Note';
@@ -28,13 +28,10 @@ const Overlook = React.memo(() => {
         );
     };
 
-    if (isLoading) {
-        return (<Text style={{ fontWeight: '900', textAlign: 'center' }}>Loading...</Text>);
-    }
-
     return (
         <View style={styles.mainContainer}>
             {error && <EmptyGroupMessage />}
+            {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
             <ScrollView
                 style={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}

@@ -1,20 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Начальное состояние
 const initialState = {
   notes: [],
-  noteTitle: "",
-  noteText: { text: [""] },
-  userName: "Павел Башкирцев",
-  userID: 1,
-  notePriority: true,
-  timestamp: { isTemporary: false, dateStart: "12.08.2024 8:00", dateEnd: "12.08.2025 21:00" },
-  noteType: 2,
+  note: {
+    title: "",
+    noteText: { text: [""] },
+    ownerId: {
+      name: ""
+    },
+    notePriority: true,
+    timestamp: { isTemporary: false, dateStart: "", dateEnd: "" },
+    noteType: 2,
+  },
+  loading: false,
+  error: null,
 };
 
 const noteSlice = createSlice({
   name: 'note',
   initialState,
   reducers: {
+    setLoading: (state, action) => { state.loading = action.payload; },
+    setError: (state, action) => { state.error = action.payload; },
     setNotes: (state, action) => { state.notes = action.payload; },
     addNote: (state, action) => { state.notes.push(action.payload); },
     updateNote: (state, action) => {
@@ -26,28 +34,27 @@ const noteSlice = createSlice({
     deleteNote: (state, action) => {
       state.notes = state.notes.filter(note => note._id !== action.payload);
     },
-    setNoteTitle: (state, action) => { state.noteTitle = action.payload; },
-    setNoteText: (state, action) => { state.noteText = { text: [action.payload] }; },
-    setUserName: (state, action) => { state.userName = action.payload; },
-    setUserID: (state, action) => { state.userID = action.payload; },
-    setNotePriority: (state, action) => { state.notePriority = action.payload; },
-    setTimestamp: (state, action) => { state.timestamp = action.payload; },
-    setNoteType: (state, action) => { state.noteType = action.payload; },
+    setNote: (state, action) => { state.note = action.payload; },
+    setNoteById: (state, action) => {
+      const note = state.notes.find(note => note._id === action.payload);
+      if (note) {
+        state.note = { ...note, noteText: state.note.noteText };
+      } else {
+        state.error = 'Note not found';
+      }
+    },
   },
 });
 
 export const {
+  setLoading,
+  setError,
   setNotes,
   addNote,
   updateNote,
   deleteNote,
-  setNoteTitle,
-  setNoteText,
-  setUserName,
-  setUserID,
-  setNotePriority,
-  setTimestamp,
-  setNoteType
+  setNote,
+  setNoteById
 } = noteSlice.actions;
 
 export default noteSlice.reducer;

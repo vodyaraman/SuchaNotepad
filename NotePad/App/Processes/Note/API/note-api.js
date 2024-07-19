@@ -42,12 +42,7 @@ export const noteApi = createApi({
                 method: 'DELETE',
             }),
             invalidatesTags: [{ type: 'Notes', id: 'LIST' }],
-        }),
-        getNoteById: build.query({
-            query: (id) => `notes/getNote/${id}`,
-            transformResponse: (response) => response.noteText,
-            providesTags: (result) => [{ type: 'Notes', id: result?.id }],
-          }),          
+        }),         
     })
 });
 
@@ -56,5 +51,5 @@ export const {
     useCreateNoteMutation, 
     useUpdateNoteMutation, 
     useDeleteNoteMutation, 
-    useGetNoteByIdQuery 
 } = noteApi;
+
