@@ -11,8 +11,8 @@ const Notepad = () => {
             <CalendarFeature />
             <MainWidgetPlate style = {styles.NotepadStyle}> 
                 <NotepadNavigation/>
-                <NavigationButtons screen="note"/>
             </MainWidgetPlate>
+            <NavigationButtons screen="note"/>
         </>
 )};
 
@@ -21,9 +21,6 @@ export default Notepad;
 const styles = StyleSheet.create({
     NotepadStyle: {
         zIndex: 1,
-        paddingTop: "10%",
-        paddingBottom: "25%",
-
         position: 'relative',
         flexDirection: 'row',
         justifyContent: 'center',

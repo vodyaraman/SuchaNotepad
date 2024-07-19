@@ -19,8 +19,5 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'relative',
         flexDirection: "column",
-        backgroundColor: '#EC7171',
-        paddingTop: 30,
-        paddingBottom: 15,
     }
 });

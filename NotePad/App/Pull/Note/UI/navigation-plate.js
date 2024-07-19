@@ -12,9 +12,7 @@ const styles = StyleSheet.create({
     container:{
         width: '100%',
         height: '10vh',
-        display: 'flex',
-        position: 'absolute',
-        bottom: '7%',
+        position: 'relative',
 
         flexDirection: 'row',
         justifyContent: 'space-between',

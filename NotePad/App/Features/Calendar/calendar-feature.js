@@ -32,12 +32,11 @@ export function CalendarFeature(){
 const styles = StyleSheet.create({
     mainContainer: {
         width: '100%',
-        top: '1%',
         alignItems: 'center',
         display: 'flex',
         justifyContent: 'space-between',
 
-        position: 'absolute',
+        position: 'relative',
         zIndex: 2,
     },
     calendarContainer: {

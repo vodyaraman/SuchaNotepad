@@ -4,7 +4,7 @@ import { useNoteType } from '../Hooks/note-api-hooks';
 
 const NoteBackground = () => {
     const [noteType] = useNoteType();
-    const [backgroundColor, setBackgroundColor] = useState("#fff");
+    const [backgroundColor, setBackgroundColor] = useState("#FAFAFA");
 
     useEffect(() => {
         const { backgroundColor } = getNoteType(noteType);

@@ -15,13 +15,9 @@ const styles = StyleSheet.create({
         zIndex: 1,
         position: 'relative',
         
-        height: '100%',
+        flex: 8,
         width: '100%',
         
         borderRadius: 30,
-        backgroundColor: "#FAFAFA",
-        // paddingHorizontal: 15,
-        paddingTop: 25,
-        paddingBottom: 35,
     }
 });
