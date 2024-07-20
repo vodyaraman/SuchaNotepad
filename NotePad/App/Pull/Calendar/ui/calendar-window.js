@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         shadowColor: 'black',
         elevation: 6,
-        
         width: '100%',
+        zIndex: 11,
     } 
 })

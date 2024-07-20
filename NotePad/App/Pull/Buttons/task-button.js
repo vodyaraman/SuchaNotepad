@@ -15,9 +15,7 @@ export default TaskButton;
 
 const styles = StyleSheet.create({
     taskButton: {
-        height: 70,
-        width: 70,
-        borderRadius: 35,
+        borderRadius: 50,
        
         alignItems: 'center',
         justifyContent: 'center',

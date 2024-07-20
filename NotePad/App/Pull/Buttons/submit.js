@@ -15,7 +15,6 @@ const UserSubmitButton = (
     ) => {
     const colors = [color1, color2]
     return(
-        //{backgroundColor: pressed ? '#B4E8FF' : '#94D4EF'}, 
         <LinearGradient
             colors={colors}
             start={{x: -2, y: -5}}
@@ -33,7 +32,7 @@ export default UserSubmitButton;
 const styles = StyleSheet.create({
     button:{
         width: '100%',
-        borderRadius: 25,
-        paddingVertical: 10,
+        height: '100%',
+        justifyContent: 'center'
     },
 })

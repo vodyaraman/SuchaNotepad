@@ -1,12 +1,19 @@
+import React from 'react';
 import { NavigationPlate, OuterPlate } from '../../../Pull/Note';
-import { GroupAddButton, NoteAddButton, SwitchToSettings, SwitchToNotes, SwitchToGroups } from '../../../Entities/Navigation';
+import { GroupAddButton, NoteAddButton, SwitchToSettings, SwitchToNotes, SwitchToGroups, BackButton } from '../../../Entities/Navigation';
+import { notepadNavRef } from '../../../Processes/Navigation/Rules/show-feature';
 
-export const NavigationButtons = ({screen = 'note', setStatus, status}) => {
-    return (
+export const NavigationButtons = ({ screen = 'note' }) => {
+  return (
     <OuterPlate>
-        {screen === 'note' ? <SwitchToGroups /> : <SwitchToNotes />}
-        {screen === 'note' ? <NoteAddButton /> : <GroupAddButton setStatus={setStatus} status={status} />}
-        <SwitchToSettings />
+      <NavigationPlate
+        BackButton={() => <BackButton navigationRef={notepadNavRef} />}
+        GroupButton={screen === 'note' ? SwitchToGroups : SwitchToNotes}
+        SettingsButton={SwitchToSettings}
+        AddButton={screen === 'note' ? NoteAddButton : GroupAddButton}
+      />
     </OuterPlate>
-)};
+  );
+};
+
 

@@ -114,7 +114,6 @@ export const getNotes = async (req, res) => {
             id => notes.find(note => note._id.toString() === id)
         );
 
-        console.log(uniqueNotes);
         res.status(200).json(uniqueNotes);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch notes' });

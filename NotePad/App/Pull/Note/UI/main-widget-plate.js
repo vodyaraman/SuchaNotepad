@@ -13,7 +13,6 @@ export default MainWidgetPlate;
 
 const styles = StyleSheet.create({
     MainWidgetPlateStyle: {
-        zIndex: 1,
         position: 'relative',
         flex: 8,
         width: '100%',
