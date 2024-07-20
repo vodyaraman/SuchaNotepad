@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         elevation: 6,
         
-        width: '95%',
-        marginTop: 10,
+        width: '100%',
     } 
 })

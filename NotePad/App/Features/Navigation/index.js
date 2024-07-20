@@ -1,4 +1,4 @@
-import { NavigationButtons } from "./UI/navigationButtons";
+import { NavigationButtons } from "./UI/navigation-panel";
 
 
 export {NavigationButtons};

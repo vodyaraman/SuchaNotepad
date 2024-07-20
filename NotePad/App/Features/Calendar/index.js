@@ -1,2 +1,2 @@
-import { CalendarFeature } from "./calendar-feature";
-export { CalendarFeature }
+import CalendarFeature from "./calendar-feature";
+export { CalendarFeature };

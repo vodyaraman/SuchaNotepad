@@ -20,7 +20,7 @@ export default Notepad;
 
 const styles = StyleSheet.create({
     NotepadStyle: {
-        zIndex: 1,
+        zIndex: 2,
         position: 'relative',
         flexDirection: 'row',
         justifyContent: 'center',

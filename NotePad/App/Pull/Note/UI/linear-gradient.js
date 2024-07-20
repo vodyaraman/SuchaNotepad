@@ -24,13 +24,13 @@ function lightenOrDarkenColor(hex, amount) {
   
 
 // Компонент для отображения градиента
-const GradientBackground = ({ children, backgroundColor, height = '100%', width = '100%', borderRadius = '0'}) => {
+const GradientBackground = ({ children, backgroundColor, style = {} }) => {
   const gradientStartColor = lightenOrDarkenColor(backgroundColor, 70);
   const gradientEndColor = lightenOrDarkenColor(backgroundColor, -70);
 
   return (
     <LinearGradient
-      style={{ height, width, borderRadius}}
+      style={style}
       colors={[gradientStartColor, gradientEndColor]}
       start={{ x: 1, y: 0 }}
       end={{ x: 0, y: 1 }}

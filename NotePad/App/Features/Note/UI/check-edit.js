@@ -9,9 +9,9 @@ const NoteCheck = React.memo((id) => {
   console.log('NoteCheck renders with note:', note);
   return (
     <FullScaledNotePlate
-      User={() => (note ? <NoteUser fontWeight="bold" userName={note.ownerId.name} /> : null)}
       Title={() => (note ? <NoteTitle flex="center" fontWeight="bold" fontSize={18} title={note.title} /> : null)}
       Note={() => (note ? <Note text={note.noteText.text[0]} /> : null)}
+      User={() => (note ? <NoteUser fontWeight="light" fontSize={14} userName={note.ownerId.name} /> : null)}
       Background={() => <NoteBackground />}
   />);
 });

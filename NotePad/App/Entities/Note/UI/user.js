@@ -1,14 +1,13 @@
 import React from "react";
 import { CustomText } from "../../../Pull/Note";
 
-const NoteUser = ({userName}) => {
+const NoteUser = ({userName, fontWeight = "light", fontSize = 18}) => {
     return (
-        <CustomText 
-            textColor="#fc7303" 
+        <CustomText
             text={userName} 
             flex="start" 
-            fontWeight="bold"
-            fontSize={20}
+            fontWeight={fontWeight}
+            fontSize={fontSize}
         />
     );
 };

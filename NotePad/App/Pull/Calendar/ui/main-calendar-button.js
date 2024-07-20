@@ -1,34 +1,43 @@
-import { Pressable, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { Pressable, StyleSheet } from 'react-native';
+import { CustomText } from "../../Note";
+import { EntityColors } from '../../Consts/Colors/dark-theme';
 
-export function MainCalendarButton({showCalendar, dayName}){
+const MainCalendarButton = React.memo(({ showCalendar, dayName }) => {
+    console.log(EntityColors.TextColor); // Проверка цвета в консоли
 
-    return(
+    return (
         <Pressable
-        onPress={showCalendar} 
-        style={({pressed}) => [styles.calendarButton,  {opacity: pressed ? 1 : 1}]}>
-            <Text style={styles.text}>{dayName}</Text>
+            onPress={showCalendar}
+            style={({ pressed }) => [
+                styles.calendarButton,
+                { 
+                    opacity: pressed ? 0.3 : 1, 
+                    backgroundColor: EntityColors.ButtonCalendarColor
+                }
+            ]}
+        >
+            <CustomText
+                text={dayName}
+                fontWeight='bold'
+                fontSize={18}
+                textColor={EntityColors.TextColor}
+            />
         </Pressable>
     );
-}
+});
+
+export default MainCalendarButton;
 
 const styles = StyleSheet.create({
     calendarButton: {
         alignItems: 'center',
         justifyContent: 'center',
-
-        width: 245,
-        maxWidth: '100%',
-        backgroundColor: '#F8F8F8',
+        width: '33%',
         padding: 5,
-
-        borderRadius: 35,
-
-        shadowColor: 'black',
-        elevation: 6,
+        borderRadius: 15,
     },
+});
 
-    text: {
-        fontSize: 25,
-        fontWeight: 'bold',
-    },
-})
+
+

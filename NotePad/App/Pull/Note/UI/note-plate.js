@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
+import { EntityColors } from '../../Consts/Colors/dark-theme';
 
 const NotePlate = React.memo(({
   LeftSlot = null,
@@ -37,8 +38,12 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: '6%',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: "space-around",
     cursor: 'pointer',
+    backgroundColor: EntityColors.MainEntityColor,
+    borderRadius: 25,
+    padding: 15,
+    alignItems: "center",
   },
   textSlotLeft: {
     flex: 1,
@@ -47,7 +52,6 @@ const styles = StyleSheet.create({
   },
   textSlotRight: {
     flex: 1,
-    opacity: 0.6,
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
@@ -58,3 +62,4 @@ const styles = StyleSheet.create({
     transform: [{ translateX: -50 }],
   },
 });
+

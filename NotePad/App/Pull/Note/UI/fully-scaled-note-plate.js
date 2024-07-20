@@ -16,11 +16,6 @@ const FullScaledNotePlate = React.memo(({
           <Background />
         </View>
       )}
-      {User && (
-        <View style={styles.userStyle}>
-          <User />
-        </View>
-      )}
       {Title && (
         <View style={styles.titleStyle}>
           <Title />
@@ -41,7 +36,12 @@ const FullScaledNotePlate = React.memo(({
           <Extra />
         </View>
       )}
-      </>
+      {User && (
+        <View style={styles.userStyle}>
+          <User />
+        </View>
+      )}
+    </>
   );
 });
 
@@ -60,18 +60,23 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   userStyle: {
-    flex: 2,
+    paddingLeft: 5,
+    paddingBottom: 6,
+    flex: 0.75,
     width: '100%',
   },
   titleStyle: {
+    paddingTop: 6,
     width: '100%',
+    alignItems: 'center',
     justifyContent: 'center',
-    flex: 2,
+    flex: 0.75,
   },
   noteStyle: {
     width: '100%',
     flex: 9.5,
-    alignItems: 'center',
+    paddingLeft: 6,
+    paddingRight: 6,
   },
   timezoneStyle: {
     margin: 0,

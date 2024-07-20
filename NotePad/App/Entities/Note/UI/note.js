@@ -9,7 +9,8 @@ const Note = ({text}) => {
     <ScrollView>
       <CustomText
           text={text}
-          flex="center"
+          fontSize={17}
+          fontWeight="normal"
         />
     </ScrollView>
   );

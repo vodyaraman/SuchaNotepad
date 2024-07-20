@@ -21,8 +21,8 @@ const Overlook = React.memo(() => {
         return (
             <NotePlate 
                 key={index}
-                LeftSlot={() => <NoteUser userName={note.ownerId.name} />}
-                RightSlot={() => <NoteTitle title={note.title} />}
+                LeftSlot={() => <NoteTitle title={note.title} />}
+                RightSlot={() => <NoteUser userName={note.ownerId.name} />}
                 OnPress={() => onPressHandler(note._id)}
             />
         );
@@ -31,7 +31,7 @@ const Overlook = React.memo(() => {
     return (
         <View style={styles.mainContainer}>
             {error && <EmptyGroupMessage />}
-            {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
+            {isLoading && <ActivityIndicator size="large" color="#0000ff"/>}   
             <ScrollView
                 style={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}
@@ -48,7 +48,6 @@ export default Overlook;
 const styles = StyleSheet.create({
     mainContainer: {
         height: hg('72%'),
-        paddingHorizontal: 15,
     },
     scrollContainer: {
         borderRadius: 25, 

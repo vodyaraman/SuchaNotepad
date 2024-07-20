@@ -3,6 +3,7 @@ import SmallUnderplate from "./UI/small-underplate";
 import MainWidgetPlate from "./UI/main-widget-plate";
 import FullScaledNotePlate from "./UI/fully-scaled-note-plate";
 import GradientBackground from "./UI/linear-gradient";
+import OuterPlate from "./UI/outer-widget-plate";
 // Plate - плитки, на которых выстраивается оформление (син. "блок")
 
 import EmptyMessage from "./UI/empty-message";
@@ -19,6 +20,6 @@ import { getNoteType } from "./Helpers/note-type-helper";
 
 import NavigationPlate from "./UI/navigation-plate";
 
-export {NotePlate, EmptyMessage, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText, NavigationPlate, TextBetweenLine, GradientBackground, TimeInput, List};
+export {NotePlate, EmptyMessage, CustomText, SmallUnderplate, MainWidgetPlate, CustomSmallText, FullScaledNotePlate, getNoteType, InputText, NavigationPlate, TextBetweenLine, GradientBackground, TimeInput, List, OuterPlate};
 
 /* Pull/Note определяет визуальное оформление для заметок */

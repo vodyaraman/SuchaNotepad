@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { WidgetColors } from "../../Consts/Colors/dark-theme";
 
 const MainWidgetPlate = ({children, style}) => {
     return (
@@ -14,10 +15,12 @@ const styles = StyleSheet.create({
     MainWidgetPlateStyle: {
         zIndex: 1,
         position: 'relative',
-        
         flex: 8,
         width: '100%',
-        
-        borderRadius: 30,
+        borderRadius: 25,
+        backgroundColor: WidgetColors.MainWidgetColor,
+
+        marginTop: 15,
+        marginBottom: 15,
     }
 });

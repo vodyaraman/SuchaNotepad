@@ -7,8 +7,9 @@ import { convertToString } from '../../Entities/Calendar/Helpers/convertToString
 import { getCurrentDay } from '../../Entities/Calendar/Helpers/getCurrentDay';
 
 import React, { useState} from 'react';
+import { OuterPlate } from '../../Pull/Note';
 
-export function CalendarFeature(){
+const CalendarFeature = () => {
     
     const [selected, setSelected] = useState(convertToString(getCurrentDay()))
     const [isVisible, setIsVisible] = useState(false);
@@ -18,29 +19,13 @@ export function CalendarFeature(){
     }
     
     return(
-        <SelectedContext.Provider value={selected}>
-            <View style={styles.mainContainer} >
+        <OuterPlate>
+            <SelectedContext.Provider value={selected}>
                 <CurrentDateEntitie showCalendar={showCalendar} />
-                <View style={styles.calendarContainer}>
-                    <CalendarEntitie setSelected={setSelected} isVisible={isVisible} /> 
-                </View>
-            </View>
-        </SelectedContext.Provider>       
+                <CalendarEntitie setSelected={setSelected} isVisible={isVisible} /> 
+            </SelectedContext.Provider>  
+        </OuterPlate>        
     )
-}
+};
 
-const styles = StyleSheet.create({
-    mainContainer: {
-        width: '100%',
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'space-between',
-
-        position: 'relative',
-        zIndex: 2,
-    },
-    calendarContainer: {
-        width: '100%',
-        position: 'relative',
-    }
-})
+export default CalendarFeature;

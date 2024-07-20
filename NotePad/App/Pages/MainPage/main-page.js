@@ -1,23 +1,22 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-
 import { Notepad } from "../../Widgets";
+import { GradientBackground } from "../../Pull/Note";
 
 const MainPage = () => {
     return (
-        <View style = { styles.TestPageStyle}>
+        <GradientBackground 
+            backgroundColor="#352C2C" 
+            style={{
+                padding: 15, 
+                height: '100%', 
+                width: '100%', 
+                borderRadius: '0' 
+            }}
+        >
             <Notepad />
-        </View>
-)};
+        </GradientBackground>
+    );
+};
 
 export default MainPage;
 
-const styles = StyleSheet.create({
-    TestPageStyle: {
-        zIndex: 0,
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-        flexDirection: "column",
-    }
-});
