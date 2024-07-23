@@ -2,17 +2,21 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { List } from '../../../Pull/Note';
 import { toggleComplete } from '../Helpers/list-logic';
-import { useNoteText } from '../Hooks/note-api-hooks';
+import { useNote } from '../Hooks/note-api-hooks';
 
 const NoteList = () => {
-    const [noteText, updateNoteText] = useNoteText();
+    const [note, updateNote] = useNote();
+    const { noteText } = note;
 
     const handleToggleComplete = (index) => {
         const newItems = toggleComplete(noteText.text, index);
-        updateNoteText({ text: newItems });
+        updateNote({
+            ...note,
+            noteText: { ...note.noteText, text: newItems }
+        });
     };
 
-    console.log(`Rendering NoteList with items ${noteText}`)
+    console.log(`Rendering NoteList with items ${JSON.stringify(noteText.text)}`);
 
     return (
         <List

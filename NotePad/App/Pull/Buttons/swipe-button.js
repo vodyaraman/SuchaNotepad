@@ -1,9 +1,10 @@
 import { StyleSheet, Pressable, Image } from 'react-native';
 import React from 'react';
 
-const SwipeButton = ({ img }) => {
+const SwipeButton = ({ img, onPressHandler }) => {
   return (
     <Pressable
+      onPress={onPressHandler}
       style={({ pressed }) => [
         styles.swipeButton,
         { opacity: pressed ? 0.7 : 1 }

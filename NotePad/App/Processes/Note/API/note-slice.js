@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Начальное состояние
 const initialState = {
   notes: [],
   note: {
     title: "",
-    noteText: { text: [""] },
+    noteText: { 
+      text: [""] 
+    },
     ownerId: {
       name: ""
     },

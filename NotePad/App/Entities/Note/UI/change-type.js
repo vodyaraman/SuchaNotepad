@@ -1,13 +1,17 @@
 import React from 'react';
 import { Switcher } from '../../../Pull/Buttons';
-import { useNoteType } from '../Hooks/note-api-hooks';
+import { useNote } from '../Hooks/note-api-hooks';
 
 const NoteChangeType = () => {
-  const [noteType, updateNoteType] = useNoteType();
+  const [note, updateNote] = useNote();
+  const { noteType } = note;
 
   const handleSwitchChange = (index) => {
     if (index !== noteType) {
-      updateNoteType(index);
+      updateNote({
+        ...note,
+        noteType: index
+      });
     }
   };
 

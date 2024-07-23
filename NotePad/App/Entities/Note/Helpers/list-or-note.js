@@ -1,14 +1,14 @@
 import React from 'react';
-import { useNoteType } from '../Hooks/note-api-hooks';
+import { useNote } from '../Hooks/note-api-hooks';
 import EditNote from '../UI/edit-note';
 import EditNoteList from '../UI/edit-note-list';
 
 const EditListOrNote = () => {
-  const [noteType] = useNoteType();
+  const [note] = useNote();
 
   return (
     <>
-      {noteType === 1 ? <EditNoteList /> : <EditNote />}
+      {note.noteType === 1 ? <EditNoteList /> : <EditNote />}
     </>
   );
 };

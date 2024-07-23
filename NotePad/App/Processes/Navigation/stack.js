@@ -12,7 +12,7 @@ const AppNavigation = () => {
 
     return (
       <NavigationContainer ref={navigationRef} independent={true}>
-        <Stack.Navigator initialRouteName={"Main"}>
+        <Stack.Navigator initialRouteName={"User"}>
         <Stack.Screen 
             name="Test" 
             component={TestPage} 

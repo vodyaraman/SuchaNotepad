@@ -1,82 +1,50 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { 
-    setNoteTitle,
-    setNoteText,
-    setUserName,
-    setNotePriority,
-    setTimestamp,
-    setNoteType,
+    setLoading,
+    setError,
     addNote,
     updateNote,
-    deleteNote
+    deleteNote,
+    setNote,
 } from '../../../Processes/Note';
 
-export const useNoteTitle = () => {
+// Hook for loading state
+export const useLoading = () => {
     const dispatch = useDispatch();
-    const noteTitle = useSelector((state) => state.note.noteTitle);
+    const loading = useSelector((state) => state.note.loading);
     
-    const updateNoteTitle = (title) => {
-        dispatch(setNoteTitle(title));
+    const updateLoading = (loading) => {
+        dispatch(setLoading(loading));
     };
 
-    return [noteTitle, updateNoteTitle];
+    return [loading, updateLoading];
 };
 
-export const useNoteText = () => {
+// Hook for error state
+export const useError = () => {
     const dispatch = useDispatch();
-    const noteText = useSelector((state) => state.note.noteText.text[0]);
-
-    const updateNoteText = (text) => {
-        dispatch(setNoteText({ text: [text] }));
-    };
-
-    return [noteText, updateNoteText];
-};
-
-export const useUserName = () => {
-    const dispatch = useDispatch();
-    const userName = useSelector((state) => state.note.userName);
+    const error = useSelector((state) => state.note.error);
     
-    const updateUserName = (name) => {
-        dispatch(setUserName(name));
+    const updateError = (error) => {
+        dispatch(setError(error));
     };
 
-    return [userName, updateUserName];
+    return [error, updateError];
 };
 
-export const useNotePriority = () => {
+// Hook for individual note state
+export const useNote = () => {
     const dispatch = useDispatch();
-    const notePriority = useSelector((state) => state.note.notePriority);
+    const note = useSelector((state) => state.note.note);
     
-    const updateNotePriority = (priority) => {
-        dispatch(setNotePriority(priority));
+    const updateNote = (note) => {
+        dispatch(setNote(note));
     };
 
-    return [notePriority, updateNotePriority];
+    return [note, updateNote];
 };
 
-export const useTimestamp = () => {
-    const dispatch = useDispatch();
-    const timestamp = useSelector((state) => state.note.timestamp);
-    
-    const updateTimestamp = (timestamp) => {
-        dispatch(setTimestamp(timestamp));
-    };
-
-    return [timestamp, updateTimestamp];
-};
-
-export const useNoteType = () => {
-    const dispatch = useDispatch();
-    const noteType = useSelector((state) => state.note.noteType);
-    
-    const updateNoteType = (type) => {
-        dispatch(setNoteType(type));
-    };
-
-    return [noteType, updateNoteType];
-};
-
+// Hook for adding a note
 export const useAddNote = () => {
     const dispatch = useDispatch();
     
@@ -87,6 +55,7 @@ export const useAddNote = () => {
     return addNewNote;
 };
 
+// Hook for updating a note
 export const useUpdateNote = () => {
     const dispatch = useDispatch();
     
@@ -97,6 +66,7 @@ export const useUpdateNote = () => {
     return modifyNote;
 };
 
+// Hook for deleting a note
 export const useDeleteNote = () => {
     const dispatch = useDispatch();
     

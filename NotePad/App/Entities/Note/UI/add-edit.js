@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { SmallUnderplate, getNoteType, TimeInput } from "../../../Pull/Note";
-import { useTimestamp, useNoteType } from '../Hooks/note-api-hooks';
+import { useNote } from '../Hooks/note-api-hooks';
 import { View, StyleSheet } from "react-native";
 import { SubmitButton } from "../../../Pull/Buttons";
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const NoteAddEdit = () => {
-    const [timestamp, updateTimestamp] = useTimestamp();
-    const [noteType] = useNoteType();
+    const [note, updateNote] = useNote();
+    const { timestamp, noteType } = note;
     const [shouldRender, setShouldRender] = useState(false);
     const [inputCount, setInputCount] = useState(0);
     const [showPicker, setShowPicker] = useState(false);
@@ -18,31 +18,37 @@ const NoteAddEdit = () => {
         setShouldRender(timezone);
     }, [noteType]);
 
-    const addInput = () => {
+    const addInput = useCallback(() => {
         if (inputCount < 2) {
             setPickerTarget(inputCount === 0 ? 'dateStart' : 'dateEnd');
             setShowPicker(true);
         }
-    };
+    }, [inputCount]);
 
-    const delInput = () => {
+    const delInput = useCallback(() => {
         if (inputCount > 0) {
-            updateTimestamp(prev => ({
-                ...prev,
-                dateEnd: inputCount === 2 ? '' : prev.dateEnd,
-                dateStart: inputCount === 1 ? '' : prev.dateStart
-            }));
+            updateNote({
+                ...note,
+                timestamp: {
+                    ...timestamp,
+                    dateEnd: inputCount === 2 ? '' : timestamp.dateEnd,
+                    dateStart: inputCount === 1 ? '' : timestamp.dateStart
+                }
+            });
             setInputCount(inputCount - 1);
         }
-    };
+    }, [inputCount, note, timestamp, updateNote]);
 
-    const handleTimeChange = (event, selectedTime) => {
+    const handleTimeChange = useCallback((event, selectedTime) => {
         const newTime = selectedTime || new Date();
         const hours = newTime.getHours();
         const minutes = newTime.getMinutes();
         const timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 
-        updateTimestamp(prev => ({ ...prev, [pickerTarget]: timeString }));
+        updateNote({
+            ...note,
+            timestamp: { ...timestamp, [pickerTarget]: timeString }
+        });
         setShowPicker(false);
 
         if (pickerTarget === 'dateStart') {
@@ -50,7 +56,7 @@ const NoteAddEdit = () => {
         } else if (pickerTarget === 'dateEnd') {
             setInputCount(2);
         }
-    };
+    }, [pickerTarget, note, timestamp, updateNote]);
 
     return shouldRender ? (
         <View style={styles.container}>
@@ -58,7 +64,10 @@ const NoteAddEdit = () => {
                 <SmallUnderplate width="30%">
                     <TimeInput
                         time={timestamp.dateStart}
-                        onChange={time => updateTimestamp(prev => ({ ...prev, dateStart: time }))}
+                        onChange={time => updateNote({
+                            ...note,
+                            timestamp: { ...timestamp, dateStart: time }
+                        })}
                         placeholder="Start Time"
                     />
                 </SmallUnderplate>
@@ -67,7 +76,10 @@ const NoteAddEdit = () => {
                 <SmallUnderplate width="30%">
                     <TimeInput
                         time={timestamp.dateEnd}
-                        onChange={time => updateTimestamp(prev => ({ ...prev, dateEnd: time }))}
+                        onChange={time => updateNote({
+                            ...note,
+                            timestamp: { ...timestamp, dateEnd: time }
+                        })}
                         placeholder="End Time"
                     />
                 </SmallUnderplate>

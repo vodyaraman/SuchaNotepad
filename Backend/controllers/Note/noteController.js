@@ -1,6 +1,6 @@
 import NoteModel from '../../models/note.js';
 import NoteAccess from '../../models/noteAccess.js';
-import { checkNoteOwnership, checkNoteAccess, getUserGroups } from '../../utils/noteUtils.js';
+import { checkNoteOwnership, getUserGroups } from '../../utils/noteUtils.js';
 import { getIo } from '../../websocket-config.js';
 
 export const create = async (req, res) => {

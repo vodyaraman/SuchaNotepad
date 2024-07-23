@@ -1,55 +1,64 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useNoteText } from '../Hooks/note-api-hooks';
+import { useNote } from '../Hooks/note-api-hooks';
 import { SubmitButton } from '../../../Pull/Buttons';
 import { InputText } from '../../../Pull/Note';
 
 const EditNoteList = () => {
-    const [noteText, updateNoteText] = useNoteText();
-    const [items, setItems] = useState(noteText.text || []);
+    const [note, updateNote] = useNote();
+    const [items, setItems] = useState(note.noteText.text || []);
     const scrollViewRef = useRef(null);
 
     useEffect(() => {
-        if (noteText.text) {
-            setItems(noteText.text);
+        if (note.noteText.text) {
+            setItems(note.noteText.text);
         } else {
-            console.warn('noteText.text is not defined. Received:', noteText);
+            console.warn('note.noteText.text is not defined. Received:', note);
             setItems([]);
         }
-    }, [noteText]);
+    }, [note]);
 
-    const handleItemChange = (index, value) => {
+    const handleItemChange = useCallback((index, value) => {
         const newItems = [...items];
         newItems[index] = value;
         setItems(newItems);
-        updateNoteText({ text: newItems });
-    };
+        updateNote({
+            ...note,
+            noteText: { ...note.noteText, text: newItems }
+        });
+    }, [items, note, updateNote]);
 
-    const handleAddItem = () => {
+    const handleAddItem = useCallback(() => {
         const newItems = [...items, ''];
         setItems(newItems);
-        updateNoteText({ text: newItems });
+        updateNote({
+            ...note,
+            noteText: { ...note.noteText, text: newItems }
+        });
 
         setTimeout(() => {
             if (scrollViewRef.current) {
                 scrollViewRef.current.scrollToEnd({ animated: true });
             }
         }, 100);
-    };
+    }, [items, note, updateNote]);
 
-    const handleRemoveItem = (index) => {
+    const handleRemoveItem = useCallback((index) => {
         const newItems = items.filter((_, i) => i !== index);
         setItems(newItems);
-        updateNoteText({ text: newItems });
-    };
+        updateNote({
+            ...note,
+            noteText: { ...note.noteText, text: newItems }
+        });
+    }, [items, note, updateNote]);
 
-    const handleKeyDown = (index, event) => {
+    const handleKeyDown = useCallback((index, event) => {
         if (event.nativeEvent.key === 'Backspace' && items[index] === '') {
             handleRemoveItem(index);
         } else if (index === items.length - 1 && event.nativeEvent.key === 'Enter') {
             handleAddItem();
         }
-    };
+    }, [items, handleRemoveItem, handleAddItem]);
 
     return (
         <ScrollView ref={scrollViewRef} style={styles.List}>
@@ -100,14 +109,15 @@ const styles = StyleSheet.create({
     OL: {
         flexDirection: 'row',
         width: '100%',
+        alignItems: 'center',
     },
     numeric: {
         flex: 1,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     listInputs: {
         flex: 12,
-        width: '100%'
+        width: '100%',
     },
 });
 

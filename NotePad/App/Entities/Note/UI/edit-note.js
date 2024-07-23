@@ -1,33 +1,39 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { InputText } from "../../../Pull/Note";
-import { useNoteText } from '../Hooks/note-api-hooks';
+import { useNote } from '../Hooks/note-api-hooks';
 
 const EditNote = () => {
-    const [noteText, updateNoteText] = useNoteText();
-    const [inputValue, setInputValue] = useState(noteText.text[0]);
+  const [note, updateNote] = useNote();
+  const [inputValue, setInputValue] = useState(note.noteText.text[0]);
 
-    console.log("Render note edit");
+  useEffect(() => {
+    setInputValue(note.noteText.text[0]);
+  }, [note.noteText.text]);
 
-    const handleTextChange = useCallback((newText) => {
-        if (newText !== inputValue) {
-            setInputValue(newText);
-            const updatedText = [newText, ...noteText.text.slice(1)];
-            updateNoteText({ text: updatedText });
-        }
-    }, [inputValue, noteText.text, updateNoteText]);
+  const handleTextChange = useCallback((newText) => {
+    if (newText !== inputValue) {
+      setInputValue(newText);
+      const updatedNote = {
+        ...note,
+        noteText: { text: [newText, ...note.noteText.text.slice(1)] }
+      };
+      updateNote(updatedNote);
+    }
+  }, [inputValue, note, updateNote]);
 
-    return (
-        <InputText
-          borderBottomColor="transparent"
-          textColor={'#000'}
-          value={inputValue}
-          onChangeText={handleTextChange}
-          multiline={true}
-          height={"100%"}
-          fontSize={18}
-          placeholder="Enter Note"
-        />
-    );
+  return (
+    <InputText
+      borderBottomColor="transparent"
+      textColor={'#000'}
+      value={inputValue}
+      onChangeText={handleTextChange}
+      multiline={true}
+      height={"100%"}
+      fontSize={18}
+      placeholder="Enter Note"
+    />
+  );
 };
 
 export default EditNote;
+

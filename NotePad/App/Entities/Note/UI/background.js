@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { GradientBackground, getNoteType } from "../../../Pull/Note";
-import { useNoteType } from '../Hooks/note-api-hooks';
+import { useNote } from '../Hooks/note-api-hooks';
 
 const NoteBackground = () => {
-    const [noteType] = useNoteType();
+    const [note] = useNote();
+    const { noteType } = note;
     const [backgroundColor, setBackgroundColor] = useState("#FAFAFA");
 
     useEffect(() => {
