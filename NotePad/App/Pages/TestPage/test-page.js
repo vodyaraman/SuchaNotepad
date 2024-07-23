@@ -1,26 +1,19 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import { Group } from "../../Widgets";
+import { GradientBackground } from "../../Pull/Note";
 
 const TestPage = () => {
     return (
-    <View style = { styles.TestPageStyle}>
+    <GradientBackground
+        backgroundColor="#352C2C" 
+        style={{
+            padding: 15, 
+            height: '100%', 
+            width: '100%', 
+            borderRadius: '0' 
+        }}>
         <Group />
-    </View>
-    
+    </GradientBackground>
 )};
 
 export default TestPage;
-
-const styles = StyleSheet.create({
-    TestPageStyle: {
-        zIndex: 0,
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-        flexDirection: "column",
-        backgroundColor: '#EC7171',
-        paddingTop: 30,
-        paddingBottom: 15,
-    }
-});

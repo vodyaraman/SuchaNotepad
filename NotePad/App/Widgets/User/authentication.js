@@ -5,7 +5,7 @@ import { AuthProvider } from '../../Entities/User/Helpers/user-manager';
 const Authentication = () => {
     return (
         <AuthProvider>
-            <AuthNavigation onReady={() => setIsMounted(true)} />  
+            <AuthNavigation onReady={() => setIsMounted(true)} />
         </AuthProvider>
     );
 };

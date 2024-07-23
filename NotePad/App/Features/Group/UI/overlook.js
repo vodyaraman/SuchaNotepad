@@ -56,7 +56,6 @@ export default Overlook;
 const styles = StyleSheet.create({
     mainContainer:{
         height: hg('72%'),
-        paddingHorizontal: 15,
     },
 
     scrollContainer:{

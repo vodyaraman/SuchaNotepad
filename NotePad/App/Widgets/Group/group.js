@@ -10,9 +10,9 @@ const Group = () => {
     return (
         <GroupManagerProvider>
             <MainWidgetPlate>
-                <GroupNavigation  />
-                <NavigationButtons screen="group" status={status} setStatus={setStatus} />
+                <GroupNavigation/>
             </MainWidgetPlate>
+            <NavigationButtons screen="group" status={status} setStatus={setStatus} />
         </GroupManagerProvider> 
     );
 };

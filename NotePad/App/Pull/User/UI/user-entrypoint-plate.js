@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         width: wd('100%'),
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingVertical: '10%',
         paddingHorizontal: '10%',
     },
 })
