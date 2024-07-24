@@ -36,6 +36,8 @@ export const useError = () => {
 export const useNote = () => {
     const dispatch = useDispatch();
     const note = useSelector((state) => state.note.note);
+
+    console.log(note);
     
     const updateNote = (note) => {
         dispatch(setNote(note));

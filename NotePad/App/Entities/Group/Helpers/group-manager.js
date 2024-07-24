@@ -44,6 +44,7 @@ export const GroupManagerProvider = ({ children }) => {
 
         } else{
             setErrors(['Проверьте правильность введенных данных'])
+            console.log(error);
         }
         
     }

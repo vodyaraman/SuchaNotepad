@@ -1,26 +1,21 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback } from "react";
 import { InputText } from "../../../Pull/Note";
-import { useNote } from '../Hooks/note-api-hooks';
+import { useNoteForm } from '../Hooks/note-form';
 
 const EditNoteTitle = ({ flex = 'center', fontWeight = "bold", fontSize = 20 }) => {
-    const [note, updateNote] = useNote();
-    const [title, setTitle] = useState(note.title);
-
-    useEffect(() => {
-        setTitle(note.title);
-    }, [note.title]);
+    const { note, setTitle } = useNoteForm();
+    
+    console.log('Rendering noteTitle with title', note.title)
 
     const handleTitleChange = useCallback((newTitle) => {
-        if (newTitle !== title) {
+        if (newTitle !== note.title) {
             setTitle(newTitle);
-            const updatedNote = { ...note, title: newTitle };
-            updateNote(updatedNote);
         }
-    }, [title, note, updateNote]);
+    }, [note.title, setTitle]);
 
     return (
         <InputText
-            text={title ? title : ""}
+            text={note.title}
             onChangeText={handleTitleChange}
             textAlign={flex}
             fontWeight={fontWeight}
@@ -32,3 +27,4 @@ const EditNoteTitle = ({ flex = 'center', fontWeight = "bold", fontSize = 20 }) 
 };
 
 export default EditNoteTitle;
+
